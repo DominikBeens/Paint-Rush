@@ -8249,7 +8249,7 @@ MonoBehaviour:
   pauseInputButton: Cancel
   canPauseWithSpecifiedButton: 1
   pausePanel: {fileID: 1321910249087838}
-  cannotPauseScenes: 
+  cannotPauseScenes: 00000000
 --- !u!114 &114872719032478948
 MonoBehaviour:
   m_ObjectHideFlags: 0

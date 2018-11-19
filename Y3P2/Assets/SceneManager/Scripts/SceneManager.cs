@@ -89,7 +89,6 @@ namespace DB.MenuPack
 
             pausePanel.SetActive(isPaused);
             SettingsManager.instance.ToggleSettingsPanel(false);
-            Time.timeScale = isPaused ? 0 : 1;
 
             // Saving cursor mode pre pause.
             if (isPaused)

@@ -6,6 +6,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public static PlayerManager instance;
 
+    #region PlayerComponents
+    private PlayerController playerController;
+    #endregion
+
     private void Awake()
     {
         if (photonView.IsMine || !PhotonNetwork.IsConnected)
@@ -19,11 +23,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GatherPlayerComponents()
     {
-
+        playerController = GetComponentInChildren<PlayerController>();
     }
 
     private void Initialise()
     {
+        playerController.Inititalise(IsConnectedAndMine());
+
         // This player is not mine.
         if (!IsConnectedAndMine())
         {

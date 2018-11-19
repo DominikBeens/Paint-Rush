@@ -1,17 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    private bool initialised;
+
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
     private float myCamRotateSpeed = 80;
 
-
     private Camera myCamera;
     private Rigidbody rb;
+
+    public void Inititalise(bool local)
+    {
+        if (!local)
+        {
+            enabled = false;
+            return;
+        }
+    }
 
     private void Start()
     {
@@ -32,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         CameraRotation();
     }
+
     /// <summary>
     /// The players regular movement
     /// </summary>
@@ -51,7 +61,7 @@ public class PlayerController : MonoBehaviour
     private void CameraRotation()
     {
         float x = Input.GetAxis("Mouse X") * myCamRotateSpeed * Time.deltaTime;
-        float y = Input.GetAxis("Mouse Y")  * myCamRotateSpeed * Time.deltaTime;
+        float y = Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime;
 
         transform.Rotate(new Vector3(0, x, 0));
 
