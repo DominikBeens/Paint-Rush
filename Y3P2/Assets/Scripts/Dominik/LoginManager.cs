@@ -38,9 +38,12 @@ public class LoginManager : MonoBehaviourPunCallbacks
     private void Connect(ConnectSetting connectSetting, string roomName = null)
     {
         // Player name is empty.
-        if (string.IsNullOrEmpty(nameInputField.text) || nameInputField.text.All(char.IsWhiteSpace))
+        if (nameInputField)
         {
-            return;
+            if (string.IsNullOrEmpty(nameInputField.text) || nameInputField.text.All(char.IsWhiteSpace))
+            {
+                return;
+            }
         }
 
         currentConnectSetting = connectSetting;
