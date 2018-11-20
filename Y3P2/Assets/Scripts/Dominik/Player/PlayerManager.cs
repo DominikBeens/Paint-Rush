@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static PlayerManager instance;
 
     #region PlayerComponents
+    [SerializeField] private GameObject playerCamera;
     private PlayerController playerController;
     #endregion
 
@@ -28,15 +29,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void Initialise()
     {
+        playerCamera.SetActive(IsConnectedAndMine() ? true : false);
         playerController.Inititalise(IsConnectedAndMine());
 
-        // This player is not mine.
         if (!IsConnectedAndMine())
         {
-            // Set player on another layer.
             //SetLayer(transform, 14);
         }
-        // This player is mine.
         else
         {
             DontDestroyOnLoad(gameObject);

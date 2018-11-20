@@ -4,7 +4,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-// BEWARE! Ugly af and unorganised code ahead. 
 public class LoginManager : MonoBehaviourPunCallbacks
 {
 
