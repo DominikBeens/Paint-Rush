@@ -8,8 +8,6 @@ public class Entity : MonoBehaviourPunCallbacks
     [HideInInspector] public Collider myCollider;
 
     [SerializeField] private int entityID;
-    [SerializeField] private bool instaDestroyOnDeath;
-    [SerializeField] private Rigidbody rb;
     public enum EntityType { Humanoid, Prop};
     [SerializeField] private EntityType entityType;
 
@@ -41,10 +39,5 @@ public class Entity : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Destroy(transform.root.gameObject);
         }
-    }
-
-    private void OnDestroy()
-    {
-        //EntityManager.instance.RemoveFromAliveTargets(this);
     }
 }

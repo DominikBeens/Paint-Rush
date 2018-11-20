@@ -27,7 +27,7 @@ namespace Photon.Pun
     /// A PhotonView identifies an object across the network (viewID) and configures how the controlling client updates remote instances.
     /// </summary>
     /// \ingroup publicApi
-    [AddComponentMenu("Photon Networking/Photon View &v")]
+    [AddComponentMenu("Photon Networking/Photon View")]
     public class PhotonView : MonoBehaviour
     {
         #if UNITY_EDITOR

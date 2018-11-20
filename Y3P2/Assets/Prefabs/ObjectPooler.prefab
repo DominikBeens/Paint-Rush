@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3823163395761721995
+--- !u!1 &6017114920923302642
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8092508238407817626}
-  - component: {fileID: 5676588778306319679}
+  - component: {fileID: 3780077021697922347}
+  - component: {fileID: 1657939568239311390}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ObjectPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8092508238407817626
+--- !u!4 &3780077021697922347
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823163395761721995}
+  m_GameObject: {fileID: 6017114920923302642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,18 +31,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5676588778306319679
+--- !u!114 &1657939568239311390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823163395761721995}
+  m_GameObject: {fileID: 6017114920923302642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e5215fa9b39ff4a90e092989343e16, type: 3}
+  m_Script: {fileID: 11500000, guid: 77b5558d16c61084ebd414f5402da6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5740841910719402327, guid: 00387d1603bbf104fb7c4a1e2bd17d7b,
-    type: 3}
-  projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}
+  pools:
+  - poolName: bullet
+    poolPrefab: {fileID: 4348756039182807503, guid: 166f33a3c9d67644da92d3c72cb08d43,
+      type: 3}
+    poolSize: 100
+    autoExpand: 1
+  - poolName: testparticle
+    poolPrefab: {fileID: 1824224075707167627, guid: 50965524ebf0d7c498433dd0b4a428ac,
+      type: 3}
+    poolSize: 50
+    autoExpand: 1

@@ -33,4 +33,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - HitRPC
+  - FireProjectileRPC
+  - ParentWeapon
+  - PickUpDestroy
   DisableAutoOpenWizard: 1

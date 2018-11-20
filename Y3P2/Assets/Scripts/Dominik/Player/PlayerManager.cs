@@ -7,7 +7,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static PlayerManager instance;
 
     #region PlayerComponents
+    [SerializeField] private GameObject playerCamera;
     private PlayerController playerController;
+    private WeaponSlot weaponSlot;
     #endregion
 
     private void Awake()
@@ -24,19 +26,19 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private void GatherPlayerComponents()
     {
         playerController = GetComponentInChildren<PlayerController>();
+        weaponSlot = GetComponentInChildren<WeaponSlot>();
     }
 
     private void Initialise()
     {
+        playerCamera.SetActive(IsConnectedAndMine() ? true : false);
         playerController.Inititalise(IsConnectedAndMine());
+        weaponSlot.Initialise(IsConnectedAndMine());
 
-        // This player is not mine.
         if (!IsConnectedAndMine())
         {
-            // Set player on another layer.
-            //SetLayer(transform, 14);
+            SetLayer(transform, 10);
         }
-        // This player is mine.
         else
         {
             DontDestroyOnLoad(gameObject);

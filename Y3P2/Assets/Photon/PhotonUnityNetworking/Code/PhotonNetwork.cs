@@ -28,7 +28,6 @@ namespace Photon.Pun
     using System.IO;
     #endif
 
-
     public struct InstantiateParameters
     {
         public int[] viewIDs;
@@ -2793,6 +2792,7 @@ namespace Photon.Pun
             PhotonNetwork.IsMessageQueueRunning = false;
             loadingLevelAndPausedNetwork = true;
             _AsyncLevelLoadingOperation = SceneManager.LoadSceneAsync(levelNumber,LoadSceneMode.Single);
+            //DB.MenuPack.SceneManager.LoadScene(levelNumber, false);
         }
 
         /// <summary>Wraps loading a level to pause the network message-queue. Optionally syncs the loaded level in a room.</summary>

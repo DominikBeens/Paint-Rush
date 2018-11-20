@@ -4,7 +4,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-// BEWARE! Ugly af and unorganised code ahead. 
 public class LoginManager : MonoBehaviourPunCallbacks
 {
 
@@ -24,6 +23,9 @@ public class LoginManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         SetUpNameInputField();
         connectionProgress.SetActive(false);
