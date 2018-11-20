@@ -168,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021946900416281199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252097114343202241}
@@ -193,7 +193,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
+  viewIdField: 3
   InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!1 &2984938578079561940
@@ -248,7 +248,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 3272902780789960796}
-  viewIdField: 0
+  viewIdField: 1
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &3272902780789960796
@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 2620516107148874755}
   - component: {fileID: 2311191666938350133}
   - component: {fileID: 1630724807476929638}
+  - component: {fileID: 8910522088424466404}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -306,7 +307,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3503027130565170429}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -326,8 +327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myCollider: {fileID: 0}
   entityID: 0
-  instaDestroyOnDeath: 0
-  rb: {fileID: 0}
   entityType: 0
   OnHit:
     m_PersistentCalls:
@@ -339,6 +338,28 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8910522088424466404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503027130565170429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 4
+  InstantiationId: 4
+  isRuntimeInstantiated: 0
 --- !u!1 &5740841910719402327
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +475,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 4446777995645317925}
-  viewIdField: 0
+  viewIdField: 2
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &4446777995645317925
@@ -483,6 +504,7 @@ GameObject:
   - component: {fileID: 4252097114343202241}
   - component: {fileID: 1878946509959450091}
   - component: {fileID: 7413773803101280054}
+  - component: {fileID: 4638783348298859694}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -550,3 +572,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &4638783348298859694
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780413428033686921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

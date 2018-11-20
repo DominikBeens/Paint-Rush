@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5740841910719402327, guid: 00387d1603bbf104fb7c4a1e2bd17d7b,
     type: 3}
+  projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}

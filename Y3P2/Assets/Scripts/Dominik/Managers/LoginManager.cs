@@ -24,6 +24,9 @@ public class LoginManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         SetUpNameInputField();
         connectionProgress.SetActive(false);
 

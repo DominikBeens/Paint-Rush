@@ -1,12 +1,10 @@
-﻿using Photon.Pun;
-using System;
+﻿using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
 
     private Rigidbody rb;
-    protected bool hitAnything;
     private Transform owner;
     private Collider hitCollider;
 
@@ -26,22 +24,22 @@ public class Projectile : MonoBehaviour
     }
     public FireData fireData;
 
-    public virtual void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public virtual void OnEnable()
+    private void OnEnable()
     {
         Invoke("ReturnToPool", selfDestroyTime);
     }
 
-    public virtual void FixedUpdate()
+    private void FixedUpdate()
     {
         rb.velocity = transform.forward * fireData.speed;
     }
 
-    public virtual void Fire(FireData fireData)
+    public void Fire(FireData fireData)
     {
         this.fireData = fireData;
         OnFire(this);
@@ -65,7 +63,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public virtual void HandleHitEntity(Entity entity)
+    private void HandleHitEntity(Entity entity)
     {
         if (fireData.ownerID == PlayerManager.instance.photonView.ViewID)
         {
@@ -75,16 +73,14 @@ public class Projectile : MonoBehaviour
         OnEntityHit(this);
         SpawnPrefabOnHit();
 
-        hitAnything = true;
         ReturnToPool();
     }
 
-    public virtual void HandleHitEnvironment()
+    private void HandleHitEnvironment()
     {
         SpawnPrefabOnHit();
         OnEnvironmentHit(this);
 
-        hitAnything = true;
         ReturnToPool();
     }
 
@@ -96,7 +92,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    protected void ReturnToPool()
+    private void ReturnToPool()
     {
         if (!string.IsNullOrEmpty(myPoolName))
         {
@@ -112,11 +108,10 @@ public class Projectile : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         hitCollider = null;
-        hitAnything = false;
         CancelInvoke();
     }
 
-    public virtual void OnDisable()
+    private void OnDisable()
     {
         ResetProjectile();
 

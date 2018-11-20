@@ -197,6 +197,12 @@ namespace DB.MenuPack
             }
         }
 
+        public void ReturnToMainMenu()
+        {
+            PauseGame();
+            GameManager.instance.LeaveRoom();
+        }
+
         public void QuitGame()
         {
             Application.Quit();
