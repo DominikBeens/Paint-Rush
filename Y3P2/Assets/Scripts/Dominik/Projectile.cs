@@ -88,7 +88,7 @@ public class Projectile : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(prefabToSpawnOnHit))
         {
-            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnHit, hitCollider.ClosestPoint(transform.position), Quaternion.identity);
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnHit, hitCollider.ClosestPoint(transform.position), transform.rotation);
         }
     }
 
