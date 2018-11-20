@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 
@@ -11,16 +11,12 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 2000;
     [SerializeField]
     private float myCamRotateSpeed = 80;
-<<<<<<< HEAD
-=======
     private float angleLimit = 70;
     private float currentAngle;
->>>>>>> playercontroller
 
     private Camera myCamera;
     private Rigidbody rb;
 
-<<<<<<< HEAD
     public void Inititalise(bool local)
     {
         if (!local)
@@ -29,13 +25,11 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
-=======
     private bool canJump = true;
     private bool jumpCooldown;
 
     [SerializeField]
     private float jumpCooldownTime = 6;
->>>>>>> playercontroller
 
     private void Start()
     {
@@ -94,10 +88,7 @@ public class PlayerController : MonoBehaviour
     private void CameraRotation()
     {
         float x = Input.GetAxis("Mouse X") * myCamRotateSpeed * Time.deltaTime;
-<<<<<<< HEAD
         float y = Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime;
-=======
->>>>>>> playercontroller
 
         transform.Rotate(new Vector3(0, x, 0));
 
@@ -160,7 +151,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     private IEnumerator JumpCooldown()
     {
         jumpCooldown = true;
@@ -168,4 +158,5 @@ public class PlayerController : MonoBehaviour
         jumpCooldown = false;
         canJump = true;
     }
+
 }
