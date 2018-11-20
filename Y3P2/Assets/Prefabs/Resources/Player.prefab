@@ -296,10 +296,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3728959879948239152}
   - component: {fileID: 1096180877}
+<<<<<<< HEAD:Y3P2/Assets/Prefabs/Resources/Player.prefab
   - component: {fileID: 1282360450288733905}
   - component: {fileID: 1096180875}
   - component: {fileID: 802506933973583273}
   - component: {fileID: 4446777995645317925}
+=======
+  - component: {fileID: 1096180875}
+>>>>>>> playercontroller:Y3P2/Assets/Prefabs/Player.prefab
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -333,13 +337,19 @@ Rigidbody:
   m_GameObject: {fileID: 5740841910719402327}
   serializedVersion: 2
   m_Mass: 1
+<<<<<<< HEAD:Y3P2/Assets/Prefabs/Resources/Player.prefab
   m_Drag: 5
   m_AngularDrag: 5
+=======
+  m_Drag: 3
+  m_AngularDrag: 3
+>>>>>>> playercontroller:Y3P2/Assets/Prefabs/Player.prefab
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+<<<<<<< HEAD:Y3P2/Assets/Prefabs/Resources/Player.prefab
 --- !u!114 &1282360450288733905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d78f653462c64d43b1b7c1e96981638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> playercontroller:Y3P2/Assets/Prefabs/Player.prefab
 --- !u!114 &1096180875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
+<<<<<<< HEAD:Y3P2/Assets/Prefabs/Resources/Player.prefab
   myCamRotateSpeed: 400
 --- !u!114 &802506933973583273
 MonoBehaviour:
@@ -403,6 +416,11 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
+=======
+  jumpForce: 2000
+  myCamRotateSpeed: 400
+  jumpCooldownTime: 4
+>>>>>>> playercontroller:Y3P2/Assets/Prefabs/Player.prefab
 --- !u!1 &6780413428033686921
 GameObject:
   m_ObjectHideFlags: 0
