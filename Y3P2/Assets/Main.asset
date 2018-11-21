@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Main
   m_EditorClassIdentifier: 
   settings:
+<<<<<<< HEAD
   - {fileID: 114322005044219386}
   - {fileID: 114567934572487048}
   - {fileID: 114796670052839474}
@@ -344,6 +345,10 @@ MonoBehaviour:
     overrideState: 1
     value: 2
 --- !u!114 &114796670052839474
+=======
+  - {fileID: 114259067352201438}
+--- !u!114 &114259067352201438
+>>>>>>> c533131cd3f44fc69f3fe9a589615d7addaee737
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +366,11 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
+<<<<<<< HEAD
     value: 0.2
+=======
+    value: 1.49
+>>>>>>> c533131cd3f44fc69f3fe9a589615d7addaee737
   threshold:
     overrideState: 1
     value: 1
@@ -386,6 +395,7 @@ MonoBehaviour:
   dirtIntensity:
     overrideState: 1
     value: 0
+<<<<<<< HEAD
 --- !u!114 &114834763998735014
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -429,3 +439,5 @@ MonoBehaviour:
   opacity:
     overrideState: 1
     value: 1
+=======
+>>>>>>> c533131cd3f44fc69f3fe9a589615d7addaee737
