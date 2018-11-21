@@ -15,6 +15,6 @@ MonoBehaviour:
   itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
   fireRate: 0.15
   bulletSpeed: 30
-  bulletPoolName: bullet
+  bulletPoolName: Bullet
   paintType: 0
   paintDamage: 5

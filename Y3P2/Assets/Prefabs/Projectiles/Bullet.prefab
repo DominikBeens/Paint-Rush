@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75f233021b54ac4abef8635f345b4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPoolName: bullet
+  myPoolName: Bullet
   selfDestroyTime: 5
   prefabToSpawnOnHit: testparticle
   prefabToSpawnOnDeath: 

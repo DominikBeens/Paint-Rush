@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - poolName: bullet
+  - poolName: Bullet
     poolPrefab: {fileID: 4348756039182807503, guid: 166f33a3c9d67644da92d3c72cb08d43,
       type: 3}
     poolSize: 100
@@ -53,4 +53,9 @@ MonoBehaviour:
     poolPrefab: {fileID: 1824224075707167627, guid: 50965524ebf0d7c498433dd0b4a428ac,
       type: 3}
     poolSize: 25
+    autoExpand: 1
+  - poolName: Notification
+    poolPrefab: {fileID: 4416506912745935077, guid: 8f434ee21cfbc7d488a82a6cc67bf47e,
+      type: 3}
+    poolSize: 10
     autoExpand: 1

@@ -46,3 +46,5 @@ MonoBehaviour:
   playerPrefab: {fileID: 2650361930823773455, guid: eb8708ea9ed6a69439c44afd642d38d9,
     type: 3}
   projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}
+  notificationManagerPrefab: {fileID: 3695199288008570729, guid: ee612cd5932be7b459f21d9a7df68062,
+    type: 3}

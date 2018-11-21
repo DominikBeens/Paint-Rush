@@ -36,4 +36,5 @@ MonoBehaviour:
   - HitRPC
   - ParentWeapon
   - PickUpDestroy
+  - SendNotification
   DisableAutoOpenWizard: 1
