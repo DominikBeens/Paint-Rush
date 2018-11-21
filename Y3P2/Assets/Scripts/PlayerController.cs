@@ -14,7 +14,17 @@ public class PlayerController : MonoBehaviour
     private float angleLimit = 70;
     private float currentAngle;
 
+    private bool topBob;
+    [SerializeField]
+    private float bobSpeed;
+    [SerializeField]
+    private float bobLimit = 0.7F;
+    [SerializeField]
+    private float bobRestingPoint = 0.7F;
+
+
     [SerializeField] private GameObject headObject;
+
     private Rigidbody rb;
 
     public void Inititalise(bool local)
@@ -42,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        HeadBob();
     }
 
     private void Update()
@@ -161,5 +172,33 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+
+        if(x != 0 || y != 0)
+        {
+            if(headObject.transform.localPosition.y >= 1.4F)
+            {
+                topBob = true;
+            }
+            else if(headObject.transform.localPosition.y <= 0)
+            {
+                topBob = false;
+            }
+           
+
+            if (topBob)
+            {
+                headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, headObject.transform.localPosition + new Vector3(0,  -bobLimit, 0), bobSpeed * Time.deltaTime);
+            }
+            else if (!topBob)
+            {
+                headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, headObject.transform.localPosition + new Vector3(0, bobLimit, 0), bobSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, new Vector3(0, bobRestingPoint, 0), bobSpeed * Time.deltaTime);
+        }
+
+
     }
 }

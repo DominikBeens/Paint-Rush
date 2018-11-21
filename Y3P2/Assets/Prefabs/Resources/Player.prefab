@@ -163,6 +163,8 @@ MonoBehaviour:
   myCollider: {fileID: 0}
   entityID: 0
   entityType: 0
+  paintController:
+    paintValues: []
   OnHit:
     m_PersistentCalls:
       m_Calls: []
@@ -356,9 +358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 60
   jumpForce: 2000
   myCamRotateSpeed: 80
+  bobSpeed: 22
+  bobLimit: 0.1
+  bobRestingPoint: 0.7
   headObject: {fileID: 6056574065620555934}
   jumpCooldownTime: 3
 --- !u!1 &3092096527861150194
