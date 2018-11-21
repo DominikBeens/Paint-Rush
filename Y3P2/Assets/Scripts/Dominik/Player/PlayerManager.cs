@@ -1,12 +1,13 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
 
     public static PlayerManager instance;
 
-    [SerializeField] private GameObject playerNameUI;
+    [SerializeField] private GameObject playerNameUIPrefab;
 
     #region PlayerComponents
     [HideInInspector] public Entity entity;
@@ -41,6 +42,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         if (!IsConnectedAndMine())
         {
+            SetupPlayerNamePlate();
             SetLayer(transform, 10);
         }
         else
@@ -51,7 +53,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void SetupPlayerNamePlate()
     {
-
+        GameObject playerUI = Instantiate(playerNameUIPrefab, transform.position, Quaternion.identity, transform);
+        TextMeshProUGUI nameText = playerUI.GetComponentInChildren<TextMeshProUGUI>();
+        nameText.text = photonView.Owner.NickName;
     }
 
     private bool IsConnectedAndMine()

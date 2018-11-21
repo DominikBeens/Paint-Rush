@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &6128897613472091494 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1575572850507208690, guid: fa7a03dc5f330c34390633355e1e354e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4671280376835283604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5104268793034781352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5715957768162498127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650154377804548320
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d78f653462c64d43b1b7c1e96981638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameUIPrefab: {fileID: 777475294224409416, guid: b0560338ffe3bb544b8c0a7c27e37b3e,
+    type: 3}
   entity: {fileID: 0}
   playerCamera: {fileID: 2153206023932515435}
 --- !u!114 &1650154377804548125
@@ -520,12 +534,6 @@ MonoBehaviour:
   viewIdField: 5
   InstantiationId: 5
   isRuntimeInstantiated: 0
---- !u!4 &6128897613472091494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1575572850507208690, guid: fa7a03dc5f330c34390633355e1e354e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4671280376835283604}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4578515382613333670
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,12 +565,6 @@ Transform:
   m_Father: {fileID: 1650154377804977344}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &5104268793034781352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5715957768162498127}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5259738993614021627
 GameObject:
   m_ObjectHideFlags: 0

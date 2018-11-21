@@ -62,6 +62,11 @@ namespace DB.MenuPack
             SetupShadowQualityDropdown();
         }
 
+        public bool HasOpenUI()
+        {
+            return settingsPanel.activeInHierarchy;
+        }
+
         private void SetupVSyncDropdown()
         {
             if (!dropdown_VSync)
