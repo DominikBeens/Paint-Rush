@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
-            float upForce = jumpForce / 2;
+            float upForce = jumpForce;
             if (x < 0)
             {
                 //Going left
