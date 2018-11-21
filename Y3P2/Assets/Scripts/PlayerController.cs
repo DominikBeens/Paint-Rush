@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private float angleLimit = 70;
     private float currentAngle;
 
-    private Camera myCamera;
+    [SerializeField] private GameObject headObject;
     private Rigidbody rb;
 
     public void Inititalise(bool local)
@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        myCamera = GetComponentInChildren<Camera>();
-
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,7 +42,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-      
     }
 
     private void Update()
@@ -103,7 +100,7 @@ public class PlayerController : MonoBehaviour
             currentAngle = -angleLimit;
         }
 
-        myCamera.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0); 
+        headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0); 
         
     }
 

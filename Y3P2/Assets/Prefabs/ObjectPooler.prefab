@@ -52,5 +52,5 @@ MonoBehaviour:
   - poolName: testparticle
     poolPrefab: {fileID: 1824224075707167627, guid: 50965524ebf0d7c498433dd0b4a428ac,
       type: 3}
-    poolSize: 50
+    poolSize: 25
     autoExpand: 1

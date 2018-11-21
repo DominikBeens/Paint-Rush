@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e5215fa9b39ff4a90e092989343e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5740841910719402327, guid: 00387d1603bbf104fb7c4a1e2bd17d7b,
+  playerPrefab: {fileID: 5740841910719402327, guid: 2438356daff140d458f8934009eef95a,
     type: 3}
   projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}
