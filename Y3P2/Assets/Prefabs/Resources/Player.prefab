@@ -294,6 +294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d78f653462c64d43b1b7c1e96981638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameUIPrefab: {fileID: 777475294224409416, guid: b0560338ffe3bb544b8c0a7c27e37b3e,
+    type: 3}
+  entity: {fileID: 0}
   playerCamera: {fileID: 3440967766366630276}
 --- !u!114 &2650361930823773682
 MonoBehaviour:
@@ -358,12 +361,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 60
-  jumpForce: 2000
+  moveSpeed: 100
+  jumpForce: 3000
   myCamRotateSpeed: 80
-  bobSpeed: 22
+  bobSpeed: 13
   bobLimit: 0.1
   bobRestingPoint: 0.7
+  maxBob: 0.755
+  minBob: 0.625
   headObject: {fileID: 6056574065620555934}
   jumpCooldownTime: 3
 --- !u!1 &3092096527861150194

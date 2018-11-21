@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     #region PlayerComponents
     [HideInInspector] public Entity entity;
     [SerializeField] private GameObject playerCamera;
-    private FirstPersonController playerController;
+    private PlayerController playerController;
     private WeaponSlot weaponSlot;
     #endregion
 
@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private void GatherPlayerComponents()
     {
         entity = GetComponentInChildren<Entity>();
-        playerController = GetComponentInChildren<FirstPersonController>();
+        playerController = GetComponentInChildren<PlayerController>();
         weaponSlot = GetComponentInChildren<WeaponSlot>();
     }
 

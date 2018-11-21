@@ -45,12 +45,12 @@ public class PaintController
                 paintValues[i].paintValue += amount;
                 paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
 
+                OnPaintValueModified(paintValues[i].paintType, amount);
+
                 if (paintValues[i].paintValue == 100)
                 {
                     PaintFilled(paintValues[i].paintType);
                 }
-
-                OnPaintValueModified(paintValues[i].paintType, amount);
                 return;
             }
         }
@@ -64,9 +64,23 @@ public class PaintController
             {
                 paintValues[i].paintValue = 0;
                 OnPaintValueReset(paintValues[i].paintType);
+                Debug.LogWarning("Reset Paint Value");
                 return;
             }
         }
+    }
+
+    public Color GetPaintColor(PaintType paintType)
+    {
+        for (int i = 0; i < paintValues.Count; i++)
+        {
+            if (paintValues[i].paintType == paintType)
+            {
+                return paintValues[i].paintColor;
+            }
+        }
+
+        return Color.white;
     }
 
     private void PaintFilled(PaintType color)

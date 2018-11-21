@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
     private float bobLimit = 0.7F;
     [SerializeField]
     private float bobRestingPoint = 0.7F;
-
+    [SerializeField]
+    private float maxBob;
+    [SerializeField]
+    private float minBob;
 
     [SerializeField] private GameObject headObject;
 
@@ -175,11 +178,11 @@ public class PlayerController : MonoBehaviour
 
         if(x != 0 || y != 0)
         {
-            if(headObject.transform.localPosition.y >= 1.4F)
+            if(headObject.transform.localPosition.y >= maxBob)
             {
                 topBob = true;
             }
-            else if(headObject.transform.localPosition.y <= 0)
+            else if(headObject.transform.localPosition.y <= minBob)
             {
                 topBob = false;
             }
