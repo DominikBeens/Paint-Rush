@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -29,6 +30,12 @@ public class FirstPersonController : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private GameObject headObject;
+    [SerializeField] private float jumpCooldownTime = 3;
+    [SerializeField] private float jumpForce = 2000;
+    [SerializeField] private bool canJump = true;
+    private Rigidbody rb;
+    private bool jumpCooldown;
+    private bool jumpJetting;
 
     private Camera m_Camera;
     private bool m_Jump;
@@ -64,6 +71,8 @@ public class FirstPersonController : MonoBehaviour
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
+
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -88,6 +97,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
     }
 
     private void PlayLandingSound()
@@ -110,23 +120,28 @@ public class FirstPersonController : MonoBehaviour
                            m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-        m_MoveDir.x = desiredMove.x * speed;
-        m_MoveDir.z = desiredMove.z * speed;
-
-
-        if (m_CharacterController.isGrounded)
+        if (!jumpJetting)
         {
+            m_MoveDir.x = desiredMove.x * speed;
+            m_MoveDir.z = desiredMove.z * speed;
+        }
+       
+
+
+
             m_MoveDir.y = -m_StickToGroundForce;
 
             if (m_Jump)
             {
-                m_MoveDir.y = m_JumpSpeed;
+                jumpJetting = true;
+                JumpJet();
+
+               // m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();
                 m_Jump = false;
                 m_Jumping = true;
             }
-        }
-        else
+        if (!m_CharacterController.isGrounded)
         {
             m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }
@@ -250,5 +265,56 @@ public class FirstPersonController : MonoBehaviour
             return;
         }
         body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
+    }
+
+
+
+
+    //Non standard asset code
+    private void JumpJet()
+    {
+        canJump = false;
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        float upForce = jumpForce / 2;
+        if (x < 0)
+        {
+            //Going left
+            m_MoveDir.x = -jumpForce;
+
+        }
+        else if (x > 0)
+        {
+            //Going right
+            rb.AddRelativeForce(Vector3.up * upForce);
+            rb.AddRelativeForce(Vector3.right * jumpForce);
+        }
+
+        if (y < 0)
+        {
+            //Going back
+            rb.AddRelativeForce(Vector3.up * upForce);
+            rb.AddRelativeForce(Vector3.back * jumpForce);
+        }
+        else if (y > 0)
+        {
+            //Going forward
+            rb.AddRelativeForce(Vector3.up * upForce);
+            rb.AddRelativeForce(Vector3.forward * jumpForce);
+        }
+
+        if (!jumpCooldown)
+        {
+            StartCoroutine(JumpCooldown());
+        }
+        jumpJetting = false;
+
+    }
+    private IEnumerator JumpCooldown()
+    {
+        jumpCooldown = true;
+        yield return new WaitForSeconds(jumpCooldownTime);
+        jumpCooldown = false;
+        canJump = true;
     }
 }

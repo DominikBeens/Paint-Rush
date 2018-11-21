@@ -156,4 +156,10 @@ public class PlayerController : MonoBehaviour
         canJump = true;
     }
 
+
+    private void HeadBob()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+    }
 }
