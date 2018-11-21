@@ -6,7 +6,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public static PlayerManager instance;
 
+    [SerializeField] private GameObject playerNameUI;
+
     #region PlayerComponents
+    [HideInInspector] public Entity entity;
     [SerializeField] private GameObject playerCamera;
     private FirstPersonController playerController;
     private WeaponSlot weaponSlot;
@@ -25,6 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GatherPlayerComponents()
     {
+        entity = GetComponentInChildren<Entity>();
         playerController = GetComponentInChildren<FirstPersonController>();
         weaponSlot = GetComponentInChildren<WeaponSlot>();
     }
@@ -43,6 +47,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    private void SetupPlayerNamePlate()
+    {
+
     }
 
     private bool IsConnectedAndMine()
