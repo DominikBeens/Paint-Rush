@@ -64,9 +64,23 @@ public class PaintController
             {
                 paintValues[i].paintValue = 0;
                 OnPaintValueReset(paintValues[i].paintType);
+                Debug.LogWarning("Reset Paint Value");
                 return;
             }
         }
+    }
+
+    public Color GetPaintColor(PaintType paintType)
+    {
+        for (int i = 0; i < paintValues.Count; i++)
+        {
+            if (paintValues[i].paintType == paintType)
+            {
+                return paintValues[i].paintColor;
+            }
+        }
+
+        return Color.white;
     }
 
     private void PaintFilled(PaintType color)

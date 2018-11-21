@@ -7,11 +7,18 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
     private Transform owner;
     private Collider hitCollider;
+    private Material projectileMat;
+    private Vector3 defaultSize;
 
     [SerializeField] private string myPoolName;
     [SerializeField] private float selfDestroyTime = 5f;
     [SerializeField] private string prefabToSpawnOnHit;
     [SerializeField] private string prefabToSpawnOnDeath;
+
+    [Header("Visual")]
+    [SerializeField] private GameObject projectileModel;
+    [SerializeField] private bool randomizeSize;
+    [SerializeField] private float randomizeAmount;
 
     public event Action<Projectile> OnFire = delegate { };
     public event Action<Projectile> OnEntityHit = delegate { };
@@ -29,6 +36,8 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        projectileMat = GetComponentInChildren<Renderer>().material;
+        defaultSize = projectileModel ? projectileModel.transform.localScale : Vector3.zero;
     }
 
     private void OnEnable()
@@ -45,6 +54,18 @@ public class Projectile : MonoBehaviour
     {
         this.fireData = fireData;
         OnFire(this);
+        projectileMat.color = PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType);
+
+        if (randomizeSize)
+        {
+            RandomizeSize();
+        }
+    }
+
+    private void RandomizeSize()
+    {
+        float randomizedScale = defaultSize.x + UnityEngine.Random.Range(-randomizeAmount, randomizeAmount);
+        projectileModel.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,12 +78,12 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Environment")
-        {
+        //if (other.tag == "Environment")
+        //{
             hitCollider = other;
             HandleHitEnvironment();
             return;
-        }
+        //}
     }
 
     private void HandleHitEntity(Entity entity)
