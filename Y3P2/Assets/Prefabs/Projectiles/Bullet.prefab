@@ -124,11 +124,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPoolName: Bullet
   selfDestroyTime: 5
-  prefabToSpawnOnHit: testparticle
-  prefabToSpawnOnDeath: 
   projectileModel: {fileID: 2759223811692718975}
   randomizeSize: 1
   randomizeAmount: 0.01
+  impactObjectToSpawn: PaintImpact
 --- !u!54 &5401163936512135927
 Rigidbody:
   m_ObjectHideFlags: 0

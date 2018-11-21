@@ -12,13 +12,15 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private string myPoolName;
     [SerializeField] private float selfDestroyTime = 5f;
-    [SerializeField] private string prefabToSpawnOnHit;
-    [SerializeField] private string prefabToSpawnOnDeath;
 
     [Header("Visual")]
     [SerializeField] private GameObject projectileModel;
     [SerializeField] private bool randomizeSize;
     [SerializeField] private float randomizeAmount;
+
+    [Space(10)]
+
+    [SerializeField] private string impactObjectToSpawn;
 
     public event Action<Projectile> OnFire = delegate { };
     public event Action<Projectile> OnEntityHit = delegate { };
@@ -109,9 +111,14 @@ public class Projectile : MonoBehaviour
 
     private void SpawnPrefabOnHit()
     {
-        if (!string.IsNullOrEmpty(prefabToSpawnOnHit))
+        if (!string.IsNullOrEmpty(impactObjectToSpawn))
         {
-            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnHit, hitCollider.ClosestPoint(transform.position), transform.rotation);
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(impactObjectToSpawn, hitCollider.ClosestPoint(transform.position), transform.rotation);
+            PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
+            if (pip)
+            {
+                pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType));
+            }
         }
     }
 
@@ -138,9 +145,9 @@ public class Projectile : MonoBehaviour
     {
         ResetProjectile();
 
-        if (!string.IsNullOrEmpty(prefabToSpawnOnDeath))
-        {
-            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnDeath, transform.position, Quaternion.identity);
-        }
+        //if (!string.IsNullOrEmpty(prefabToSpawnOnDeath))
+        //{
+        //    GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnDeath, transform.position, Quaternion.identity);
+        //}
     }
 }

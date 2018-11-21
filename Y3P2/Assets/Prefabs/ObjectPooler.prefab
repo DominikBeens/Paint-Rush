@@ -54,6 +54,11 @@ MonoBehaviour:
       type: 3}
     poolSize: 25
     autoExpand: 1
+  - poolName: PaintImpact
+    poolPrefab: {fileID: 1824224075707167627, guid: 08fb72605ac01334197f462e0b3d2a0c,
+      type: 3}
+    poolSize: 50
+    autoExpand: 1
   - poolName: Notification
     poolPrefab: {fileID: 4416506912745935077, guid: 8f434ee21cfbc7d488a82a6cc67bf47e,
       type: 3}
