@@ -10,6 +10,6 @@ public class Weapon : Item
     public float bulletSpeed = 10f;
     public string bulletPoolName;
 
-    public enum PaintColor { Red, Blue, Green, Yellow };
-    public PaintColor paintColor;
+    public PaintController.PaintType paintType;
+    public float paintDamage = 1f;
 }

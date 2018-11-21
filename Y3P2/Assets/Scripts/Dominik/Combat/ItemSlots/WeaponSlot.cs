@@ -23,6 +23,9 @@ public class WeaponSlot : EquipmentSlot
         if (local)
         {
             EquipWeapon(startingWeapon);
+
+            // TEMP
+            currentWeapon = Instantiate(currentWeapon);
         }
     }
 
@@ -31,6 +34,17 @@ public class WeaponSlot : EquipmentSlot
         if (currentWeapon != null && equipedItem != null)
         {
             HandleFiring();
+        }
+
+        // TEST PAINT COLOR SWITCHING
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            int nextColor = ((int)currentWeapon.paintType + 1);
+            if (nextColor == 4)
+            {
+                nextColor = 0;
+            }
+            currentWeapon.paintType = (PaintController.PaintType)nextColor;
         }
     }
 

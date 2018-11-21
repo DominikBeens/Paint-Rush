@@ -12,6 +12,8 @@ public class ProjectileManager : MonoBehaviourPunCallbacks
         public Quaternion spawnRotation;
         public string projectilePool;
         public float speed;
+        public int paintType;
+        public float paintAmount;
         public int projectileOwnerID = 9999;
     }
 
@@ -34,17 +36,21 @@ public class ProjectileManager : MonoBehaviourPunCallbacks
             data.spawnRotation,
             data.projectilePool,
             data.speed,
+            data.paintType,
+            data.paintAmount,
             data.projectileOwnerID);
     }
 
     [PunRPC]
-    private void FireProjectileRPC(Vector3 position, Quaternion rotation, string projectilePoolName, float speed, int ownerID = 9999)
+    private void FireProjectileRPC(Vector3 position, Quaternion rotation, string projectilePoolName, float speed, int paintType, float paintAmount, int ownerID = 9999)
     {
         Projectile newProjectile = ObjectPooler.instance.GrabFromPool(projectilePoolName, position, rotation).GetComponent<Projectile>();
         newProjectile.Fire(new Projectile.FireData
         {
             speed = speed,
             ownerID = ownerID,
+            paintType = paintType,
+            paintAmount = paintAmount
         });
     }
 }

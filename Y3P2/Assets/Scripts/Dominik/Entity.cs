@@ -13,24 +13,29 @@ public class Entity : MonoBehaviourPunCallbacks
 
     [Space(10)]
 
+    public PaintController paintController;
+
+    [Space(10)]
+
     public UnityEvent OnHit;
     public UnityEvent OnDeath;
 
     private void Awake()
     {
         myCollider = GetComponent<Collider>();
+        paintController.Initialise();
     }
 
-    public void Hit()
+    public void Hit(int paintColor, float amount)
     {
-        photonView.RPC("HitRPC", RpcTarget.All);
+        photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount);
     }
 
     [PunRPC]
-    private void HitRPC()
+    private void HitRPC(int paintColor, float amount)
     {
         OnHit.Invoke();
-        // Modify color values.
+        paintController.AddPaint((PaintController.PaintType)paintColor, amount);
     }
 
     public void DestroyEntity()

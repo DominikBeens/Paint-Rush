@@ -25,6 +25,8 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             spawnRotation = projectileSpawn.rotation,
             projectilePool = weapon.bulletPoolName,
             speed = weapon.bulletSpeed,
+            paintType = (int)weapon.paintType,
+            paintAmount = weapon.paintDamage,
             projectileOwnerID = PlayerManager.instance.photonView.ViewID,
         };
         ProjectileManager.instance.FireProjectile(data);

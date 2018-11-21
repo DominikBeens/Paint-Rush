@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     {
         public float speed;
         public int ownerID;
+        public int paintType;
+        public float paintAmount;
     }
     public FireData fireData;
 
@@ -67,7 +69,7 @@ public class Projectile : MonoBehaviour
     {
         if (fireData.ownerID == PlayerManager.instance.photonView.ViewID)
         {
-            entity.Hit();
+            entity.Hit(fireData.paintType, fireData.paintAmount);
         }
 
         OnEntityHit(this);
