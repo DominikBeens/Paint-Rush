@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     #region PlayerComponents
     [SerializeField] private GameObject playerCamera;
-    private PlayerController playerController;
+    private FirstPersonController playerController;
     private WeaponSlot weaponSlot;
     #endregion
 
@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GatherPlayerComponents()
     {
-        playerController = GetComponentInChildren<PlayerController>();
+        playerController = GetComponentInChildren<FirstPersonController>();
         weaponSlot = GetComponentInChildren<WeaponSlot>();
     }
 
