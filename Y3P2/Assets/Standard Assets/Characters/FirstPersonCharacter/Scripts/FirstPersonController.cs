@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -97,7 +97,6 @@ public class FirstPersonController : MonoBehaviour
         }
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
     }
 
     private void PlayLandingSound()
@@ -120,28 +119,23 @@ public class FirstPersonController : MonoBehaviour
                            m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-        if (!jumpJetting)
+        m_MoveDir.x = desiredMove.x * speed;
+        m_MoveDir.z = desiredMove.z * speed;
+
+
+        if (m_CharacterController.isGrounded)
         {
-            m_MoveDir.x = desiredMove.x * speed;
-            m_MoveDir.z = desiredMove.z * speed;
-        }
-       
-
-
-
             m_MoveDir.y = -m_StickToGroundForce;
 
             if (m_Jump)
             {
-                jumpJetting = true;
-                JumpJet();
-
-               // m_MoveDir.y = m_JumpSpeed;
+                m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();
                 m_Jump = false;
                 m_Jumping = true;
             }
-        if (!m_CharacterController.isGrounded)
+        }
+        else
         {
             m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }

@@ -16,4 +16,5 @@ MonoBehaviour:
   fireRate: 0.15
   bulletSpeed: 15
   bulletPoolName: bullet
-  paintColor: 0
+  paintType: 0
+  paintDamage: 5

@@ -17,8 +17,10 @@ public class PaintController
     }
 
     [SerializeField] private List<PaintValue> paintValues = new List<PaintValue>();
+    public List<PaintValue> PaintValues { get { return paintValues; } }
 
-    public event Action<PaintType> OnPaintValueModified = delegate { };
+    public event Action<PaintType, float> OnPaintValueModified = delegate { };
+    public event Action<PaintType> OnPaintValueReset = delegate { };
 
     public void Initialise()
     {
@@ -48,7 +50,7 @@ public class PaintController
                     PaintFilled(paintValues[i].paintType);
                 }
 
-                OnPaintValueModified(paintValues[i].paintType);
+                OnPaintValueModified(paintValues[i].paintType, amount);
                 return;
             }
         }
@@ -61,7 +63,7 @@ public class PaintController
             if (paintValues[i].paintType == color)
             {
                 paintValues[i].paintValue = 0;
-                OnPaintValueModified(paintValues[i].paintType);
+                OnPaintValueReset(paintValues[i].paintType);
                 return;
             }
         }
