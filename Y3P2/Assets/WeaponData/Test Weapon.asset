@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test Weapon
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
-  fireRate: 0.2
-  bulletSpeed: 10
+  fireRate: 0.15
+  bulletSpeed: 15
   bulletPoolName: bullet
   paintColor: 0

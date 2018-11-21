@@ -19,6 +19,7 @@ public class LoginManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private GameObject connectionProgress;
+    [SerializeField] private TextMeshProUGUI onlinePlayersText;
 
     private void Awake()
     {
@@ -34,6 +35,14 @@ public class LoginManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.GameVersion = gameVersion;
             PhotonNetwork.ConnectUsingSettings();
+        }
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            onlinePlayersText.text = "Players online: <color=red>" + Mathf.Clamp((PhotonNetwork.CountOfPlayers - 1), 0, Mathf.Infinity);
         }
     }
 
