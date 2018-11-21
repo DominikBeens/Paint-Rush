@@ -78,12 +78,12 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        //if (other.tag == "Environment")
-        //{
+        if (other.tag == "Environment")
+        {
             hitCollider = other;
             HandleHitEnvironment();
             return;
-        //}
+        }
     }
 
     private void HandleHitEntity(Entity entity)

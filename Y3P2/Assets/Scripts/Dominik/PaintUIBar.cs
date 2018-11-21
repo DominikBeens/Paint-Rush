@@ -5,27 +5,34 @@ using UnityEngine.UI;
 public class PaintUIBar : MonoBehaviour
 {
 
+    private float barFillAmount;
+
     private PaintController.PaintType barType;
     public PaintController.PaintType BarType { get { return barType; } }
 
     [SerializeField] private Image barColorFill;
+    [SerializeField] private Image barBackgroundFill;
 
     public void Initialise(PaintController.PaintValue paintValue)
     {
         barType = paintValue.paintType;
+        barFillAmount = 0;
         barColorFill.fillAmount = 0;
         barColorFill.color = paintValue.paintColor;
+        barBackgroundFill.color = new Color(paintValue.paintColor.r, paintValue.paintColor.g, paintValue.paintColor.b, 0.1f);
     }
 
     public void IncrementBar(float amount)
     {
         float amountFixed = amount / 100;
-        float percentage = barColorFill.fillAmount + amountFixed;
+        float percentage = barFillAmount + amountFixed;
+        barFillAmount = percentage;
         StartCoroutine(LerpBar(percentage));
     }
 
     public void ResetBar()
     {
+        barFillAmount = 0;
         StartCoroutine(LerpBar(0));
     }
 

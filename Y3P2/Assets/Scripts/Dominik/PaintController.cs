@@ -45,12 +45,12 @@ public class PaintController
                 paintValues[i].paintValue += amount;
                 paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
 
+                OnPaintValueModified(paintValues[i].paintType, amount);
+
                 if (paintValues[i].paintValue == 100)
                 {
                     PaintFilled(paintValues[i].paintType);
                 }
-
-                OnPaintValueModified(paintValues[i].paintType, amount);
                 return;
             }
         }
