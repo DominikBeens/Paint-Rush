@@ -8,7 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
-    private float jumpForce = 2000;
+    private float directionalJumpForce = 2000;
+    [SerializeField]
+    private float verticalJumpForce = 2000;
+    [SerializeField]
+    private bool divideUpForce;
+    [SerializeField]
+    private float divideUpForceBy = 0;
     [SerializeField]
     private float myCamRotateSpeed = 80;
     private float angleLimit = 70;
@@ -25,7 +31,8 @@ public class PlayerController : MonoBehaviour
     private float maxBob;
     [SerializeField]
     private float minBob;
-
+    [SerializeField]
+    private float gravityModifier = 0;
     [SerializeField] private GameObject headObject;
 
     private Rigidbody rb;
@@ -54,6 +61,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 v = rb.velocity;
+        v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
+        v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
+        v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
+
+        rb.velocity = v;
+
         Movement();
         HeadBob();
     }
@@ -128,32 +142,38 @@ public class PlayerController : MonoBehaviour
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
-            float upForce = jumpForce;
+            float upForce = verticalJumpForce;
+
+            if (divideUpForce && upForce != upForce / divideUpForceBy)
+            {
+                upForce /= divideUpForceBy;
+            }
+
+            
             if (x < 0)
             {
                 //Going left
                 rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.left * jumpForce);
+                rb.AddRelativeForce(Vector3.left * directionalJumpForce);
 
             }
             else if(x > 0)
             {
                 //Going right
                 rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.right * jumpForce);
+                rb.AddRelativeForce(Vector3.right * directionalJumpForce);
             }
-
-            if(y < 0)
+            else if(y < 0)
             {
                 //Going back
                 rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.back * jumpForce);
+                rb.AddRelativeForce(Vector3.back * directionalJumpForce);
             }
             else if(y > 0)
             {
                 //Going forward
                 rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.forward * jumpForce);
+                rb.AddRelativeForce(Vector3.forward * directionalJumpForce);
             }
 
         if (!jumpCooldown)

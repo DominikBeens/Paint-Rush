@@ -362,13 +362,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
-  jumpForce: 3000
+  directionalJumpForce: 6000
+  verticalJumpForce: 7000
+  divideUpForce: 0
+  divideUpForceBy: 0
   myCamRotateSpeed: 80
   bobSpeed: 13
   bobLimit: 0.1
   bobRestingPoint: 0.7
   maxBob: 0.755
   minBob: 0.625
+  gravityModifier: 2
   headObject: {fileID: 6056574065620555934}
   jumpCooldownTime: 3
 --- !u!1 &3092096527861150194
@@ -679,7 +683,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8853835202364098068}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da7c3f489663dc94bbb21655dbb89037, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
