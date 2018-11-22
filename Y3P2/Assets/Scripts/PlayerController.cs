@@ -151,13 +151,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void CameraRotation()
     {
-        float x = Input.GetAxis("Mouse X") * myCamRotateSpeed * Time.deltaTime;
-        float y = Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime;
+        float x = Input.GetAxis("Mouse X") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
+        float y = Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
 
         transform.Rotate(new Vector3(0, x, 0));
 
 
-        currentAngle += Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime;
+        currentAngle += Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
         if(currentAngle >= angleLimit)
         {
             currentAngle = angleLimit;
@@ -265,5 +265,15 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    private float GetSettingsManagerMouseSens()
+    {
+        if (!DB.MenuPack.SettingsManager.instance)
+        {
+            return 0;
+        }
+
+        return DB.MenuPack.Setting_MouseSens.mouseSensitivity;
     }
 }

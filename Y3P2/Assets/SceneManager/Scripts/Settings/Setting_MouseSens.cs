@@ -7,7 +7,7 @@ namespace DB.MenuPack
     public class Setting_MouseSens : Setting
     {
 
-        public static float mouseSensitivity = 0.1f;
+        public static float mouseSensitivity = 1f;
         [SerializeField] private float minSensitivity = 0.01f;
         [SerializeField] private float maxSensitivity = 1f;
         [SerializeField] private Slider mouseSensSlider;
