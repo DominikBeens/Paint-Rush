@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour 
+public class UIManager : MonoBehaviour
 {
 
     public static UIManager instance;
@@ -20,12 +20,13 @@ public class UIManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
     }
 
-    private void Start()
+    public void Initialise(Color crosshairColor)
     {
-        WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
-        WeaponSlot_OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
+        WeaponSlot_OnChangeAmmoType(crosshairColor);
     }
 
     private void WeaponSlot_OnChangeAmmoType(Color color)

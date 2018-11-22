@@ -28,14 +28,14 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void Hit(int paintColor, float amount)
     {
-        photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount);
+        photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
     }
 
     [PunRPC]
-    private void HitRPC(int paintColor, float amount)
+    private void HitRPC(int paintColor, float amount, int attackerID)
     {
         OnHit.Invoke();
-        paintController.AddPaint((PaintController.PaintType)paintColor, amount);
+        paintController.AddPaint((PaintController.PaintType)paintColor, amount, attackerID);
     }
 
     public void DestroyEntity()
