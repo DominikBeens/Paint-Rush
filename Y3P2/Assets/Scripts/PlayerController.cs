@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
 
             rb.velocity = v;
-            rb.AddRelativeForce(Vector3.down * -Physics.gravity.y);
+            rb.AddRelativeForce(Vector3.down * -Physics.gravity.y * gravityModifier);
         }
 
         Movement();
