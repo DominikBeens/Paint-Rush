@@ -61,7 +61,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1))
+        {
+
+        }
+        else if (hit.transform == null)
+        {
+            Vector3 v = rb.velocity;
+            v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
+            v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
+            v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
+
+            rb.velocity = v;
+            rb.AddRelativeForce(Vector3.down * -Physics.gravity.y);
+        }
 
         Movement();
         HeadBob();
@@ -75,22 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             JumpJet();
         }
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1))
-        {
-            
-        }
-        else if(hit.transform == null)
-        {
-            Vector3 v = rb.velocity;
-            v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
-            v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
-            v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
-
-            rb.velocity = v;
-            rb.AddRelativeForce(Vector3.down *- Physics.gravity.y);
-        }
+      
        
 
     }
