@@ -61,12 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 v = rb.velocity;
-        v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
-        v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
-        v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
-
-        rb.velocity = v;
+       
 
         Movement();
         HeadBob();
@@ -88,6 +83,12 @@ public class PlayerController : MonoBehaviour
         }
         else if(hit.transform == null)
         {
+            Vector3 v = rb.velocity;
+            v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
+            v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
+            v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
+
+            rb.velocity = v;
             rb.AddRelativeForce(Vector3.down *- Physics.gravity.y);
         }
        
