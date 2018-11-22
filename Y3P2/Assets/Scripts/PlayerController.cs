@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
+    private float sprintSpeed = 120;
+    [SerializeField]
+    private float fovSprintBoost = 35;
+    private float defaultFOV;
+    [SerializeField]
     private float directionalJumpForce = 2000;
     [SerializeField]
     private float verticalJumpForce = 2000;
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject headObject;
 
     private Rigidbody rb;
+    private bool grounded;
 
     public void Inititalise(bool local)
     {
@@ -54,7 +60,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        defaultFOV = GetComponentInChildren<Camera>().fieldOfView;
+        fovSprintBoost += defaultFOV;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -65,10 +72,17 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1))
         {
-
+            if (!grounded)
+            {
+                grounded = true;
+            }
         }
         else if (hit.transform == null)
         {
+            if (grounded)
+            {
+                grounded = false;
+            }
             Vector3 v = rb.velocity;
             v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
             v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
@@ -105,7 +119,22 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(x, 0, y);
 
-        rb.AddRelativeForce(movement * moveSpeed);
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.AddRelativeForce(movement * moveSpeed);
+            if(GetComponentInChildren<Camera>().fieldOfView != defaultFOV)
+            {
+                GetComponentInChildren<Camera>().fieldOfView = defaultFOV;
+            }
+        }
+        else
+        {
+            rb.AddRelativeForce(movement * sprintSpeed);
+            if (GetComponentInChildren<Camera>().fieldOfView != fovSprintBoost)
+            {
+                GetComponentInChildren<Camera>().fieldOfView = fovSprintBoost;
+            }
+        }
     }
 
     /// <summary>

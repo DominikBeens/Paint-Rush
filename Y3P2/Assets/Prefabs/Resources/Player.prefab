@@ -362,6 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
+  sprintSpeed: 160
+  fovSprintBoost: 20
   directionalJumpForce: 6000
   verticalJumpForce: 7000
   divideUpForce: 0
