@@ -75,4 +75,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             SetLayer(child, layer);
         }
     }
+
+    public void Respawn()
+    {
+        Transform randomSpawn = GameManager.instance.GetRandomSpawn();
+        transform.position = randomSpawn.position;
+        transform.rotation = randomSpawn.rotation;
+    }
 }

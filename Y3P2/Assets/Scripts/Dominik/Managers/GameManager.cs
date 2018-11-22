@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviourPunCallbacks
@@ -10,6 +11,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject projectileManagerPrefab;
     [SerializeField] private GameObject notificationManagerPrefab;
+
+    [Space(10)]
+
+    [SerializeField] private List<Transform> playerSpawnPoints = new List<Transform>();
 
     private void Awake()
     {
@@ -27,7 +32,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!PlayerManager.instance && playerPrefab)
         {
-            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 1, 0), Quaternion.identity);
+            Transform randomSpawn = GetRandomSpawn();
+            PhotonNetwork.Instantiate(playerPrefab.name, randomSpawn.position, randomSpawn.rotation);
         }
 
         if (PhotonNetwork.IsMasterClient)
@@ -42,6 +48,11 @@ public class GameManager : MonoBehaviourPunCallbacks
                 PhotonNetwork.InstantiateSceneObject(notificationManagerPrefab.name, Vector3.zero, Quaternion.identity);
             }
         }
+    }
+
+    public Transform GetRandomSpawn()
+    {
+        return playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count)];
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
