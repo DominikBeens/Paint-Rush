@@ -82,6 +82,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8616182871415911792}
+  - component: {fileID: 8116597837269245217}
   m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
@@ -110,6 +111,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &8116597837269245217
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764510344926033560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b49cf1a51962c8a42a0a16f931f1b159, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2149655171627056103
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8887458642137044531}
+  - component: {fileID: 692867812316248130}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -141,6 +162,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692867812316248130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149655171627056103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146eaa25beabf4b4c9c1a54a0d507097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshair:
+  - {fileID: 2813011221099026354}
+  - {fileID: 1585439733310969091}
+  crosshairAnim: {fileID: 8116597837269245217}
 --- !u!1 &2970134191616782522
 GameObject:
   m_ObjectHideFlags: 0

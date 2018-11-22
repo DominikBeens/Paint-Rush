@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 392}
   - component: {fileID: 875}
   - component: {fileID: 876}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AmazingTestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 390}
   - component: {fileID: 592}
   - component: {fileID: 535}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 391}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

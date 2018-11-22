@@ -12,6 +12,7 @@ public class WeaponSlot : EquipmentSlot
 
     public static event Action OnFireWeapon = delegate { };
     public static event Action<Weapon> OnEquipWeapon = delegate { };
+    public static event Action<Color> OnChangeAmmoType = delegate { };
 
     [SerializeField] private Transform weaponSpawn;
     [SerializeField] private Weapon startingWeapon;
@@ -45,6 +46,7 @@ public class WeaponSlot : EquipmentSlot
                 nextColor = 0;
             }
             currentWeapon.paintType = (PaintController.PaintType)nextColor;
+            OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentWeapon.paintType));
         }
     }
 

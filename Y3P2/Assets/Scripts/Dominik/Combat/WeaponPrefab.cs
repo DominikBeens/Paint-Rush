@@ -4,6 +4,8 @@ using UnityEngine;
 public class WeaponPrefab : MonoBehaviourPunCallbacks
 {
 
+    private Vector3 screenMiddle;
+
     [SerializeField] private Transform projectileSpawn;
 
     private void Awake()
@@ -17,12 +19,22 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
     private void WeaponSlot_OnFireWeapon()
     {
+        screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        Vector3 fireDirection = Vector3.zero;
+
+        RaycastHit hitFromCam;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenMiddle), out hitFromCam))
+        {
+            fireDirection = hitFromCam.point - projectileSpawn.position;
+        }
+
         Weapon weapon = WeaponSlot.currentWeapon;
 
         ProjectileManager.ProjectileData data = new ProjectileManager.ProjectileData
         {
             spawnPosition = projectileSpawn.position,
-            spawnRotation = projectileSpawn.rotation,
+            spawnRotation = fireDirection != Vector3.zero ? Quaternion.LookRotation(fireDirection, Vector3.forward) : projectileSpawn.rotation,
+            //spawnRotation = projectileSpawn.rotation,
             projectilePool = weapon.bulletPoolName,
             speed = weapon.bulletSpeed,
             paintType = (int)weapon.paintType,
