@@ -15,6 +15,12 @@ public class PaintController
         public PaintType paintType;
         public float paintValue;
         public Color paintColor;
+        public float resetFinish;
+
+        public bool CanIncrement()
+        {
+            return Time.time > resetFinish;
+        }
     }
 
     [SerializeField] private List<PaintValue> paintValues = new List<PaintValue>();
@@ -46,7 +52,7 @@ public class PaintController
     {
         for (int i = 0; i < paintValues.Count; i++)
         {
-            if (paintValues[i].paintType == color)
+            if (paintValues[i].paintType == color && paintValues[i].CanIncrement())
             {
                 paintValues[i].paintValue += amount;
                 paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
@@ -69,6 +75,7 @@ public class PaintController
             if (paintValues[i].paintType == color)
             {
                 paintValues[i].paintValue = 0;
+                paintValues[i].resetFinish = Time.time + 0.5f;
                 OnPaintValueReset(paintValues[i].paintType);
                 return;
             }
