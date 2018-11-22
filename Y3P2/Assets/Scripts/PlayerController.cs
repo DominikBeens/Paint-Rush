@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private float sprintSpeed = 120;
     [SerializeField]
     private float fovSprintBoost = 35;
+    [SerializeField]
+    private float fovSprintBoostLerpSpeed = 0.5F;
     private float defaultFOV;
     [SerializeField]
     private float directionalJumpForce = 2000;
@@ -117,14 +119,20 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+
         Vector3 movement = new Vector3(x, 0, y);
+
+        if(x == 0 && y == 0 && grounded)
+        {
+            rb.velocity = Vector3.zero;
+        }
 
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             rb.AddRelativeForce(movement * moveSpeed);
             if(GetComponentInChildren<Camera>().fieldOfView != defaultFOV)
             {
-                GetComponentInChildren<Camera>().fieldOfView = defaultFOV;
+                GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, defaultFOV, fovSprintBoostLerpSpeed * Time.deltaTime);
             }
         }
         else
@@ -132,7 +140,7 @@ public class PlayerController : MonoBehaviour
             rb.AddRelativeForce(movement * sprintSpeed);
             if (GetComponentInChildren<Camera>().fieldOfView != fovSprintBoost)
             {
-                GetComponentInChildren<Camera>().fieldOfView = fovSprintBoost;
+                GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, fovSprintBoost, fovSprintBoostLerpSpeed * Time.deltaTime);
             }
         }
     }

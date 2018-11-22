@@ -361,11 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 120
   sprintSpeed: 160
   fovSprintBoost: 20
-  directionalJumpForce: 6000
-  verticalJumpForce: 7000
+  fovSprintBoostLerpSpeed: 10
+  directionalJumpForce: 7000
+  verticalJumpForce: 8000
   divideUpForce: 0
   divideUpForceBy: 0
   myCamRotateSpeed: 80
@@ -374,7 +375,7 @@ MonoBehaviour:
   bobRestingPoint: 0.7
   maxBob: 0.755
   minBob: 0.625
-  gravityModifier: 2
+  gravityModifier: 4
   headObject: {fileID: 6056574065620555934}
   jumpCooldownTime: 3
 --- !u!1 &3092096527861150194
