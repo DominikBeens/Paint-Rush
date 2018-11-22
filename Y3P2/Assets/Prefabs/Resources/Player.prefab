@@ -365,8 +365,8 @@ MonoBehaviour:
   sprintSpeed: 160
   fovSprintBoost: 20
   fovSprintBoostLerpSpeed: 10
-  directionalJumpForce: 7000
-  verticalJumpForce: 8000
+  directionalJumpForce: 10
+  verticalJumpForce: 170
   divideUpForce: 0
   divideUpForceBy: 0
   myCamRotateSpeed: 80

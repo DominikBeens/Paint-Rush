@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
+
     public void Inititalise(bool local)
     {
         if (!local)
@@ -175,44 +176,47 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void JumpJet()
     {
-            canJump = false;
-       
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
+        canJump = false;
 
-            float upForce = verticalJumpForce;
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
 
-            if (divideUpForce && upForce != upForce / divideUpForceBy)
-            {
-                upForce /= divideUpForceBy;
-            }
+        float upForce = verticalJumpForce;
 
-            
-            if (x < 0)
-            {
-                //Going left
-                rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.left * directionalJumpForce);
+        if (divideUpForce && upForce != upForce / divideUpForceBy)
+        {
+            upForce /= divideUpForceBy;
+        }
 
-            }
-            else if(x > 0)
-            {
-                //Going right
-                rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.right * directionalJumpForce);
-            }
-            else if(y < 0)
-            {
-                //Going back
-                rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.back * directionalJumpForce);
-            }
-            else if(y > 0)
-            {
-                //Going forward
-                rb.AddRelativeForce(Vector3.up * upForce);
-                rb.AddRelativeForce(Vector3.forward * directionalJumpForce);
-            }
+
+        if (x < 0)
+        {
+            //Going left
+            rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
+            rb.AddRelativeForce(Vector3.left * directionalJumpForce, ForceMode.Impulse);
+
+
+        }
+        else if (x > 0)
+        {
+            //Going right
+            rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
+            rb.AddRelativeForce(Vector3.right * directionalJumpForce, ForceMode.Impulse);
+        }
+        else if (y < 0)
+        {
+            //Going back
+            rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
+            rb.AddRelativeForce(Vector3.back * directionalJumpForce, ForceMode.Impulse);
+        }
+        else if (y > 0)
+        {
+            //Going forward
+            rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
+            rb.AddRelativeForce(Vector3.forward * directionalJumpForce, ForceMode.Impulse);
+        }
+
+
 
         if (!jumpCooldown)
         {
