@@ -5,6 +5,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 {
 
     private Vector3 screenMiddle;
+    private Camera mainCam;
 
     [SerializeField] private Transform projectileSpawn;
 
@@ -12,6 +13,8 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            mainCam = Camera.main;
+
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
             WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
         }
@@ -20,33 +23,56 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     private void WeaponSlot_OnFireWeapon()
     {
         screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
-        Vector3 fireDirection = Vector3.zero;
 
         RaycastHit hitFromCam;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenMiddle), out hitFromCam))
+        if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hitFromCam))
         {
-            fireDirection = hitFromCam.point - projectileSpawn.position;
+            RaycastHit hitFromWeapon;
+            if (Physics.Raycast(projectileSpawn.position, (hitFromCam.point - projectileSpawn.position), out hitFromWeapon))
+            {
+                Entity hitEntity = hitFromWeapon.transform.GetComponentInChildren<Entity>();
+                if (hitEntity)
+                {
+                    hitEntity.Hit((int)WeaponSlot.currentWeapon.paintType, WeaponSlot.currentWeapon.paintDamage);
+                    PlayerManager.instance.weaponSlot.HitEntity();
+                }
+
+                SpawnPrefabOnHit(hitFromWeapon.point);
+            }
         }
 
-        Weapon weapon = WeaponSlot.currentWeapon;
+        //Weapon weapon = WeaponSlot.currentWeapon;
 
-        ProjectileManager.ProjectileData data = new ProjectileManager.ProjectileData
-        {
-            spawnPosition = projectileSpawn.position,
-            spawnRotation = fireDirection != Vector3.zero ? Quaternion.LookRotation(fireDirection, Vector3.forward) : projectileSpawn.rotation,
-            //spawnRotation = projectileSpawn.rotation,
-            projectilePool = weapon.bulletPoolName,
-            speed = weapon.bulletSpeed,
-            paintType = (int)weapon.paintType,
-            paintAmount = weapon.paintDamage,
-            projectileOwnerID = PlayerManager.instance.photonView.ViewID,
-        };
-        ProjectileManager.instance.FireProjectile(data);
+        //ProjectileManager.ProjectileData data = new ProjectileManager.ProjectileData
+        //{
+        //    spawnPosition = projectileSpawn.position,
+        //    spawnRotation = fireDirection != Vector3.zero ? Quaternion.LookRotation(fireDirection, Vector3.forward) : projectileSpawn.rotation,
+        //    //spawnRotation = projectileSpawn.rotation,
+        //    projectilePool = weapon.bulletPoolName,
+        //    speed = weapon.bulletSpeed,
+        //    paintType = (int)weapon.paintType,
+        //    paintAmount = weapon.paintDamage,
+        //    projectileOwnerID = PlayerManager.instance.photonView.ViewID,
+        //};
+        //ProjectileManager.instance.FireProjectile(data);
     }
 
     private void WeaponSlot_OnEquipWeapon(Weapon weapon)
     {
 
+    }
+
+    private void SpawnPrefabOnHit(Vector3 position)
+    {
+        if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
+        {
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(WeaponSlot.currentWeapon.paintImpactPoolName, position, transform.rotation);
+            PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
+            if (pip)
+            {
+                pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
+            }
+        }
     }
 
     [PunRPC]

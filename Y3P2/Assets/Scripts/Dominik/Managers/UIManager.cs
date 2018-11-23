@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
         }
 
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
+        WeaponSlot.OnHitEntity += WeaponSlot_OnHit;
     }
 
     public void Initialise(Color crosshairColor)
@@ -39,8 +40,14 @@ public class UIManager : MonoBehaviour
         crosshairAnim.SetTrigger("ChangeAmmo");
     }
 
+    private void WeaponSlot_OnHit()
+    {
+        crosshairAnim.SetTrigger("Hit");
+    }
+
     private void OnDisable()
     {
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
+        WeaponSlot.OnHitEntity -= WeaponSlot_OnHit;
     }
 }

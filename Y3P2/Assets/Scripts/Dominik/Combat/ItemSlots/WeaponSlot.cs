@@ -13,6 +13,7 @@ public class WeaponSlot : EquipmentSlot
     public static event Action OnFireWeapon = delegate { };
     public static event Action<Weapon> OnEquipWeapon = delegate { };
     public static event Action<Color> OnChangeAmmoType = delegate { };
+    public static event Action OnHitEntity = delegate { };
 
     [SerializeField] private Transform weaponSpawn;
     [SerializeField] private Weapon startingWeapon;
@@ -60,6 +61,11 @@ public class WeaponSlot : EquipmentSlot
                 OnFireWeapon();
             }
         }
+    }
+
+    public void HitEntity()
+    {
+        OnHitEntity();
     }
 
     public void EquipWeapon(Weapon weapon)

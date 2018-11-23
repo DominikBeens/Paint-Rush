@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
 
     public static GameManager instance;
+    public static Color personalColor;
 
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject projectileManagerPrefab;
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Transform randomSpawn = GetRandomSpawn();
             PhotonNetwork.Instantiate(playerPrefab.name, randomSpawn.position, randomSpawn.rotation);
+
+            //personalColor = Random.ColorHSV();
         }
 
         if (PhotonNetwork.IsMasterClient)

@@ -12,4 +12,5 @@ public class Weapon : Item
 
     public PaintController.PaintType paintType;
     public float paintDamage = 1f;
+    public string paintImpactPoolName;
 }

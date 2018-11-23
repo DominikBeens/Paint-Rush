@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 505763385183105221}
   - component: {fileID: 505763385183105247}
-  - component: {fileID: 505763385183105257}
   - component: {fileID: 505763385183105241}
   m_Layer: 0
   m_Name: Particle System
@@ -18,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &505763385183105221
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 505763385183105206}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000058114523}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 505763385183105227}
   m_Father: {fileID: 1659576154882082359}
@@ -44,7 +43,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 2
-  stopAction: 3
+  stopAction: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -4577,20 +4576,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &505763385183105257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505763385183105206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf3186a7d9eb3954fb57a1ff0006c4de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPoolName: PaintImpact
-  rootParent: {fileID: 0}
 --- !u!199 &505763385183105241
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9510,7 +9495,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.005
+  m_Time: 0.002
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.015

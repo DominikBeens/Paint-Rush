@@ -97,19 +97,12 @@ public class PaintController
 
     private void PaintFilled(PaintType color, int attackerID)
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (attackerID == PlayerManager.instance.photonView.ViewID)
         {
-            string attackerName = "";
-            PhotonView pv = PhotonView.Find(attackerID);
-            if (pv)
-            {
-                attackerName = pv.Owner.NickName;
-            }
+            //string colorString = ColorUtility.ToHtmlStringRGBA(GameManager.personalColor);
+            //NotificationManager.instance.NewNotification("<color=#" + colorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
 
-            if (!string.IsNullOrEmpty(attackerName))
-            {
-                NotificationManager.instance.NewNotification("<color=red>" + attackerName + "</color> has claimed a mark!");
-            }
+            NotificationManager.instance.NewNotification("<color=red> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
         }
 
         ResetPaint(color);

@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [HideInInspector] public Entity entity;
     [SerializeField] private GameObject playerCamera;
     private PlayerController playerController;
-    private WeaponSlot weaponSlot;
+    [HideInInspector] public WeaponSlot weaponSlot;
     #endregion
 
     private void Awake()
