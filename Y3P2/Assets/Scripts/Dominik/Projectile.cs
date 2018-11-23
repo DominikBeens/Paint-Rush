@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,7 +8,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
     private Transform owner;
     private Collider hitCollider;
-    private Material projectileMat;
+    private List<Material> projectileMats = new List<Material>();
     private Vector3 defaultSize;
 
     [SerializeField] private string myPoolName;
@@ -17,6 +18,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject projectileModel;
     [SerializeField] private bool randomizeSize;
     [SerializeField] private float randomizeAmount;
+    [SerializeField] private TrailRenderer trailRenderer;
 
     [Space(10)]
 
@@ -38,7 +40,12 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        projectileMat = GetComponentInChildren<Renderer>().material;
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            projectileMats.Add(renderers[i].material);
+        }
+
         defaultSize = projectileModel ? projectileModel.transform.localScale : Vector3.zero;
     }
 
@@ -56,12 +63,25 @@ public class Projectile : MonoBehaviour
     {
         this.fireData = fireData;
         OnFire(this);
-        projectileMat.color = PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType);
+        SetColors();
 
         if (randomizeSize)
         {
             RandomizeSize();
         }
+    }
+
+    private void SetColors()
+    {
+        Color color = PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType);
+
+        for (int i = 0; i < projectileMats.Count; i++)
+        {
+            projectileMats[i].color = color;
+        }
+
+        trailRenderer.startColor = color;
+        trailRenderer.endColor = color;
     }
 
     private void RandomizeSize()
