@@ -47,6 +47,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            entity.GetComponent<Collider>().enabled = false;
             DontDestroyOnLoad(gameObject);
         }
     }
