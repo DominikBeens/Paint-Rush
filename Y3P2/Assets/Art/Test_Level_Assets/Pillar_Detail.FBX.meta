@@ -1,66 +1,33 @@
 fileFormatVersion: 2
-guid: 94b09d1bebe4070468deb89e25aea212
+guid: 0c29165e50a996748b7077e5e08fd35f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: BOTTOM_PLATEAU
-    100002: Bridge_Detail
-    100004: DOME
-    100006: LAMP
-    100008: LAMP_HINGE
-    100010: LEVEL
-    100012: //RootNode
-    100014: MID_PLATEAU
-    100016: PILLARS
-    100018: TOP_CONNECTORS
-    100020: TOP_LAMPS
-    100022: TOP_PLATEAU
-    400000: BOTTOM_PLATEAU
-    400002: Bridge_Detail
-    400004: DOME
-    400006: LAMP
-    400008: LAMP_HINGE
-    400010: LEVEL
-    400012: //RootNode
-    400014: MID_PLATEAU
-    400016: PILLARS
-    400018: TOP_CONNECTORS
-    400020: TOP_LAMPS
-    400022: TOP_PLATEAU
+    100000: //RootNode
+    100002: PILLAR_DETAIL_001
+    100004: PILLAR_DETAIL_002
+    100006: PILLAR_DETAIL_003
+    100008: PILLAR_DETAIL_004
+    400000: //RootNode
+    400002: PILLAR_DETAIL_001
+    400004: PILLAR_DETAIL_002
+    400006: PILLAR_DETAIL_003
+    400008: PILLAR_DETAIL_004
     2100000: No Name
-    2300000: BOTTOM_PLATEAU
-    2300002: Bridge_Detail
-    2300004: DOME
-    2300006: LAMP
-    2300008: LAMP_HINGE
-    2300010: LEVEL
-    2300012: MID_PLATEAU
-    2300014: PILLARS
-    2300016: TOP_CONNECTORS
-    2300018: TOP_LAMPS
-    2300020: TOP_PLATEAU
-    3300000: BOTTOM_PLATEAU
-    3300002: Bridge_Detail
-    3300004: DOME
-    3300006: LAMP
-    3300008: LAMP_HINGE
-    3300010: LEVEL
-    3300012: MID_PLATEAU
-    3300014: PILLARS
-    3300016: TOP_CONNECTORS
-    3300018: TOP_LAMPS
-    3300020: TOP_PLATEAU
-    4300000: BOTTOM_PLATEAU
-    4300002: LEVEL
-    4300004: MID_PLATEAU
-    4300006: PILLARS
-    4300008: DOME
-    4300010: TOP_PLATEAU
-    4300012: TOP_CONNECTORS
-    4300014: Bridge_Detail
-    4300016: LAMP
-    4300018: LAMP_HINGE
-    4300020: TOP_LAMPS
+    2300000: PILLAR_DETAIL_001
+    2300002: PILLAR_DETAIL_002
+    2300004: PILLAR_DETAIL_003
+    2300006: PILLAR_DETAIL_004
+    3300000: PILLAR_DETAIL_001
+    3300002: PILLAR_DETAIL_002
+    3300004: PILLAR_DETAIL_003
+    3300006: PILLAR_DETAIL_004
+    4300000: PILLAR_DETAIL_004
+    4300002: PILLAR_DETAIL_003
+    4300004: PILLAR_DETAIL_002
+    4300006: PILLAR_DETAIL_001
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -88,11 +55,39 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 4
+    globalScale: 2
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -112,8 +107,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 2
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -138,7 +133,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
