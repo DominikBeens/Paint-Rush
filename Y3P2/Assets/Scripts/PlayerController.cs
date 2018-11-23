@@ -40,11 +40,23 @@ public class PlayerController : MonoBehaviour
     private float minBob;
     [SerializeField]
     private float gravityModifier = 0;
+
+    [SerializeField]
+    private float wallRunRayDist = 1;
+    [SerializeField]
+    private float wallRunReleaseForce = 30;
+    private bool wallRunningLeft;
+    private bool wallrunning;
+
+    [SerializeField]
+    private float slideForce = 91;
+    private bool sliding;
+
     [SerializeField] private GameObject headObject;
 
     private Rigidbody rb;
     private bool grounded;
-
+    private bool forceGravity = true;
 
     public void Inititalise(bool local)
     {
@@ -86,16 +98,22 @@ public class PlayerController : MonoBehaviour
             {
                 grounded = false;
             }
-            Vector3 v = rb.velocity;
-            v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
-            v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
-            v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
+            if (forceGravity)
+            {
+                Vector3 v = rb.velocity;
+                v.y += Physics.gravity.y * gravityModifier * Time.fixedDeltaTime;
+                v.z += Physics.gravity.z * gravityModifier * Time.fixedDeltaTime;
+                v.x += Physics.gravity.x * gravityModifier * Time.fixedDeltaTime;
 
-            rb.velocity = v;
-            rb.AddRelativeForce(Vector3.down * -Physics.gravity.y * gravityModifier);
+                rb.velocity = v;
+                rb.AddRelativeForce(Vector3.down * -Physics.gravity.y * gravityModifier);
+            }
         }
 
-        Movement();
+        if (!sliding)
+        {
+            Movement();
+        }
         HeadBob();
     }
 
@@ -105,10 +123,39 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && canJump)
         {
+            if (sliding)
+            {
+                sliding = false;
+            }
             JumpJet();
         }
-      
-       
+
+        if (Input.GetButton("Jump") && !grounded && !sliding)
+        {
+            WallRun();
+        }
+       if(Input.GetButtonUp("Jump") && !rb.useGravity && wallrunning)
+        {
+            rb.useGravity = true;
+            forceGravity = true;
+            wallrunning = false;
+
+            if (wallRunningLeft)
+            {
+                rb.AddRelativeForce(Vector3.right * wallRunReleaseForce, ForceMode.Impulse);
+            }
+            else if (!wallRunningLeft)
+            {
+                rb.AddRelativeForce(Vector3.left * wallRunReleaseForce, ForceMode.Impulse);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (!sliding)
+            {
+                Slide();
+            }
+        }
 
     }
 
@@ -235,6 +282,7 @@ public class PlayerController : MonoBehaviour
 
     private void HeadBob()
     {
+       
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
@@ -265,6 +313,73 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    private void WallRun()
+    {
+        if (forceGravity)
+        {
+            forceGravity = false;
+        }
+        RaycastHit hit;
+        rb.useGravity = false;
+        if(Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist))
+        {
+            //  if (hit.transform.gameObject.isStatic)
+            // {
+            if (!wallrunning)
+            {
+                wallrunning = true;
+            }
+
+            if (!wallRunningLeft)
+            {
+                wallRunningLeft = true;
+            }
+             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+           // }
+        }
+        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist))
+        {
+            //if (hit.transform.gameObject.isStatic)
+            // {
+            if (!wallrunning)
+            {
+                wallrunning = true;
+            }
+
+            if (wallRunningLeft)
+            {
+                wallRunningLeft = false;
+            }
+
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            // }
+        }
+        else if(hit.transform == null)
+        {
+            forceGravity = true;
+            wallrunning = false;
+        }
+    }
+
+    private void Slide()
+    {
+        sliding = true;
+        //Change player collider
+
+        //Play animation
+
+        rb.AddRelativeForce(Vector3.forward * slideForce, ForceMode.Impulse);
+
+
+        StartCoroutine(SlideDuration());
+    }
+
+    private IEnumerator SlideDuration()
+    {
+        yield return new WaitForSeconds(.5F); //Make slide animation duration
+        sliding = false;
     }
 
     private float GetSettingsManagerMouseSens()
