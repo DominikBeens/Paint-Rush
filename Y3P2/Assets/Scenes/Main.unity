@@ -416,15 +416,19 @@ MonoBehaviour:
     - paintType: 0
       paintValue: 0
       paintColor: {r: 0, g: 0, b: 0, a: 0}
+      resetFinish: 0
     - paintType: 0
       paintValue: 0
       paintColor: {r: 0, g: 0, b: 0, a: 0}
+      resetFinish: 0
     - paintType: 0
       paintValue: 0
       paintColor: {r: 0, g: 0, b: 0, a: 0}
+      resetFinish: 0
     - paintType: 0
       paintValue: 0
       paintColor: {r: 0, g: 0, b: 0, a: 0}
+      resetFinish: 0
   OnHit:
     m_PersistentCalls:
       m_Calls: []
@@ -764,7 +768,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: bf1bf92a3ce592e40b898be6c21cc2fa, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: df92675f69745be4e8eb3e81beafe926, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
