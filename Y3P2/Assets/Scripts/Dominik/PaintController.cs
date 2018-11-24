@@ -99,10 +99,7 @@ public class PaintController
     {
         if (attackerID == PlayerManager.instance.photonView.ViewID)
         {
-            //string colorString = ColorUtility.ToHtmlStringRGBA(GameManager.personalColor);
-            //NotificationManager.instance.NewNotification("<color=#" + colorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
-
-            NotificationManager.instance.NewNotification("<color=red> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
         }
 
         ResetPaint(color);
