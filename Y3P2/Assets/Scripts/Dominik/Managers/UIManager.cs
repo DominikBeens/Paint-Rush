@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Image> crosshair = new List<Image>();
     [SerializeField] private Animator crosshairAnim;
 
+    [Space(10)]
+
+    [SerializeField] private List<PaintUILocalPlayer> paintUILocalPlayer = new List<PaintUILocalPlayer>();
+    public List<PaintUILocalPlayer> PaintUILocalPlayer { get { return paintUILocalPlayer; } }
+
     private void Awake()
     {
         if (!instance)

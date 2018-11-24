@@ -73,6 +73,9 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                 pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
             }
         }
+
+        //BulletTrail bulletTrail = ObjectPooler.instance.GrabFromPool("BulletTrail", Vector3.zero, Quaternion.identity).GetComponent<BulletTrail>();
+        //bulletTrail.Initialise(projectileSpawn.position, position, PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
     }
 
     [PunRPC]

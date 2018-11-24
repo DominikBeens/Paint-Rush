@@ -36,6 +36,7 @@ public class PaintUI : MonoBehaviour
         for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
         {
             paintUIBars[i].Initialise(entity.paintController.PaintValues[i]);
+            UIManager.instance.PaintUILocalPlayer[i].Initialise(entity.paintController.PaintValues[i]);
         }
 
         entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
