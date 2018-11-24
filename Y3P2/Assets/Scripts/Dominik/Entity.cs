@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Entity : MonoBehaviourPunCallbacks
+public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     [HideInInspector] public Collider myCollider;
@@ -43,6 +43,22 @@ public class Entity : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Destroy(transform.root.gameObject);
+        }
+    }
+
+    // TODO: Values get synced, need to update bars on first shot.
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        for (int i = 0; i < paintController.PaintValues.Count; i++)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(paintController.PaintValues[i].paintValue);
+            }
+            else
+            {
+                paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+            }
         }
     }
 }

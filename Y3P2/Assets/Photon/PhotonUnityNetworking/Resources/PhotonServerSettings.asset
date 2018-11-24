@@ -37,4 +37,5 @@ MonoBehaviour:
   - ParentWeapon
   - PickUpDestroy
   - SendNotification
+  - SyncPaintValues
   DisableAutoOpenWizard: 1

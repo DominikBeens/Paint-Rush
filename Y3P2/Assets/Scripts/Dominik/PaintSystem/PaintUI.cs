@@ -27,6 +27,11 @@ public class PaintUI : MonoBehaviour
 
         if (entity == PlayerManager.instance.entity)
         {
+            for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
+            {
+                UIManager.instance.PaintUILocalPlayer[i].Initialise(entity.paintController.PaintValues[i]);
+            }
+
             gameObject.SetActive(false);
             return;
         }
@@ -36,7 +41,6 @@ public class PaintUI : MonoBehaviour
         for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
         {
             paintUIBars[i].Initialise(entity.paintController.PaintValues[i]);
-            UIManager.instance.PaintUILocalPlayer[i].Initialise(entity.paintController.PaintValues[i]);
         }
 
         entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;

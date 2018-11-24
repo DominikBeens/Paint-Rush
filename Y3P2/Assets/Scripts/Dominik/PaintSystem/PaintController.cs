@@ -95,6 +95,21 @@ public class PaintController
         return Color.white;
     }
 
+    // Used for syncing paint values when new players join.
+    public void SetRawValues(List<float> values)
+    {
+        float difference;
+        for (int i = 0; i < paintValues.Count; i++)
+        {
+            difference = paintValues[i].paintValue - values[i];
+
+            paintValues[i].paintValue += difference;
+            paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
+
+            OnPaintValueModified(paintValues[i].paintType, difference);
+        }
+    }
+
     private void PaintFilled(PaintType color, int attackerID)
     {
         if (attackerID == PlayerManager.instance.photonView.ViewID)
