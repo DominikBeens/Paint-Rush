@@ -18,6 +18,10 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
             WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
         }
+        else
+        {
+            SetLayer(transform, 10);
+        }
     }
 
     private void WeaponSlot_OnFireWeapon()
@@ -37,7 +41,10 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     PlayerManager.instance.weaponSlot.HitEntity();
                 }
 
-                SpawnPrefabOnHit(hitFromWeapon.point);
+                if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
+                {
+                    photonView.RPC("SpawnPrefabOnHit", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, (int)WeaponSlot.currentWeapon.paintType);
+                }
             }
         }
 
@@ -62,31 +69,38 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
     }
 
-    private void SpawnPrefabOnHit(Vector3 position)
+    [PunRPC]
+    private void SpawnPrefabOnHit(string prefabPoolName, Vector3 position, int paintType)
     {
-        if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
+        GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabPoolName, position, transform.rotation);
+        PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
+        if (pip)
         {
-            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(WeaponSlot.currentWeapon.paintImpactPoolName, position, transform.rotation);
-            PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
-            if (pip)
-            {
-                pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
-            }
+            pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
         }
 
         //BulletTrail bulletTrail = ObjectPooler.instance.GrabFromPool("BulletTrail", Vector3.zero, Quaternion.identity).GetComponent<BulletTrail>();
         //bulletTrail.Initialise(projectileSpawn.position, position, PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
     }
 
-    [PunRPC]
-    private void PickUpDestroy()
+    private void SetLayer(Transform root, int layer)
     {
-        if (PhotonNetwork.IsMasterClient)
+        root.gameObject.layer = layer;
+        foreach (Transform child in root)
         {
-            PhotonNetwork.RemoveRPCs(photonView);
-            PhotonNetwork.Destroy(gameObject);
+            SetLayer(child, layer);
         }
     }
+
+    //[PunRPC]
+    //private void PickUpDestroy()
+    //{
+    //    if (PhotonNetwork.IsMasterClient)
+    //    {
+    //        PhotonNetwork.RemoveRPCs(photonView);
+    //        PhotonNetwork.Destroy(gameObject);
+    //    }
+    //}
 
     public override void OnDisable()
     {

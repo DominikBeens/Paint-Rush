@@ -7,8 +7,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public static PlayerManager instance;
 
-    [SerializeField] private GameObject playerNameUIPrefab;
-
     #region PlayerComponents
     [HideInInspector] public Entity entity;
     [SerializeField] private GameObject playerCamera;
@@ -42,7 +40,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         if (!IsConnectedAndMine())
         {
-            SetupPlayerNamePlate();
             SetLayer(transform, 10);
         }
         else
@@ -50,13 +47,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             entity.GetComponent<Collider>().enabled = false;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    private void SetupPlayerNamePlate()
-    {
-        GameObject playerUI = Instantiate(playerNameUIPrefab, transform.position, Quaternion.identity, transform);
-        TextMeshProUGUI nameText = playerUI.GetComponentInChildren<TextMeshProUGUI>();
-        nameText.text = photonView.Owner.NickName;
     }
 
     private bool IsConnectedAndMine()
