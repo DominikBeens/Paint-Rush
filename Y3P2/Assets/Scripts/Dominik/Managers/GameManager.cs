@@ -52,13 +52,20 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             personalColor = new Color(Random.value, Random.value, Random.value, 1);
             personalColorString = ColorUtility.ToHtmlStringRGBA(personalColor);
-            NotificationManager.instance.NewNotification("<color=#" + personalColorString + "> " + PhotonNetwork.NickName + "</color> has entered the game!");
         }
     }
 
     public Transform GetRandomSpawn()
     {
         return playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count)];
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            NotificationManager.instance.NewNotification("<color=red>" + newPlayer.NickName + "</color> has entered the game!");
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

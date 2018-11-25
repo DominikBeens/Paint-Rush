@@ -46,7 +46,6 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    // TODO: Values get synced, need to update bars on first shot.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         for (int i = 0; i < paintController.PaintValues.Count; i++)
