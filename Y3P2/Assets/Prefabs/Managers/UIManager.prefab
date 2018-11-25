@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8341414722320436232}
   - component: {fileID: 2574244877904932845}
   - component: {fileID: 2813011221099026354}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 83565782693088938}
   - component: {fileID: 1552302118445927632}
   - component: {fileID: 1283390261184412266}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780392966117839136}
   - component: {fileID: 8439955574653154398}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintValue (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8616182871415911792}
   - component: {fileID: 8116597837269245217}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 6951678528099952653}
   - component: {fileID: 2054425821719677075}
   - component: {fileID: 2183978684891350915}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 2474310925294042490}
   - component: {fileID: 5539142109541109191}
   - component: {fileID: 2936473334761294732}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ColorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8887458642137044531}
   - component: {fileID: 692867812316248130}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 8433602248689673473}
   - component: {fileID: 1957906503389330884}
   - component: {fileID: 394045880476781600}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 9218648701714273890}
   - component: {fileID: 1137161257216383577}
   - component: {fileID: 3343998378522057739}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ColorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3469710272293578666}
   - component: {fileID: 8409711056067511369}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Layoutgroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 3132306748608249878}
   - component: {fileID: 3894194915354903001}
   - component: {fileID: 1585439733310969091}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 7406151359236864731}
   - component: {fileID: 3405367941592688485}
   - component: {fileID: 6971390365113834263}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187333273059634292}
   - component: {fileID: 1948812690192509874}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 7400579799650689968}
   - component: {fileID: 2514201685046616731}
   - component: {fileID: 3643128094837994185}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HitPlayerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 1822846402966203718}
   - component: {fileID: 7364753625282962941}
   - component: {fileID: 6839907122966762933}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 9083627816213055967}
   - component: {fileID: 5772425306908332956}
   - component: {fileID: 1441380146241567476}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ColorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 847672068850359232}
   - component: {fileID: 444507150343388344}
   - component: {fileID: 1340836591346499970}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HitPlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1466,7 +1466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4250884701798015980}
   - component: {fileID: 5895302225242394027}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintValue (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 7729727311231725946}
   - component: {fileID: 488616977672303976}
   - component: {fileID: 9034056061375863139}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1677,7 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7139144753452150291}
   - component: {fileID: 7071961868588417413}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PaintValue (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1730,7 +1730,7 @@ GameObject:
   - component: {fileID: 3684989415626664433}
   - component: {fileID: 558616349853610197}
   - component: {fileID: 6413049560626026587}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ColorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,7 +1803,7 @@ GameObject:
   - component: {fileID: 5038901660137543780}
   - component: {fileID: 8208767087026475293}
   - component: {fileID: 4981587995945896515}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1962,7 +1962,7 @@ GameObject:
   - component: {fileID: 5951166758760610147}
   - component: {fileID: 1940129398204545352}
   - component: {fileID: 4063874055030553463}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 2429365182714155858}
   - component: {fileID: 2525724167508525090}
   - component: {fileID: 6246840446099296968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2112,7 +2112,7 @@ GameObject:
   - component: {fileID: 1673561540661632696}
   - component: {fileID: 4420835776327928103}
   - component: {fileID: 4117578266570417049}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrosshairCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

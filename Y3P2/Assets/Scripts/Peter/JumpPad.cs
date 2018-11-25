@@ -15,11 +15,9 @@ public class JumpPad : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root.tag == "Player")
+        if(other.transform.root.tag == "Player" && other.transform.root.GetComponent<Photon.Pun.PhotonView>().IsMine)
         {
             Launch(other.transform.root.GetComponent<Rigidbody>());
         }
     }
-
-    
 }

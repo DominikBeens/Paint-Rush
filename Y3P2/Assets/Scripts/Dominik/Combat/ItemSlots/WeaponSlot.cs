@@ -10,6 +10,8 @@ public class WeaponSlot : EquipmentSlot
     public static PaintController.PaintType currentPaintType;
 
     private float nextAttackTime;
+    private int numOfPaintTypes;
+    private int currentPaintTypeIndex;
 
     public static event Action OnFireWeapon = delegate { };
     public static event Action<Weapon> OnEquipWeapon = delegate { };
@@ -26,6 +28,7 @@ public class WeaponSlot : EquipmentSlot
         if (local)
         {
             EquipWeapon(startingWeapon);
+            numOfPaintTypes = Enum.GetValues(typeof(PaintController.PaintType)).Length;
         }
     }
 
@@ -53,20 +56,20 @@ public class WeaponSlot : EquipmentSlot
 
     private void HandlePaintSwitching()
     {
-
-
-
-        // TEST PAINT COLOR SWITCHING
-        if (Input.GetKeyDown(KeyCode.E))
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll == 0)
         {
-            int nextColor = ((int)currentPaintType + 1);
-            if (nextColor == 4)
-            {
-                nextColor = 0;
-            }
-            currentPaintType = (PaintController.PaintType)nextColor;
-            OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
+            return;
         }
+
+        currentPaintTypeIndex += scroll > 0 ? 1 : 0;
+        currentPaintTypeIndex -= scroll < 0 ? 1 : 0;
+
+        currentPaintTypeIndex = currentPaintTypeIndex == numOfPaintTypes ? 0 : currentPaintTypeIndex;
+        currentPaintTypeIndex = currentPaintTypeIndex == -1 ? numOfPaintTypes - 1 : currentPaintTypeIndex;
+
+        currentPaintType = (PaintController.PaintType)currentPaintTypeIndex;
+        OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
     }
 
     public void HitEntity()
