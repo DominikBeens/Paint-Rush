@@ -10,7 +10,6 @@ public class Weapon : Item
     public float bulletSpeed = 10f;
     public string bulletPoolName;
 
-    public PaintController.PaintType paintType;
     public float paintDamage = 1f;
     public string paintImpactPoolName;
 }

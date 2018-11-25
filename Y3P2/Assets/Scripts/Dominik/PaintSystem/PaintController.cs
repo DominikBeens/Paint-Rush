@@ -44,7 +44,7 @@ public class PaintController
 
         if (WeaponSlot.currentWeapon)
         {
-            UIManager.instance.Initialise(GetPaintColor(WeaponSlot.currentWeapon.paintType));
+            UIManager.instance.Initialise(GetPaintColor(WeaponSlot.currentPaintType));
         }
     }
 

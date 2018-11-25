@@ -7,6 +7,7 @@ public class WeaponSlot : EquipmentSlot
 
     public static Weapon currentWeapon;
     public static bool canAttack = true;
+    public static PaintController.PaintType currentPaintType;
 
     private float nextAttackTime;
 
@@ -25,9 +26,6 @@ public class WeaponSlot : EquipmentSlot
         if (local)
         {
             EquipWeapon(startingWeapon);
-
-            // TEMP
-            currentWeapon = Instantiate(currentWeapon);
         }
     }
 
@@ -38,17 +36,7 @@ public class WeaponSlot : EquipmentSlot
             HandleFiring();
         }
 
-        // TEST PAINT COLOR SWITCHING
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            int nextColor = ((int)currentWeapon.paintType + 1);
-            if (nextColor == 4)
-            {
-                nextColor = 0;
-            }
-            currentWeapon.paintType = (PaintController.PaintType)nextColor;
-            OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentWeapon.paintType));
-        }
+        HandlePaintSwitching();
     }
 
     private void HandleFiring()
@@ -60,6 +48,24 @@ public class WeaponSlot : EquipmentSlot
                 nextAttackTime = Time.time + currentWeapon.fireRate;
                 OnFireWeapon();
             }
+        }
+    }
+
+    private void HandlePaintSwitching()
+    {
+
+
+
+        // TEST PAINT COLOR SWITCHING
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            int nextColor = ((int)currentPaintType + 1);
+            if (nextColor == 4)
+            {
+                nextColor = 0;
+            }
+            currentPaintType = (PaintController.PaintType)nextColor;
+            OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
         }
     }
 

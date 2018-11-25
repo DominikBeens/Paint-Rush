@@ -37,13 +37,13 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                 Entity hitEntity = hitFromWeapon.transform.GetComponentInChildren<Entity>();
                 if (hitEntity)
                 {
-                    hitEntity.Hit((int)WeaponSlot.currentWeapon.paintType, WeaponSlot.currentWeapon.paintDamage);
+                    hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
                     PlayerManager.instance.weaponSlot.HitEntity();
                 }
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {
-                    photonView.RPC("SpawnPrefabOnHit", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, (int)WeaponSlot.currentWeapon.paintType);
+                    photonView.RPC("SpawnPrefabOnHit", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, (int)WeaponSlot.currentPaintType);
                 }
             }
         }
