@@ -44,7 +44,22 @@ public class UIManager : MonoBehaviour
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
         WeaponSlot.OnHitEntity += WeaponSlot_OnHit;
 
-        DB.MenuPack.SceneManager.OnGamePaused += ToggleCrosshair;
+        DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+
+    }
+
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        ToggleCrosshair(newState == GameManager.GameState.Playing ? true : false);
+    }
+
+    private void SceneManager_OnGamePaused(bool b)
+    {
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        {
+            ToggleCrosshair(!b);
+        }
     }
 
     public void Initialise(Color crosshairColor)
@@ -98,7 +113,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < crosshair.Count; i++)
         {
-            crosshair[i].enabled = !b;
+            crosshair[i].enabled = b;
         }
     }
 
@@ -107,6 +122,7 @@ public class UIManager : MonoBehaviour
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
         WeaponSlot.OnHitEntity -= WeaponSlot_OnHit;
 
-        DB.MenuPack.SceneManager.OnGamePaused -= ToggleCrosshair;
+        DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 }

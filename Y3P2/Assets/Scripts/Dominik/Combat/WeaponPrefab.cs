@@ -6,6 +6,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
     private Vector3 screenMiddle;
     private Camera mainCam;
+    private bool initialisedEvents;
 
     [SerializeField] private Transform projectileSpawn;
 
@@ -17,10 +18,21 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
             WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
+            initialisedEvents = true;
         }
         else
         {
             SetLayer(transform, 10);
+        }
+    }
+
+    public override void OnEnable()
+    {
+        if (!initialisedEvents && photonView.IsMine)
+        {
+            WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
+            WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
+            initialisedEvents = true;
         }
     }
 
@@ -108,6 +120,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         {
             WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
             WeaponSlot.OnEquipWeapon -= WeaponSlot_OnEquipWeapon;
+            initialisedEvents = false;
         }
     }
 }

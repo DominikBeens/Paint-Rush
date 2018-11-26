@@ -41,11 +41,38 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         if (!IsConnectedAndMine())
         {
             SetLayer(transform, 10);
+            return;
         }
-        else
+
+        entity.GetComponent<Collider>().enabled = false;
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        PhotonNetwork.RemoveRPCs(photonView);
+        photonView.RPC("SetPlayerState", RpcTarget.AllBuffered, (int)newState);
+
+        playerController.enabled = newState == GameManager.GameState.Playing ? true : false;
+
+        if (newState == GameManager.GameState.Playing)
         {
-            entity.GetComponent<Collider>().enabled = false;
-            DontDestroyOnLoad(gameObject);
+            Transform randomSpawn = GameManager.instance.GetRandomSpawn();
+            transform.position = randomSpawn.position;
+            transform.rotation = randomSpawn.rotation;
+        }
+    }
+
+    [PunRPC]
+    private void SetPlayerState(int state)
+    {
+        GameManager.GameState newState = (GameManager.GameState)state;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(newState == GameManager.GameState.Playing ? true : false);
         }
     }
 

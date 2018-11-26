@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private float xMove;
     private float yMove;
     private bool canUseCam = true;
+
     public void Inititalise(bool local)
     {
         if (!local)
@@ -438,11 +439,6 @@ public class PlayerController : MonoBehaviour
 
     private float GetSettingsManagerMouseSens()
     {
-        if (!DB.MenuPack.SettingsManager.instance)
-        {
-            return 0;
-        }
-
-        return DB.MenuPack.Setting_MouseSens.mouseSensitivity;
+        return DB.MenuPack.SettingsManager.instance ? DB.MenuPack.Setting_MouseSens.mouseSensitivity : 0;
     }
 }

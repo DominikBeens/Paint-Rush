@@ -39,4 +39,5 @@ MonoBehaviour:
   - SendNotification
   - SyncPaintValues
   - SpawnPrefabOnHit
+  - SetPlayerState
   DisableAutoOpenWizard: 1

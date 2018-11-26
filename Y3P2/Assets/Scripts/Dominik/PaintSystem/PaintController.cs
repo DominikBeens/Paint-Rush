@@ -7,6 +7,8 @@ using Photon.Pun;
 public class PaintController 
 {
 
+    private Entity myEntity;
+
     public enum PaintType { Cyan, Purple, Green, Yellow };
 
     [Serializable]
@@ -29,8 +31,9 @@ public class PaintController
     public event Action<PaintType, float> OnPaintValueModified = delegate { };
     public event Action<PaintType> OnPaintValueReset = delegate { };
 
-    public void Initialise()
+    public void Initialise(Entity entity)
     {
+        myEntity = entity;
         SetDefaultPaintValues();
     }
 
@@ -119,5 +122,10 @@ public class PaintController
         }
 
         ResetPaint(color);
+
+        if (PlayerManager.instance.entity == myEntity)
+        {
+            GameManager.CurrentGameSate = GameManager.GameState.Respawning;
+        }
     }
 }

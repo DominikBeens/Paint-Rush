@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -9,6 +10,22 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     public static Color32 personalColor;
     public static string personalColorString;
+
+    public enum GameState { Playing, Respawning };
+    private GameState gameState;
+    public static GameState CurrentGameSate
+    {
+        get
+        {
+            return instance.gameState;
+        }
+        set
+        {
+            instance.gameState = value;
+            OnGameStateChanged(instance.gameState);
+        }
+    }
+    public static event Action<GameState> OnGameStateChanged = delegate { };
 
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject projectileManagerPrefab;
@@ -50,14 +67,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             Transform randomSpawn = GetRandomSpawn();
             PhotonNetwork.Instantiate(playerPrefab.name, randomSpawn.position, randomSpawn.rotation);
 
-            personalColor = new Color(Random.value, Random.value, Random.value, 1);
+            personalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
             personalColorString = ColorUtility.ToHtmlStringRGBA(personalColor);
         }
     }
 
     public Transform GetRandomSpawn()
     {
-        return playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count)];
+        return playerSpawnPoints[UnityEngine.Random.Range(0, playerSpawnPoints.Count)];
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

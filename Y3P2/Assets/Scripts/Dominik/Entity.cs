@@ -23,7 +23,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     private void Awake()
     {
         myCollider = GetComponent<Collider>();
-        paintController.Initialise();
+        paintController.Initialise(this);
     }
 
     public void Hit(int paintColor, float amount)
@@ -56,7 +56,10 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
             }
             else
             {
-                paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+                if (!photonView.IsMine)
+                {
+                    paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+                }
             }
         }
     }
