@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationSpawn: {fileID: 6436799431775574501}
+  notificationInterval: 1.1
 --- !u!114 &7314095127788068546
 MonoBehaviour:
   m_ObjectHideFlags: 0
