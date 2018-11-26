@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     private float wallRunReleaseForce = 30;
     private bool wallRunningLeft;
     private bool wallrunning;
+    private bool wallrunningBack;
 
     [SerializeField]
     private float slideForce = 91;
@@ -57,7 +58,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
     private bool forceGravity = true;
-
+    private float xMove;
+    private float yMove;
+    private bool canUseCam = true;
     public void Inititalise(bool local)
     {
         if (!local)
@@ -65,7 +68,15 @@ public class PlayerController : MonoBehaviour
             enabled = false;
             return;
         }
+
+        DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
     }
+
+    private void SceneManager_OnGamePaused(bool obj)
+    {
+        canUseCam = !obj;
+    }
+
     private bool canJump = true;
     private bool jumpCooldown;
 
@@ -119,7 +130,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        CameraRotation();
+        Debug.DrawRay(transform.position, transform.right * wallRunRayDist, Color.red);
+        if (canUseCam)
+        {
+            CameraRotation();
+        }
 
         if (Input.GetButtonDown("Jump") && canJump)
         {
@@ -148,6 +163,10 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.left * wallRunReleaseForce, ForceMode.Impulse);
             }
+            if (wallrunningBack)
+            {
+                rb.AddRelativeForce(Vector3.forward * wallRunReleaseForce, ForceMode.Impulse);
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -164,13 +183,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        xMove = Input.GetAxis("Horizontal");
+        yMove = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(xMove, 0, yMove);
 
 
-        Vector3 movement = new Vector3(x, 0, y);
 
-        if(x == 0 && y == 0 && grounded)
+        if (xMove == 0 && yMove == 0 && grounded)
         {
             rb.velocity = Vector3.zero;
         }
@@ -317,13 +337,14 @@ public class PlayerController : MonoBehaviour
 
     private void WallRun()
     {
+
         if (forceGravity)
         {
             forceGravity = false;
         }
         RaycastHit hit;
         rb.useGravity = false;
-        if(Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist))
+        if(Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("a"))
         {
             //  if (hit.transform.gameObject.isStatic)
             // {
@@ -336,10 +357,26 @@ public class PlayerController : MonoBehaviour
             {
                 wallRunningLeft = true;
             }
-             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+
+            if (Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist * 2))
+            {
+                if (!wallrunningBack)
+                {
+                    wallrunningBack = true;
+                }
+            }
+            else
+            {
+                if (wallrunningBack)
+                {
+                    wallrunningBack = false;
+                }
+            }
+
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
            // }
         }
-        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist))
+        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
         {
             //if (hit.transform.gameObject.isStatic)
             // {
@@ -353,6 +390,21 @@ public class PlayerController : MonoBehaviour
                 wallRunningLeft = false;
             }
 
+            if(Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist * 2))
+            {
+                if (!wallrunningBack)
+                {
+                    wallrunningBack = true;
+                }
+            }
+            else
+            {
+                if (wallrunningBack)
+                {
+                    wallrunningBack = false;
+                }
+            }
+
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             // }
         }
@@ -360,6 +412,7 @@ public class PlayerController : MonoBehaviour
         {
             forceGravity = true;
             wallrunning = false;
+            wallrunningBack = false;
         }
     }
 

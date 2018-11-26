@@ -383,7 +383,7 @@ MonoBehaviour:
   maxBob: 0.755
   minBob: 0.625
   gravityModifier: 4
-  wallRunRayDist: 1
+  wallRunRayDist: 20
   wallRunReleaseForce: 60
   slideForce: 91
   headObject: {fileID: 6056574065620555934}
