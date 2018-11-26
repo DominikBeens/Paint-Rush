@@ -6,6 +6,7 @@ public class PaintUI : MonoBehaviour
     private bool initialised;
     private Entity myEntity;
     private PaintUIBar[] paintUIBars;
+    private Animator anim;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PaintUI : MonoBehaviour
         }
 
         paintUIBars = GetComponentsInChildren<PaintUIBar>();
+        anim = GetComponentInChildren<Animator>();
 
         for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
         {
@@ -60,6 +62,11 @@ public class PaintUI : MonoBehaviour
             {
                 paintUIBars[i].IncrementBar(amount);
             }
+        }
+
+        if (anim)
+        {
+            anim.SetTrigger("Hit");
         }
     }
 
