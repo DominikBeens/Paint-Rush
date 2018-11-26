@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
 
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
         WeaponSlot.OnHitEntity += WeaponSlot_OnHit;
+
+        DB.MenuPack.SceneManager.OnGamePaused += ToggleCrosshair;
     }
 
     public void Initialise(Color crosshairColor)
@@ -92,9 +94,19 @@ public class UIManager : MonoBehaviour
         crosshairAnim.SetTrigger("Hit");
     }
 
+    private void ToggleCrosshair(bool b)
+    {
+        for (int i = 0; i < crosshair.Count; i++)
+        {
+            crosshair[i].enabled = !b;
+        }
+    }
+
     private void OnDisable()
     {
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
         WeaponSlot.OnHitEntity -= WeaponSlot_OnHit;
+
+        DB.MenuPack.SceneManager.OnGamePaused -= ToggleCrosshair;
     }
 }

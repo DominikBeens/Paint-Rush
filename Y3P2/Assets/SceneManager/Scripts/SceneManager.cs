@@ -40,7 +40,8 @@ namespace DB.MenuPack
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private List<int> cannotPauseScenes = new List<int>();
 
-        public event Action OnLevelLoaded = delegate { };
+        public static event Action OnLevelLoaded = delegate { };
+        public static event Action<bool> OnGamePaused = delegate { };
 
         private void Awake()
         {
@@ -86,6 +87,7 @@ namespace DB.MenuPack
             }
 
             isPaused = !isPaused;
+            OnGamePaused(isPaused);
 
             pausePanel.SetActive(isPaused);
             SettingsManager.instance.ToggleSettingsPanel(false);
