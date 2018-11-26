@@ -130,7 +130,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, transform.right * wallRunRayDist, Color.red);
         if (canUseCam)
         {
             CameraRotation();
