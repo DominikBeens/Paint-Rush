@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: a719a2c340bc5134e9de0bfde47b841c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Barrel
+    100002: Cylinder009
+    100004: Gun
+    100006: Mag
+    100008: Mag_Buttons
+    100010: Mode_Switcher
+    100012: Pullable
+    100014: Pullable_Button
+    100016: Sight_Extra
+    100018: Sight_Extra_002
+    100020: Sights
+    100022: Trigger
+    100024: //RootNode
+    400000: Barrel
+    400002: Cylinder009
+    400004: Gun
+    400006: Mag
+    400008: Mag_Buttons
+    400010: Mode_Switcher
+    400012: Pullable
+    400014: Pullable_Button
+    400016: Sight_Extra
+    400018: Sight_Extra_002
+    400020: Sights
+    400022: Trigger
+    400024: //RootNode
+    2100000: No Name
+    2300000: Barrel
+    2300002: Cylinder009
+    2300004: Gun
+    2300006: Mag
+    2300008: Mag_Buttons
+    2300010: Mode_Switcher
+    2300012: Pullable
+    2300014: Pullable_Button
+    2300016: Sight_Extra
+    2300018: Sight_Extra_002
+    2300020: Sights
+    2300022: Trigger
+    3300000: Barrel
+    3300002: Cylinder009
+    3300004: Gun
+    3300006: Mag
+    3300008: Mag_Buttons
+    3300010: Mode_Switcher
+    3300012: Pullable
+    3300014: Pullable_Button
+    3300016: Sight_Extra
+    3300018: Sight_Extra_002
+    3300020: Sights
+    3300022: Trigger
+    4300000: Gun
+    4300002: Mag
+    4300004: Trigger
+    4300006: Mode_Switcher
+    4300008: Sights
+    4300010: Cylinder009
+    4300012: Pullable
+    4300014: Sight_Extra
+    4300016: Sight_Extra_002
+    4300018: Barrel
+    4300020: Pullable_Button
+    4300022: Mag_Buttons
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
