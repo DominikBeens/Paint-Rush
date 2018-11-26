@@ -387,7 +387,7 @@ MonoBehaviour:
   wallRunReleaseForce: 60
   slideForce: 91
   headObject: {fileID: 6056574065620555934}
-  jumpCooldownTime: 3
+  jumpCooldownTime: 2
 --- !u!1 &3092096527861150194
 GameObject:
   m_ObjectHideFlags: 0

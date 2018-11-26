@@ -166,6 +166,8 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.forward * wallRunReleaseForce, ForceMode.Impulse);
             }
+
+            rb.AddRelativeForce(Vector3.down * wallRunReleaseForce / 2, ForceMode.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -343,7 +345,7 @@ public class PlayerController : MonoBehaviour
         }
         RaycastHit hit;
         rb.useGravity = false;
-        if(Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("a"))
+        if(Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist)  && Input.GetKey("a"))
         {
             //  if (hit.transform.gameObject.isStatic)
             // {
@@ -375,7 +377,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
            // }
         }
-        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
+        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
         {
             //if (hit.transform.gameObject.isStatic)
             // {
