@@ -40,4 +40,5 @@ MonoBehaviour:
   - SyncPaintValues
   - SpawnPrefabOnHit
   - SetPlayerState
+  - SpawnPrefab
   DisableAutoOpenWizard: 1

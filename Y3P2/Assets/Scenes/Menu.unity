@@ -159,12 +159,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &1378982955 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1378982954}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &128978269
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +317,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!224 &648272082 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 648272081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167528595
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000056631314, y: -126.000046}
+  m_AnchoredPosition: {x: -0.000056631314, y: -60.30007}
   m_SizeDelta: {x: 300, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &398895315
@@ -720,12 +720,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &212096666 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 212096665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562308540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,12 +1033,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!224 &698585514 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 698585513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1082289338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,12 +1106,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!224 &648272082 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 648272081}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174465156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1442,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!224 &1378982955 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378982954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350173166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,12 +1488,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &1532226917 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1640396393}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563148773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,6 +1647,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!224 &1532226917 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640396393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1643291116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1699,12 @@ MonoBehaviour:
   nameInputField: {fileID: 398895312}
   connectionProgress: {fileID: 562308540}
   onlinePlayersText: {fileID: 470315005}
+--- !u!224 &212096666 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 212096665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1766011909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2073,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!224 &698585514 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 698585513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100754750
 GameObject:
   m_ObjectHideFlags: 0
@@ -3340,7 +3340,7 @@ PrefabInstance:
     - target: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -224.99997
+      value: -159.3
       objectReference: {fileID: 0}
     - target: {fileID: 5289739938560517108, guid: 097dbdd346d7b994f8a4830ade8caa0c,
         type: 3}

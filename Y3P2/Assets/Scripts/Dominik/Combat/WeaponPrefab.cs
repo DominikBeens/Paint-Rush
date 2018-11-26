@@ -7,8 +7,10 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     private Vector3 screenMiddle;
     private Camera mainCam;
     private bool initialisedEvents;
+    private PaintImpactParticle paintMuzzleFlashParticle;
 
     [SerializeField] private Transform projectileSpawn;
+    [SerializeField] private ParticleSystem muzzleFlashParticle;
 
     private void Awake()
     {
@@ -24,6 +26,8 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         {
             SetLayer(transform, 10);
         }
+
+        paintMuzzleFlashParticle = GetComponentInChildren<PaintImpactParticle>();
     }
 
     public override void OnEnable()
@@ -55,10 +59,13 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {
-                    photonView.RPC("SpawnPrefabOnHit", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, (int)WeaponSlot.currentPaintType);
+                    // TODO: Change Quaternion.identity to face impact.
+                    photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.identity, (int)WeaponSlot.currentPaintType);
                 }
             }
         }
+
+        photonView.RPC("PlayMuzzleFlash", RpcTarget.All, (int)WeaponSlot.currentPaintType);
 
         //Weapon weapon = WeaponSlot.currentWeapon;
 
@@ -82,9 +89,16 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void SpawnPrefabOnHit(string prefabPoolName, Vector3 position, int paintType)
+    private void PlayMuzzleFlash(int paintType)
     {
-        GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabPoolName, position, transform.rotation);
+        paintMuzzleFlashParticle.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
+        muzzleFlashParticle.Play();
+    }
+
+    [PunRPC]
+    private void SpawnPrefab(string prefabPoolName, Vector3 position, Quaternion rotation, int paintType)
+    {
+        GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabPoolName, position, rotation);
         PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
         if (pip)
         {
