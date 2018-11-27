@@ -73,7 +73,7 @@ public class PaintUI : MonoBehaviour
         }
         else
         {
-            markPercentageText.text = myEntity.paintController.CurrentPaintMark.markValue + "%";
+            markPercentageText.text = Mathf.Clamp(myEntity.paintController.CurrentPaintMark.markValue, 0, 100) + "%";
         }
 
         if (anim)

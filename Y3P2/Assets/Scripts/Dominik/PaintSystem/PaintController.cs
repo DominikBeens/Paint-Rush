@@ -10,8 +10,6 @@ public class PaintController
     private Entity myEntity;
 
     public enum PaintType { Cyan, Purple, Green, Yellow };
-    private PaintType lastHitPaintType;
-    public PaintType LastHitPaintType { get { return lastHitPaintType; } }
 
     [Serializable]
     public class PaintValue
@@ -47,7 +45,14 @@ public class PaintController
         set
         {
             paintMark = value;
-            OnPaintMarkActivated(paintMark);
+            if (paintMark != null)
+            {
+                OnPaintMarkActivated(paintMark);
+            }
+            else
+            {
+                OnPaintMarkDestroyed();
+            }
         }
     }
 
@@ -78,8 +83,6 @@ public class PaintController
 
     public void AddPaint(PaintType color, float amount, int attackerID)
     {
-        lastHitPaintType = color;
-
         if (CurrentPaintMark == null)
         {
             for (int i = 0; i < paintValues.Count; i++)
@@ -185,8 +188,9 @@ public class PaintController
 
     private void MarkDestroyed()
     {
+        Debug.LogWarning("MARK DESTROYED");
+        
         CurrentPaintMark = null;
-        OnPaintMarkDestroyed();
 
         if (PlayerManager.instance.entity == myEntity)
         {
