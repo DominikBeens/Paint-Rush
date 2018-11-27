@@ -1,13 +1,20 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 [Serializable]
-public class PaintController 
+public class PaintController
 {
 
     private Entity myEntity;
+
+    public enum PaintState { Free, Mark };
+    private PaintState paintState;
+    public PaintState CurrentPaintState { get { return paintState; } }
+
+    private PaintType lastHitPaintType;
+    public PaintType LastHitPaintType { get { return lastHitPaintType; } }
 
     public enum PaintType { Cyan, Purple, Green, Yellow };
 
@@ -30,6 +37,7 @@ public class PaintController
 
     public event Action<PaintType, float> OnPaintValueModified = delegate { };
     public event Action<PaintType> OnPaintValueReset = delegate { };
+    public event Action<PaintState, PaintType> OnPaintStateChanged = delegate { };
 
     public void Initialise(Entity entity)
     {
@@ -53,22 +61,30 @@ public class PaintController
 
     public void AddPaint(PaintType color, float amount, int attackerID)
     {
-        for (int i = 0; i < paintValues.Count; i++)
+        lastHitPaintType = color;
+
+        if (paintState == PaintState.Free)
         {
-            if (paintValues[i].paintType == color && paintValues[i].CanIncrement())
+            for (int i = 0; i < paintValues.Count; i++)
             {
-                paintValues[i].paintValue += amount;
-                paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
-
-                OnPaintValueModified(paintValues[i].paintType, amount);
-
-                if (paintValues[i].paintValue == 100)
+                if (paintValues[i].paintType == color && paintValues[i].CanIncrement())
                 {
-                    PaintFilled(paintValues[i].paintType, attackerID);
-                    Debug.LogWarning("PAINT FILLED");
+                    paintValues[i].paintValue += amount;
+                    paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
+
+                    OnPaintValueModified(paintValues[i].paintType, amount);
+
+                    if (paintValues[i].paintValue == 100)
+                    {
+                        PaintFilled(paintValues[i].paintType, attackerID);
+                    }
+                    return;
                 }
-                return;
             }
+        }
+        else
+        {
+            OnPaintValueModified(color, amount);
         }
     }
 
@@ -99,6 +115,17 @@ public class PaintController
         return Color.white;
     }
 
+    public void SetPaintState(PaintState newState, PaintType caller)
+    {
+        if (newState == paintState)
+        {
+            return;
+        }
+
+        paintState = newState;
+        OnPaintStateChanged(paintState, caller);
+    }
+
     // Used for syncing paint values when new players join.
     //public void SetRawValues(List<float> values)
     //{
@@ -116,12 +143,24 @@ public class PaintController
 
     private void PaintFilled(PaintType color, int attackerID)
     {
+        ResetPaint(color);
+
         if (attackerID == PlayerManager.instance.photonView.ViewID)
         {
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
+            if (PlayerManager.instance.entity.paintController.CurrentPaintState == PaintState.Free)
+            {
+                PlayerManager.instance.entity.paintController.SetPaintState(PaintState.Mark, color);
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
+            }
         }
-
-        ResetPaint(color);
+        else
+        {
+            PhotonView pv = PhotonView.Find(attackerID);
+            if (pv)
+            {
+                pv.GetComponent<PlayerManager>().entity.paintController.SetPaintState(PaintState.Mark, color);
+            }
+        }
 
         if (PlayerManager.instance.entity == myEntity)
         {

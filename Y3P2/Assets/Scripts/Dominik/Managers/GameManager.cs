@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Space(10)]
 
     [SerializeField] private List<Transform> playerSpawnPoints = new List<Transform>();
+    // Temp(?)
+    public Transform respawnBooth;
 
     private void Awake()
     {

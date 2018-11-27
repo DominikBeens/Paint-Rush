@@ -34,7 +34,7 @@ public class WeaponSlot : EquipmentSlot
 
     private void Update()
     {
-        if (currentWeapon != null && equipedItem != null)
+        if (currentWeapon != null && equipedItem != null && GameManager.CurrentGameSate == GameManager.GameState.Playing)
         {
             HandleFiring();
         }

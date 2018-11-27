@@ -53,12 +53,14 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
             if (stream.IsWriting)
             {
                 stream.SendNext(paintController.PaintValues[i].paintValue);
+                stream.SendNext((int)paintController.CurrentPaintState);
             }
             else
             {
                 if (!photonView.IsMine)
                 {
                     paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+                    paintController.SetPaintState((PaintController.PaintState)(int)stream.ReceiveNext(), paintController.LastHitPaintType);
                 }
             }
         }

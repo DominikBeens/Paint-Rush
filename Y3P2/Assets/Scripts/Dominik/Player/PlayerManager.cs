@@ -1,6 +1,5 @@
 ﻿using Photon.Pun;
 using UnityEngine;
-using TMPro;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
@@ -52,9 +51,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
-        PhotonNetwork.RemoveRPCs(photonView);
-        photonView.RPC("SetPlayerState", RpcTarget.AllBuffered, (int)newState);
-
         playerController.enabled = newState == GameManager.GameState.Playing ? true : false;
 
         if (newState == GameManager.GameState.Playing)
@@ -63,16 +59,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             transform.position = randomSpawn.position;
             transform.rotation = randomSpawn.rotation;
         }
-    }
-
-    [PunRPC]
-    private void SetPlayerState(int state)
-    {
-        GameManager.GameState newState = (GameManager.GameState)state;
-
-        for (int i = 0; i < transform.childCount; i++)
+        else
         {
-            transform.GetChild(i).gameObject.SetActive(newState == GameManager.GameState.Playing ? true : false);
+            transform.position = GameManager.instance.respawnBooth.position;
         }
     }
 

@@ -13,13 +13,18 @@ public class PaintUIBar : MonoBehaviour
     [SerializeField] private Image barColorFill;
     [SerializeField] private Image barBackgroundFill;
 
-    public void Initialise(PaintController.PaintValue paintValue)
+    public void Initialise(PaintController.PaintValue paintValue, bool local)
     {
         barType = paintValue.paintType;
         barFillAmount = 0;
         barColorFill.fillAmount = 0;
         barColorFill.color = paintValue.paintColor;
         barBackgroundFill.color = new Color(paintValue.paintColor.r, paintValue.paintColor.g, paintValue.paintColor.b, 0.1f);
+
+        if (local)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     public void IncrementBar(float amount)
