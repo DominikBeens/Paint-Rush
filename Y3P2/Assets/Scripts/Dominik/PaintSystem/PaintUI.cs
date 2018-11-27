@@ -10,9 +10,6 @@ public class PaintUI : MonoBehaviour
     private PaintUIBar[] paintUIBars;
     private Animator anim;
 
-    private PaintController.PaintType markType;
-    private float markPercentage;
-
     [SerializeField] private GameObject markObject;
     [SerializeField] private Image markImage;
     [SerializeField] private TextMeshProUGUI markPercentageText;
@@ -53,7 +50,8 @@ public class PaintUI : MonoBehaviour
 
         entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
         entity.paintController.OnPaintValueReset += PaintController_OnPaintValueReset;
-        entity.paintController.OnPaintStateChanged += PaintController_OnPaintStateChanged;
+        entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
+        entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
@@ -63,38 +61,19 @@ public class PaintUI : MonoBehaviour
             return;
         }
 
-        switch (myEntity.paintController.CurrentPaintState)
+        if (myEntity.paintController.CurrentPaintMark == null)
         {
-            case PaintController.PaintState.Free:
-                for (int i = 0; i < paintUIBars.Length; i++)
+            for (int i = 0; i < paintUIBars.Length; i++)
+            {
+                if (paintUIBars[i].BarType == paintType)
                 {
-                    if (paintUIBars[i].BarType == paintType)
-                    {
-                        paintUIBars[i].IncrementBar(amount);
-                    }
+                    paintUIBars[i].IncrementBar(amount);
                 }
-                break;
-
-            case PaintController.PaintState.Mark:
-
-                if (paintType == markType)
-                {
-                    return;
-                }
-
-                markPercentage -= amount;
-                markPercentageText.text = markPercentage + "%";
-
-                if (markPercentage <= 0)
-                {
-                    myEntity.paintController.SetPaintState(PaintController.PaintState.Free, paintType);
-
-                    if (myEntity == PlayerManager.instance.entity)
-                    {
-                        NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + Photon.Pun.PhotonNetwork.NickName + "'s</color> mark has been destroyed!");
-                    }
-                }
-                break;
+            }
+        }
+        else
+        {
+            markPercentageText.text = myEntity.paintController.CurrentPaintMark.markValue + "%";
         }
 
         if (anim)
@@ -114,23 +93,26 @@ public class PaintUI : MonoBehaviour
         }
     }
 
-    private void PaintController_OnPaintStateChanged(PaintController.PaintState newState, PaintController.PaintType caller)
+    private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
+    {
+        TogglePaintUIBars(false);
+        markObject.SetActive(true);
+
+        markImage.color = myEntity.paintController.GetPaintColor(mark.markType);
+        markPercentageText.text = mark.markValue + "%";
+    }
+
+    private void PaintController_OnPaintMarkDestroyed()
+    {
+        TogglePaintUIBars(true);
+        markObject.SetActive(false);
+    }
+
+    private void TogglePaintUIBars(bool toggle)
     {
         for (int i = 0; i < paintUIBars.Length; i++)
         {
-            paintUIBars[i].gameObject.SetActive(newState == PaintController.PaintState.Free ? true : false);
-        }
-
-        markObject.SetActive(newState == PaintController.PaintState.Mark ? true : false);
-
-        if (newState == PaintController.PaintState.Mark)
-        {
-            markImage.color = myEntity.paintController.GetPaintColor(caller);
-
-            markType = caller;
-
-            markPercentage = 100;
-            markPercentageText.text = markPercentage + "%";
+            paintUIBars[i].gameObject.SetActive(toggle);
         }
     }
 
@@ -140,7 +122,8 @@ public class PaintUI : MonoBehaviour
         {
             myEntity.paintController.OnPaintValueModified -= PaintController_OnPaintValueModified;
             myEntity.paintController.OnPaintValueReset -= PaintController_OnPaintValueReset;
-            myEntity.paintController.OnPaintStateChanged -= PaintController_OnPaintStateChanged;
+            myEntity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
+            myEntity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
         }
     }
 }

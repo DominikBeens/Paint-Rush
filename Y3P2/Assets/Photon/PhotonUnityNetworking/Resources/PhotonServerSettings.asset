@@ -43,4 +43,6 @@ MonoBehaviour:
   - SpawnPrefab
   - PlayMuzzleFlash
   - SetPaintState
+  - ReceiveUpdates
+  - SendUpdates
   DisableAutoOpenWizard: 1

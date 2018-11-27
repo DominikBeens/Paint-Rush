@@ -1,11 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &3433519484634455298 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2748154433815853541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &324844095495804145
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +113,7 @@ GameObject:
   - component: {fileID: 43359935319383966}
   - component: {fileID: 348178709922595240}
   - component: {fileID: 3631737143785304059}
-  - component: {fileID: 6876841064782736505}
+  - component: {fileID: 4638034832176880985}
   m_Layer: 2
   m_Name: Hitbox
   m_TagString: Untagged
@@ -182,7 +176,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6876841064782736505
+--- !u!114 &4638034832176880985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,10 +191,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 3631737143785304059}
+  - {fileID: 0}
   viewIdField: 2
   InstantiationId: 2
   isRuntimeInstantiated: 0
@@ -441,6 +435,12 @@ MonoBehaviour:
   viewIdField: 1
   InstantiationId: 1
   isRuntimeInstantiated: 0
+--- !u!4 &3433519484634455298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2748154433815853541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3440967766366630276
 GameObject:
   m_ObjectHideFlags: 0

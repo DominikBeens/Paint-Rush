@@ -42,7 +42,7 @@ public class PaintUILocalPlayer : MonoBehaviour
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
     {
-        if (amount <= 0 || paintType != myPaintType || PlayerManager.instance.entity.paintController.CurrentPaintState == PaintController.PaintState.Mark)
+        if (amount <= 0 || paintType != myPaintType || PlayerManager.instance.entity.paintController.CurrentPaintMark != null)
         {
             return;
         }

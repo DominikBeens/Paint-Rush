@@ -1,14 +1,17 @@
 ﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Entity : MonoBehaviourPunCallbacks, IPunObservable
+public class Entity : MonoBehaviourPunCallbacks
 {
+
+    private bool requestingUpdates;
 
     [HideInInspector] public Collider myCollider;
 
     [SerializeField] private int entityID;
-    public enum EntityType { Humanoid, Prop};
+    public enum EntityType { Humanoid, Prop };
     [SerializeField] private EntityType entityType;
 
     [Space(10)]
@@ -24,6 +27,12 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         myCollider = GetComponent<Collider>();
         paintController.Initialise(this);
+
+        if (!photonView.IsMine)
+        {
+            requestingUpdates = true;
+            photonView.RPC("SendUpdates", RpcTarget.All);
+        }
     }
 
     public void Hit(int paintColor, float amount)
@@ -38,31 +47,43 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         paintController.AddPaint((PaintController.PaintType)paintColor, amount, attackerID);
     }
 
+    [PunRPC]
+    private void SendUpdates()
+    {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("ReceiveUpdates", RpcTarget.All,
+                paintController.PaintValues[0].paintValue,
+                paintController.PaintValues[1].paintValue,
+                paintController.PaintValues[2].paintValue,
+                paintController.PaintValues[3].paintValue,
+                paintController.CurrentPaintMark == null ? -1 : (int)paintController.CurrentPaintMark.markType,
+                paintController.CurrentPaintMark == null ? -1 : paintController.CurrentPaintMark.markValue);
+        }
+    }
+
+    [PunRPC]
+    private void ReceiveUpdates(float val1, float val2, float val3, float val4, int markType, float markValue)
+    {
+        if (requestingUpdates)
+        {
+            requestingUpdates = false;
+
+            List<float> values = new List<float> { val1, val2, val3, val4 };
+            paintController.SetRawValues(values);
+
+            if (markType != -1)
+            {
+                paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)markType, markValue = markValue };
+            }
+        }
+    }
+
     public void DestroyEntity()
     {
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Destroy(transform.root.gameObject);
-        }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        for (int i = 0; i < paintController.PaintValues.Count; i++)
-        {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(paintController.PaintValues[i].paintValue);
-                stream.SendNext((int)paintController.CurrentPaintState);
-            }
-            else
-            {
-                if (!photonView.IsMine)
-                {
-                    paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
-                    paintController.SetPaintState((PaintController.PaintState)(int)stream.ReceiveNext(), paintController.LastHitPaintType);
-                }
-            }
         }
     }
 }

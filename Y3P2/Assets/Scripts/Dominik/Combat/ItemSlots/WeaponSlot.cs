@@ -13,6 +13,8 @@ public class WeaponSlot : EquipmentSlot
     private int numOfPaintTypes;
     private int currentPaintTypeIndex;
 
+    private bool gamePaused;
+
     public static event Action OnFireWeapon = delegate { };
     public static event Action<Weapon> OnEquipWeapon = delegate { };
     public static event Action<Color> OnChangeAmmoType = delegate { };
@@ -29,12 +31,14 @@ public class WeaponSlot : EquipmentSlot
         {
             EquipWeapon(startingWeapon);
             numOfPaintTypes = Enum.GetValues(typeof(PaintController.PaintType)).Length;
+
+            DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         }
     }
 
     private void Update()
     {
-        if (currentWeapon != null && equipedItem != null && GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        if (CanUseWeapon())
         {
             HandleFiring();
         }
@@ -70,6 +74,11 @@ public class WeaponSlot : EquipmentSlot
 
         currentPaintType = (PaintController.PaintType)currentPaintTypeIndex;
         OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
+    }
+
+    private bool CanUseWeapon()
+    {
+        return currentWeapon != null && equipedItem != null && GameManager.CurrentGameSate == GameManager.GameState.Playing && !gamePaused;
     }
 
     public void HitEntity()
@@ -110,5 +119,15 @@ public class WeaponSlot : EquipmentSlot
     {
         int[] ids = GetEquipedItemIDs(weaponSpawn);
         ParentEquipment(ids[0], ids[1]);
+    }
+
+    private void SceneManager_OnGamePaused(bool b)
+    {
+        gamePaused = b;
+    }
+
+    public override void OnDisable()
+    {
+        DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
     }
 }

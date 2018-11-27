@@ -42,6 +42,11 @@ public class NotificationManager : MonoBehaviourPunCallbacks
         photonView.RPC("SendNotification", RpcTarget.All, text);
     }
 
+    public void NewLocalNotification(string text)
+    {
+        SendNotification(text);
+    }
+
     [PunRPC]
     private void SendNotification(string text)
     {
