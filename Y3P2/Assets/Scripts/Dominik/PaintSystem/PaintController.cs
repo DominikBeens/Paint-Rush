@@ -176,7 +176,11 @@ public class PaintController
             PhotonView pv = PhotonView.Find(attackerID);
             if (pv)
             {
-                pv.GetComponent<PlayerManager>().entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
+                PlayerManager playerManager = pv.GetComponent<PlayerManager>();
+                if (playerManager && playerManager.entity.paintController.CurrentPaintMark == null)
+                {
+                    playerManager.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
+                }
             }
         }
 

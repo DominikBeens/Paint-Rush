@@ -48,19 +48,21 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hitFromCam))
         {
             RaycastHit hitFromWeapon;
-            if (Physics.Raycast(projectileSpawn.position, (hitFromCam.point - projectileSpawn.position), out hitFromWeapon))
+            Ray ray = new Ray(projectileSpawn.position, (hitFromCam.point - projectileSpawn.position));
+            if (Physics.Raycast(ray, out hitFromWeapon))
             {
                 Entity hitEntity = hitFromWeapon.transform.GetComponentInChildren<Entity>();
                 if (hitEntity)
                 {
                     hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
                     PlayerManager.instance.weaponSlot.HitEntity();
+                    photonView.RPC("SpawnPrefab", RpcTarget.All, "PaintDecal", hitFromWeapon.point, Quaternion.LookRotation(-hitFromWeapon.normal), (int)WeaponSlot.currentPaintType);
                 }
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {
                     // TODO: Change Quaternion.identity to face impact.
-                    photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.identity, (int)WeaponSlot.currentPaintType);
+                    photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.LookRotation(ray.direction), (int)WeaponSlot.currentPaintType);
                 }
             }
         }
@@ -103,6 +105,13 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         if (pip)
         {
             pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
+            return;
+        }
+
+        PaintDecal decal = newSpawn.GetComponent<PaintDecal>();
+        if (decal)
+        {
+            decal.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
         }
 
         //BulletTrail bulletTrail = ObjectPooler.instance.GrabFromPool("BulletTrail", Vector3.zero, Quaternion.identity).GetComponent<BulletTrail>();

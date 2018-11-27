@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
             if (hit.transform != lastHitPlayer.transform)
             {
                 Entity entity = hit.transform.root.GetComponentInChildren<Entity>();
-                if (entity)
+                if (entity && !entity.photonView.IsSceneView)
                 {
                     hitPlayerText.text = entity.photonView.Owner.NickName;
                     lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName };
