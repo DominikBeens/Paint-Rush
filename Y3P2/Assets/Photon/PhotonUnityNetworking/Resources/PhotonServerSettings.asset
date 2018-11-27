@@ -41,4 +41,5 @@ MonoBehaviour:
   - SpawnPrefabOnHit
   - SetPlayerState
   - SpawnPrefab
+  - PlayMuzzleFlash
   DisableAutoOpenWizard: 1
