@@ -7,9 +7,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static PlayerManager instance;
 
     #region PlayerComponents
-    [HideInInspector] public Entity entity;
     [SerializeField] private GameObject playerCamera;
-    private PlayerController playerController;
+    [SerializeField] private PlayerAnimationController playerAnimController;
+    [HideInInspector] public Entity entity;
+    [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;
     #endregion
 
@@ -29,6 +30,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         entity = GetComponentInChildren<Entity>();
         playerController = GetComponentInChildren<PlayerController>();
         weaponSlot = GetComponentInChildren<WeaponSlot>();
+        playerAnimController = GetComponentInChildren<PlayerAnimationController>();
     }
 
     private void Initialise()
@@ -36,6 +38,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         playerCamera.SetActive(IsConnectedAndMine() ? true : false);
         playerController.Inititalise(IsConnectedAndMine());
         weaponSlot.Initialise(IsConnectedAndMine());
+        //playerAnimController.Initialise(IsConnectedAndMine());
 
         if (!IsConnectedAndMine())
         {
