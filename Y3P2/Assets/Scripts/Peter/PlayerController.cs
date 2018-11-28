@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving { get { return isMoving; } }
     public event Action OnJump = delegate { };
 
+    private bool infinJet;
 
     public void Inititalise(bool local)
     {
@@ -252,7 +253,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void JumpJet()
     {
-        canJump = false;
+        if (!infinJet)
+        {
+            canJump = false;
+        }
 
         OnJump();
 
@@ -452,5 +456,17 @@ public class PlayerController : MonoBehaviour
     private float GetSettingsManagerMouseSens()
     {
         return DB.MenuPack.SettingsManager.instance ? DB.MenuPack.Setting_MouseSens.mouseSensitivity : 0;
+    }
+
+    public void ToggleInfiniteJetPack()
+    {
+        if (!infinJet)
+        {
+            infinJet = true;
+        }
+        else
+        {
+            infinJet = false;
+        }
     }
 }
