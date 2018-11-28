@@ -57,6 +57,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
                     PlayerManager.instance.weaponSlot.HitEntity();
                     photonView.RPC("SpawnPrefab", RpcTarget.All, "PaintDecal", hitFromWeapon.point, Quaternion.LookRotation(-hitFromWeapon.normal), (int)WeaponSlot.currentPaintType);
+                    SaveManager.saveData.shotsHit++;
                 }
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
@@ -64,6 +65,8 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     // TODO: Change Quaternion.identity to face impact.
                     photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.LookRotation(ray.direction), (int)WeaponSlot.currentPaintType);
                 }
+
+                SaveManager.saveData.shotsFired++;
             }
         }
 

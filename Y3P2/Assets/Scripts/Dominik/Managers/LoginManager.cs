@@ -96,7 +96,7 @@ public class LoginManager : MonoBehaviourPunCallbacks
                         break;
                     case ConnectSetting.Custom:
 
-                        PhotonNetwork.JoinOrCreateRoom(currentConnectionRoomName, new RoomOptions { MaxPlayers = 10, IsVisible = false }, TypedLobby.Default);
+                        PhotonNetwork.JoinOrCreateRoom(currentConnectionRoomName, new RoomOptions { MaxPlayers = 20, IsVisible = false }, TypedLobby.Default);
                         break;
                     default:
                         PhotonNetwork.JoinRandomRoom();

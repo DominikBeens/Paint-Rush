@@ -79,6 +79,12 @@ public class Entity : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    public void SyncCaptureMark()
+    {
+        paintController.MarkCaptured();
+    }
+
     public void DestroyEntity()
     {
         if (PhotonNetwork.IsMasterClient)
