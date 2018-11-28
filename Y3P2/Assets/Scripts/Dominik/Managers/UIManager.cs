@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private TextMeshProUGUI hitPlayerText;
 
+    [Space(10)]
+
+    [SerializeField] private GameObject statsPanel;
+    [SerializeField] private TextMeshProUGUI statsText;
+
     private void Awake()
     {
         if (!instance)
@@ -47,6 +52,7 @@ public class UIManager : MonoBehaviour
         DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
+        statsPanel.SetActive(false);
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
@@ -92,6 +98,27 @@ public class UIManager : MonoBehaviour
         {
             hitPlayerText.text = "";
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleStatsPanel();
+        }
+
+        if (statsPanel.activeInHierarchy)
+        {
+            //statsText.text =
+            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            //    "Death: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+        }
+    }
+
+    private void ToggleStatsPanel()
+    {
+        statsPanel.SetActive(!statsPanel.activeInHierarchy);
     }
 
     private void WeaponSlot_OnChangeAmmoType(Color color)
