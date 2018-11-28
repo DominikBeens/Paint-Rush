@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
             rb.AddRelativeForce(Vector3.back * directionalJumpForce, ForceMode.Impulse);
         }
-        else if (y > 0)
+        else if (y > 0 || y == 0 && x == 0)
         {
             //Going forward
             rb.AddRelativeForce(Vector3.up * upForce, ForceMode.Impulse);
