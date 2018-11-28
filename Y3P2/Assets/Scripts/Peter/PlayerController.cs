@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 public class PlayerController : MonoBehaviour
 {
     
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour
     private float xMove;
     private float yMove;
     private bool canUseCam = true;
+
+    private bool isMoving;
+    public bool IsMoving { get { return isMoving; } }
+    private event Action OnJump = delegate { };
+
 
     public void Inititalise(bool local)
     {
@@ -122,6 +128,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(rb.velocity != Vector3.zero)
+        {
+            if (!isMoving)
+            {
+                isMoving = true;
+            }
+        }
+        else
+        {
+            if (isMoving)
+            {
+                isMoving = false;
+            }
+        }
+
         if (canUseCam)
         {
             CameraRotation();
@@ -230,6 +251,8 @@ public class PlayerController : MonoBehaviour
     private void JumpJet()
     {
         canJump = false;
+
+        OnJump();
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
