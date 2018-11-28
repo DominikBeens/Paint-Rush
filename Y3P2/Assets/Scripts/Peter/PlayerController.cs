@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
-    private event Action OnJump = delegate { };
+    public event Action OnJump = delegate { };
 
 
     public void Inititalise(bool local)
