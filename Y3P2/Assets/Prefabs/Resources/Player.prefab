@@ -368,9 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 91
-  sprintSpeed: 120
-  fovSprintBoost: 20
+  moveSpeed: 120
+  fovNotMoving: 60
   fovSprintBoostLerpSpeed: 10
   directionalJumpForce: 10
   verticalJumpForce: 170
@@ -382,7 +381,7 @@ MonoBehaviour:
   bobRestingPoint: 0.7
   maxBob: 0.755
   minBob: 0.625
-  gravityModifier: 4
+  gravityModifier: 12
   wallRunRayDist: 2
   wallRunReleaseForce: 60
   slideForce: 91
