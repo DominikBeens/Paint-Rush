@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
         public Transform transform;
         public string name;
     }
-    private LastHitPlayer lastHitPlayer; 
+    private LastHitPlayer lastHitPlayer;
 
     [SerializeField] private List<Image> crosshair = new List<Image>();
     [SerializeField] private Animator crosshairAnim;
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
         DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
-        statsPanel.SetActive(false);
+        ToggleStatsPanel(false);
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
@@ -99,26 +99,35 @@ public class UIManager : MonoBehaviour
             hitPlayerText.text = "";
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab))
         {
-            ToggleStatsPanel();
+            ToggleStatsPanel(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            ToggleStatsPanel(false);
         }
 
         if (statsPanel.activeInHierarchy)
         {
-            //statsText.text =
-            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
-            //    "Death: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
-            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
-            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
-            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
-            //    "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>" +
+            statsText.text =
+                "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>\n" +
+                "Deaths: <color=yellow>" + SaveManager.saveData.deaths + "</color>\n\n" +
+                "Marks Gained: <color=yellow>" + SaveManager.saveData.marksGained + "</color>\n" +
+                "Marks Destroyed: <color=yellow>" + SaveManager.saveData.marksDestroyed + "</color>\n" +
+                "Game-points Gained: <color=yellow>" + SaveManager.saveData.gamePointsGained + "</color>\n\n" +
+                "Shots Fired: <color=yellow>" + SaveManager.saveData.shotsFired + "</color>\n" +
+                "Shots Hit: <color=yellow>" + SaveManager.saveData.shotsHit + "</color>\n\n" +
+                "Pickups Collected: <color=yellow>" + SaveManager.saveData.pickupsCollected + "</color>";
         }
     }
 
-    private void ToggleStatsPanel()
+    private void ToggleStatsPanel(bool toggle)
     {
-        statsPanel.SetActive(!statsPanel.activeInHierarchy);
+        if (toggle != statsPanel.activeInHierarchy)
+        {
+            statsPanel.SetActive(toggle);
+        }
     }
 
     private void WeaponSlot_OnChangeAmmoType(Color color)
