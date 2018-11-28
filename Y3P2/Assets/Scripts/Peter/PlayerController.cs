@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
             }
             if (forceGravity)
             {
-                rb.AddRelativeForce(Vector3.down * -Physics.gravity.y * gravityModifier);
+                rb.AddForce(Physics.gravity * gravityModifier);
             }
         }
 
