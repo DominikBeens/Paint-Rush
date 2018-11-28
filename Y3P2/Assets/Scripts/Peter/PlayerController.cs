@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(rb.velocity != Vector3.zero)
+        if(xMove != 0 && yMove != 0)
         {
             if (!isMoving)
             {
