@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
-    private float fovNotMoving = 60;
+    private float fovNotMoving = 75;
     [SerializeField]
     private float fovSprintBoostLerpSpeed = 0.5F;
     private float defaultFOV;
@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        fovNotMoving = 75;
+
         rb = GetComponent<Rigidbody>();
         defaultFOV = GetComponentInChildren<Camera>().fieldOfView;
         Cursor.visible = false;
@@ -212,12 +214,12 @@ public class PlayerController : MonoBehaviour
                 GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, fovNotMoving, fovSprintBoostLerpSpeed * Time.deltaTime);
             }
         }
-      
-        rb.AddRelativeForce(movement * moveSpeed);
-        if(GetComponentInChildren<Camera>().fieldOfView != defaultFOV)
+        else if (GetComponentInChildren<Camera>().fieldOfView != defaultFOV && xMove != 0 || yMove != 0)
         {
             GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, defaultFOV, fovSprintBoostLerpSpeed * Time.deltaTime);
         }
+        rb.AddRelativeForce(movement * moveSpeed);
+       
     }
 
     /// <summary>
@@ -353,7 +355,7 @@ public class PlayerController : MonoBehaviour
         }
         RaycastHit hit;
         rb.useGravity = false;
-        if (Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("a"))
+        if (Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) && Input.GetKey("a"))
         {
             //  if (hit.transform.gameObject.isStatic)
             // {
@@ -385,7 +387,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
            // }
         }
-        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, 45, 0) * transform.forward, out hit, wallRunRayDist) || Physics.Raycast(transform.position, Quaternion.Euler(0, -45, 0) * transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
+        else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
         {
             //if (hit.transform.gameObject.isStatic)
             // {
