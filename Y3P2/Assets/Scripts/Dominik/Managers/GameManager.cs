@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static Color32 personalColor;
     public static string personalColorString;
 
+    [SerializeField]
+    private List<PickUp> pickUps = new List<PickUp>();
+    public List<PickUp> PickUps { get { return pickUps; } }
+
     public enum GameState { Playing, Respawning };
     private GameState gameState;
     public static GameState CurrentGameSate

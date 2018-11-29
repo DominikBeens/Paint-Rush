@@ -10,9 +10,6 @@ public class PickUp : Item {
     }
 
     [SerializeField]
-    private float spawnChance;
-
-    [SerializeField]
     private PickUpType pickUpType;
     public PickUpType Type { get { return pickUpType; } }
     [SerializeField]
