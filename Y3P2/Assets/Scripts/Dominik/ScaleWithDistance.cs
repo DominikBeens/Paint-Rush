@@ -7,16 +7,23 @@ public class ScaleWithDistance : MonoBehaviour
     private Vector3 targetFixedPos;
     private float originalSize;
 
+    private Transform mainCam;
+    private Transform respawnCam;
+
     [SerializeField] private float scaleModifier = 1f;
 
     private void Start()
     {
-        target = PlayerManager.instance.transform;
+        mainCam = Camera.main.transform;
+        respawnCam = FindObjectOfType<RespawnCam>().RespawnCamObject.transform;
+
         originalSize = transform.localScale.x;
     }
 
     private void LateUpdate()
     {
+        target = GameManager.CurrentGameSate == GameManager.GameState.Playing ? mainCam : respawnCam;
+
         if (!target)
         {
             return;

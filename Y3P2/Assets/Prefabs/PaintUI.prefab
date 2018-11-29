@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd9e4b2f6a56c948aeab2400974f4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markObject: {fileID: 1026807339122957609}
+  markObject: {fileID: 1218781363352117171}
   markImage: {fileID: 1355520883768970041}
   markPercentageText: {fileID: 8297129166077239154}
 --- !u!114 &3217003575692750736
@@ -69,14 +69,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8686540595709924406}
-  - component: {fileID: 2159419924154903836}
   m_Layer: 0
   m_Name: Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8686540595709924406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -90,27 +89,14 @@ RectTransform:
   m_Children:
   - {fileID: 2407039669734764711}
   - {fileID: 6250525521343169365}
-  m_Father: {fileID: 5698213650758540103}
-  m_RootOrder: 4
+  m_Father: {fileID: 3703244451177052586}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.788}
+  m_AnchoredPosition: {x: 0, y: 0.47600007}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2159419924154903836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026807339122957609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f68d0d98683ca146bbb449f3a1fcc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleModifier: 1.25
 --- !u!1 &1050218245349662987
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +172,56 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!1 &1218781363352117171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3703244451177052586}
+  - component: {fileID: 7447700289429501944}
+  m_Layer: 0
+  m_Name: MarkObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3703244451177052586
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218781363352117171}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8686540595709924406}
+  m_Father: {fileID: 5698213650758540103}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.312}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7447700289429501944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218781363352117171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f68d0d98683ca146bbb449f3a1fcc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleModifier: 1.25
 --- !u!1 &1824638340302735239
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +854,7 @@ RectTransform:
   - {fileID: 6216930119314630551}
   - {fileID: 1120487278869745715}
   - {fileID: 5812781551431021138}
-  - {fileID: 8686540595709924406}
+  - {fileID: 3703244451177052586}
   m_Father: {fileID: 685998645619123431}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

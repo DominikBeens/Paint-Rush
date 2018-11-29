@@ -6,13 +6,19 @@ public class LookAtCamera : MonoBehaviour
     private Transform target;
     private Vector3 targetFixedPos;
 
+    private Transform mainCam;
+    private Transform respawnCam;
+
     private void Start()
     {
-        target = Camera.main.transform;
+        mainCam = Camera.main.transform;
+        respawnCam = FindObjectOfType<RespawnCam>().RespawnCamObject.transform;
     }
 
     private void LateUpdate()
     {
+        target = GameManager.CurrentGameSate == GameManager.GameState.Playing ? mainCam : respawnCam;
+
         if (!target)
         {
             return;
