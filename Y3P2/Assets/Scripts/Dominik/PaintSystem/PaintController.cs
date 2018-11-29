@@ -8,6 +8,7 @@ public class PaintController
 {
 
     private Entity myEntity;
+    private PlayerManager myPlayerManager;
 
     public enum PaintType { Cyan, Purple, Green, Yellow };
 
@@ -64,6 +65,7 @@ public class PaintController
     public void Initialise(Entity entity)
     {
         myEntity = entity;
+        myPlayerManager = myEntity.transform.root.GetComponent<PlayerManager>();
         SetDefaultPaintValues();
     }
 
@@ -211,6 +213,8 @@ public class PaintController
     public void MarkCaptured()
     {
         CurrentPaintMark = null;
+
+        PlayerManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
 
         if (PlayerManager.instance.entity == myEntity)
         {

@@ -32,8 +32,9 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField] private GameObject statsPanel;
+    [SerializeField] private GameObject leaderboardAndStatsCanvas;
     [SerializeField] private TextMeshProUGUI statsText;
+    [SerializeField] private TextMeshProUGUI leaderboardText;
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class UIManager : MonoBehaviour
         DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
-        ToggleStatsPanel(false);
+        ToggleLeaderboardAndStats(false);
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
@@ -76,6 +77,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        HandleTargetedPlayerPanel();
+        HandleLeaderboardAndStatsPanel();
+    }
+
+    private void HandleTargetedPlayerPanel()
+    {
         screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
         RaycastHit hit;
         if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hit, 100, playerLayerMask))
@@ -98,17 +105,23 @@ public class UIManager : MonoBehaviour
         {
             hitPlayerText.text = "";
         }
+    }
 
+    private void HandleLeaderboardAndStatsPanel()
+    {
         if (Input.GetKey(KeyCode.Tab))
         {
-            ToggleStatsPanel(true);
+            ToggleLeaderboardAndStats(true);
+            ToggleCrosshair(false);
         }
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
-            ToggleStatsPanel(false);
+            ToggleLeaderboardAndStats(false);
+            ToggleCrosshair(GameManager.CurrentGameSate == GameManager.GameState.Playing ? true : false);
+            leaderboardText.text = null;
         }
 
-        if (statsPanel.activeInHierarchy)
+        if (leaderboardAndStatsCanvas.activeInHierarchy)
         {
             statsText.text =
                 "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>\n" +
@@ -119,14 +132,24 @@ public class UIManager : MonoBehaviour
                 "Shots Fired: <color=yellow>" + SaveManager.saveData.shotsFired + "</color>\n" +
                 "Shots Hit: <color=yellow>" + SaveManager.saveData.shotsHit + "</color>\n\n" +
                 "Pickups Collected: <color=yellow>" + SaveManager.saveData.pickupsCollected + "</color>";
+
+            if (string.IsNullOrEmpty(leaderboardText.text))
+            {
+                List<PlayerManager.PlayerGameStats> latestPlayerGameStats = PlayerManager.instance.GetSortedPlayerGameStats();
+
+                for (int i = 0; i < latestPlayerGameStats.Count; i++)
+                {
+                    leaderboardText.text += latestPlayerGameStats[i].playerName + ": <color=yellow>" + latestPlayerGameStats[i].playerGamePoints + "</color>\n";
+                }
+            }
         }
     }
 
-    private void ToggleStatsPanel(bool toggle)
+    private void ToggleLeaderboardAndStats(bool toggle)
     {
-        if (toggle != statsPanel.activeInHierarchy)
+        if (toggle != leaderboardAndStatsCanvas.activeInHierarchy)
         {
-            statsPanel.SetActive(toggle);
+            leaderboardAndStatsCanvas.SetActive(toggle);
         }
     }
 

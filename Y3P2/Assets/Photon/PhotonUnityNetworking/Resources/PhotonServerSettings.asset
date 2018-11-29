@@ -46,4 +46,6 @@ MonoBehaviour:
   - ReceiveUpdates
   - SendUpdates
   - SyncCaptureMark
+  - ReceiveGameStats
+  - SendGameStats
   DisableAutoOpenWizard: 1
