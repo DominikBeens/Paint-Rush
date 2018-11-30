@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PickUpActivater : MonoBehaviour {
 
     private bool waiting;
+    private PlayerPickUpManager pkm;
 
-	public void ActivatePickUp(PickUp pickUp)
+    private void Start()
+    {
+        pkm = FindObjectOfType<PlayerPickUpManager>();
+    }
+
+    public void ActivatePickUp(PickUp pickUp)
     {
         if(pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
@@ -16,6 +23,15 @@ public class PickUpActivater : MonoBehaviour {
                 StartCoroutine(Duration(pickUp));
             }
             
+        }
+        else if (pickUp.Type == PickUp.PickUpType.Cloak)
+        {
+            if (!waiting)
+            {
+                GetComponent<PhotonView>().RPC("ActivateCloak", RpcTarget.AllBufferedViaServer);
+                StartCoroutine(Duration(pickUp));
+            }
+
         }
     }
 
@@ -35,6 +51,24 @@ public class PickUpActivater : MonoBehaviour {
         if (pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
             GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack();
+        }
+        else if (pickUp.Type == PickUp.PickUpType.Cloak)
+        {
+            foreach (GameObject r in pkm.objectsToCloak)
+            {
+                r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
+            }
+        }
+    }
+
+    [PunRPC]
+    private void ActivateCloak()
+    {
+        pkm.CheckChildren();
+
+        foreach (GameObject r in pkm.objectsToCloak)
+        {
+            r.GetComponent<Renderer>().material = pkm.CloakShader;
         }
     }
 }

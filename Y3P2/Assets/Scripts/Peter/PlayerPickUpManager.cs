@@ -5,11 +5,21 @@ using UnityEngine.UI;
 using TMPro;
 public class PlayerPickUpManager : MonoBehaviour {
 
-    
+    [SerializeField]
+    private Material cloakShader;
+    public Material CloakShader { get { return cloakShader; } }
+
+    [SerializeField]
+    public List<GameObject> objectsToCloak = new List<GameObject>();
+    public List<GameObject> ObjectsToCloak { get { return ObjectsToCloak; } }
+
 
     private void Start()
     {
         UIManager.instance.JumpCooldownIcon.SetActive(false);
+
+       
+
     }
 
     public IEnumerator JumpCooldownIcon(float coolDowntime)
@@ -18,4 +28,19 @@ public class PlayerPickUpManager : MonoBehaviour {
         yield return new WaitForSeconds(coolDowntime);
         UIManager.instance.JumpCooldownIcon.SetActive(false);
     }
+
+    public void CheckChildren()
+    {
+        foreach (GetDefaultMat df in transform.GetComponentsInChildren<GetDefaultMat>())
+        {
+            if (df != null)
+            {
+                if (!objectsToCloak.Contains(df.gameObject))
+                {
+                    objectsToCloak.Add(df.gameObject);
+                }
+            }
+        }
+    }
+   
 }

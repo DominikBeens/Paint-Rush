@@ -50,4 +50,5 @@ MonoBehaviour:
   - SendGameStats
   - SpawnPickUp
   - MasterSpawnPickUp
+  - ActivateCloak
   DisableAutoOpenWizard: 1

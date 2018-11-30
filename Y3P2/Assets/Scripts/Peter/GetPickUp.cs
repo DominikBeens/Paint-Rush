@@ -55,9 +55,12 @@ public class GetPickUp : MonoBehaviour {
 
     private void SpawnPickUp()
     {
+
+        int i = Random.Range(0, GameManager.instance.PickUps.Count);
         if (PhotonNetwork.IsMasterClient)
         {
-            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[Random.Range(0, GameManager.instance.PickUps.Count)].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[i].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            myPickup = GameManager.instance.PickUps[i];
         }
         else
         {
