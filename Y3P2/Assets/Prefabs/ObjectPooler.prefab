@@ -57,5 +57,5 @@ MonoBehaviour:
   - poolName: PaintDecal
     poolPrefab: {fileID: 73474177003812958, guid: e17ea91f90ca8084eb23fcd52ee08082,
       type: 3}
-    poolSize: 100
-    autoExpand: 1
+    poolSize: 250
+    autoExpand: 0

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3d6744fdeec1c48ba20df4c823e3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomSizeRange: 0.3
   decalData:
   - decalMat: {fileID: 2100000, guid: 4a956234f23a8ca42b6db4046d61f052, type: 2}
     decalColor: {r: 0, g: 1, b: 1, a: 1}
