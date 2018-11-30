@@ -30,6 +30,12 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        PlayerManager[] players = FindObjectsOfType<PlayerManager>();
+        for (int i = 0; i < players.Length; i++)
+        {
+            AddPlayer(players[i].photonView.ViewID, players[i].photonView.Owner.NickName);
+        }
+
         photonView.RPC("SendGameStats", RpcTarget.Others);
     }
 

@@ -40,8 +40,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         weaponSlot.Initialise(IsConnectedAndMine());
         //playerAnimController.Initialise(IsConnectedAndMine());
 
-        ScoreboardManager.instance.AddPlayer(photonView.ViewID, photonView.Owner.NickName);
-
         if (!IsConnectedAndMine())
         {
             SetLayer(transform, 10);
