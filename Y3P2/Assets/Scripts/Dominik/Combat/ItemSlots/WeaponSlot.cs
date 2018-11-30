@@ -43,7 +43,8 @@ public class WeaponSlot : EquipmentSlot
             HandleFiring();
         }
 
-        HandlePaintSwitching();
+        HandleMousePaintSwitching();
+        HandleKeyPaintSwitching();
     }
 
     private void HandleFiring()
@@ -58,7 +59,7 @@ public class WeaponSlot : EquipmentSlot
         }
     }
 
-    private void HandlePaintSwitching()
+    private void HandleMousePaintSwitching()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll == 0)
@@ -72,8 +73,41 @@ public class WeaponSlot : EquipmentSlot
         currentPaintTypeIndex = currentPaintTypeIndex == numOfPaintTypes ? 0 : currentPaintTypeIndex;
         currentPaintTypeIndex = currentPaintTypeIndex == -1 ? numOfPaintTypes - 1 : currentPaintTypeIndex;
 
+
         currentPaintType = (PaintController.PaintType)currentPaintTypeIndex;
         OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
+    }
+
+    private void HandleKeyPaintSwitching()
+    {
+        bool pressedKey = false;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentPaintTypeIndex = 0;
+            pressedKey = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentPaintTypeIndex = 1;
+            pressedKey = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentPaintTypeIndex = 2;
+            pressedKey = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentPaintTypeIndex = 3;
+            pressedKey = true;
+        }
+
+        if (pressedKey)
+        {
+            currentPaintType = (PaintController.PaintType)currentPaintTypeIndex;
+            OnChangeAmmoType(PlayerManager.instance.entity.paintController.GetPaintColor(currentPaintType));
+        }
     }
 
     private bool CanUseWeapon()
