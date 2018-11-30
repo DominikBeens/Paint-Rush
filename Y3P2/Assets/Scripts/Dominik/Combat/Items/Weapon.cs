@@ -7,9 +7,6 @@ public class Weapon : Item
     [Space(10)]
 
     public float fireRate = 0.2f;
-    public float bulletSpeed = 10f;
-    public string bulletPoolName;
-
     public float paintDamage = 1f;
     public string paintImpactPoolName;
 }

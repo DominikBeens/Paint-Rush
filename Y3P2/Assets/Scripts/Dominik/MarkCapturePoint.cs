@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MarkCapturePoint : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private float captureDuration = 3f;
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image captureProgressFill;
+    [SerializeField] private TextMeshProUGUI capturePercentageText;
     [Range(0, 100)] [SerializeField] private float hitProgressLoss = 15f;
 
     public class CapturingPlayer
@@ -61,6 +63,7 @@ public class MarkCapturePoint : MonoBehaviour
         {
             captureProgress += Time.deltaTime;
             captureProgressFill.fillAmount = captureProgress / captureDuration;
+            capturePercentageText.text = (captureProgressFill.fillAmount * 100).ToString("F0") + "%";
 
             if (capturingPlayer.entityCapturing.paintController.CurrentPaintMark == null)
             {
