@@ -44,6 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3d6744fdeec1c48ba20df4c823e3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decalData:
+  - decalMat: {fileID: 2100000, guid: 4a956234f23a8ca42b6db4046d61f052, type: 2}
+    decalColor: {r: 0, g: 1, b: 1, a: 1}
+  - decalMat: {fileID: 2100000, guid: 592891f7f6daf264eb49c7ce587e2956, type: 2}
+    decalColor: {r: 0, g: 1, b: 0, a: 1}
+  - decalMat: {fileID: 2100000, guid: cfa48e5223079f84bac94079844cb2a5, type: 2}
+    decalColor: {r: 1, g: 0, b: 1, a: 1}
+  - decalMat: {fileID: 2100000, guid: 6c7ceac29df69a54298196723dcf9168, type: 2}
+    decalColor: {r: 1, g: 1, b: 0, a: 1}
 --- !u!1 &2387149460272737719
 GameObject:
   m_ObjectHideFlags: 0
