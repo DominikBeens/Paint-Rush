@@ -10,6 +10,7 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private float captureDuration = 3f;
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image captureProgressFill;
+    [Range(0, 100)] [SerializeField] private float hitProgressLoss = 15f;
 
     public class CapturingPlayer
     {
@@ -20,6 +21,19 @@ public class MarkCapturePoint : MonoBehaviour
     private void Awake()
     {
         canvas.SetActive(false);
+    }
+
+    private void Start()
+    {
+        PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
+    }
+
+    private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
+    {
+        if (capturingPlayer != null)
+        {
+            captureProgress -= (hitProgressLoss / 100);
+        }
     }
 
     private void StartCapturing(CapturingPlayer player)
@@ -81,5 +95,10 @@ public class MarkCapturePoint : MonoBehaviour
         {
             StopCapturing(capturingPlayer);
         }
+    }
+
+    private void OnDisable()
+    {
+        PlayerManager.instance.entity.paintController.OnPaintValueModified -= PaintController_OnPaintValueModified;
     }
 }
