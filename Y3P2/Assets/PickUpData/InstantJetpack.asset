@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cbecdae50dcf44682e0e48e96ea228, type: 3}
   m_Name: InstantJetpack
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 5417543571090887767, guid: 8d56ebe7fd795bf4a8cd1d32889e55d9,
+  itemPrefab: {fileID: 7153504960439862523, guid: 9dea328b62b59f147a3648a11e0d85e2,
     type: 3}
   pickUpType: 0
   duration: 6
