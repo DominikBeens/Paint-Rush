@@ -36,6 +36,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private TextMeshProUGUI leaderboardText;
 
+    [SerializeField]
+    private GameObject jumpCooldownIcon;
+    public GameObject JumpCooldownIcon { get { return jumpCooldownIcon; } }
+
     private void Awake()
     {
         if (!instance)

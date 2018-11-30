@@ -309,6 +309,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpCooldown()
     {
         jumpCooldown = true;
+        GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
         yield return new WaitForSeconds(jumpCooldownTime);
         jumpCooldown = false;
         canJump = true;
