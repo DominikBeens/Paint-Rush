@@ -12,12 +12,16 @@ public class GetPickUp : MonoBehaviour {
     [SerializeField]
     private PickUp myPickup;
     [SerializeField]
-    private GameObject pickUpParent;
+    private GameObject pickUpObject;
 
     private bool cooldown;
 
+    private PhotonView photonView;
+
     private void Start()
     {
+        photonView = GetComponent<PhotonView>();
+        
         SpawnPickUp();
     }
 
@@ -38,23 +42,32 @@ public class GetPickUp : MonoBehaviour {
             {
                 other.transform.root.GetComponent<PickUpActivater>().ActivatePickUp(myPickup);
                 StartCoroutine(Cooldown());
-                DestroyChildren();
+                DestroyObject();
             }
         }
     }
 
-    private void DestroyChildren()
+    private void DestroyObject()
     {
-        foreach (Transform t in pickUpParent.transform)
-        {
-            Destroy(t.gameObject);
-        }
+        Destroy(pickUpObject);
+        pickUpObject = null;
     }
 
     private void SpawnPickUp()
     {
-        GameObject g = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[Random.Range(0, GameManager.instance.PickUps.Count)].itemPrefab.name, Vector3.zero, Quaternion.identity);
-        g.transform.SetParent(pickUpParent.transform);
-        g.transform.localPosition = Vector3.zero;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[Random.Range(0, GameManager.instance.PickUps.Count)].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+        else
+        {
+            photonView.RPC("MasterSpawnPickUp", RpcTarget.MasterClient);
+        }
+    }
+
+    [PunRPC]
+    private void MasterSpawnPickUp()
+    {
+        SpawnPickUp();
     }
 }

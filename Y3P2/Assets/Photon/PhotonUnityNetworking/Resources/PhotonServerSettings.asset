@@ -48,4 +48,6 @@ MonoBehaviour:
   - SyncCaptureMark
   - ReceiveGameStats
   - SendGameStats
+  - SpawnPickUp
+  - MasterSpawnPickUp
   DisableAutoOpenWizard: 1

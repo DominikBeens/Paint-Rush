@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 5743358725736807372}
   - component: {fileID: 1730565117623958374}
   - component: {fileID: 6390016934265100615}
+  - component: {fileID: 4009889317990867397}
   m_Layer: 0
   m_Name: ItemPad
   m_TagString: Untagged
@@ -477,6 +478,28 @@ MonoBehaviour:
   maxCooldown: 6
   myPickup: {fileID: 11400000, guid: dd2d6eb0db7196a47860617d3d439903, type: 2}
   pickUpParent: {fileID: 2818714506437827926}
+--- !u!114 &4009889317990867397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4311975012744393303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 1
+  InstantiationId: 1
+  isRuntimeInstantiated: 0
 --- !u!1 &8934491082374180716
 GameObject:
   m_ObjectHideFlags: 0
