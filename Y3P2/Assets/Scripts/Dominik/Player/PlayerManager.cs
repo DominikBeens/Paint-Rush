@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Photon.Realtime;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
 
     public static PlayerManager instance;
-
-    private bool requestingGameStatsUpdate;
 
     #region PlayerComponents
     [SerializeField] private GameObject playerCamera;
@@ -65,7 +64,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         entity.GetComponent<Collider>().enabled = false;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
-        requestingGameStatsUpdate = true;
         photonView.RPC("SendGameStats", RpcTarget.Others);
 
         DontDestroyOnLoad(gameObject);
@@ -91,6 +89,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private void AddToPlayerGameStats(int viewID, string name)
     {
         playerGameStats.Add(new PlayerGameStats { playerPhotonViewID = viewID, playerName = name, playerGamePoints = 0 });
+    }
+
+    private void RemoveFromPlayerGameStats(string name)
+    {
+        for (int i = 0; i < playerGameStats.Count; i++)
+        {
+            if (playerGameStats[i].playerName == name)
+            {
+                playerGameStats.RemoveAt(i);
+                return;
+            }
+        }
     }
 
     private int GetGamePointAmount()
@@ -128,25 +138,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void SendGameStats()
     {
-        if (!requestingGameStatsUpdate)
-        {
-            photonView.RPC("ReceiveGameStats", RpcTarget.All, instance.photonView.ViewID, instance.GetGamePointAmount());
-        }
+        photonView.RPC("ReceiveGameStats", RpcTarget.All, instance.photonView.ViewID, instance.GetGamePointAmount());
     }
 
     [PunRPC]
     private void ReceiveGameStats(int viewID, int gamePoints)
     {
-        if (requestingGameStatsUpdate)
+        for (int i = 0; i < playerGameStats.Count; i++)
         {
-            requestingGameStatsUpdate = false;
-
-            for (int i = 0; i < playerGameStats.Count; i++)
+            if (playerGameStats[i].playerPhotonViewID == viewID)
             {
-                if (playerGameStats[i].playerPhotonViewID == viewID)
-                {
-                    playerGameStats[i].playerGamePoints = gamePoints;
-                }
+                playerGameStats[i].playerGamePoints = gamePoints;
             }
         }
     }
@@ -174,5 +176,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         Transform randomSpawn = GameManager.instance.GetRandomSpawn();
         transform.position = randomSpawn.position;
         transform.rotation = randomSpawn.rotation;
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        RemoveFromPlayerGameStats(otherPlayer.NickName);
     }
 }

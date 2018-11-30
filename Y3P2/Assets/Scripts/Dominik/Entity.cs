@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviourPunCallbacks
 {
 
-    private bool requestingUpdates;
+    //private bool requestingUpdates;
 
     [HideInInspector] public Collider myCollider;
 
@@ -30,8 +30,8 @@ public class Entity : MonoBehaviourPunCallbacks
 
         if (!photonView.IsMine)
         {
-            requestingUpdates = true;
-            photonView.RPC("SendUpdates", RpcTarget.All);
+            //requestingUpdates = true;
+            photonView.RPC("SendUpdates", RpcTarget.Others);
         }
     }
 
@@ -65,9 +65,9 @@ public class Entity : MonoBehaviourPunCallbacks
     [PunRPC]
     private void ReceiveUpdates(float val1, float val2, float val3, float val4, int markType, float markValue)
     {
-        if (requestingUpdates)
-        {
-            requestingUpdates = false;
+        //if (requestingUpdates)
+        //{
+        //    requestingUpdates = false;
 
             List<float> values = new List<float> { val1, val2, val3, val4 };
             paintController.SetRawValues(values);
@@ -76,7 +76,7 @@ public class Entity : MonoBehaviourPunCallbacks
             {
                 paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)markType, markValue = markValue };
             }
-        }
+        //}
     }
 
     [PunRPC]

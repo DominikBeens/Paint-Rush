@@ -108,8 +108,8 @@ public class PaintController
         {
             if (color != CurrentPaintMark.markType)
             {
-                CurrentPaintMark.markValue -= amount;
-                OnPaintValueModified(color, amount);
+                CurrentPaintMark.markValue -= amount * 2;
+                OnPaintValueModified(color, amount * 2);
 
                 if (CurrentPaintMark.markValue <= 0)
                 {
