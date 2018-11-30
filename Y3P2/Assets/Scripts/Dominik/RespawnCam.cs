@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class RespawnCam : MonoBehaviour
 {
 
+    private float respawnTime;
+
     private GameObject respawnCamObject;
     public GameObject RespawnCamObject { get { return respawnCamObject; } }
+
+    [SerializeField] private float timeTillRespawn = 3f;
+    [SerializeField] private TextMeshProUGUI timeTillRespawnText;
 
     private void Awake()
     {
@@ -20,8 +26,13 @@ public class RespawnCam : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                GameManager.CurrentGameSate = GameManager.GameState.Playing;
+                if (Time.time > respawnTime)
+                {
+                    GameManager.CurrentGameSate = GameManager.GameState.Playing;
+                }
             }
+
+            timeTillRespawnText.text = Mathf.Clamp((respawnTime - Time.time), 0, timeTillRespawn).ToString("F2");
         }
     }
 
@@ -31,6 +42,8 @@ public class RespawnCam : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(newState == GameManager.GameState.Respawning ? true : false);
         }
+
+        respawnTime = newState == GameManager.GameState.Respawning ? Time.time + timeTillRespawn : respawnTime;
     }
 
     private void OnDisable()
