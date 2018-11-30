@@ -214,7 +214,7 @@ public class PaintController
     {
         CurrentPaintMark = null;
 
-        PlayerManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
+        ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
 
         if (PlayerManager.instance.entity == myEntity)
         {

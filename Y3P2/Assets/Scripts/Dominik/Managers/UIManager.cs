@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statsText;
     [SerializeField] private TextMeshProUGUI leaderboardText;
 
+    [Space(10)]
+
     [SerializeField]
     private GameObject jumpCooldownIcon;
     public GameObject JumpCooldownIcon { get { return jumpCooldownIcon; } }
@@ -144,7 +146,7 @@ public class UIManager : MonoBehaviour
 
             if (string.IsNullOrEmpty(leaderboardText.text))
             {
-                List<PlayerManager.PlayerGameStats> latestPlayerGameStats = PlayerManager.instance.GetSortedPlayerGameStats();
+                List<ScoreboardManager.PlayerScore> latestPlayerGameStats = ScoreboardManager.instance.GetSortedPlayerScores();
 
                 for (int i = 0; i < latestPlayerGameStats.Count; i++)
                 {

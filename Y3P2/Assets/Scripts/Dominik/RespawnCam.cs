@@ -34,6 +34,18 @@ public class RespawnCam : MonoBehaviour
 
             timeTillRespawnText.text = Mathf.Clamp((respawnTime - Time.time), 0, timeTillRespawn).ToString("F2");
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+            {
+                GameManager.CurrentGameSate = GameManager.GameState.Respawning;
+            }
+            else
+            {
+                GameManager.CurrentGameSate = GameManager.GameState.Playing;
+            }
+        }
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)

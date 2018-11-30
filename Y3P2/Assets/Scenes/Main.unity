@@ -6,11 +6,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1016277259592843271}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &485065279 stripped
+--- !u!4 &140694836 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
+  m_CorrespondingSourceObject: {fileID: 8887458642137044531, guid: 7d4a349775813dd408008f26bce71836,
     type: 3}
-  m_PrefabInstance: {fileID: 485065278}
+  m_PrefabInstance: {fileID: 140694835}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1127456021 stripped
 Transform:
@@ -18,11 +18,11 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1127456020}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &140694836 stripped
+--- !u!4 &485065279 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8887458642137044531, guid: 7d4a349775813dd408008f26bce71836,
+  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
     type: 3}
-  m_PrefabInstance: {fileID: 140694835}
+  m_PrefabInstance: {fileID: 485065278}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4684335
 GameObject:
@@ -992,35 +992,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1959163460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3823163395761721995, guid: 437ba519886b3b24dbc66b87e21e1783,
-    type: 3}
-  m_PrefabInstance: {fileID: 1959163458}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1959163459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8092508238407817626, guid: 437ba519886b3b24dbc66b87e21e1783,
     type: 3}
   m_PrefabInstance: {fileID: 1959163458}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1959163461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959163460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0261d10462ea26745a3d519d2b58827b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 673525822}
-  - {fileID: 1558188622}
-  itemPadPrefab: {fileID: 4311975012744393303, guid: 55b9150b9876efa41b3edf3d4109c017,
-    type: 3}
 --- !u!1 &2030155099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1798,11 @@ PrefabInstance:
     - target: {fileID: 1026807339122957609, guid: 6468523df62da094b894b07c631724f0,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218781363352117171, guid: 6468523df62da094b894b07c631724f0,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2158,16 +2140,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 525323566}
     m_Modifications:
-    - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
-        type: 3}
-      propertyPath: pickUps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
-        type: 3}
-      propertyPath: playerSpawnPoints.Array.size
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8092508238407817626, guid: 437ba519886b3b24dbc66b87e21e1783,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2273,12 +2245,14 @@ PrefabInstance:
       propertyPath: respawnBooth
       value: 
       objectReference: {fileID: 196945168}
-    - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
-        type: 3}
-      propertyPath: pickUps.Array.data[0]
+    - target: {fileID: 1959163461, guid: 437ba519886b3b24dbc66b87e21e1783, type: 3}
+      propertyPath: spawnPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: dd2d6eb0db7196a47860617d3d439903,
-        type: 2}
+      objectReference: {fileID: 673525822}
+    - target: {fileID: 1959163461, guid: 437ba519886b3b24dbc66b87e21e1783, type: 3}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1558188622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 437ba519886b3b24dbc66b87e21e1783, type: 3}
 --- !u!1001 &1016277259592843271

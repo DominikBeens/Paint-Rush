@@ -9,6 +9,8 @@ public class LookAtCamera : MonoBehaviour
     private Transform mainCam;
     private Transform respawnCam;
 
+    [SerializeField] private bool lockY = true;
+
     private void Start()
     {
         mainCam = Camera.main.transform;
@@ -25,7 +27,10 @@ public class LookAtCamera : MonoBehaviour
         }
 
         targetFixedPos = target.position;
-        targetFixedPos.y = transform.position.y;
+        if (lockY)
+        {
+            targetFixedPos.y = transform.position.y;
+        }
 
         transform.LookAt(targetFixedPos);
         transform.Rotate(0, 180, 0);

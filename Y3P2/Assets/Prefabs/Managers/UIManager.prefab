@@ -1178,6 +1178,9 @@ MonoBehaviour:
   leaderboardAndStatsCanvas: {fileID: 7159693490625836297}
   statsText: {fileID: 55945677227977044}
   leaderboardText: {fileID: 2366613238532216533}
+  jumpCooldownIcon: {fileID: 0}
+  mark: {fileID: 0}
+  markBorder: 50
 --- !u!1 &2263999345957326452
 GameObject:
   m_ObjectHideFlags: 0

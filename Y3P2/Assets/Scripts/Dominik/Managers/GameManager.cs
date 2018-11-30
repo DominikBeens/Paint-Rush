@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject projectileManagerPrefab;
     [SerializeField] private GameObject notificationManagerPrefab;
+    [SerializeField] private GameObject scoreBoardManagerPrefab;
 
     [Space(10)]
 
@@ -62,6 +63,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (!FindObjectOfType<NotificationManager>())
             {
                 PhotonNetwork.InstantiateSceneObject(notificationManagerPrefab.name, Vector3.zero, Quaternion.identity);
+            }
+
+            if (!FindObjectOfType<ScoreboardManager>())
+            {
+                PhotonNetwork.InstantiateSceneObject(scoreBoardManagerPrefab.name, Vector3.zero, Quaternion.identity);
             }
         }
     }
