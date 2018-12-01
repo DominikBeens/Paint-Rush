@@ -456,7 +456,7 @@ public class PlayerController : MonoBehaviour
 
     private float GetSettingsManagerMouseSens()
     {
-        return DB.MenuPack.SettingsManager.instance ? DB.MenuPack.Setting_MouseSens.mouseSensitivity : 0;
+        return DB.MenuPack.SettingsManager.instance ? DB.MenuPack.Setting_MouseSens.mouseSensitivity * 2 : 0;
     }
 
     public void ToggleInfiniteJetPack()

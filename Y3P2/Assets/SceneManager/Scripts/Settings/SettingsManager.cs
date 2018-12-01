@@ -124,12 +124,12 @@ namespace DB.MenuPack
             dropdown_TextureQuality.ClearOptions();
 
             List<string> textureQualityOptions = new List<string>
-        {
-            "High",
-            "Medium",
-            "Low",
-            "Very Low"
-        };
+            {
+                "High",
+                "Medium",
+                "Low",
+                "Very Low"
+            };
             dropdown_TextureQuality.AddOptions(textureQualityOptions);
             dropdown_TextureQuality.value = QualitySettings.masterTextureLimit;
 
