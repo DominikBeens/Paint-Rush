@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     private List<PickUp> pickUps = new List<PickUp>();
     public List<PickUp> PickUps { get { return pickUps; } }
 
+    [SerializeField]
+    private GameObject doorPrefab;
+    [SerializeField]
+    private List<GameObject> doorSpawnLocs = new List<GameObject>();
+
     public enum GameState { Playing, Respawning };
     private GameState gameState;
     public static GameState CurrentGameSate
@@ -82,6 +87,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             personalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
             personalColorString = ColorUtility.ToHtmlStringRGBA(personalColor);
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SpawnDoors();
+        }
     }
 
     public Transform GetRandomSpawn()
@@ -127,5 +137,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Destroy(PlayerManager.instance.gameObject);
         }
 #endif
+    }
+
+    private void SpawnDoors()
+    {
+        foreach (GameObject g in doorSpawnLocs)
+        {
+            PhotonNetwork.InstantiateSceneObject(doorPrefab.name, g.transform.position, g.transform.rotation);
+        }
     }
 }
