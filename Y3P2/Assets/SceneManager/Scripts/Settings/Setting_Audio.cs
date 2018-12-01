@@ -21,9 +21,9 @@ namespace DB.MenuPack
         [SerializeField] private Slider audioSlider;
         [SerializeField] private TextMeshProUGUI audioPercentageText;
 
-        public override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             audioSlider.minValue = 0;
             audioSlider.maxValue = 100;

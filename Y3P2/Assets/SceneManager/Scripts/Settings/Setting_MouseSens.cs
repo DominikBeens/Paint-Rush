@@ -16,9 +16,9 @@ namespace DB.MenuPack
         [SerializeField] private Slider mouseSensSlider;
         [SerializeField] private TextMeshProUGUI mouseSensText;
 
-        public override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             mouseSensitivity = PlayerPrefs.HasKey(mouseSensPrefKey) ? PlayerPrefs.GetFloat(mouseSensPrefKey) : defaultSensitivity;
 
@@ -27,7 +27,7 @@ namespace DB.MenuPack
             mouseSensSlider.value = mouseSensitivity;
             mouseSensSlider.onValueChanged.AddListener(SetMouseSensitivity);
 
-            mouseSensText.text = mouseSensitivity.ToString();
+            mouseSensText.text = mouseSensitivity.ToString("F2");
         }
 
         private void SetMouseSensitivity(float value)

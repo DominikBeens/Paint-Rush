@@ -17,9 +17,9 @@ namespace DB.MenuPack
             public FullScreenMode mode;
         }
 
-        public override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             int currentSettingDropdownIndex = 0;
             List<string> screenModeDropdownSettings = new List<string>();

@@ -9,7 +9,7 @@ namespace DB.MenuPack
         [SerializeField] private string settingTitle;
         [SerializeField] private TextMeshProUGUI settingTitleText;
 
-        public virtual void Awake()
+        public virtual void Init()
         {
             settingTitleText.text = settingTitle;
         }

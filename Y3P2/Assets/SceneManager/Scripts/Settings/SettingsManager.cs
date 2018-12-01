@@ -31,6 +31,16 @@ namespace DB.MenuPack
             }
 
             SetupDefaultSettings();
+            InitAllSettings();
+        }
+
+        private void InitAllSettings()
+        {
+            Setting[] settings = GetComponentsInChildren<Setting>(true);
+            for (int i = 0; i < settings.Length; i++)
+            {
+                settings[i].Init();
+            }
         }
 
         public void ToggleSettingsPanel(bool b)

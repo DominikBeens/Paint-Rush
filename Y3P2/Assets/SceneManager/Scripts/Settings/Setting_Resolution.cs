@@ -12,9 +12,9 @@ namespace DB.MenuPack
         private Resolution[] availableResolutions;
         [SerializeField] private TMP_Dropdown resolutionDropdown;
 
-        public override void Awake()
+        public override void Init()
         {
-            base.Awake();
+            base.Init();
 
             // Get all available resolutions and filter out the duplicates. Also reverse it because we want to show the highest resolution first and convert it to an array.
             availableResolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().Reverse().ToArray();
