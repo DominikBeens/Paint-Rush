@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class ScoreboardManager : MonoBehaviourPunCallbacks
 {
@@ -60,7 +61,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
     {
         for (int i = 0; i < playerScores.Count; i++)
         {
-            if (playerScores[i].playerPhotonViewID == photonView.ViewID)
+            if (playerScores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
             {
                 return playerScores[i].playerGamePoints;
             }
@@ -84,6 +85,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             if (playerScores[i].playerPhotonViewID == playerViewID)
             {
                 playerScores[i].playerGamePoints++;
+                return;
             }
         }
     }
@@ -91,7 +93,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void SendGameStats()
     {
-        photonView.RPC("ReceiveGameStats", RpcTarget.All, instance.photonView.ViewID, instance.GetScore());
+        photonView.RPC("ReceiveGameStats", RpcTarget.Others, instance.photonView.ViewID, instance.GetScore());
     }
 
     [PunRPC]
