@@ -59,3 +59,8 @@ MonoBehaviour:
       type: 3}
     poolSize: 250
     autoExpand: 0
+  - poolName: MarkCaptureExplosion
+    poolPrefab: {fileID: 7791307342497338019, guid: 825d021c45fd28940b36b1115bfcd3a3,
+      type: 3}
+    poolSize: 250
+    autoExpand: 1

@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4638034832176880985}
   m_Layer: 2
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,7 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2024847716202215142}
-  playerAnimController: {fileID: 0}
   entity: {fileID: 0}
   playerController: {fileID: 0}
   weaponSlot: {fileID: 0}
@@ -824,7 +823,7 @@ GameObject:
   - component: {fileID: 1854320754496318481}
   m_Layer: 2
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

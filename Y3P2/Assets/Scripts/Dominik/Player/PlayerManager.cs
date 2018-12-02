@@ -7,8 +7,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static PlayerManager instance;
 
     #region PlayerComponents
+    private PlayerAnimationController playerAnimController;
     [SerializeField] private GameObject playerCamera;
-    [SerializeField] private PlayerAnimationController playerAnimController;
     [HideInInspector] public Entity entity;
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;

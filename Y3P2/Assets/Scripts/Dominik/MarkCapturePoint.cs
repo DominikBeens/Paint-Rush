@@ -53,7 +53,7 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void FinishCapturing()
     {
-        capturingPlayer.entityCapturing.photonView.RPC("SyncCaptureMark", Photon.Pun.RpcTarget.All);
+        capturingPlayer.entityCapturing.photonView.RPC("SyncCaptureMark", Photon.Pun.RpcTarget.All, transform.localPosition);
         StopCapturing(capturingPlayer);
     }
 
@@ -74,6 +74,11 @@ public class MarkCapturePoint : MonoBehaviour
             {
                 FinishCapturing();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            PlayerManager.instance.entity.photonView.RPC("SyncCaptureMark", Photon.Pun.RpcTarget.All, transform.localPosition);
         }
     }
 

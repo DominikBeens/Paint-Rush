@@ -129,8 +129,10 @@ public class UIManager : MonoBehaviour
 
         if (leaderboardAndStatsCanvas.activeInHierarchy)
         {
-            int markAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) == 0 ? 0 : (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) * 100);
-            int shotAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) == 0 ? 0 : (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) * 100);
+            int markAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) == 0 ? 0 : 
+                (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) * 100);
+            int shotAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) == 0 ? 0 : 
+                (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) * 100);
 
             statsText.text =
                 "Kills: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.Kills) + "</color>\n" +

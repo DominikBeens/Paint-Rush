@@ -62,7 +62,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {
-                    // TODO: Change Quaternion.identity to face impact.
                     photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.LookRotation(ray.direction), (int)WeaponSlot.currentPaintType);
                 }
 

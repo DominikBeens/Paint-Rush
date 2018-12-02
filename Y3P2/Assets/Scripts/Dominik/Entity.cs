@@ -80,9 +80,10 @@ public class Entity : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void SyncCaptureMark()
+    public void SyncCaptureMark(Vector3 capturePoint)
     {
         paintController.MarkCaptured();
+        ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", capturePoint, Quaternion.identity);
     }
 
     public void DestroyEntity()
