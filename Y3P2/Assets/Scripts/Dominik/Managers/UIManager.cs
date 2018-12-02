@@ -129,20 +129,20 @@ public class UIManager : MonoBehaviour
 
         if (leaderboardAndStatsCanvas.activeInHierarchy)
         {
-            int markAccuracy = SaveManager.saveData.marksGained == 0 ? 0 : (int)((float)SaveManager.saveData.gamePointsGained / SaveManager.saveData.marksGained * 100);
-            int shotAccuracy = SaveManager.saveData.shotsFired == 0 ? 0 : (int)((float)SaveManager.saveData.shotsHit / SaveManager.saveData.shotsFired * 100);
+            int markAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) == 0 ? 0 : (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) * 100);
+            int shotAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) == 0 ? 0 : (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) * 100);
 
             statsText.text =
-                "Kills: <color=yellow>" + SaveManager.saveData.kills + "</color>\n" +
-                "Deaths: <color=yellow>" + SaveManager.saveData.deaths + "</color>\n\n" +
-                "Marks Gained: <color=yellow>" + SaveManager.saveData.marksGained + "</color>\n" +
-                "Marks Destroyed: <color=yellow>" + SaveManager.saveData.marksDestroyed + "</color>\n" +
-                "Game-points Gained: <color=yellow>" + SaveManager.saveData.gamePointsGained + "</color>\n" +
+                "Kills: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.Kills) + "</color>\n" +
+                "Deaths: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.Deaths) + "</color>\n\n" +
+                "Marks Gained: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) + "</color>\n" +
+                "Marks Destroyed: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksDestroyed) + "</color>\n" +
+                "Game-points Gained: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) + "</color>\n" +
                 "Mark Accuracy: <color=yellow>" + markAccuracy + "%</color>\n\n" +
-                "Shots Fired: <color=yellow>" + SaveManager.saveData.shotsFired + "</color>\n" +
-                "Shots Hit: <color=yellow>" + SaveManager.saveData.shotsHit + "</color>\n" +
+                "Shots Fired: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) + "</color>\n" +
+                "Shots Hit: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) + "</color>\n" +
                 "Accuracy: <color=yellow>" + shotAccuracy + "%</color>\n\n" +
-                "Pickups Collected: <color=yellow>" + SaveManager.saveData.pickupsCollected + "</color>";
+                "Pickups Collected: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.PickupsCollected) + "</color>";
 
             if (string.IsNullOrEmpty(leaderboardText.text))
             {

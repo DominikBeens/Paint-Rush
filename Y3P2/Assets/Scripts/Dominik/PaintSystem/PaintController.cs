@@ -117,7 +117,7 @@ public class PaintController
 
                     if (attackerID == PlayerManager.instance.photonView.ViewID)
                     {
-                        SaveManager.saveData.marksDestroyed++;
+                        SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksDestroyed);
                     }
                 }
             }
@@ -176,10 +176,10 @@ public class PaintController
             {
                 PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
                 NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
-                SaveManager.saveData.marksGained++;
+                SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
             }
 
-            SaveManager.saveData.kills++;
+            SaveManager.instance.SaveStat(SaveManager.SavedStat.Kills);
         }
         else
         {
@@ -219,7 +219,7 @@ public class PaintController
         if (PlayerManager.instance.entity == myEntity)
         {
             NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
-            SaveManager.saveData.gamePointsGained++;
+            SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
         }
     }
 }

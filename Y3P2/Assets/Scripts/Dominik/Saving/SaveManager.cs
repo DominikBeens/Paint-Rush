@@ -6,7 +6,18 @@ public class SaveManager : MonoBehaviour
 {
 
     public static SaveManager instance;
-    public static SaveData saveData;
+
+    public enum SavedStat
+    {
+        Kills,
+        Deaths,
+        MarksGained,
+        MarksDestroyed,
+        GamePointsGained,
+        ShotsFired,
+        ShotsHit,
+        PickupsCollected
+    }
 
     private void Awake()
     {
@@ -14,47 +25,58 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
         }
-
-        LoadAppSettings();
     }
 
-    private void LoadAppSettings()
+    public void SaveStat(SavedStat statToSave)
     {
-        if (File.Exists(Application.persistentDataPath + "/SaveData.xml"))
+        if (PlayerPrefs.HasKey(statToSave.ToString()))
         {
-            saveData = LoadAppSettingsFromFile();
-
-            Debug.LogWarning("LOAD SAVEDATA");
+            PlayerPrefs.SetInt(statToSave.ToString(), PlayerPrefs.GetInt(statToSave.ToString()) + 1);
         }
         else
         {
-            saveData = new SaveData();
-            SaveAppSettingsToFile(saveData);
-
-            Debug.LogWarning("CREATE NEW SAVEDATA");
+            PlayerPrefs.SetInt(statToSave.ToString(), 1);
         }
     }
 
-    private SaveData LoadAppSettingsFromFile()
+    public int GetSavedStat(SavedStat stat)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
-        using (FileStream stream = new FileStream(Application.persistentDataPath + "/SaveData.xml", FileMode.Open))
-        {
-            return serializer.Deserialize(stream) as SaveData;
-        }
+        return PlayerPrefs.GetInt(stat.ToString());
     }
 
-    public void SaveAppSettingsToFile(SaveData toSave)
-    {
-        XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
-        using (FileStream stream = new FileStream(Application.persistentDataPath + "/SaveData.xml", FileMode.Create))
-        {
-            serializer.Serialize(stream, toSave);
-        }
-    }
+    //private void LoadAppSettings()
+    //{
+    //    if (File.Exists(Application.persistentDataPath + "/SaveData.xml"))
+    //    {
+    //        saveData = LoadAppSettingsFromFile();
+    //    }
+    //    else
+    //    {
+    //        saveData = new SaveData();
+    //        SaveAppSettingsToFile(saveData);
+    //    }
+    //}
 
-    public void OnApplicationQuit()
-    {
-        SaveAppSettingsToFile(saveData);
-    }
+    //private SaveData LoadAppSettingsFromFile()
+    //{
+    //    XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+    //    using (FileStream stream = new FileStream(Application.persistentDataPath + "/SaveData.xml", FileMode.Open))
+    //    {
+    //        return serializer.Deserialize(stream) as SaveData;
+    //    }
+    //}
+
+    //public void SaveAppSettingsToFile(SaveData toSave)
+    //{
+    //    XmlSerializer serializer = new XmlSerializer(typeof(SaveData));
+    //    using (FileStream stream = new FileStream(Application.persistentDataPath + "/SaveData.xml", FileMode.Create))
+    //    {
+    //        serializer.Serialize(stream, toSave);
+    //    }
+    //}
+
+    //public void OnApplicationQuit()
+    //{
+    //    SaveAppSettingsToFile(saveData);
+    //}
 }

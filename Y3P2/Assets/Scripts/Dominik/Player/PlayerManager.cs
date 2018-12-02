@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         else
         {
             transform.position = GameManager.instance.respawnBooth.position;
-            SaveManager.saveData.deaths++;
+            SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
         }
     }
 
