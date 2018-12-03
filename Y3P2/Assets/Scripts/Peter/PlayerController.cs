@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
+    private float wallRunSpeed = 144;
+    [SerializeField]
     private float fovNotMoving = 75;
     [SerializeField]
     private float fovSprintBoostLerpSpeed = 0.5F;
@@ -205,11 +207,13 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(xMove, 0, yMove);
 
-
-
         if (xMove == 0 && yMove == 0 && grounded)
         {
-            rb.velocity = Vector3.zero;
+            if (rb.velocity != Vector3.zero)
+            {
+                rb.velocity = Vector3.zero;
+            }
+
             if (GetComponentInChildren<Camera>().fieldOfView != fovNotMoving)
             {
                 GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, fovNotMoving, fovSprintBoostLerpSpeed * Time.deltaTime);
@@ -219,8 +223,8 @@ public class PlayerController : MonoBehaviour
         {
             GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, defaultFOV, fovSprintBoostLerpSpeed * Time.deltaTime);
         }
-        rb.AddRelativeForce(movement * moveSpeed);
-       
+
+        rb.AddRelativeForce(movement * (wallrunning ? wallRunSpeed : moveSpeed));
     }
 
     /// <summary>
@@ -309,7 +313,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpCooldown()
     {
         jumpCooldown = true;
-        GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
+        if (!infinJet)
+        {
+            GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
+        }
         yield return new WaitForSeconds(jumpCooldownTime);
         jumpCooldown = false;
         canJump = true;

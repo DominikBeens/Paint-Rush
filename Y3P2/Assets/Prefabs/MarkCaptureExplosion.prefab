@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4445196569611923499}
   - component: {fileID: 8604762609085202125}
   - component: {fileID: 8633613463255305240}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3722597017116800664}
   - component: {fileID: 1207538792744404941}
   - component: {fileID: 6263429120091575327}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MarkCaptureExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPoolName: MarkCaptureExplosion
-  explosionForce: 30
-  explosionUpForce: 20
+  explosionForce: 60
+  explosionUpForce: 200
 --- !u!135 &1207538792744404941
 SphereCollider:
   m_ObjectHideFlags: 0
