@@ -1124,6 +1124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8887458642137044531}
   - component: {fileID: 692867812316248130}
+  - component: {fileID: 8251015420781023221}
+  - component: {fileID: 4342109868468309385}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -1176,9 +1178,33 @@ MonoBehaviour:
     m_Bits: 1024
   hitPlayerText: {fileID: 3643128094837994185}
   leaderboardAndStatsCanvas: {fileID: 7159693490625836297}
-  statsText: {fileID: 55945677227977044}
-  leaderboardText: {fileID: 2366613238532216533}
   jumpCooldownIcon: {fileID: 0}
+--- !u!114 &8251015420781023221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149655171627056103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a467dbefb8c40f343b560501e1ff5835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 2366613238532216533}
+--- !u!114 &4342109868468309385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149655171627056103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9a5a497f454e841b1a327f10339af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 55945677227977044}
 --- !u!1 &2263999345957326452
 GameObject:
   m_ObjectHideFlags: 0

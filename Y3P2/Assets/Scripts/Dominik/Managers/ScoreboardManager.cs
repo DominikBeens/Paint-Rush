@@ -2,7 +2,8 @@
 using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using System;
+
 
 public class ScoreboardManager : MonoBehaviourPunCallbacks
 {
@@ -16,6 +17,8 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         public int playerGamePoints;
     }
     private List<PlayerScore> playerScores = new List<PlayerScore>();
+
+    public static event Action OnScoreboardUpdated = delegate { };
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
     public void AddPlayer(int viewID, string name)
     {
         playerScores.Add(new PlayerScore { playerPhotonViewID = viewID, playerName = name, playerGamePoints = 0 });
+        OnScoreboardUpdated();
     }
 
     private void RemovePlayer(string name)
@@ -52,6 +56,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             if (playerScores[i].playerName == name)
             {
                 playerScores.RemoveAt(i);
+                OnScoreboardUpdated();
                 return;
             }
         }
@@ -85,6 +90,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             if (playerScores[i].playerPhotonViewID == playerViewID)
             {
                 playerScores[i].playerGamePoints++;
+                OnScoreboardUpdated();
                 return;
             }
         }
@@ -104,7 +110,20 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             if (playerScores[i].playerPhotonViewID == viewID)
             {
                 playerScores[i].playerGamePoints += gamePoints;
+                OnScoreboardUpdated();
             }
+        }
+    }
+
+    public void GetScoreBoardToText(TMPro.TextMeshProUGUI text)
+    {
+        text.text = "";
+
+        List<PlayerScore> latestPlayerGameStats = GetSortedPlayerScores();
+
+        for (int i = 0; i < latestPlayerGameStats.Count; i++)
+        {
+            text.text += latestPlayerGameStats[i].playerName + ": <color=yellow>" + latestPlayerGameStats[i].playerGamePoints + "</color>\n";
         }
     }
 

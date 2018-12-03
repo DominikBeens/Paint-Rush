@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class SaveManager : MonoBehaviour
         ShotsHit,
         PickupsCollected
     }
+
+    public static event Action OnStatSaved = delegate { };
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class SaveManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(statToSave.ToString(), 1);
         }
+
+        OnStatSaved();
     }
 
     public int GetSavedStat(SavedStat stat)

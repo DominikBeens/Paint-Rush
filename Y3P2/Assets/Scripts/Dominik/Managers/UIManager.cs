@@ -33,8 +33,6 @@ public class UIManager : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private GameObject leaderboardAndStatsCanvas;
-    [SerializeField] private TextMeshProUGUI statsText;
-    [SerializeField] private TextMeshProUGUI leaderboardText;
 
     [Space(10)]
 
@@ -136,7 +134,7 @@ public class UIManager : MonoBehaviour
 
     private void HandleLeaderboardAndStatsPanel()
     {
-        if (Input.GetKey(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab) && GameManager.CurrentGameSate == GameManager.GameState.Playing)
         {
             ToggleLeaderboardAndStats(true);
             ToggleCrosshair(false);
@@ -144,37 +142,21 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Tab))
         {
             ToggleLeaderboardAndStats(false);
-            ToggleCrosshair(GameManager.CurrentGameSate == GameManager.GameState.Playing ? true : false);
-            leaderboardText.text = null;
-        }
 
-        if (leaderboardAndStatsCanvas.activeInHierarchy)
-        {
-            int markAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) == 0 ? 0 : 
-                (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) * 100);
-            int shotAccuracy = SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) == 0 ? 0 : 
-                (int)((float)SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) / SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) * 100);
-
-            statsText.text =
-                "Kills: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.Kills) + "</color>\n" +
-                "Deaths: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.Deaths) + "</color>\n\n" +
-                "Marks Gained: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksGained) + "</color>\n" +
-                "Marks Destroyed: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.MarksDestroyed) + "</color>\n" +
-                "Game-points Gained: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.GamePointsGained) + "</color>\n" +
-                "Mark Accuracy: <color=yellow>" + markAccuracy + "%</color>\n\n" +
-                "Shots Fired: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsFired) + "</color>\n" +
-                "Shots Hit: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.ShotsHit) + "</color>\n" +
-                "Accuracy: <color=yellow>" + shotAccuracy + "%</color>\n\n" +
-                "Pickups Collected: <color=yellow>" + SaveManager.instance.GetSavedStat(SaveManager.SavedStat.PickupsCollected) + "</color>";
-
-            if (string.IsNullOrEmpty(leaderboardText.text))
+            switch (GameManager.CurrentGameSate)
             {
-                List<ScoreboardManager.PlayerScore> latestPlayerGameStats = ScoreboardManager.instance.GetSortedPlayerScores();
+                case GameManager.GameState.Lobby:
 
-                for (int i = 0; i < latestPlayerGameStats.Count; i++)
-                {
-                    leaderboardText.text += latestPlayerGameStats[i].playerName + ": <color=yellow>" + latestPlayerGameStats[i].playerGamePoints + "</color>\n";
-                }
+                    ToggleCrosshair(true);
+                    break;
+                case GameManager.GameState.Playing:
+
+                    ToggleCrosshair(true);
+                    break;
+                case GameManager.GameState.Respawning:
+
+                    ToggleCrosshair(false);
+                    break;
             }
         }
     }
