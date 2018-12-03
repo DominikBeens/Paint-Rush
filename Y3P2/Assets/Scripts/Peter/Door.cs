@@ -40,7 +40,7 @@ public class Door : MonoBehaviour {
         {
             nearbyPlayers.Remove(other);
         }
-        if (other.transform.root.tag == "Player" && nearbyPlayers.Count <= 1)
+        if (other.transform.root.tag == "Player" && nearbyPlayers.Count <= 0)
         {
             anim.SetBool("Close", true);
         }
