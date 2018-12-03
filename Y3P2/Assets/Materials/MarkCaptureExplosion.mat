@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MarkCaptureExplosion
-  m_Shader: {fileID: 4800000, guid: 61054a61bebe19f49a8d9767c1c3212d, type: 3}
+  m_Shader: {fileID: 4800000, guid: fc5f21a68e1beca41864e8f8efd4ff22, type: 3}
   m_ShaderKeywords: _INVERT_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -109,6 +109,7 @@ Material:
     - _Pulsefrequency: 1
     - _Pulseoffset: 0
     - _Pulsephase: 0
+    - _RimWidth: 0.7
     - _Scale: 2
     - _Secondarytextureintensity: 1
     - _Seondarytextureintensity: 1
@@ -127,7 +128,7 @@ Material:
     - _test: 0
     m_Colors:
     - _Bordercolor: {r: 1, g: 0, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _Edgecolor: {r: 0, g: 1.027451, b: 2, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainPanningspeed: {r: 0, g: 0, b: 0, a: 0}
@@ -135,6 +136,7 @@ Material:
     - _Mainpanningspeed: {r: 0, g: 0, b: 0, a: 0}
     - _Noisespeed: {r: 0, g: 0, b: 0, a: 0}
     - _Panningspeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _RimColor: {r: 0, g: 1, b: 0.69761467, a: 1}
     - _Secondarycolor: {r: 1, g: 0, b: 0, a: 1}
     - _Secondarypanningspeed: {r: 0, g: 0, b: 0, a: 0}
     - _Staticcolor: {r: 0.2647059, g: 0.6957404, b: 1, a: 0.978}
