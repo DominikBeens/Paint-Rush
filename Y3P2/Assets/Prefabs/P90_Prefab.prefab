@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1986669899336500033}
   - component: {fileID: 1986669899335697249}
   - component: {fileID: 1986669899334599073}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mag001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1986669899336500035}
   - component: {fileID: 1986669899335697251}
   - component: {fileID: 1986669899334599075}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,8 +161,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1986669899336500039}
-  m_Layer: 0
-  m_Name: P90_111
+  m_Layer: 11
+  m_Name: P90_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

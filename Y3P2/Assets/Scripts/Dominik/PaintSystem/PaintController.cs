@@ -218,8 +218,8 @@ public class PaintController
 
         if (PlayerManager.instance.entity == myEntity)
         {
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
             SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
         }
     }
 }
