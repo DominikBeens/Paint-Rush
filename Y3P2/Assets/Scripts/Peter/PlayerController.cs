@@ -4,8 +4,6 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     
-    private bool initialised;
-
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
@@ -104,8 +102,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.15f))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.05f, -Vector3.up, out hit, 0.15f))
         {
             if (!grounded)
             {

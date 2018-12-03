@@ -61,7 +61,7 @@ public class CollisionEventZone : MonoBehaviour
             return;
         }
 
-        if (other.tag == objectTagToLookFor)
+        if (other.tag == objectTagToLookFor && other.gameObject.layer != 10)
         {
             CallEvent(EventType.Enter, other.transform);
             canCheckForInput = true;
@@ -75,7 +75,7 @@ public class CollisionEventZone : MonoBehaviour
             return;
         }
 
-        if (other.tag == objectTagToLookFor)
+        if (other.tag == objectTagToLookFor && other.gameObject.layer != 10)
         {
             CallEvent(EventType.Exit, other.transform);
             canCheckForInput = false;
@@ -89,7 +89,7 @@ public class CollisionEventZone : MonoBehaviour
             return;
         }
 
-        if (collision.transform.tag == objectTagToLookFor)
+        if (collision.transform.tag == objectTagToLookFor && collision.gameObject.layer != 10)
         {
             CallEvent(EventType.Enter, collision.transform);
             canCheckForInput = true;
@@ -103,7 +103,7 @@ public class CollisionEventZone : MonoBehaviour
             return;
         }
 
-        if (collision.transform.tag == objectTagToLookFor)
+        if (collision.transform.tag == objectTagToLookFor && collision.gameObject.layer != 10)
         {
             CallEvent(EventType.Exit, collision.transform);
             canCheckForInput = false;

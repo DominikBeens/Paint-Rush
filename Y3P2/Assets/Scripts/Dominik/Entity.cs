@@ -26,7 +26,7 @@ public class Entity : MonoBehaviourPunCallbacks
         myCollider = GetComponent<Collider>();
         paintController.Initialise(this);
 
-        if (!photonView.IsMine)
+        if (photonView && !photonView.IsMine)
         {
             photonView.RPC("SendUpdates", RpcTarget.Others);
         }
