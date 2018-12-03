@@ -17,7 +17,6 @@ public class PlayerPickUpManager : MonoBehaviour {
     private void Start()
     {
         UIManager.instance.JumpCooldownIcon.SetActive(false);
-
        
 
     }
@@ -31,7 +30,9 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     public void CheckChildren()
     {
-        foreach (GetDefaultMat df in transform.GetComponentsInChildren<GetDefaultMat>())
+        GetDefaultMat[] mats = transform.GetComponentsInChildren<GetDefaultMat>();
+
+        foreach (GetDefaultMat df in mats)
         {
             if (df != null)
             {

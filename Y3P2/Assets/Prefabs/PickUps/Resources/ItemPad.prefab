@@ -476,8 +476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCooldown: 1
   maxCooldown: 6
-  myPickup: {fileID: 11400000, guid: dd2d6eb0db7196a47860617d3d439903, type: 2}
-  pickUpParent: {fileID: 2818714506437827926}
+  myPickup: {fileID: 0}
+  pickUpObject: {fileID: 0}
 --- !u!114 &4009889317990867397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,10 +493,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 6390016934265100615}
   viewIdField: 1
   InstantiationId: 1
   isRuntimeInstantiated: 0

@@ -10,7 +10,7 @@ public class PickUpActivater : MonoBehaviour {
 
     private void Start()
     {
-        pkm = FindObjectOfType<PlayerPickUpManager>();
+        pkm = GetComponent<PlayerPickUpManager>();
     }
 
     public void ActivatePickUp(PickUp pickUp)
@@ -28,7 +28,7 @@ public class PickUpActivater : MonoBehaviour {
         {
             if (!waiting)
             {
-                GetComponent<PhotonView>().RPC("ActivateCloak", RpcTarget.AllBufferedViaServer);
+                ActivateCloak();
                 StartCoroutine(Duration(pickUp));
             }
 
@@ -61,14 +61,14 @@ public class PickUpActivater : MonoBehaviour {
         }
     }
 
-    [PunRPC]
     private void ActivateCloak()
     {
-        pkm.CheckChildren();
 
         foreach (GameObject r in pkm.objectsToCloak)
         {
             r.GetComponent<Renderer>().material = pkm.CloakShader;
         }
+        NotificationManager.instance.NewLocalNotification(pkm.objectsToCloak.Count.ToString());
+        NotificationManager.instance.NewLocalNotification("Cloaked");
     }
 }

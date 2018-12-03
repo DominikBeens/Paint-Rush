@@ -21,7 +21,8 @@ public class GetPickUp : MonoBehaviour {
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
-        
+
+       
         SpawnPickUp();
     }
 
@@ -31,6 +32,7 @@ public class GetPickUp : MonoBehaviour {
         cooldown = true;
         yield return new WaitForSeconds(Random.Range(minCooldown, maxCooldown));
         cooldown = false;
+
         SpawnPickUp();
     }
 
@@ -40,37 +42,38 @@ public class GetPickUp : MonoBehaviour {
         {
             if (!cooldown)
             {
+                other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
                 other.transform.root.GetComponent<PickUpActivater>().ActivatePickUp(myPickup);
                 StartCoroutine(Cooldown());
-                DestroyObject();
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    DestroyObject();
+                }
             }
         }
     }
 
     private void DestroyObject()
     {
-        Destroy(pickUpObject);
-        pickUpObject = null;
+        if(pickUpObject != null)
+        {
+            PhotonNetwork.Destroy(pickUpObject);
+        }
+
+        myPickup = null;
     }
 
     private void SpawnPickUp()
     {
 
         int i = Random.Range(0, GameManager.instance.PickUps.Count);
-        if (PhotonNetwork.IsMasterClient)
+       if(myPickup == null)
         {
             pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[i].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             myPickup = GameManager.instance.PickUps[i];
         }
-        else
-        {
-            photonView.RPC("MasterSpawnPickUp", RpcTarget.MasterClient);
-        }
+       
     }
 
-    [PunRPC]
-    private void MasterSpawnPickUp()
-    {
-        SpawnPickUp();
-    }
+  
 }
