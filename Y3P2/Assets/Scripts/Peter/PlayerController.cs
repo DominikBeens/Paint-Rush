@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.15f))
         {
             if (!grounded)
             {

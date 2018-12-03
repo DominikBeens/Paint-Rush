@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private List<GameObject> doorSpawnLocs = new List<GameObject>();
 
-    public enum GameState { Playing, Respawning };
+    public enum GameState { Lobby, Playing, Respawning };
     private GameState gameState;
     public static GameState CurrentGameSate
     {
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private List<Transform> playerSpawnPoints = new List<Transform>();
     // Temp(?)
+    public Transform lobbySpawnPoint;
     public Transform respawnBooth;
 
     private void Awake()
@@ -81,12 +82,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!PlayerManager.instance && playerPrefab)
         {
-            Transform randomSpawn = GetRandomSpawn();
-            PhotonNetwork.Instantiate(playerPrefab.name, randomSpawn.position, randomSpawn.rotation);
+            PhotonNetwork.Instantiate(playerPrefab.name, lobbySpawnPoint.position, lobbySpawnPoint.rotation);
 
             personalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
             personalColorString = ColorUtility.ToHtmlStringRGBA(personalColor);
         }
+
+        CurrentGameSate = GameState.Lobby;
 
         if (PhotonNetwork.IsMasterClient)
         {

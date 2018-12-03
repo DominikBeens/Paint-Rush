@@ -54,10 +54,15 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                 Entity hitEntity = hitFromWeapon.transform.GetComponentInChildren<Entity>();
                 if (hitEntity)
                 {
-                    hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
+                    if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+                    {
+                        hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
+
+                        photonView.RPC("SpawnPrefab", RpcTarget.All, "PaintDecal", hitFromWeapon.point, Quaternion.LookRotation(-hitFromWeapon.normal), (int)WeaponSlot.currentPaintType);
+                        SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsHit);
+                    }
+
                     PlayerManager.instance.weaponSlot.HitEntity();
-                    photonView.RPC("SpawnPrefab", RpcTarget.All, "PaintDecal", hitFromWeapon.point, Quaternion.LookRotation(-hitFromWeapon.normal), (int)WeaponSlot.currentPaintType);
-                    SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsHit);
                 }
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
@@ -65,7 +70,10 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.LookRotation(ray.direction), (int)WeaponSlot.currentPaintType);
                 }
 
-                SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsFired);
+                if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+                {
+                    SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsFired);
+                }
             }
         }
 

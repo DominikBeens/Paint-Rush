@@ -64,14 +64,35 @@ public class UIManager : MonoBehaviour
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
-        ToggleCrosshair(newState == GameManager.GameState.Playing ? true : false);
+        switch (newState)
+        {
+            case GameManager.GameState.Lobby:
+
+                ToggleCrosshair(true);
+                break;
+            case GameManager.GameState.Playing:
+
+                ToggleCrosshair(true);
+                break;
+            case GameManager.GameState.Respawning:
+
+                ToggleCrosshair(false);
+                break;
+        }
     }
 
     private void SceneManager_OnGamePaused(bool b)
     {
-        if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        switch (GameManager.CurrentGameSate)
         {
-            ToggleCrosshair(!b);
+            case GameManager.GameState.Lobby:
+
+                ToggleCrosshair(!b);
+                break;
+            case GameManager.GameState.Playing:
+
+                ToggleCrosshair(!b);
+                break;
         }
     }
 

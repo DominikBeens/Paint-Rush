@@ -52,20 +52,51 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        //TESTING
+        if (photonView.IsMine)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+                {
+                    GameManager.CurrentGameSate = GameManager.GameState.Respawning;
+                }
+                else if (GameManager.CurrentGameSate == GameManager.GameState.Respawning)
+                {
+                    GameManager.CurrentGameSate = GameManager.GameState.Lobby;
+                }
+                else
+                {
+                    GameManager.CurrentGameSate = GameManager.GameState.Playing;
+                }
+            }
+        }
+    }
+
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
-        playerController.enabled = newState == GameManager.GameState.Playing ? true : false;
+        switch (newState)
+        {
+            case GameManager.GameState.Lobby:
 
-        if (newState == GameManager.GameState.Playing)
-        {
-            Transform randomSpawn = GameManager.instance.GetRandomSpawn();
-            transform.position = randomSpawn.position;
-            transform.rotation = randomSpawn.rotation;
-        }
-        else
-        {
-            transform.position = GameManager.instance.respawnBooth.position;
-            SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
+                transform.position = GameManager.instance.lobbySpawnPoint.position;
+                playerController.enabled = true;
+                break;
+            case GameManager.GameState.Playing:
+
+                Transform randomSpawn = GameManager.instance.GetRandomSpawn();
+                transform.position = randomSpawn.position;
+                transform.rotation = randomSpawn.rotation;
+                playerController.enabled = true;
+                break;
+            case GameManager.GameState.Respawning:
+
+                transform.position = GameManager.instance.respawnBooth.position;
+                SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
+                playerController.enabled = false;
+                break;
         }
     }
 
