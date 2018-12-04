@@ -40,7 +40,8 @@ public class ForceExplosion : MonoBehaviour
             Rigidbody rb = player.root.GetComponent<Rigidbody>();
             if (rb)
             {
-                rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode.Impulse);
+                Vector3 fixedCurrentPosition = new Vector3(transform.position.x, rb.transform.position.y, transform.position.z);
+                rb.AddForce((rb.transform.position - fixedCurrentPosition) * explosionForce, ForceMode.Impulse);
                 rb.AddForce(Vector3.up * explosionUpForce, ForceMode.Impulse);
 
                 hitPlayer = true;
