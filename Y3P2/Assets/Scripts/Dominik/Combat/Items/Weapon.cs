@@ -9,4 +9,5 @@ public class Weapon : Item
     public float fireRate = 0.2f;
     public float paintDamage = 1f;
     public string paintImpactPoolName;
+    public string paintDecalPoolName;
 }

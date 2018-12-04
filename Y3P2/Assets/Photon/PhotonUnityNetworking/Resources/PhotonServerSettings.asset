@@ -52,4 +52,5 @@ MonoBehaviour:
   - MasterSpawnPickUp
   - ActivateCloak
   - MasterDestroy
+  - SpawnEffects
   DisableAutoOpenWizard: 1

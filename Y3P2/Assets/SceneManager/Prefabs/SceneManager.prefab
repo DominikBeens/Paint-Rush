@@ -3118,6 +3118,7 @@ MonoBehaviour:
   settingTitleText: {fileID: 114091878189587862}
   minSensitivity: 0.01
   maxSensitivity: 1
+  defaultSensitivity: 0.5
   mouseSensSlider: {fileID: 114412123795220164}
   mouseSensText: {fileID: 114938655945546686}
 --- !u!1 &1341233781483090
@@ -4434,10 +4435,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33258518ef8dcc49b787ebba062bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingTitle: 
+  settingTitle: Main Volume
   settingTitleText: {fileID: 114672800943951818}
-  mixer: {fileID: 0}
-  volumeParameter: 
+  mixer: {fileID: 24100000, guid: 2e5a7824981867a4a841ebf095f77e73, type: 2}
+  volumeParameter: MainVolume
   defaultVolume: 75
   audioSlider: {fileID: 114323547710839040}
   audioPercentageText: {fileID: 114443157706973444}

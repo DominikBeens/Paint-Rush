@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc6322467258e54cb0980714c517a21, type: 3}
-  m_Name: Test Weapon
+  m_Name: P90
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
   fireRate: 0.15
-  bulletSpeed: 110
-  bulletPoolName: Bullet
   paintDamage: 5
   paintImpactPoolName: PaintImpact
+  paintDecalPoolName: PaintDecal
+  fireAudioPoolName: Audio_GunFire

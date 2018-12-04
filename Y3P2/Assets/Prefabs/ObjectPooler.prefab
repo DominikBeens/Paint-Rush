@@ -64,3 +64,8 @@ MonoBehaviour:
       type: 3}
     poolSize: 250
     autoExpand: 1
+  - poolName: Audio_GunFire
+    poolPrefab: {fileID: 7786150646678572763, guid: e670ddd4c49c1964b8f3345e701354f6,
+      type: 3}
+    poolSize: 50
+    autoExpand: 1

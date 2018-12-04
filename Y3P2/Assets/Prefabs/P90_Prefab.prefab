@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1986669899336500033}
   - component: {fileID: 1986669899335697249}
   - component: {fileID: 1986669899334599073}
+  - component: {fileID: 5953148670373116199}
   m_Layer: 11
   m_Name: Mag001
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5953148670373116199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986669899336802145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4e1677d7a78eb48aed546db4aa81db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defMaterial: {fileID: 0}
 --- !u!1 &1986669899336802147
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +101,7 @@ GameObject:
   - component: {fileID: 1986669899336500035}
   - component: {fileID: 1986669899335697251}
   - component: {fileID: 1986669899334599075}
+  - component: {fileID: 38047111327503439}
   m_Layer: 11
   m_Name: Gun002
   m_TagString: Untagged
@@ -152,6 +167,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &38047111327503439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986669899336802147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4e1677d7a78eb48aed546db4aa81db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defMaterial: {fileID: 0}
 --- !u!1 &1986669899336802151
 GameObject:
   m_ObjectHideFlags: 0

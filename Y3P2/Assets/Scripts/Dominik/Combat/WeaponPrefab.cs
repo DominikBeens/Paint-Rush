@@ -44,6 +44,12 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     {
         screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
 
+        bool paintImpact = false;
+        bool paintDecal = false;
+        Vector3 hitPoint = Vector3.zero;
+        Quaternion paintDecalRot = Quaternion.identity;
+        Quaternion paintImpactRot = Quaternion.identity;
+
         RaycastHit hitFromCam;
         if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hitFromCam))
         {
@@ -58,7 +64,10 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     {
                         hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
 
-                        photonView.RPC("SpawnPrefab", RpcTarget.All, "PaintDecal", hitFromWeapon.point, Quaternion.LookRotation(-hitFromWeapon.normal), (int)WeaponSlot.currentPaintType);
+                        paintDecal = true;
+                        hitPoint = hitFromWeapon.point;
+                        paintDecalRot = Quaternion.LookRotation(-hitFromWeapon.normal);
+
                         SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsHit);
                     }
 
@@ -67,7 +76,9 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {
-                    photonView.RPC("SpawnPrefab", RpcTarget.All, WeaponSlot.currentWeapon.paintImpactPoolName, hitFromWeapon.point, Quaternion.LookRotation(ray.direction), (int)WeaponSlot.currentPaintType);
+                    paintImpact = true;
+                    hitPoint = hitFromWeapon.point;
+                    paintImpactRot = Quaternion.LookRotation(ray.direction);
                 }
 
                 if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
@@ -77,7 +88,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             }
         }
 
-        photonView.RPC("PlayMuzzleFlash", RpcTarget.All, (int)WeaponSlot.currentPaintType);
+        photonView.RPC("SpawnEffects", RpcTarget.All, paintImpact, paintDecal, hitPoint, paintDecalRot, paintImpactRot, (int)WeaponSlot.currentPaintType);
 
         //Weapon weapon = WeaponSlot.currentWeapon;
 
@@ -101,31 +112,33 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void PlayMuzzleFlash(int paintType)
+    private void SpawnEffects(bool paintImpactParticle, bool paintDecal, Vector3 hitPosition, Quaternion decalRot, Quaternion paintImpactRot, int paintType)
     {
         paintMuzzleFlashParticle.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
         muzzleFlashParticle.Play();
-    }
 
-    [PunRPC]
-    private void SpawnPrefab(string prefabPoolName, Vector3 position, Quaternion rotation, int paintType)
-    {
-        GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabPoolName, position, rotation);
-        PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
-        if (pip)
+        AudioController audioController = ObjectPooler.instance.GrabFromPool("Audio_GunFire", transform.position, Quaternion.identity).GetComponent<AudioController>();
+        audioController.Play(transform);
+
+        if (paintImpactParticle)
         {
-            pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
-            return;
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool("PaintImpact", hitPosition, paintImpactRot);
+            PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
+            if (pip)
+            {
+                pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
+            }
         }
 
-        PaintDecal decal = newSpawn.GetComponent<PaintDecal>();
-        if (decal)
+        if (paintDecal)
         {
-            decal.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool("PaintDecal", hitPosition, decalRot);
+            PaintDecal decal = newSpawn.GetComponent<PaintDecal>();
+            if (decal)
+            {
+                decal.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
+            }
         }
-
-        //BulletTrail bulletTrail = ObjectPooler.instance.GrabFromPool("BulletTrail", Vector3.zero, Quaternion.identity).GetComponent<BulletTrail>();
-        //bulletTrail.Initialise(projectileSpawn.position, position, PlayerManager.instance.entity.paintController.GetPaintColor(WeaponSlot.currentWeapon.paintType));
     }
 
     private void SetLayer(Transform root, int layer)
@@ -136,16 +149,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             SetLayer(child, layer);
         }
     }
-
-    //[PunRPC]
-    //private void PickUpDestroy()
-    //{
-    //    if (PhotonNetwork.IsMasterClient)
-    //    {
-    //        PhotonNetwork.RemoveRPCs(photonView);
-    //        PhotonNetwork.Destroy(gameObject);
-    //    }
-    //}
 
     public override void OnDisable()
     {
