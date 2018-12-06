@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-
 public class ScoreboardManager : MonoBehaviourPunCallbacks
 {
 
@@ -40,13 +39,19 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             AddPlayer(players[i].photonView.ViewID, players[i].photonView.Owner.NickName);
         }
 
-        photonView.RPC("SendGameStats", RpcTarget.Others);
+        photonView.RPC("SendGameStats", RpcTarget.Others, PlayerManager.instance.photonView.ViewID, PhotonNetwork.NickName);
     }
 
     public void AddPlayer(int viewID, string name)
     {
-        playerScores.Add(new PlayerScore { playerPhotonViewID = viewID, playerName = name, playerGamePoints = 0 });
-        OnScoreboardUpdated();
+        PlayerScore playerScore = new PlayerScore { playerPhotonViewID = viewID, playerName = name };
+
+        if (!playerScores.Contains(playerScore))
+        {
+            playerScore.playerGamePoints = 0;
+            playerScores.Add(playerScore);
+            OnScoreboardUpdated();
+        }
     }
 
     private void RemovePlayer(string name)
@@ -97,8 +102,9 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void SendGameStats()
+    private void SendGameStats(int callerPlayerManagerID, string callerNickName)
     {
+        AddPlayer(callerPlayerManagerID, callerNickName);
         photonView.RPC("ReceiveGameStats", RpcTarget.Others, instance.photonView.ViewID, instance.GetScore());
     }
 
@@ -129,6 +135,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        // TODO: Refactor, this is not safe when multiple people have the same nickname.
         RemovePlayer(otherPlayer.NickName);
     }
 }

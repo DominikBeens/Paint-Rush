@@ -493,10 +493,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 0
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6390016934265100615}
+  - {fileID: 0}
   viewIdField: 1
   InstantiationId: 1
   isRuntimeInstantiated: 0
