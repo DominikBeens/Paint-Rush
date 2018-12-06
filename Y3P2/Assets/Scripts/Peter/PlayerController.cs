@@ -304,6 +304,7 @@ public class PlayerController : MonoBehaviour
         if (!jumpCooldown)
         {
             StartCoroutine(JumpCooldown());
+            StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(jumpCooldownTime));
         }
 
     }

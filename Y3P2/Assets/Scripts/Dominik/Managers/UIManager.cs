@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,25 +21,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Image> crosshair = new List<Image>();
     [SerializeField] private Animator crosshairAnim;
 
-    [Space(10)]
+    [Space]
 
     [SerializeField] private List<PaintUILocalPlayer> paintUILocalPlayer = new List<PaintUILocalPlayer>();
     public List<PaintUILocalPlayer> PaintUILocalPlayer { get { return paintUILocalPlayer; } }
 
-    [Space(10)]
+    [Space]
 
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private TextMeshProUGUI hitPlayerText;
 
-    [Space(10)]
+    [Space]
 
     [SerializeField] private GameObject leaderboardAndStatsCanvas;
 
-    [Space(10)]
+    [Space]
 
     [SerializeField]
     private GameObject jumpCooldownIcon;
     public GameObject JumpCooldownIcon { get { return jumpCooldownIcon; } }
+
+    [Space]
+
+    [SerializeField] private GameObject jumpCooldown;
+    [SerializeField] private List<Image> jumpCDBars = new List<Image>();
+    [SerializeField] private List<Image> jumpIcons = new List<Image>();
 
     private void Awake()
     {
@@ -58,6 +65,44 @@ public class UIManager : MonoBehaviour
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
         ToggleLeaderboardAndStats(false);
+    }
+
+    public IEnumerator ShowJumpCooldownIcon(float cooldown)
+    {
+        jumpCooldown.SetActive(true);
+
+        for (int i = 0; i < jumpCDBars.Count; i++)
+        {
+            jumpCDBars[i].fillAmount = 1;
+        }
+
+        for (int i = 0; i < jumpIcons.Count; i++)
+        {
+            jumpIcons[i].fillAmount = 0;
+        }
+
+        float time = cooldown;
+        while (jumpCooldown.activeInHierarchy)
+        {
+            time -= Time.deltaTime;
+
+            for (int i = 0; i < jumpCDBars.Count; i++)
+            {
+                jumpCDBars[i].fillAmount -= Time.deltaTime / (cooldown * 2);
+            }
+
+            for (int i = 0; i < jumpIcons.Count; i++)
+            {
+                jumpIcons[i].fillAmount += Time.deltaTime / cooldown;
+            }
+
+            if (time <= 0)
+            {
+                jumpCooldown.SetActive(false);
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
