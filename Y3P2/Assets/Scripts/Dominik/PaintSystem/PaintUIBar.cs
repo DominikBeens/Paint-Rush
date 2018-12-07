@@ -23,7 +23,7 @@ public class PaintUIBar : MonoBehaviour
 
         if (local)
         {
-            transform.GetChild(0).gameObject.SetActive(false);
+            ToggleUI(false);
         }
     }
 
@@ -54,5 +54,10 @@ public class PaintUIBar : MonoBehaviour
         }
 
         barColorFill.fillAmount = percentage;
+    }
+
+    public void ToggleUI(bool toggle)
+    {
+        transform.GetChild(0).gameObject.SetActive(toggle);
     }
 }

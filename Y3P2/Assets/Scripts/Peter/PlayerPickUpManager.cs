@@ -13,12 +13,9 @@ public class PlayerPickUpManager : MonoBehaviour {
     public List<GameObject> objectsToCloak = new List<GameObject>();
     public List<GameObject> ObjectsToCloak { get { return ObjectsToCloak; } }
 
-
     private void Start()
     {
-        UIManager.instance.JumpCooldownIcon.SetActive(false);
-       
-
+        //UIManager.instance.JumpCooldownIcon.SetActive(false);
     }
 
     public IEnumerator JumpCooldownIcon(float coolDowntime)

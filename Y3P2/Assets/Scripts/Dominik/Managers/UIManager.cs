@@ -45,7 +45,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject jumpCooldown;
     [SerializeField] private List<Image> jumpCDBars = new List<Image>();
-    [SerializeField] private List<Image> jumpIcons = new List<Image>();
 
     private void Awake()
     {
@@ -76,11 +75,6 @@ public class UIManager : MonoBehaviour
             jumpCDBars[i].fillAmount = 1;
         }
 
-        for (int i = 0; i < jumpIcons.Count; i++)
-        {
-            jumpIcons[i].fillAmount = 0;
-        }
-
         float time = cooldown;
         while (jumpCooldown.activeInHierarchy)
         {
@@ -89,11 +83,6 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < jumpCDBars.Count; i++)
             {
                 jumpCDBars[i].fillAmount -= Time.deltaTime / (cooldown * 2);
-            }
-
-            for (int i = 0; i < jumpIcons.Count; i++)
-            {
-                jumpIcons[i].fillAmount += Time.deltaTime / cooldown;
             }
 
             if (time <= 0)

@@ -52,6 +52,10 @@ public class PaintUI : MonoBehaviour
         entity.paintController.OnPaintValueReset += PaintController_OnPaintValueReset;
         entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
         entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
+        entity.paintController.OnToggleUI += PaintController_OnToggleUI;
+
+        // TODO: Refactor, calling this here is ugly and a bad practise.
+        PaintController_OnToggleUI(false);
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
@@ -108,11 +112,16 @@ public class PaintUI : MonoBehaviour
         markObject.SetActive(false);
     }
 
-    private void TogglePaintUIBars(bool toggle)
+    private void PaintController_OnToggleUI(bool toggle)
+    {
+        TogglePaintUIBars(toggle);
+    }
+
+    public void TogglePaintUIBars(bool toggle)
     {
         for (int i = 0; i < paintUIBars.Length; i++)
         {
-            paintUIBars[i].gameObject.SetActive(toggle);
+            paintUIBars[i].ToggleUI(toggle);
         }
     }
 
@@ -124,6 +133,7 @@ public class PaintUI : MonoBehaviour
             myEntity.paintController.OnPaintValueReset -= PaintController_OnPaintValueReset;
             myEntity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
             myEntity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
+            myEntity.paintController.OnToggleUI -= PaintController_OnToggleUI;
         }
     }
 }

@@ -304,7 +304,6 @@ public class PlayerController : MonoBehaviour
         if (!jumpCooldown)
         {
             StartCoroutine(JumpCooldown());
-            StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(jumpCooldownTime));
         }
 
     }
@@ -313,7 +312,8 @@ public class PlayerController : MonoBehaviour
         jumpCooldown = true;
         if (!infinJet)
         {
-            GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
+            //GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
+            StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(jumpCooldownTime));
         }
         yield return new WaitForSeconds(jumpCooldownTime);
         jumpCooldown = false;

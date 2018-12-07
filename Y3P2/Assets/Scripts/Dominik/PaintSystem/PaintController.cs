@@ -61,6 +61,7 @@ public class PaintController
     public event Action<PaintType> OnPaintValueReset = delegate { };
     public event Action<PaintMark> OnPaintMarkActivated = delegate { };
     public event Action OnPaintMarkDestroyed = delegate { };
+    public event Action<bool> OnToggleUI = delegate { };
 
     public void Initialise(Entity entity)
     {
@@ -221,5 +222,10 @@ public class PaintController
             SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
             NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
         }
+    }
+
+    public void ToggleUI(bool toggle)
+    {
+        OnToggleUI(toggle);
     }
 }

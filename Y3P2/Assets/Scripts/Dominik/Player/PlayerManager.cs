@@ -1,10 +1,14 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public static PlayerManager instance;
+
+    // Basically a copy of the GameManagers gamestate but this one is accesible from all clients and 
+    // the one from the GameManager not since everyone has his own GameManager.
+    private GameManager.GameState playerState;
 
     #region PlayerComponents
     private PlayerAnimationController playerAnimController;
@@ -77,6 +81,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
+        SetPlayerState(newState);
+
         switch (newState)
         {
             case GameManager.GameState.Lobby:
@@ -96,6 +102,27 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 transform.position = GameManager.instance.respawnBooth.position;
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
                 playerController.enabled = false;
+                break;
+        }
+    }
+
+    private void SetPlayerState(GameManager.GameState newState)
+    {
+        playerState = newState;
+
+        switch (newState)
+        {
+            case GameManager.GameState.Lobby:
+
+                entity.paintController.ToggleUI(false);
+                break;
+            case GameManager.GameState.Playing:
+
+                entity.paintController.ToggleUI(true);
+                break;
+            case GameManager.GameState.Respawning:
+
+                entity.paintController.ToggleUI(false);
                 break;
         }
     }
@@ -123,5 +150,24 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         Transform randomSpawn = GameManager.instance.GetRandomSpawn();
         transform.position = randomSpawn.position;
         transform.rotation = randomSpawn.rotation;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext((int)GameManager.CurrentGameSate);
+        }
+        else
+        {
+            if (!photonView.IsMine)
+            {
+                GameManager.GameState newState = (GameManager.GameState)stream.ReceiveNext();
+                if (playerState != newState)
+                {
+                    SetPlayerState(newState);
+                }
+            }
+        }
     }
 }

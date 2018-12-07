@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ball4
+  m_Name: TeleportZone
   m_Shader: {fileID: 4800000, guid: 61054a61bebe19f49a8d9767c1c3212d, type: 3}
-  m_ShaderKeywords: _ENABLEDISTORTION_ON _INVERT_ON
+  m_ShaderKeywords: _ENABLEDISTORTION_ON _ENABLENOISE_ON _INVERT_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -80,23 +80,23 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distortionscale: 0.49
-    - _Distortionspeed: 0.88
+    - _Distortionscale: 2.84
+    - _Distortionspeed: 0.78
     - _DstBlend: 0
     - _Enabledistortion: 1
-    - _Enablenoise: 0
+    - _Enablenoise: 1
     - _Enablepulsation: 0
-    - _Extraroughness: 6.77
+    - _Extraroughness: 2.83
     - _GlobalFade: 1
     - _Globalopacity: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Innerfresnelintensity: 0.267
+    - _Innerfresnelintensity: 0.102
     - _Invert: 1
     - _Invertmaintexture: 0
     - _Invertsecondarytexture: 0
-    - _Maintextureintensity: 0.18
+    - _Maintextureintensity: 3.68
     - _Metallic: 0
     - _Mode: 0
     - _Noisescale: 1002
@@ -104,7 +104,7 @@ Material:
     - _OcclusionStrength: 1
     - _Outerfresnelintensity: 0.411
     - _Parallax: 0.02
-    - _Power: 1.22
+    - _Power: 1.85
     - _Pulseamplitude: 0.25
     - _Pulsefrequency: 1
     - _Pulseoffset: 0
