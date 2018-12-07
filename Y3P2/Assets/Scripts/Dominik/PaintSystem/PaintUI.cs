@@ -32,14 +32,6 @@ public class PaintUI : MonoBehaviour
         initialised = true;
         myEntity = entity;
 
-        if (entity == PlayerManager.instance.entity)
-        {
-            for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
-            {
-                UIManager.instance.PaintUILocalPlayer[i].Initialise(entity.paintController.PaintValues[i]);
-            }
-        }
-
         paintUIBars = GetComponentsInChildren<PaintUIBar>();
         anim = GetComponentInChildren<Animator>();
 
@@ -52,10 +44,9 @@ public class PaintUI : MonoBehaviour
         entity.paintController.OnPaintValueReset += PaintController_OnPaintValueReset;
         entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
         entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
-        entity.paintController.OnToggleUI += PaintController_OnToggleUI;
+        entity.paintController.OnToggleUI += TogglePaintUIBars;
 
-        // TODO: Refactor, calling this here is ugly and a bad practise.
-        PaintController_OnToggleUI(false);
+        TogglePaintUIBars(false);
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
@@ -112,11 +103,6 @@ public class PaintUI : MonoBehaviour
         markObject.SetActive(false);
     }
 
-    private void PaintController_OnToggleUI(bool toggle)
-    {
-        TogglePaintUIBars(toggle);
-    }
-
     public void TogglePaintUIBars(bool toggle)
     {
         for (int i = 0; i < paintUIBars.Length; i++)
@@ -133,7 +119,7 @@ public class PaintUI : MonoBehaviour
             myEntity.paintController.OnPaintValueReset -= PaintController_OnPaintValueReset;
             myEntity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
             myEntity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
-            myEntity.paintController.OnToggleUI -= PaintController_OnToggleUI;
+            myEntity.paintController.OnToggleUI -= TogglePaintUIBars;
         }
     }
 }

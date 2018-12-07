@@ -8,6 +8,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     private Camera mainCam;
     private bool initialisedEvents;
     private PaintImpactParticle paintMuzzleFlashParticle;
+    private PaintUILocalPlayer[] paintDisplayBars;
 
     [SerializeField] private Transform projectileSpawn;
     [SerializeField] private ParticleSystem muzzleFlashParticle;
@@ -28,6 +29,21 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         }
 
         paintMuzzleFlashParticle = GetComponentInChildren<PaintImpactParticle>();
+    }
+
+    private void Start()
+    {
+        if (photonView.IsMine)
+        {
+            paintDisplayBars = GetComponentsInChildren<PaintUILocalPlayer>();
+            for (int i = 0; i < PlayerManager.instance.entity.paintController.PaintValues.Count; i++)
+            {
+                if (paintDisplayBars[i])
+                {
+                    paintDisplayBars[i].Initialise(PlayerManager.instance.entity.paintController.PaintValues[i]);
+                }
+            }
+        }
     }
 
     public override void OnEnable()

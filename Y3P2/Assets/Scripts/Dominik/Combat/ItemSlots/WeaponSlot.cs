@@ -29,9 +29,8 @@ public class WeaponSlot : EquipmentSlot
 
         if (local)
         {
-            EquipWeapon(startingWeapon);
             numOfPaintTypes = Enum.GetValues(typeof(PaintController.PaintType)).Length;
-
+            EquipWeapon(startingWeapon);
             DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         }
     }

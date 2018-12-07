@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5332950153186277956}
   - component: {fileID: 7703574700677070862}
   - component: {fileID: 2422047157707933736}
+  - component: {fileID: 6500231927576790649}
   m_Layer: 11
   m_Name: PaintBar (2)
   m_TagString: Untagged
@@ -76,6 +77,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &6500231927576790649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617929939070183700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992b21a064d34234cb2dac4465d062be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageBackgrounds:
+  - image: {fileID: 2422047157707933736}
+    alpha: 1
+  - image: {fileID: 6036189835450333285}
+    alpha: 0.2
+  imageFill: {fileID: 2201974477018981036}
 --- !u!1 &1463798698321245490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1858,7 @@ GameObject:
   - component: {fileID: 5982770069631344251}
   - component: {fileID: 4532638287836961081}
   - component: {fileID: 7583111070742945202}
+  - component: {fileID: 5361455543238346962}
   m_Layer: 11
   m_Name: PaintBar (1)
   m_TagString: Untagged
@@ -1904,6 +1924,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &5361455543238346962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185401540918528330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992b21a064d34234cb2dac4465d062be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageBackgrounds:
+  - image: {fileID: 7583111070742945202}
+    alpha: 1
+  - image: {fileID: 6585491332675915438}
+    alpha: 0.2
+  imageFill: {fileID: 3338852340682851464}
 --- !u!1 &5234825649292533242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2258,7 @@ GameObject:
   - component: {fileID: 895246759701847815}
   - component: {fileID: 4254535184647058945}
   - component: {fileID: 2423361902980530998}
+  - component: {fileID: 1773402953634738093}
   m_Layer: 11
   m_Name: PaintBar (4)
   m_TagString: Untagged
@@ -2285,6 +2324,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &1773402953634738093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689462337239345081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992b21a064d34234cb2dac4465d062be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageBackgrounds:
+  - image: {fileID: 2423361902980530998}
+    alpha: 1
+  - image: {fileID: 2055307647826633638}
+    alpha: 0.2
+  imageFill: {fileID: 3736405997299510399}
 --- !u!1 &5731458846002927758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,6 +2426,7 @@ GameObject:
   - component: {fileID: 4924574854108305952}
   - component: {fileID: 3423530707345966405}
   - component: {fileID: 6327274823513989908}
+  - component: {fileID: 5216933038023733947}
   m_Layer: 11
   m_Name: PaintBar (3)
   m_TagString: Untagged
@@ -2434,6 +2492,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &5216933038023733947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003958928469456315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992b21a064d34234cb2dac4465d062be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageBackgrounds:
+  - image: {fileID: 6327274823513989908}
+    alpha: 1
+  - image: {fileID: 3841970703149076038}
+    alpha: 0.2
+  imageFill: {fileID: 361514561001568434}
 --- !u!1 &6076753722853388162
 GameObject:
   m_ObjectHideFlags: 0

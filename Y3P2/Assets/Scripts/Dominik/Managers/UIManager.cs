@@ -23,11 +23,6 @@ public class UIManager : MonoBehaviour
 
     [Space]
 
-    [SerializeField] private List<PaintUILocalPlayer> paintUILocalPlayer = new List<PaintUILocalPlayer>();
-    public List<PaintUILocalPlayer> PaintUILocalPlayer { get { return paintUILocalPlayer; } }
-
-    [Space]
-
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private TextMeshProUGUI hitPlayerText;
 
