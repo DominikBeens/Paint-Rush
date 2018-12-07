@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Pun;
+using Photon.Realtime;
+using System.Collections;
 using UnityEngine;
-using Photon.Pun;
 
-public class GetPickUp : MonoBehaviour {
+public class GetPickUp : MonoBehaviourPunCallbacks
+{
 
     [SerializeField]
     private float minCooldown;
@@ -16,19 +17,13 @@ public class GetPickUp : MonoBehaviour {
 
     private bool cooldown;
 
-    private PhotonView photonView;
-
     private void Start()
     {
-        photonView = GetComponent<PhotonView>();
-
-       
         SpawnPickUp();
     }
 
     public IEnumerator Cooldown()
     {
-
         cooldown = true;
         yield return new WaitForSeconds(Random.Range(minCooldown, maxCooldown));
         cooldown = false;
@@ -38,24 +33,22 @@ public class GetPickUp : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root.tag == "Player")
+        if (other.transform.root.tag == "Player")
         {
             if (!cooldown)
             {
                 other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
                 other.transform.root.GetComponent<PickUpActivater>().ActivatePickUp(myPickup);
+
                 StartCoroutine(Cooldown());
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    DestroyObject();
-                }
+                DestroyObject();
             }
         }
     }
 
     private void DestroyObject()
     {
-        if(pickUpObject != null)
+        if (PhotonNetwork.IsMasterClient && pickUpObject != null)
         {
             PhotonNetwork.Destroy(pickUpObject);
         }
@@ -65,15 +58,43 @@ public class GetPickUp : MonoBehaviour {
 
     private void SpawnPickUp()
     {
-
-        int i = Random.Range(0, GameManager.instance.PickUps.Count);
-       if(myPickup == null)
+        // Only the master client handles pickups and syncs it to other clients using OnPhotonSerializeView().
+        if (!PhotonNetwork.IsMasterClient)
         {
-            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[i].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            myPickup = GameManager.instance.PickUps[i];
+            return;
         }
-       
+
+        int pickupType = Random.Range(0, GameManager.instance.PickUps.Count);
+        if (myPickup == null)
+        {
+            photonView.RPC("SpawnPickupRPC", RpcTarget.All, pickupType);
+        }
     }
 
-  
+    [PunRPC]
+    private void SpawnPickupRPC(int pickupType)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[pickupType].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+
+        myPickup = GameManager.instance.PickUps[pickupType];
+    }
+
+    // Receive myPickup data.
+    [PunRPC]
+    private void SyncMyPickup(int pickupType)
+    {
+        myPickup = GameManager.instance.PickUps[pickupType];
+    }
+
+    // Send myPickup to everyone so that the new player receives the correct data.
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("SyncMyPickup", RpcTarget.Others, (int)myPickup.Type);
+        }
+    }
 }

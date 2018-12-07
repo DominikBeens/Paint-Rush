@@ -110,20 +110,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         playerState = newState;
 
-        switch (newState)
+        if (!photonView.IsMine)
         {
-            case GameManager.GameState.Lobby:
+            switch (newState)
+            {
+                case GameManager.GameState.Lobby:
 
-                entity.paintController.ToggleUI(false);
-                break;
-            case GameManager.GameState.Playing:
+                    entity.paintController.ToggleUI(false);
+                    break;
+                case GameManager.GameState.Playing:
 
-                entity.paintController.ToggleUI(true);
-                break;
-            case GameManager.GameState.Respawning:
+                    entity.paintController.ToggleUI(true);
+                    break;
+                case GameManager.GameState.Respawning:
 
-                entity.paintController.ToggleUI(false);
-                break;
+                    entity.paintController.ToggleUI(false);
+                    break;
+            }
         }
     }
 

@@ -63,12 +63,9 @@ public class PickUpActivater : MonoBehaviour {
 
     private void ActivateCloak()
     {
-
         foreach (GameObject r in pkm.objectsToCloak)
         {
             r.GetComponent<Renderer>().material = pkm.CloakShader;
         }
-        NotificationManager.instance.NewLocalNotification(pkm.objectsToCloak.Count.ToString());
-        NotificationManager.instance.NewLocalNotification("Cloaked");
     }
 }
