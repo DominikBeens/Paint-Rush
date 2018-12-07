@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     // Basically a copy of the GameManagers gamestate but this one is accesible from all clients and 
     // the one from the GameManager not since everyone has his own GameManager.
     private GameManager.GameState playerState;
+    public GameManager.GameState PlayerState { get { return playerState; } }
 
     #region PlayerComponents
     private PlayerAnimationController playerAnimController;

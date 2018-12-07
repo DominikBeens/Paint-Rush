@@ -32,21 +32,58 @@ public class PaintUI : MonoBehaviour
         initialised = true;
         myEntity = entity;
 
-        paintUIBars = GetComponentsInChildren<PaintUIBar>();
         anim = GetComponentInChildren<Animator>();
 
-        for (int i = 0; i < entity.paintController.PaintValues.Count; i++)
+        InitEvents();
+        InitUIBars();
+    }
+
+    private void InitEvents()
+    {
+        myEntity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
+        myEntity.paintController.OnPaintValueReset += PaintController_OnPaintValueReset;
+        myEntity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
+        myEntity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
+        myEntity.paintController.OnToggleUI += TogglePaintUIBars;
+    }
+
+    private void InitUIBars()
+    {
+        paintUIBars = GetComponentsInChildren<PaintUIBar>();
+
+        for (int i = 0; i < myEntity.paintController.PaintValues.Count; i++)
         {
-            paintUIBars[i].Initialise(entity.paintController.PaintValues[i], entity == PlayerManager.instance.entity ? true : false);
+            paintUIBars[i].Initialise(myEntity.paintController.PaintValues[i], myEntity == PlayerManager.instance.entity ? true : false);
         }
 
-        entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
-        entity.paintController.OnPaintValueReset += PaintController_OnPaintValueReset;
-        entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
-        entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
-        entity.paintController.OnToggleUI += TogglePaintUIBars;
+        if (myEntity == PlayerManager.instance.entity)
+        {
+            TogglePaintUIBars(false);
+        }
+        else
+        {
+            PlayerManager player = transform.root.GetComponentInChildren<PlayerManager>();
+            if (!player)
+            {
+                return;
+            }
 
-        TogglePaintUIBars(false);
+            switch (player.PlayerState)
+            {
+                case GameManager.GameState.Lobby:
+
+                    TogglePaintUIBars(false);
+                    break;
+                case GameManager.GameState.Playing:
+
+                    TogglePaintUIBars(true);
+                    break;
+                case GameManager.GameState.Respawning:
+
+                    TogglePaintUIBars(false);
+                    break;
+            }
+        }
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
