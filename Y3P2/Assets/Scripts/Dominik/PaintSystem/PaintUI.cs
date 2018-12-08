@@ -127,6 +127,12 @@ public class PaintUI : MonoBehaviour
 
     private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
     {
+        // No need to show a mark above our head when its ours.
+        if (myEntity.photonView.IsMine)
+        {
+            return;
+        }
+
         TogglePaintUIBars(false);
         markObject.SetActive(true);
 

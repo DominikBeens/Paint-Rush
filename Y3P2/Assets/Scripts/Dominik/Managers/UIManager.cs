@@ -41,6 +41,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject jumpCooldown;
     [SerializeField] private List<Image> jumpCDBars = new List<Image>();
 
+    [Space]
+
+    [SerializeField] private Image markImage;
+
     private void Awake()
     {
         if (!instance)
@@ -59,6 +63,16 @@ public class UIManager : MonoBehaviour
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
         ToggleLeaderboardAndStats(false);
+
+        markImage.enabled = false;
+    }
+
+    public void Initialise(Color crosshairColor)
+    {
+        mainCam = Camera.main;
+        WeaponSlot_OnChangeAmmoType(crosshairColor);
+        PlayerManager.instance.entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
+        PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
     }
 
     public IEnumerator ShowJumpCooldownIcon(float cooldown)
@@ -121,12 +135,6 @@ public class UIManager : MonoBehaviour
                 ToggleCrosshair(!b);
                 break;
         }
-    }
-
-    public void Initialise(Color crosshairColor)
-    {
-        mainCam = Camera.main;
-        WeaponSlot_OnChangeAmmoType(crosshairColor);
     }
 
     private void Update()
@@ -213,6 +221,17 @@ public class UIManager : MonoBehaviour
         crosshairAnim.SetTrigger("Hit");
     }
 
+    private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
+    {
+        markImage.color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
+        markImage.enabled = true;
+    }
+
+    private void PaintController_OnPaintMarkDestroyed()
+    {
+        markImage.enabled = false;
+    }
+
     private void ToggleCrosshair(bool b)
     {
         for (int i = 0; i < crosshair.Count; i++)
@@ -228,5 +247,8 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+
+        PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
+        PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
     }
 }
