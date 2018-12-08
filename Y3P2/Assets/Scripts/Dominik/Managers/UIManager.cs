@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     {
         public Transform transform;
         public string name;
+        public Entity entity;
     }
     private LastHitPlayer lastHitPlayer;
 
@@ -155,12 +156,19 @@ public class UIManager : MonoBehaviour
                 if (entity && !entity.photonView.IsSceneView)
                 {
                     hitPlayerText.text = entity.photonView.Owner.NickName;
-                    lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName };
+                    hitPlayerText.text += "\n" + entity.paintController.GetAllPaintValuesText();
+                    lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName, entity = entity };
+                }
+                else
+                {
+                    hitPlayerText.text = entity.paintController.GetAllPaintValuesText();
+                    lastHitPlayer = new LastHitPlayer { transform = hit.transform, entity = entity };
                 }
             }
             else
             {
                 hitPlayerText.text = lastHitPlayer.name;
+                hitPlayerText.text += "\n" + lastHitPlayer.entity.paintController.GetAllPaintValuesText();
             }
         }
         else

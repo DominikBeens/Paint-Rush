@@ -152,6 +152,18 @@ public class PaintController
         return Color.white;
     }
 
+    public string GetAllPaintValuesText()
+    {
+        string[] values = new string[paintValues.Count];
+
+        for (int i = 0; i < paintValues.Count; i++)
+        {
+            values[i] = "<color=#" + ColorUtility.ToHtmlStringRGBA(paintValues[i].paintColor) + ">" + paintValues[i].paintValue + "</color>";
+        }
+
+        return string.Join(" <=> ", values);
+    }
+
     // Used for syncing paint values when new players join.
     public void SetRawValues(List<float> values)
     {
