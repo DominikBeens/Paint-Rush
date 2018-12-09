@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
         }
-        //HeadBob();
+        HeadBob();
     }
 
     private void Update()
@@ -258,8 +258,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0);
-        spine.rotation = headObject.transform.rotation;
+        //headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0);
+        //spine.rotation = headObject.transform.rotation;
+
+        spine.eulerAngles = new Vector3(-currentAngle, spine.eulerAngles.y, spine.eulerAngles.z);
+
         //spine.localEulerAngles = headObject.transform.localEulerAngles;
         //spine.Rotate(headObject.transform.localEulerAngles);
     }
