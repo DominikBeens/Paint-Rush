@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float fovNotMoving = 75;
     [SerializeField]
+    private float fovMoving = 85;
+    [SerializeField]
     private float fovSprintBoostLerpSpeed = 0.5F;
-    private float defaultFOV;
     [SerializeField]
     private float directionalJumpForce = 2000;
     [SerializeField]
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour
     private bool forceGravity = true;
     private float xMove;
     private float yMove;
+
+    private Camera[] cameras;
     private bool canUseCam = true;
 
     private bool isMoving;
@@ -92,10 +95,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        fovNotMoving = 75;
-
         rb = GetComponent<Rigidbody>();
-        defaultFOV = GetComponentInChildren<Camera>().fieldOfView;
+        cameras = GetComponentsInChildren<Camera>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -212,14 +213,23 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector3.zero;
             }
 
-            if (GetComponentInChildren<Camera>().fieldOfView != fovNotMoving)
+            for (int i = 0; i < cameras.Length; i++)
             {
-                GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, fovNotMoving, fovSprintBoostLerpSpeed * Time.deltaTime);
+                if (cameras[i].fieldOfView != fovNotMoving)
+                {
+                    cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, fovNotMoving, fovSprintBoostLerpSpeed * Time.deltaTime);
+                }
             }
         }
-        else if (GetComponentInChildren<Camera>().fieldOfView != defaultFOV && xMove != 0 || yMove != 0)
+        else
         {
-            GetComponentInChildren<Camera>().fieldOfView = Mathf.Lerp(GetComponentInChildren<Camera>().fieldOfView, defaultFOV, fovSprintBoostLerpSpeed * Time.deltaTime);
+            for (int i = 0; i < cameras.Length; i++)
+            {
+                if (cameras[i].fieldOfView != fovNotMoving && xMove != 0 || yMove != 0)
+                {
+                    cameras[i].fieldOfView = Mathf.Lerp(cameras[i].fieldOfView, fovMoving, fovSprintBoostLerpSpeed * Time.deltaTime);
+                }
+            }
         }
 
         rb.AddRelativeForce(movement * (wallrunning ? wallRunSpeed : moveSpeed));
@@ -249,7 +259,9 @@ public class PlayerController : MonoBehaviour
         }
 
         headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0);
-        spine.localEulerAngles = headObject.transform.localEulerAngles;
+        spine.rotation = headObject.transform.rotation;
+        //spine.localEulerAngles = headObject.transform.localEulerAngles;
+        //spine.Rotate(headObject.transform.localEulerAngles);
     }
 
     /// <summary>
