@@ -142,6 +142,11 @@ public class PaintUI : MonoBehaviour
 
     private void PaintController_OnPaintMarkDestroyed()
     {
+        if (myEntity.photonView.IsMine)
+        {
+            return;
+        }
+
         TogglePaintUIBars(true);
         markObject.SetActive(false);
     }
