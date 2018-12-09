@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private bool sliding;
 
     [SerializeField] private GameObject headObject;
+    [SerializeField] private Transform spine;
 
     private Rigidbody rb;
     private bool grounded;
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
         }
-        HeadBob();
+        //HeadBob();
     }
 
     private void Update()
@@ -143,11 +144,6 @@ public class PlayerController : MonoBehaviour
             {
                 isMoving = false;
             }
-        }
-
-        if (canUseCam)
-        {
-            CameraRotation();
         }
 
         if (Input.GetButtonDown("Jump") && canJump)
@@ -194,6 +190,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        CameraRotation();
+    }
+
     /// <summary>
     /// The players regular movement
     /// </summary>
@@ -232,21 +233,23 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Mouse X") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
         float y = Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
 
-        transform.Rotate(new Vector3(0, x, 0));
-
-
-        currentAngle += Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
-        if(currentAngle >= angleLimit)
+        if (canUseCam)
         {
-            currentAngle = angleLimit;
-        }
-        else if(currentAngle <= -angleLimit)
-        {
-            currentAngle = -angleLimit;
+            transform.Rotate(new Vector3(0, x, 0));
+
+            currentAngle += Input.GetAxis("Mouse Y") * myCamRotateSpeed * Time.deltaTime * GetSettingsManagerMouseSens();
+            if(currentAngle >= angleLimit)
+            {
+                currentAngle = angleLimit;
+            }
+            else if(currentAngle <= -angleLimit)
+            {
+                currentAngle = -angleLimit;
+            }
         }
 
-        headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0); 
-        
+        headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0);
+        spine.localEulerAngles = headObject.transform.localEulerAngles;
     }
 
     /// <summary>

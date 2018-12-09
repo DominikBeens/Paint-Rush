@@ -20,7 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
         }
 
         initialised = true;
-        PlayerManager.instance.playerController.OnJump += PlayerController_OnJump;
+        //PlayerManager.instance.playerController.OnJump += PlayerController_OnJump;
     }
 
     private void PlayerController_OnJump()
@@ -41,17 +41,15 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
-        if (anim.GetBool("Run") != PlayerManager.instance.playerController.IsMoving)
-        {
-            anim.SetBool("Run", PlayerManager.instance.playerController.IsMoving);
-        }
+        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
     }
 
     private void OnDisable()
     {
         if (initialised)
         {
-            PlayerManager.instance.playerController.OnJump -= PlayerController_OnJump;
+            //PlayerManager.instance.playerController.OnJump -= PlayerController_OnJump;
         }
     }
 }

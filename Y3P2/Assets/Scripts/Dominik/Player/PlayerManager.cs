@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         playerCamera.SetActive(IsConnectedAndMine() ? true : false);
         playerController.Inititalise(IsConnectedAndMine());
         weaponSlot.Initialise(IsConnectedAndMine());
-        //playerAnimController.Initialise(IsConnectedAndMine());
+        playerAnimController.Initialise(IsConnectedAndMine());
 
         if (!IsConnectedAndMine())
         {
