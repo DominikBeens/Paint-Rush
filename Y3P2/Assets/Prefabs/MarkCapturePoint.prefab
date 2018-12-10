@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6064566255803410988}
   - component: {fileID: 7812080587629868751}
   - component: {fileID: 1312471600999531373}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: CaptureProgressBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1344112807479660319}
   - component: {fileID: 7949430077531394031}
   - component: {fileID: 5213960944981555755}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6732878236520670617}
   - component: {fileID: 6247417233145559376}
   - component: {fileID: 1288038307434194035}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: CaptureProgressFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 7538531299615577681}
   - component: {fileID: 1204697120097423969}
   - component: {fileID: 5290237669205688620}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 3073291606889465181}
   - component: {fileID: 3324263271736327119}
   - component: {fileID: 3798274663466787673}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: CaptureProgressFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 1944180717733895760}
   - component: {fileID: 1770413006459574153}
   - component: {fileID: 2871939954018123988}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 1297115060984450674}
   - component: {fileID: 4691918621828764195}
   - component: {fileID: 6238001080961613501}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: CaptureProgressBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
