@@ -1,0 +1,1047 @@
+fileFormatVersion: 2
+guid: 99b5e24430682a64d8ea6d6fcf538689
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 2nd_Ring_005
+    100002: 2nd_Ring_006
+    100004: 2nd_Ring_008
+    100006: 2nd_Ring_008 1
+    100008: 2nd_Ring_009
+    100010: 2nd_Ring_010
+    100012: 2nd_Ring_011
+    100014: 2nd_Ring_012
+    100016: 2nd_Ring_013
+    100018: 2nd_Ring_015
+    100020: 2nd_Ring_016
+    100022: 2nd_Ring_017
+    100024: 2nd_Ring_018
+    100026: 2nd_Ring_019
+    100028: 2nd_Ring_020
+    100030: 2nd_Ring_021
+    100032: Bottom collider
+    100034: Bottom_Floor
+    100036: Bottom_Floor001
+    100038: Bottom_Floor002
+    100040: Bottom_Floor003
+    100042: Bottom_Floor004
+    100044: Bottom_Floor005
+    100046: Bottom_Floor006
+    100048: Bottom_Floor007
+    100050: Bottom_Hallway
+    100052: Bottom_Hallway001
+    100054: Bottom_Hallway002
+    100056: Bottom_Hallway003
+    100058: Bottom_Hallway004
+    100060: Bottom_Hallway005
+    100062: Bottom_Hallway006
+    100064: Bottom_Hallway007
+    100066: Bottom_Wall
+    100068: Bottom_Wall001
+    100070: Bottom_Wall002
+    100072: Bottom_Wall003
+    100074: Bottom_Wall004
+    100076: Bottom_Wall005
+    100078: Bottom_Wall006
+    100080: Bottom_Wall007
+    100082: Collider
+    100084: Collider 1
+    100086: Collider 10
+    100088: Collider 11
+    100090: Collider 12
+    100092: Collider 13
+    100094: Collider 14
+    100096: Collider 15
+    100098: Collider 16
+    100100: Collider 17
+    100102: Collider 18
+    100104: Collider 19
+    100106: Collider 2
+    100108: Collider 20
+    100110: Collider 21
+    100112: Collider 22
+    100114: Collider 23
+    100116: Collider 24
+    100118: Collider 25
+    100120: Collider 26
+    100122: Collider 27
+    100124: Collider 28
+    100126: Collider 29
+    100128: Collider 3
+    100130: Collider 30
+    100132: Collider 31
+    100134: Collider 32
+    100136: Collider 33
+    100138: Collider 34
+    100140: Collider 35
+    100142: Collider 36
+    100144: Collider 37
+    100146: Collider 38
+    100148: Collider 39
+    100150: Collider 4
+    100152: Collider 5
+    100154: Collider 6
+    100156: Collider 7
+    100158: Collider 8
+    100160: Collider 9
+    100162: Dome
+    100164: Floor_Collider
+    100166: Inner_Wall_Collider
+    100168: Inner_Wall_Collider001
+    100170: Inner_Wall_Collider002
+    100172: Inner_Wall_Collider003
+    100174: Inner_Wall_Collider004
+    100176: Inner_Wall_Collider005
+    100178: Inner_Wall_Collider006
+    100180: Inner_Wall_Collider007
+    100182: Middle_pillar
+    100184: Object001
+    100186: Object002
+    100188: Object003
+    100190: Object004
+    100192: Object005
+    100194: Object006
+    100196: Object007
+    100198: Object008
+    100200: Object009
+    100202: Object010
+    100204: Object012
+    100206: Object013
+    100208: Object014
+    100210: Object015
+    100212: Object016
+    100214: Object017
+    100216: Object027
+    100218: Object028
+    100220: Object029
+    100222: Object030
+    100224: Object031
+    100226: Outer_Ring_Left
+    100228: Outer_Ring_Left001
+    100230: Outer_Ring_Left002
+    100232: Outer_Ring_Left003
+    100234: Outer_Ring_Right
+    100236: Outer_Ring_Right001
+    100238: Outer_Ring_Right002
+    100240: Outer_Ring_Right003
+    100242: Outer_Roof_Collider
+    100244: Outer_Roof_Collider001
+    100246: Outer_Roof_Collider002
+    100248: Outer_Roof_Collider003
+    100250: Outer_Roof_Collider004
+    100252: Outer_Roof_Collider005
+    100254: Outer_Roof_Collider006
+    100256: Outer_Roof_Collider007
+    100258: Outer_Wall_Collider
+    100260: Outer_Wall_Collider001
+    100262: Outer_Wall_Collider002
+    100264: Outer_Wall_Collider003
+    100266: Outer_Wall_Collider004
+    100268: Outer_Wall_Collider005
+    100270: Outer_Wall_Collider006
+    100272: Outer_Wall_Collider007
+    100274: Plane003
+    100276: Plane004
+    100278: Plane005
+    100280: Plane006
+    100282: Plane007
+    100284: Plane008
+    100286: Plane009
+    100288: Plane010
+    100290: Plane011
+    100292: Plane012
+    100294: Plane013
+    100296: Plane014
+    100298: Plane018
+    100300: Plane019
+    100302: Plane021
+    100304: Plane022
+    100306: Plane023
+    100308: Plane024
+    100310: Plane026
+    100312: Plane027
+    100314: Power_Cable_Big_Left
+    100316: Power_Cable_Big_Left001
+    100318: Power_Cable_Big_Left002
+    100320: Power_Cable_Big_Left003
+    100322: Power_Cable_Big_Right
+    100324: Power_Cable_Big_Right001
+    100326: Power_Cable_Big_Right002
+    100328: Power_Cable_Big_Right003
+    100330: Power_Cable_Holder_Left
+    100332: Power_Cable_Holder_Left001
+    100334: Power_Cable_Holder_Left002
+    100336: Power_Cable_Holder_Left003
+    100338: Power_Cable_Holder_Right
+    100340: Power_Cable_Holder_Right001
+    100342: Power_Cable_Holder_Right002
+    100344: Power_Cable_Holder_Right003
+    100346: Power_Cable_Small_Left
+    100348: Power_Cable_Small_Left001
+    100350: Power_Cable_Small_Left002
+    100352: Power_Cable_Small_Left003
+    100354: Power_Cable_Small_Right
+    100356: Power_Cable_Small_Right001
+    100358: Power_Cable_Small_Right002
+    100360: Power_Cable_Small_Right003
+    100362: Power_Cable_Window_Left
+    100364: Power_Cable_Window_Left001
+    100366: Power_Cable_Window_Left002
+    100368: Power_Cable_Window_Left003
+    100370: Power_Cable_Window_Right
+    100372: Power_Cable_Window_Right001
+    100374: Power_Cable_Window_Right002
+    100376: Power_Cable_Window_Right003
+    100378: //RootNode
+    100380: Wallrun collider
+    100382: Wallrun_Collider_02
+    400000: 2nd_Ring_005
+    400002: 2nd_Ring_006
+    400004: 2nd_Ring_008
+    400006: 2nd_Ring_008 1
+    400008: 2nd_Ring_009
+    400010: 2nd_Ring_010
+    400012: 2nd_Ring_011
+    400014: 2nd_Ring_012
+    400016: 2nd_Ring_013
+    400018: 2nd_Ring_015
+    400020: 2nd_Ring_016
+    400022: 2nd_Ring_017
+    400024: 2nd_Ring_018
+    400026: 2nd_Ring_019
+    400028: 2nd_Ring_020
+    400030: 2nd_Ring_021
+    400032: Bottom collider
+    400034: Bottom_Floor
+    400036: Bottom_Floor001
+    400038: Bottom_Floor002
+    400040: Bottom_Floor003
+    400042: Bottom_Floor004
+    400044: Bottom_Floor005
+    400046: Bottom_Floor006
+    400048: Bottom_Floor007
+    400050: Bottom_Hallway
+    400052: Bottom_Hallway001
+    400054: Bottom_Hallway002
+    400056: Bottom_Hallway003
+    400058: Bottom_Hallway004
+    400060: Bottom_Hallway005
+    400062: Bottom_Hallway006
+    400064: Bottom_Hallway007
+    400066: Bottom_Wall
+    400068: Bottom_Wall001
+    400070: Bottom_Wall002
+    400072: Bottom_Wall003
+    400074: Bottom_Wall004
+    400076: Bottom_Wall005
+    400078: Bottom_Wall006
+    400080: Bottom_Wall007
+    400082: Collider
+    400084: Collider 1
+    400086: Collider 10
+    400088: Collider 11
+    400090: Collider 12
+    400092: Collider 13
+    400094: Collider 14
+    400096: Collider 15
+    400098: Collider 16
+    400100: Collider 17
+    400102: Collider 18
+    400104: Collider 19
+    400106: Collider 2
+    400108: Collider 20
+    400110: Collider 21
+    400112: Collider 22
+    400114: Collider 23
+    400116: Collider 24
+    400118: Collider 25
+    400120: Collider 26
+    400122: Collider 27
+    400124: Collider 28
+    400126: Collider 29
+    400128: Collider 3
+    400130: Collider 30
+    400132: Collider 31
+    400134: Collider 32
+    400136: Collider 33
+    400138: Collider 34
+    400140: Collider 35
+    400142: Collider 36
+    400144: Collider 37
+    400146: Collider 38
+    400148: Collider 39
+    400150: Collider 4
+    400152: Collider 5
+    400154: Collider 6
+    400156: Collider 7
+    400158: Collider 8
+    400160: Collider 9
+    400162: Dome
+    400164: Floor_Collider
+    400166: Inner_Wall_Collider
+    400168: Inner_Wall_Collider001
+    400170: Inner_Wall_Collider002
+    400172: Inner_Wall_Collider003
+    400174: Inner_Wall_Collider004
+    400176: Inner_Wall_Collider005
+    400178: Inner_Wall_Collider006
+    400180: Inner_Wall_Collider007
+    400182: Middle_pillar
+    400184: Object001
+    400186: Object002
+    400188: Object003
+    400190: Object004
+    400192: Object005
+    400194: Object006
+    400196: Object007
+    400198: Object008
+    400200: Object009
+    400202: Object010
+    400204: Object012
+    400206: Object013
+    400208: Object014
+    400210: Object015
+    400212: Object016
+    400214: Object017
+    400216: Object027
+    400218: Object028
+    400220: Object029
+    400222: Object030
+    400224: Object031
+    400226: Outer_Ring_Left
+    400228: Outer_Ring_Left001
+    400230: Outer_Ring_Left002
+    400232: Outer_Ring_Left003
+    400234: Outer_Ring_Right
+    400236: Outer_Ring_Right001
+    400238: Outer_Ring_Right002
+    400240: Outer_Ring_Right003
+    400242: Outer_Roof_Collider
+    400244: Outer_Roof_Collider001
+    400246: Outer_Roof_Collider002
+    400248: Outer_Roof_Collider003
+    400250: Outer_Roof_Collider004
+    400252: Outer_Roof_Collider005
+    400254: Outer_Roof_Collider006
+    400256: Outer_Roof_Collider007
+    400258: Outer_Wall_Collider
+    400260: Outer_Wall_Collider001
+    400262: Outer_Wall_Collider002
+    400264: Outer_Wall_Collider003
+    400266: Outer_Wall_Collider004
+    400268: Outer_Wall_Collider005
+    400270: Outer_Wall_Collider006
+    400272: Outer_Wall_Collider007
+    400274: Plane003
+    400276: Plane004
+    400278: Plane005
+    400280: Plane006
+    400282: Plane007
+    400284: Plane008
+    400286: Plane009
+    400288: Plane010
+    400290: Plane011
+    400292: Plane012
+    400294: Plane013
+    400296: Plane014
+    400298: Plane018
+    400300: Plane019
+    400302: Plane021
+    400304: Plane022
+    400306: Plane023
+    400308: Plane024
+    400310: Plane026
+    400312: Plane027
+    400314: Power_Cable_Big_Left
+    400316: Power_Cable_Big_Left001
+    400318: Power_Cable_Big_Left002
+    400320: Power_Cable_Big_Left003
+    400322: Power_Cable_Big_Right
+    400324: Power_Cable_Big_Right001
+    400326: Power_Cable_Big_Right002
+    400328: Power_Cable_Big_Right003
+    400330: Power_Cable_Holder_Left
+    400332: Power_Cable_Holder_Left001
+    400334: Power_Cable_Holder_Left002
+    400336: Power_Cable_Holder_Left003
+    400338: Power_Cable_Holder_Right
+    400340: Power_Cable_Holder_Right001
+    400342: Power_Cable_Holder_Right002
+    400344: Power_Cable_Holder_Right003
+    400346: Power_Cable_Small_Left
+    400348: Power_Cable_Small_Left001
+    400350: Power_Cable_Small_Left002
+    400352: Power_Cable_Small_Left003
+    400354: Power_Cable_Small_Right
+    400356: Power_Cable_Small_Right001
+    400358: Power_Cable_Small_Right002
+    400360: Power_Cable_Small_Right003
+    400362: Power_Cable_Window_Left
+    400364: Power_Cable_Window_Left001
+    400366: Power_Cable_Window_Left002
+    400368: Power_Cable_Window_Left003
+    400370: Power_Cable_Window_Right
+    400372: Power_Cable_Window_Right001
+    400374: Power_Cable_Window_Right002
+    400376: Power_Cable_Window_Right003
+    400378: //RootNode
+    400380: Wallrun collider
+    400382: Wallrun_Collider_02
+    2100000: 02 - Default
+    2100002: No Name
+    2300000: 2nd_Ring_005
+    2300002: 2nd_Ring_006
+    2300004: 2nd_Ring_008
+    2300006: 2nd_Ring_008 1
+    2300008: 2nd_Ring_009
+    2300010: 2nd_Ring_010
+    2300012: 2nd_Ring_011
+    2300014: 2nd_Ring_012
+    2300016: 2nd_Ring_013
+    2300018: 2nd_Ring_015
+    2300020: 2nd_Ring_016
+    2300022: 2nd_Ring_017
+    2300024: 2nd_Ring_018
+    2300026: 2nd_Ring_019
+    2300028: 2nd_Ring_020
+    2300030: 2nd_Ring_021
+    2300032: Bottom collider
+    2300034: Bottom_Floor
+    2300036: Bottom_Floor001
+    2300038: Bottom_Floor002
+    2300040: Bottom_Floor003
+    2300042: Bottom_Floor004
+    2300044: Bottom_Floor005
+    2300046: Bottom_Floor006
+    2300048: Bottom_Floor007
+    2300050: Bottom_Hallway
+    2300052: Bottom_Hallway001
+    2300054: Bottom_Hallway002
+    2300056: Bottom_Hallway003
+    2300058: Bottom_Hallway004
+    2300060: Bottom_Hallway005
+    2300062: Bottom_Hallway006
+    2300064: Bottom_Hallway007
+    2300066: Bottom_Wall
+    2300068: Bottom_Wall001
+    2300070: Bottom_Wall002
+    2300072: Bottom_Wall003
+    2300074: Bottom_Wall004
+    2300076: Bottom_Wall005
+    2300078: Bottom_Wall006
+    2300080: Bottom_Wall007
+    2300082: Collider
+    2300084: Collider 1
+    2300086: Collider 10
+    2300088: Collider 11
+    2300090: Collider 12
+    2300092: Collider 13
+    2300094: Collider 14
+    2300096: Collider 15
+    2300098: Collider 16
+    2300100: Collider 17
+    2300102: Collider 18
+    2300104: Collider 19
+    2300106: Collider 2
+    2300108: Collider 20
+    2300110: Collider 21
+    2300112: Collider 22
+    2300114: Collider 23
+    2300116: Collider 24
+    2300118: Collider 25
+    2300120: Collider 26
+    2300122: Collider 27
+    2300124: Collider 28
+    2300126: Collider 29
+    2300128: Collider 3
+    2300130: Collider 30
+    2300132: Collider 31
+    2300134: Collider 32
+    2300136: Collider 33
+    2300138: Collider 34
+    2300140: Collider 35
+    2300142: Collider 36
+    2300144: Collider 37
+    2300146: Collider 38
+    2300148: Collider 39
+    2300150: Collider 4
+    2300152: Collider 5
+    2300154: Collider 6
+    2300156: Collider 7
+    2300158: Collider 8
+    2300160: Collider 9
+    2300162: Dome
+    2300164: Floor_Collider
+    2300166: Inner_Wall_Collider
+    2300168: Inner_Wall_Collider001
+    2300170: Inner_Wall_Collider002
+    2300172: Inner_Wall_Collider003
+    2300174: Inner_Wall_Collider004
+    2300176: Inner_Wall_Collider005
+    2300178: Inner_Wall_Collider006
+    2300180: Inner_Wall_Collider007
+    2300182: Middle_pillar
+    2300184: Object001
+    2300186: Object002
+    2300188: Object003
+    2300190: Object004
+    2300192: Object005
+    2300194: Object006
+    2300196: Object007
+    2300198: Object008
+    2300200: Object009
+    2300202: Object010
+    2300204: Object012
+    2300206: Object013
+    2300208: Object014
+    2300210: Object015
+    2300212: Object016
+    2300214: Object017
+    2300216: Object027
+    2300218: Object028
+    2300220: Object029
+    2300222: Object030
+    2300224: Object031
+    2300226: Outer_Ring_Left
+    2300228: Outer_Ring_Left001
+    2300230: Outer_Ring_Left002
+    2300232: Outer_Ring_Left003
+    2300234: Outer_Ring_Right
+    2300236: Outer_Ring_Right001
+    2300238: Outer_Ring_Right002
+    2300240: Outer_Ring_Right003
+    2300242: Outer_Roof_Collider
+    2300244: Outer_Roof_Collider001
+    2300246: Outer_Roof_Collider002
+    2300248: Outer_Roof_Collider003
+    2300250: Outer_Roof_Collider004
+    2300252: Outer_Roof_Collider005
+    2300254: Outer_Roof_Collider006
+    2300256: Outer_Roof_Collider007
+    2300258: Outer_Wall_Collider
+    2300260: Outer_Wall_Collider001
+    2300262: Outer_Wall_Collider002
+    2300264: Outer_Wall_Collider003
+    2300266: Outer_Wall_Collider004
+    2300268: Outer_Wall_Collider005
+    2300270: Outer_Wall_Collider006
+    2300272: Outer_Wall_Collider007
+    2300274: Plane003
+    2300276: Plane004
+    2300278: Plane005
+    2300280: Plane006
+    2300282: Plane007
+    2300284: Plane008
+    2300286: Plane009
+    2300288: Plane010
+    2300290: Plane011
+    2300292: Plane012
+    2300294: Plane013
+    2300296: Plane014
+    2300298: Plane018
+    2300300: Plane019
+    2300302: Plane021
+    2300304: Plane022
+    2300306: Plane023
+    2300308: Plane024
+    2300310: Plane026
+    2300312: Plane027
+    2300314: Power_Cable_Big_Left
+    2300316: Power_Cable_Big_Left001
+    2300318: Power_Cable_Big_Left002
+    2300320: Power_Cable_Big_Left003
+    2300322: Power_Cable_Big_Right
+    2300324: Power_Cable_Big_Right001
+    2300326: Power_Cable_Big_Right002
+    2300328: Power_Cable_Big_Right003
+    2300330: Power_Cable_Holder_Left
+    2300332: Power_Cable_Holder_Left001
+    2300334: Power_Cable_Holder_Left002
+    2300336: Power_Cable_Holder_Left003
+    2300338: Power_Cable_Holder_Right
+    2300340: Power_Cable_Holder_Right001
+    2300342: Power_Cable_Holder_Right002
+    2300344: Power_Cable_Holder_Right003
+    2300346: Power_Cable_Small_Left
+    2300348: Power_Cable_Small_Left001
+    2300350: Power_Cable_Small_Left002
+    2300352: Power_Cable_Small_Left003
+    2300354: Power_Cable_Small_Right
+    2300356: Power_Cable_Small_Right001
+    2300358: Power_Cable_Small_Right002
+    2300360: Power_Cable_Small_Right003
+    2300362: Power_Cable_Window_Left
+    2300364: Power_Cable_Window_Left001
+    2300366: Power_Cable_Window_Left002
+    2300368: Power_Cable_Window_Left003
+    2300370: Power_Cable_Window_Right
+    2300372: Power_Cable_Window_Right001
+    2300374: Power_Cable_Window_Right002
+    2300376: Power_Cable_Window_Right003
+    2300378: Wallrun collider
+    2300380: Wallrun_Collider_02
+    3300000: 2nd_Ring_005
+    3300002: 2nd_Ring_006
+    3300004: 2nd_Ring_008
+    3300006: 2nd_Ring_008 1
+    3300008: 2nd_Ring_009
+    3300010: 2nd_Ring_010
+    3300012: 2nd_Ring_011
+    3300014: 2nd_Ring_012
+    3300016: 2nd_Ring_013
+    3300018: 2nd_Ring_015
+    3300020: 2nd_Ring_016
+    3300022: 2nd_Ring_017
+    3300024: 2nd_Ring_018
+    3300026: 2nd_Ring_019
+    3300028: 2nd_Ring_020
+    3300030: 2nd_Ring_021
+    3300032: Bottom collider
+    3300034: Bottom_Floor
+    3300036: Bottom_Floor001
+    3300038: Bottom_Floor002
+    3300040: Bottom_Floor003
+    3300042: Bottom_Floor004
+    3300044: Bottom_Floor005
+    3300046: Bottom_Floor006
+    3300048: Bottom_Floor007
+    3300050: Bottom_Hallway
+    3300052: Bottom_Hallway001
+    3300054: Bottom_Hallway002
+    3300056: Bottom_Hallway003
+    3300058: Bottom_Hallway004
+    3300060: Bottom_Hallway005
+    3300062: Bottom_Hallway006
+    3300064: Bottom_Hallway007
+    3300066: Bottom_Wall
+    3300068: Bottom_Wall001
+    3300070: Bottom_Wall002
+    3300072: Bottom_Wall003
+    3300074: Bottom_Wall004
+    3300076: Bottom_Wall005
+    3300078: Bottom_Wall006
+    3300080: Bottom_Wall007
+    3300082: Collider
+    3300084: Collider 1
+    3300086: Collider 10
+    3300088: Collider 11
+    3300090: Collider 12
+    3300092: Collider 13
+    3300094: Collider 14
+    3300096: Collider 15
+    3300098: Collider 16
+    3300100: Collider 17
+    3300102: Collider 18
+    3300104: Collider 19
+    3300106: Collider 2
+    3300108: Collider 20
+    3300110: Collider 21
+    3300112: Collider 22
+    3300114: Collider 23
+    3300116: Collider 24
+    3300118: Collider 25
+    3300120: Collider 26
+    3300122: Collider 27
+    3300124: Collider 28
+    3300126: Collider 29
+    3300128: Collider 3
+    3300130: Collider 30
+    3300132: Collider 31
+    3300134: Collider 32
+    3300136: Collider 33
+    3300138: Collider 34
+    3300140: Collider 35
+    3300142: Collider 36
+    3300144: Collider 37
+    3300146: Collider 38
+    3300148: Collider 39
+    3300150: Collider 4
+    3300152: Collider 5
+    3300154: Collider 6
+    3300156: Collider 7
+    3300158: Collider 8
+    3300160: Collider 9
+    3300162: Dome
+    3300164: Floor_Collider
+    3300166: Inner_Wall_Collider
+    3300168: Inner_Wall_Collider001
+    3300170: Inner_Wall_Collider002
+    3300172: Inner_Wall_Collider003
+    3300174: Inner_Wall_Collider004
+    3300176: Inner_Wall_Collider005
+    3300178: Inner_Wall_Collider006
+    3300180: Inner_Wall_Collider007
+    3300182: Middle_pillar
+    3300184: Object001
+    3300186: Object002
+    3300188: Object003
+    3300190: Object004
+    3300192: Object005
+    3300194: Object006
+    3300196: Object007
+    3300198: Object008
+    3300200: Object009
+    3300202: Object010
+    3300204: Object012
+    3300206: Object013
+    3300208: Object014
+    3300210: Object015
+    3300212: Object016
+    3300214: Object017
+    3300216: Object027
+    3300218: Object028
+    3300220: Object029
+    3300222: Object030
+    3300224: Object031
+    3300226: Outer_Ring_Left
+    3300228: Outer_Ring_Left001
+    3300230: Outer_Ring_Left002
+    3300232: Outer_Ring_Left003
+    3300234: Outer_Ring_Right
+    3300236: Outer_Ring_Right001
+    3300238: Outer_Ring_Right002
+    3300240: Outer_Ring_Right003
+    3300242: Outer_Roof_Collider
+    3300244: Outer_Roof_Collider001
+    3300246: Outer_Roof_Collider002
+    3300248: Outer_Roof_Collider003
+    3300250: Outer_Roof_Collider004
+    3300252: Outer_Roof_Collider005
+    3300254: Outer_Roof_Collider006
+    3300256: Outer_Roof_Collider007
+    3300258: Outer_Wall_Collider
+    3300260: Outer_Wall_Collider001
+    3300262: Outer_Wall_Collider002
+    3300264: Outer_Wall_Collider003
+    3300266: Outer_Wall_Collider004
+    3300268: Outer_Wall_Collider005
+    3300270: Outer_Wall_Collider006
+    3300272: Outer_Wall_Collider007
+    3300274: Plane003
+    3300276: Plane004
+    3300278: Plane005
+    3300280: Plane006
+    3300282: Plane007
+    3300284: Plane008
+    3300286: Plane009
+    3300288: Plane010
+    3300290: Plane011
+    3300292: Plane012
+    3300294: Plane013
+    3300296: Plane014
+    3300298: Plane018
+    3300300: Plane019
+    3300302: Plane021
+    3300304: Plane022
+    3300306: Plane023
+    3300308: Plane024
+    3300310: Plane026
+    3300312: Plane027
+    3300314: Power_Cable_Big_Left
+    3300316: Power_Cable_Big_Left001
+    3300318: Power_Cable_Big_Left002
+    3300320: Power_Cable_Big_Left003
+    3300322: Power_Cable_Big_Right
+    3300324: Power_Cable_Big_Right001
+    3300326: Power_Cable_Big_Right002
+    3300328: Power_Cable_Big_Right003
+    3300330: Power_Cable_Holder_Left
+    3300332: Power_Cable_Holder_Left001
+    3300334: Power_Cable_Holder_Left002
+    3300336: Power_Cable_Holder_Left003
+    3300338: Power_Cable_Holder_Right
+    3300340: Power_Cable_Holder_Right001
+    3300342: Power_Cable_Holder_Right002
+    3300344: Power_Cable_Holder_Right003
+    3300346: Power_Cable_Small_Left
+    3300348: Power_Cable_Small_Left001
+    3300350: Power_Cable_Small_Left002
+    3300352: Power_Cable_Small_Left003
+    3300354: Power_Cable_Small_Right
+    3300356: Power_Cable_Small_Right001
+    3300358: Power_Cable_Small_Right002
+    3300360: Power_Cable_Small_Right003
+    3300362: Power_Cable_Window_Left
+    3300364: Power_Cable_Window_Left001
+    3300366: Power_Cable_Window_Left002
+    3300368: Power_Cable_Window_Left003
+    3300370: Power_Cable_Window_Right
+    3300372: Power_Cable_Window_Right001
+    3300374: Power_Cable_Window_Right002
+    3300376: Power_Cable_Window_Right003
+    3300378: Wallrun collider
+    3300380: Wallrun_Collider_02
+    4300000: Middle_pillar
+    4300002: Plane003
+    4300004: Plane004
+    4300006: Plane005
+    4300008: Plane006
+    4300010: Plane007
+    4300012: Plane008
+    4300014: Plane009
+    4300016: Plane010
+    4300018: Plane011
+    4300020: Plane012
+    4300022: Plane013
+    4300024: Plane014
+    4300026: Floor_Collider
+    4300028: Wallrun collider
+    4300030: Bottom collider
+    4300032: Object001
+    4300034: Object002
+    4300036: Object003
+    4300038: Object004
+    4300040: Object005
+    4300042: Object006
+    4300044: Object007
+    4300046: Object008
+    4300048: 2nd_Ring_005
+    4300050: 2nd_Ring_006
+    4300052: 2nd_Ring_008
+    4300054: 2nd_Ring_008
+    4300056: 2nd_Ring_009
+    4300058: 2nd_Ring_010
+    4300060: 2nd_Ring_011
+    4300062: 2nd_Ring_012
+    4300064: Object009
+    4300066: Object010
+    4300068: Object012
+    4300070: Object013
+    4300072: Object014
+    4300074: Object015
+    4300076: Object016
+    4300078: Object017
+    4300080: 2nd_Ring_013
+    4300082: 2nd_Ring_015
+    4300084: 2nd_Ring_016
+    4300086: 2nd_Ring_017
+    4300088: 2nd_Ring_018
+    4300090: Plane018
+    4300092: Plane019
+    4300094: Plane021
+    4300096: Plane022
+    4300098: Plane023
+    4300100: Plane024
+    4300102: Plane026
+    4300104: Plane027
+    4300106: Object027
+    4300108: Dome
+    4300110: Object028
+    4300112: Object029
+    4300114: Object030
+    4300116: Object031
+    4300118: 2nd_Ring_019
+    4300120: 2nd_Ring_020
+    4300122: 2nd_Ring_021
+    4300124: Outer_Ring_Left
+    4300126: Power_Cable_Window_Left
+    4300128: Power_Cable_Holder_Left
+    4300130: Power_Cable_Small_Left
+    4300132: Power_Cable_Big_Left
+    4300134: Outer_Ring_Right
+    4300136: Power_Cable_Window_Right
+    4300138: Power_Cable_Holder_Right
+    4300140: Power_Cable_Small_Right
+    4300142: Power_Cable_Big_Right
+    4300144: Outer_Ring_Left001
+    4300146: Outer_Ring_Right001
+    4300148: Power_Cable_Big_Left001
+    4300150: Power_Cable_Big_Right001
+    4300152: Power_Cable_Holder_Left001
+    4300154: Power_Cable_Holder_Right001
+    4300156: Power_Cable_Small_Left001
+    4300158: Power_Cable_Small_Right001
+    4300160: Power_Cable_Window_Left001
+    4300162: Power_Cable_Window_Right001
+    4300164: Outer_Ring_Left002
+    4300166: Outer_Ring_Right002
+    4300168: Power_Cable_Big_Left002
+    4300170: Power_Cable_Big_Right002
+    4300172: Power_Cable_Holder_Left002
+    4300174: Power_Cable_Holder_Right002
+    4300176: Power_Cable_Small_Left002
+    4300178: Power_Cable_Small_Right002
+    4300180: Power_Cable_Window_Left002
+    4300182: Power_Cable_Window_Right002
+    4300184: Outer_Ring_Left003
+    4300186: Outer_Ring_Right003
+    4300188: Power_Cable_Big_Left003
+    4300190: Power_Cable_Big_Right003
+    4300192: Power_Cable_Holder_Left003
+    4300194: Power_Cable_Holder_Right003
+    4300196: Power_Cable_Small_Left003
+    4300198: Power_Cable_Small_Right003
+    4300200: Power_Cable_Window_Left003
+    4300202: Power_Cable_Window_Right003
+    4300204: Outer_Wall_Collider
+    4300206: Outer_Roof_Collider
+    4300208: Inner_Wall_Collider
+    4300210: Outer_Wall_Collider001
+    4300212: Outer_Wall_Collider002
+    4300214: Outer_Wall_Collider003
+    4300216: Outer_Wall_Collider004
+    4300218: Outer_Wall_Collider005
+    4300220: Outer_Wall_Collider006
+    4300222: Outer_Wall_Collider007
+    4300224: Inner_Wall_Collider001
+    4300226: Inner_Wall_Collider002
+    4300228: Inner_Wall_Collider003
+    4300230: Inner_Wall_Collider004
+    4300232: Inner_Wall_Collider005
+    4300234: Inner_Wall_Collider006
+    4300236: Inner_Wall_Collider007
+    4300238: Outer_Roof_Collider001
+    4300240: Outer_Roof_Collider002
+    4300242: Outer_Roof_Collider003
+    4300244: Outer_Roof_Collider004
+    4300246: Outer_Roof_Collider005
+    4300248: Outer_Roof_Collider006
+    4300250: Outer_Roof_Collider007
+    4300252: Bottom_Floor
+    4300254: Bottom_Floor001
+    4300256: Bottom_Floor002
+    4300258: Bottom_Floor003
+    4300260: Bottom_Floor004
+    4300262: Bottom_Floor005
+    4300264: Bottom_Floor006
+    4300266: Bottom_Floor007
+    4300268: Bottom_Hallway
+    4300270: Bottom_Hallway001
+    4300272: Bottom_Hallway002
+    4300274: Bottom_Hallway003
+    4300276: Bottom_Hallway004
+    4300278: Bottom_Hallway005
+    4300280: Bottom_Hallway006
+    4300282: Bottom_Hallway007
+    4300284: Bottom_Wall
+    4300286: Bottom_Wall001
+    4300288: Bottom_Wall002
+    4300290: Bottom_Wall003
+    4300292: Bottom_Wall004
+    4300294: Bottom_Wall005
+    4300296: Bottom_Wall006
+    4300298: Bottom_Wall007
+    4300300: Collider
+    4300302: Collider
+    4300304: Collider
+    4300306: Collider
+    4300308: Collider
+    4300310: Collider
+    4300312: Collider
+    4300314: Collider
+    4300316: Collider
+    4300318: Collider
+    4300320: Collider
+    4300322: Collider
+    4300324: Collider
+    4300326: Collider
+    4300328: Collider
+    4300330: Collider
+    4300332: Collider
+    4300334: Collider
+    4300336: Collider
+    4300338: Collider
+    4300340: Collider
+    4300342: Collider
+    4300344: Collider
+    4300346: Collider
+    4300348: Collider
+    4300350: Collider
+    4300352: Collider
+    4300354: Collider
+    4300356: Collider
+    4300358: Collider
+    4300360: Collider
+    4300362: Collider
+    4300364: Collider
+    4300366: Collider
+    4300368: Collider
+    4300370: Collider
+    4300372: Collider
+    4300374: Collider
+    4300376: Collider
+    4300378: Collider
+    4300380: Wallrun_Collider_02
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
