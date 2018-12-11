@@ -155,19 +155,27 @@ public class UIManager : MonoBehaviour
             // If we hit someone new.
             if (hit.transform != lastHitPlayer.transform)
             {
-                // If its an entity thats not from the scene (a player) show his name and paint values and 'remember' him.
                 Entity entity = hit.transform.root.GetComponentInChildren<Entity>();
-                if (entity && !entity.photonView.IsSceneView)
+                if (entity)
                 {
-                    hitPlayerText.text = entity.photonView.Owner.NickName;
-                    hitPlayerText.text += "\n" + entity.paintController.GetAllPaintValuesText();
-                    lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName, entity = entity };
+                    // If its an entity thats not from the scene (a player) show his name and paint values and 'remember' him.
+                    if (!entity.photonView.IsSceneView)
+                    {
+                        hitPlayerText.text = entity.photonView.Owner.NickName;
+                        hitPlayerText.text += "\n" + entity.paintController.GetAllPaintValuesText();
+                        lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName, entity = entity };
+                    }
+                    // Else if its something from the scene only show his paint values and also 'remember' him.
+                    else
+                    {
+                        hitPlayerText.text = entity.paintController.GetAllPaintValuesText();
+                        lastHitPlayer = new LastHitPlayer { transform = hit.transform, entity = entity };
+                    }
                 }
-                // Else if its something from the scene only show his paint values and also 'remember' him.
+                // If we hit something else, like a piece of terrain, display nothing.
                 else
                 {
-                    hitPlayerText.text = entity.paintController.GetAllPaintValuesText();
-                    lastHitPlayer = new LastHitPlayer { transform = hit.transform, entity = entity };
+                    hitPlayerPanel.SetActive(false);
                 }
             }
             // If we hit the same player as we hit last time.

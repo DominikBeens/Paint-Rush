@@ -10,6 +10,12 @@ public class PaintDecal : MonoBehaviour
     [SerializeField] private float randomSizeRange = 0.25f;
     [SerializeField] private List<DecalData> decalData = new List<DecalData>();
 
+    [Space]
+
+    [SerializeField] private LayerMask environmentMask;
+    [SerializeField] private LayerMask otherPlayerMask;
+    [SerializeField] private LayerMask playerMask;
+
     [System.Serializable]
     public struct DecalData
     {
@@ -33,6 +39,28 @@ public class PaintDecal : MonoBehaviour
         if (Physics.Raycast(projector.transform.position, projector.transform.forward, out hit, 0.3f))
         {
             transform.SetParent(hit.transform);
+
+            // TEMP
+            projector.ignoreLayers = otherPlayerMask;
+
+            //switch (transform.gameObject.layer)
+            //{
+            //    case 0:
+            //        projector.ignoreLayers = environmentMask;
+            //        break;
+
+            //    case 10:
+            //        projector.ignoreLayers = otherPlayerMask;
+            //        break;
+
+            //    default:
+            //        projector.ignoreLayers = playerMask;
+            //        break;
+            //}
+        }
+        else
+        {
+            //ObjectPooler.instance.AddToPool("PaintDecal", gameObject);
         }
     }
 

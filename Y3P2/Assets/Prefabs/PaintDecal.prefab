@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2613699086208779763
 Transform:
@@ -54,6 +54,15 @@ MonoBehaviour:
     decalColor: {r: 1, g: 0, b: 1, a: 1}
   - decalMat: {fileID: 2100000, guid: 6c7ceac29df69a54298196723dcf9168, type: 2}
     decalColor: {r: 1, g: 1, b: 0, a: 1}
+  environmentMask:
+    serializedVersion: 2
+    m_Bits: 3894
+  otherPlayerMask:
+    serializedVersion: 2
+    m_Bits: 2871
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 3891
 --- !u!1 &2387149460272737719
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,7 +78,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2387149460272968087
 Transform:
@@ -103,4 +112,4 @@ Projector:
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 2867
+    m_Bits: 4294967295

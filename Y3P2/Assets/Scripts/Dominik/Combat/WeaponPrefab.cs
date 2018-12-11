@@ -79,16 +79,16 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
                     {
                         hitEntity.Hit((int)WeaponSlot.currentPaintType, WeaponSlot.currentWeapon.paintDamage);
+                        SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsHit);
 
                         paintDecal = true;
                         hitPoint = hitFromWeapon.point;
                         paintDecalRot = Quaternion.LookRotation(-hitFromWeapon.normal);
-
-                        SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsHit);
                     }
 
                     PlayerManager.instance.weaponSlot.HitEntity();
                 }
+
 
                 if (!string.IsNullOrEmpty(WeaponSlot.currentWeapon.paintImpactPoolName))
                 {

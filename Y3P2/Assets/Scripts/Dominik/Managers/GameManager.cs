@@ -15,11 +15,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     private List<PickUp> pickUps = new List<PickUp>();
     public List<PickUp> PickUps { get { return pickUps; } }
 
-    [SerializeField]
-    private GameObject doorPrefab;
-    [SerializeField]
-    private List<GameObject> doorSpawnLocs = new List<GameObject>();
-
     public enum GameState { Lobby, Playing, Respawning };
     private GameState gameState;
     public static GameState CurrentGameSate
@@ -89,11 +84,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         CurrentGameSate = GameState.Lobby;
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            SpawnDoors();
-        }
     }
 
     // Used in UnityEvents like in CollisionEventZone.cs
@@ -145,13 +135,5 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Destroy(PlayerManager.instance.gameObject);
         }
 #endif
-    }
-
-    private void SpawnDoors()
-    {
-        foreach (GameObject g in doorSpawnLocs)
-        {
-            PhotonNetwork.InstantiateSceneObject(doorPrefab.name, g.transform.position, g.transform.rotation);
-        }
     }
 }
