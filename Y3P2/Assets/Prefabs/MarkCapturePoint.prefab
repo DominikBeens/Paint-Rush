@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c0d908b24ecaf4691a061a3797cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captureDuration: 3
+  captureDuration: 5
   canvas: {fileID: 952207261203427804}
   captureProgressFill: {fileID: 3798274663466787673}
   capturePercentageText: {fileID: 2871939954018123988}

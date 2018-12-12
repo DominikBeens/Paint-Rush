@@ -75,11 +75,6 @@ public class MarkCapturePoint : MonoBehaviour
                 FinishCapturing();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayerManager.instance.entity.photonView.RPC("SyncCaptureMark", Photon.Pun.RpcTarget.All, transform.localPosition);
-        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -45,16 +45,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         weaponSlot.Initialise(IsConnectedAndMine());
         playerAnimController.Initialise(IsConnectedAndMine());
 
-        if (!IsConnectedAndMine())
+        if (IsConnectedAndMine())
         {
-            SetLayer(transform, 10);
-            return;
+            entity.GetComponent<Collider>().enabled = false;
+            GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+
+            DontDestroyOnLoad(gameObject);
         }
-
-        entity.GetComponent<Collider>().enabled = false;
-        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -138,15 +135,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             return true;
         }
         return PhotonNetwork.IsConnected && photonView.IsMine ? true : false;
-    }
-
-    private void SetLayer(Transform root, int layer)
-    {
-        root.gameObject.layer = layer;
-        foreach (Transform child in root)
-        {
-            SetLayer(child, layer);
-        }
     }
 
     public void Respawn()

@@ -802,7 +802,7 @@ MonoBehaviour:
   crosshairAnim: {fileID: 8116597837269245217}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4097
   hitPlayerPanel: {fileID: 1986512203785348701}
   hitPlayerText: {fileID: 3643128094837994185}
   leaderboardAndStatsCanvas: {fileID: 7159693490625836297}
@@ -1866,7 +1866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2528892862569153639}
   m_Layer: 5
-  m_Name: Revision
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,13 +11,13 @@ public class UIManager : MonoBehaviour
     private Camera mainCam;
     private Vector3 screenMiddle;
 
-    private struct LastHitPlayer
+    private struct LastHitTransform
     {
         public Transform transform;
         public string name;
         public Entity entity;
     }
-    private LastHitPlayer lastHitPlayer;
+    private LastHitTransform lastHitTransform;
 
     [SerializeField] private List<Image> crosshair = new List<Image>();
     [SerializeField] private Animator crosshairAnim;
@@ -153,23 +153,27 @@ public class UIManager : MonoBehaviour
         if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hit, 100, playerLayerMask))
         {
             // If we hit someone new.
-            if (hit.transform != lastHitPlayer.transform)
+            if (hit.transform != lastHitTransform.transform)
             {
+                // Save
                 Entity entity = hit.transform.root.GetComponentInChildren<Entity>();
-                if (entity)
+                lastHitTransform = entity ? 
+                    new LastHitTransform { transform = hit.transform, name = entity.photonView.IsSceneView ? "" : entity.photonView.Owner.NickName, entity = entity } : 
+                    new LastHitTransform { transform = hit.transform };
+
+                // If its an entity
+                if (lastHitTransform.entity)
                 {
-                    // If its an entity thats not from the scene (a player) show his name and paint values and 'remember' him.
-                    if (!entity.photonView.IsSceneView)
+                    // If its an entity thats not from the scene (a player) show his name and paint values.
+                    if (!string.IsNullOrEmpty(lastHitTransform.name))
                     {
-                        hitPlayerText.text = entity.photonView.Owner.NickName;
-                        hitPlayerText.text += "\n" + entity.paintController.GetAllPaintValuesText();
-                        lastHitPlayer = new LastHitPlayer { transform = hit.transform, name = entity.photonView.Owner.NickName, entity = entity };
+                        hitPlayerText.text = lastHitTransform.entity.photonView.Owner.NickName;
+                        hitPlayerText.text += "\n" + lastHitTransform.entity.paintController.GetAllPaintValuesText();
                     }
-                    // Else if its something from the scene only show his paint values and also 'remember' him.
+                    // Else if its something from the scene only show his paint values.
                     else
                     {
-                        hitPlayerText.text = entity.paintController.GetAllPaintValuesText();
-                        lastHitPlayer = new LastHitPlayer { transform = hit.transform, entity = entity };
+                        hitPlayerText.text = lastHitTransform.entity.paintController.GetAllPaintValuesText();
                     }
                 }
                 // If we hit something else, like a piece of terrain, display nothing.
@@ -178,23 +182,30 @@ public class UIManager : MonoBehaviour
                     hitPlayerPanel.SetActive(false);
                 }
             }
-            // If we hit the same player as we hit last time.
+            // If we hit the same transform as we hit last time.
             else
             {
-                // Last hit player has no name, show only his paint values.
-                if (string.IsNullOrEmpty(lastHitPlayer.name))
+                if (lastHitTransform.entity)
                 {
-                    hitPlayerText.text = lastHitPlayer.entity.paintController.GetAllPaintValuesText();
+                    // Last hit player has no name, show only his paint values.
+                    if (string.IsNullOrEmpty(lastHitTransform.name))
+                    {
+                        hitPlayerText.text = lastHitTransform.entity.paintController.GetAllPaintValuesText();
+                    }
+                    // Otherwise show his name + paint values.
+                    else
+                    {
+                        hitPlayerText.text = lastHitTransform.name;
+                        hitPlayerText.text += "\n" + lastHitTransform.entity.paintController.GetAllPaintValuesText();
+                    }
+
+                    hitPlayerPanel.SetActive(true);
                 }
-                // Otherwise show his name + paint values.
                 else
                 {
-                    hitPlayerText.text = lastHitPlayer.name;
-                    hitPlayerText.text += "\n" + lastHitPlayer.entity.paintController.GetAllPaintValuesText();
+                    hitPlayerPanel.SetActive(false);
                 }
             }
-
-            hitPlayerPanel.SetActive(true);
         }
         else
         {

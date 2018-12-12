@@ -10,6 +10,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
     private PaintImpactParticle paintMuzzleFlashParticle;
     private PaintUILocalPlayer[] paintDisplayBars;
 
+    [SerializeField] private LayerMask hitLayerMask;
     [SerializeField] private Transform projectileSpawn;
     [SerializeField] private ParticleSystem muzzleFlashParticle;
 
@@ -67,11 +68,11 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         Quaternion paintImpactRot = Quaternion.identity;
 
         RaycastHit hitFromCam;
-        if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hitFromCam))
+        if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hitFromCam, 5000, hitLayerMask))
         {
             RaycastHit hitFromWeapon;
             Ray ray = new Ray(projectileSpawn.position, (hitFromCam.point - projectileSpawn.position));
-            if (Physics.Raycast(ray, out hitFromWeapon))
+            if (Physics.Raycast(ray, out hitFromWeapon, 5000, hitLayerMask))
             {
                 Entity hitEntity = hitFromWeapon.transform.GetComponentInChildren<Entity>();
                 if (hitEntity)
