@@ -109,6 +109,10 @@ public class PlayerController : MonoBehaviour
             if (!grounded)
             {
                 grounded = true;
+                if (!rb.useGravity)
+                {
+                    rb.useGravity = true;
+                }
             }
         }
         else if (hit.transform == null)
@@ -117,7 +121,7 @@ public class PlayerController : MonoBehaviour
             {
                 grounded = false;
             }
-            if (forceGravity)
+            if (forceGravity && !grounded)
             {
                 rb.AddForce(Physics.gravity * gravityModifier);
             }
@@ -132,7 +136,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(xMove != 0 && yMove != 0)
+
+        Debug.DrawRay(transform.position + new Vector3(0, .01F, 0), transform.forward, Color.red);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0, .01F, 0), transform.forward, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), -transform.forward, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), transform.right, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), -transform.right, out hit, .5F))
+        {
+            if (hit.transform.gameObject.isStatic)
+            {
+                rb.AddRelativeForce(Vector3.up * 20, ForceMode.Impulse);
+            }
+        }
+
+
+            if (xMove != 0 && yMove != 0)
         {
             if (!isMoving)
             {
