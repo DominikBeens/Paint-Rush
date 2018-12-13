@@ -5,6 +5,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public static PlayerManager instance;
+    public static Transform localPlayer;
 
     // Basically a copy of the GameManagers gamestate but this one is accesible from all clients and 
     // the one from the GameManager not since everyone has his own GameManager.
@@ -24,6 +25,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine || !PhotonNetwork.IsConnected)
         {
             instance = this;
+            localPlayer = transform;
         }
 
         GatherPlayerComponents();

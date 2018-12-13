@@ -2,25 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : MonoBehaviour
+{
 
     private Animator anim;
     private bool waiting;
+    private Transform mainCam;
 
     private List<Collider> nearbyPlayers = new List<Collider>();
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField] private bool usePortal;
+    [SerializeField] private Door connectedDoor;
+    [SerializeField] private Transform connectedPortalCam;
+    [SerializeField] private Material portalMat;
+    [SerializeField] private Renderer portalVisual;
+
+    private void Start()
+    {
         anim = GetComponent<Animator>();
-	}
+        mainCam = Camera.main.transform;
+
+        if (usePortal)
+        {
+            portalMat = Instantiate(portalMat);
+
+            Camera portalCam = connectedPortalCam.GetComponent<Camera>();
+            portalCam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            portalMat.mainTexture = portalCam.targetTexture;
+
+            portalVisual.material = portalMat;
+
+            GetComponentInChildren<PortalTeleporter>().Init(connectedPortalCam);
+        }
+
+        connectedPortalCam.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (!usePortal)
+        {
+            return;
+        }
+
+        if (nearbyPlayers.Count > 0)
+        {
+            if (!connectedPortalCam.gameObject.activeInHierarchy)
+            {
+                connectedPortalCam.gameObject.SetActive(true);
+            }
+
+            Vector3 offset = PlayerManager.localPlayer.position - transform.position;
+            Vector3 newPos = connectedDoor.transform.position + offset;
+            connectedPortalCam.transform.position = new Vector3(newPos.x, mainCam.position.y, newPos.z);
+        }
+        else
+        {
+            if (connectedPortalCam.gameObject.activeInHierarchy)
+            {
+                connectedPortalCam.gameObject.SetActive(false);
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root.tag == "Player")
+        if (other.transform.root.tag == "Player")
         {
             if (!waiting)
             {
                 StartCoroutine(Wait());
+            }
+
+            if (usePortal)
+            {
+                connectedDoor.PortalOpen(other);
             }
         }
     }
@@ -33,16 +89,21 @@ public class Door : MonoBehaviour {
         }
     }
 
-
     private void OnTriggerExit(Collider other)
     {
         if (nearbyPlayers.Contains(other))
         {
             nearbyPlayers.Remove(other);
         }
+
         if (other.transform.root.tag == "Player" && nearbyPlayers.Count <= 0)
         {
             anim.SetBool("Close", true);
+
+            if (usePortal)
+            {
+                connectedDoor.PortalClose(other);
+            }
         }
     }
 
@@ -56,5 +117,31 @@ public class Door : MonoBehaviour {
 
         anim.SetBool("Open", false);
         waiting = false;
+    }
+
+    public void PortalOpen(Collider player)
+    {
+        if (!nearbyPlayers.Contains(player))
+        {
+            nearbyPlayers.Add(player);
+
+            if (!waiting)
+            {
+                StartCoroutine(Wait());
+            }
+        }
+    }
+
+    public void PortalClose(Collider player)
+    {
+        if (nearbyPlayers.Contains(player))
+        {
+            nearbyPlayers.Remove(player);
+
+            if (nearbyPlayers.Count <= 0)
+            {
+                anim.SetBool("Close", true);
+            }
+        }
     }
 }
