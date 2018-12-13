@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     private float slideForce = 91;
     private bool sliding;
 
+    [SerializeField]
+    private float slopeAssistForce = 20;
+
     [SerializeField] private GameObject headObject;
     [SerializeField] private Transform spine;
 
@@ -144,7 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.transform.gameObject.isStatic && xMove != 0 || yMove != 0)
             {
-                rb.AddRelativeForce(Vector3.up * 20, ForceMode.Impulse);
+                rb.AddRelativeForce(Vector3.up * slopeAssistForce, ForceMode.Impulse);
             }
         }
 
