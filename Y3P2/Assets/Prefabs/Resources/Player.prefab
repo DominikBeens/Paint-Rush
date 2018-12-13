@@ -2657,7 +2657,7 @@ GameObject:
   - component: {fileID: 4001029455391061434}
   - component: {fileID: 1298751440695728640}
   - component: {fileID: 3950215934498891238}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: HitInfoDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}

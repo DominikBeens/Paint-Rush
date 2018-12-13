@@ -1,11 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &8832618634208158128 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1249694413150593949, guid: b16c45e319d494c41a6f45439c7ce425,
-    type: 3}
-  m_PrefabInstance: {fileID: 7765346687024398893}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285374039719968495
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +87,7 @@ GameObject:
   - component: {fileID: 6863064626239521105}
   - component: {fileID: 5927986579186442063}
   - component: {fileID: 616484559257108987}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: JumpPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff59c930c5e8cb346a39910ea71870c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upForce: 10
-  forwardForce: 170
+  upForce: 100
+  forwardForce: 1700
 --- !u!65 &616484559257108987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,6 +137,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!4 &8832618634208158128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1249694413150593949, guid: b16c45e319d494c41a6f45439c7ce425,
+    type: 3}
+  m_PrefabInstance: {fileID: 7765346687024398893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8832618634208525718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1249694413150896059, guid: b16c45e319d494c41a6f45439c7ce425,
@@ -235,5 +235,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 087faca26daf2844699dd13538805d5d, type: 2}
+    - target: {fileID: 1249694413150896061, guid: b16c45e319d494c41a6f45439c7ce425,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249694413150896063, guid: b16c45e319d494c41a6f45439c7ce425,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249694413150896059, guid: b16c45e319d494c41a6f45439c7ce425,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16c45e319d494c41a6f45439c7ce425, type: 3}

@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 1730565117623958374}
   - component: {fileID: 6390016934265100615}
   - component: {fileID: 4009889317990867397}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ItemPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
