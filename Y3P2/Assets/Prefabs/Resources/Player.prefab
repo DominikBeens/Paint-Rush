@@ -3006,6 +3006,7 @@ MonoBehaviour:
   wallRunRayDist: 2
   wallRunReleaseForce: 80
   slideForce: 91
+  slopeAssistForce: 20
   headObject: {fileID: 6056574065620555934}
   spine: {fileID: 1138613540081416690}
   jumpCooldownTime: 2
