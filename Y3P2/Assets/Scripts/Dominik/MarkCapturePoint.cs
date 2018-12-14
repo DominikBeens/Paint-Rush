@@ -13,6 +13,7 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private Image captureProgressFill;
     [SerializeField] private TextMeshProUGUI capturePercentageText;
     [Range(0, 100)] [SerializeField] private float hitProgressLoss = 15f;
+    [SerializeField] private Animator captureUIAnim;
 
     public class CapturingPlayer
     {
@@ -34,7 +35,9 @@ public class MarkCapturePoint : MonoBehaviour
     {
         if (capturingPlayer != null)
         {
-            captureProgress -= (hitProgressLoss / 100);
+            captureProgress -= (hitProgressLoss / 100 * captureDuration);
+            captureProgress = Mathf.Clamp(captureProgress, 0, captureDuration);
+            captureUIAnim.SetTrigger("Hit");
         }
     }
 
@@ -59,6 +62,11 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            PaintController_OnPaintValueModified(PaintController.PaintType.Cyan, 10);
+        }
+
         if (capturingPlayer != null)
         {
             captureProgress += Time.deltaTime;
