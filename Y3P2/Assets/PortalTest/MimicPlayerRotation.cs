@@ -10,7 +10,7 @@ public class MimicPlayerRotation : MonoBehaviour
         target = Camera.main.transform;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!target)
         {

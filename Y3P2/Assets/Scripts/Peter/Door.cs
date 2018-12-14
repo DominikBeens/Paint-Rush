@@ -61,11 +61,6 @@ public class Door : MonoBehaviour
             {
                 StartCoroutine(Wait());
             }
-
-            if (usePortal)
-            {
-                connectedDoor.PortalOpen(other);
-            }
         }
     }
 
@@ -74,6 +69,11 @@ public class Door : MonoBehaviour
         if (!nearbyPlayers.Contains(other))
         {
             nearbyPlayers.Add(other);
+        }
+
+        if (usePortal)
+        {
+            connectedDoor.PortalOpen(other);
         }
     }
 
@@ -87,11 +87,11 @@ public class Door : MonoBehaviour
         if (other.transform.root.tag == "Player" && nearbyPlayers.Count <= 0)
         {
             anim.SetBool("Close", true);
+        }
 
-            if (usePortal)
-            {
-                connectedDoor.PortalClose(other);
-            }
+        if (usePortal)
+        {
+            connectedDoor.PortalClose(other);
         }
     }
 
@@ -106,7 +106,7 @@ public class Door : MonoBehaviour
         anim.SetBool("Open", false);
         waiting = false;
     }
-
+    
     public void PortalOpen(Collider player)
     {
         if (!nearbyPlayers.Contains(player))
@@ -128,6 +128,7 @@ public class Door : MonoBehaviour
 
             if (nearbyPlayers.Count <= 0)
             {
+                NotificationManager.instance.NewLocalNotification("Close Door");
                 anim.SetBool("Close", true);
             }
         }

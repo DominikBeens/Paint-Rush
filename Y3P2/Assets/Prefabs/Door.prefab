@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 1678826806547357713}
   - component: {fileID: 1678826806548488785}
   - component: {fileID: 1678826806546496528}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Door_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 1678826806547357729}
   - component: {fileID: 1678826806548488801}
   - component: {fileID: 1678826806546496544}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Door_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 8945619694365403529}
   - component: {fileID: 3677843518494571357}
   - component: {fileID: 337081942382025772}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PortalTeleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
