@@ -2916,6 +2916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2024847716202215142}
+  hitInfoDetectionCol: {fileID: 1383097251931640073}
   entity: {fileID: 0}
   playerController: {fileID: 0}
   weaponSlot: {fileID: 0}
@@ -3240,7 +3241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3309555332674315686}
   - component: {fileID: 5303875581471565404}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: HitInfoDetection_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

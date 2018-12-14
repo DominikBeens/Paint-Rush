@@ -227,13 +227,13 @@ public class PaintController
     {
         CurrentPaintMark = null;
 
-        ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
-
         if (PlayerManager.instance.entity == myEntity)
         {
             SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
             NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
         }
+
+        ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
     }
 
     public void ToggleUI(bool toggle)

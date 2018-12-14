@@ -13,8 +13,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     public GameManager.GameState PlayerState { get { return playerState; } }
 
     #region PlayerComponents
-    private PlayerAnimationController playerAnimController;
     [SerializeField] private GameObject playerCamera;
+    [SerializeField] private GameObject hitInfoDetectionCol;
+
+    private PlayerAnimationController playerAnimController;
+
     [HideInInspector] public Entity entity;
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;
@@ -43,6 +46,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private void Initialise()
     {
         playerCamera.SetActive(IsConnectedAndMine() ? true : false);
+        hitInfoDetectionCol.SetActive(IsConnectedAndMine() ? false : true);
+
         playerController.Inititalise(IsConnectedAndMine());
         weaponSlot.Initialise(IsConnectedAndMine());
         playerAnimController.Initialise(IsConnectedAndMine());

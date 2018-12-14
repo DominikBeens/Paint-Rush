@@ -9,6 +9,8 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
 
     public static ScoreboardManager instance;
 
+    private int consecutivePoints;
+
     public class PlayerScore
     {
         public int playerPhotonViewID;
@@ -29,6 +31,8 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         {
             Destroy(this);
         }
+
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
     }
 
     private void Start()
@@ -80,6 +84,29 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         return 0;
     }
 
+    private void CheckAndReportKillstreak()
+    {
+        switch (consecutivePoints)
+        {
+            case 3:
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a killing spree!");
+                return;
+
+            case 4:
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a rampage!");
+                return;
+
+            case 5:
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is dominating!");
+                return;
+        }
+
+        if (consecutivePoints >= 6)
+        {
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is legendary!");
+        }
+    }
+
     public List<PlayerScore> GetSortedPlayerScores()
     {
         List<PlayerScore> sorted = new List<PlayerScore>(playerScores);
@@ -96,6 +123,12 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
             {
                 playerScores[i].playerGamePoints++;
                 OnScoreboardUpdated();
+
+                if (playerViewID == PlayerManager.instance.photonView.ViewID)
+                {
+                    consecutivePoints++;
+                    CheckAndReportKillstreak();
+                }
                 return;
             }
         }
@@ -133,9 +166,19 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        consecutivePoints = 0;
+    }
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         // TODO: Refactor, this is not safe when multiple people have the same nickname.
         RemovePlayer(otherPlayer.NickName);
+    }
+
+    public override void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 }

@@ -128,7 +128,6 @@ public class Door : MonoBehaviour
 
             if (nearbyPlayers.Count <= 0)
             {
-                NotificationManager.instance.NewLocalNotification("Close Door");
                 anim.SetBool("Close", true);
             }
         }
