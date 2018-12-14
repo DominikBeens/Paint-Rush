@@ -55,4 +55,5 @@ MonoBehaviour:
   - SpawnEffects
   - SpawnPickupRPC
   - SyncMyPickup
+  - NetworkTeleport
   DisableAutoOpenWizard: 1
