@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + new Vector3(0, .01F, 0), transform.forward, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), -transform.forward, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), transform.right, out hit, .5F) || Physics.Raycast(transform.position + new Vector3(0, .01F, 0), -transform.right, out hit, .5F))
         {
-            if (hit.transform.gameObject.isStatic && xMove != 0 || yMove != 0)
+            if (hit.transform.gameObject.isStatic && xMove != 0 || yMove != 0 && hit.transform.gameObject.layer == 0)
             {
                 rb.AddRelativeForce(Vector3.up * slopeAssistForce, ForceMode.Impulse);
             }
