@@ -7,10 +7,12 @@ public class PickUpActivater : MonoBehaviour {
 
     private bool waiting;
     private PlayerPickUpManager pkm;
+    private Entity entity;
 
     private void Start()
     {
         pkm = GetComponent<PlayerPickUpManager>();
+        entity = GetComponentInChildren<Entity>();
     }
 
     public void ActivatePickUp(PickUp pickUp)
@@ -30,8 +32,12 @@ public class PickUpActivater : MonoBehaviour {
             {
                 ActivateCloak();
                 StartCoroutine(Duration(pickUp));
-            }
 
+                if (!entity.photonView.IsMine)
+                {
+                    entity.paintController.ToggleUI(false);
+                }
+            }
         }
     }
 
@@ -57,6 +63,11 @@ public class PickUpActivater : MonoBehaviour {
             foreach (GameObject r in pkm.objectsToCloak)
             {
                 r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
+            }
+
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && !entity.photonView.IsMine)
+            {
+                entity.paintController.ToggleUI(true);
             }
         }
     }
