@@ -146,6 +146,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         transform.rotation = randomSpawn.rotation;
     }
 
+    public void Teleport(Vector3 destination)
+    {
+        photonView.RPC("NetworkTeleport", RpcTarget.All, destination);
+    }
+
+    [PunRPC]
+    private void NetworkTeleport(Vector3 destination)
+    {
+        transform.position = destination;
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
