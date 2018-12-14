@@ -353,9 +353,11 @@ public class PlayerController : MonoBehaviour
             //GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
             StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(jumpCooldownTime));
         }
+        
         yield return new WaitForSeconds(jumpCooldownTime);
         jumpCooldown = false;
         canJump = true;
+
     }
 
 
@@ -397,14 +399,15 @@ public class PlayerController : MonoBehaviour
     private void WallRun()
     {
 
-        if (forceGravity)
-        {
-            forceGravity = false;
-        }
+
         RaycastHit hit;
-        rb.useGravity = false;
         if (Physics.Raycast(transform.position, -transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) && Input.GetKey("a"))
         {
+            if (forceGravity)
+            {
+                forceGravity = false;
+            }
+            rb.useGravity = false;
             //  if (hit.transform.gameObject.isStatic)
             // {
             if (!wallrunning)
@@ -437,6 +440,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, transform.right, out hit, wallRunRayDist) || Physics.Raycast(transform.position, -transform.forward, out hit, wallRunRayDist) && Input.GetKey("d"))
         {
+            if (forceGravity)
+            {
+                forceGravity = false;
+            }
+            rb.useGravity = false;
             //if (hit.transform.gameObject.isStatic)
             // {
 
@@ -473,6 +481,7 @@ public class PlayerController : MonoBehaviour
         else if(hit.transform == null)
         {
             forceGravity = true;
+            rb.useGravity = true;
             wallrunning = false;
             wallrunningBack = false;
         }
