@@ -47,6 +47,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image markImage;
 
+    [Space]
+
+    [SerializeField] private Animator portalEffectAnim;
+
     private void Awake()
     {
         if (!instance)
@@ -63,6 +67,7 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        PortalTeleporter.OnUsePortal += PortalTeleporter_OnUsePortal;
 
         ToggleLeaderboardAndStats(false);
 
@@ -284,6 +289,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void PortalTeleporter_OnUsePortal()
+    {
+        portalEffectAnim.SetTrigger("Trigger");
+    }
+
     private void OnDisable()
     {
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
@@ -291,6 +301,7 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        PortalTeleporter.OnUsePortal -= PortalTeleporter_OnUsePortal;
 
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;

@@ -47,21 +47,9 @@ public class Door : MonoBehaviour
 
         if (nearbyPlayers.Count > 0)
         {
-            if (!connectedPortalCam.gameObject.activeInHierarchy)
-            {
-                connectedPortalCam.gameObject.SetActive(true);
-            }
-
             Vector3 offset = PlayerManager.localPlayer.position - transform.position;
             Vector3 newPos = connectedDoor.transform.position + offset;
             connectedPortalCam.transform.position = new Vector3(newPos.x, mainCam.position.y, newPos.z);
-        }
-        else
-        {
-            if (connectedPortalCam.gameObject.activeInHierarchy)
-            {
-                connectedPortalCam.gameObject.SetActive(false);
-            }
         }
     }
 

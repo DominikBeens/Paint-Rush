@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using System;
 
 public class PortalTeleporter : MonoBehaviour
 {
 
-    private const float FOV_KICK = 100f;
+    private const int FOV_KICK = 120;
 
     private Camera mainCam;
     private Transform connectedPortalCam;
+
+    public static event Action OnUsePortal = delegate { };
 
     public void Init(Transform connectedPortalCam)
     {
@@ -23,7 +26,9 @@ public class PortalTeleporter : MonoBehaviour
 
         if (other.transform.root == PlayerManager.localPlayer)
         {
-            PlayerManager.localPlayer.position = connectedPortalCam.position;
+            OnUsePortal();
+
+            PlayerManager.localPlayer.position = new Vector3(connectedPortalCam.position.x, PlayerManager.localPlayer.position.y, connectedPortalCam.position.z);
             mainCam.fieldOfView = FOV_KICK;
         }
     }
