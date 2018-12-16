@@ -25,14 +25,9 @@ public class Door : MonoBehaviour
         if (usePortal)
         {
             portalMat = Instantiate(portalMat);
-
-            Camera portalCam = connectedPortalCam.GetComponent<Camera>();
-            portalCam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-            portalMat.mainTexture = portalCam.targetTexture;
-
-            portalVisual.material = portalMat;
-
+            SetupPortalRenderTexture();
             GetComponentInChildren<PortalTeleporter>().Init(connectedPortalCam);
+            DB.MenuPack.Setting_Resolution.OnResolutionChanged += SetupPortalRenderTexture;
         }
 
         connectedPortalCam.gameObject.SetActive(false);
@@ -106,7 +101,7 @@ public class Door : MonoBehaviour
         anim.SetBool("Open", false);
         waiting = false;
     }
-    
+
     public void PortalOpen(Collider player)
     {
         if (!nearbyPlayers.Contains(player))
@@ -131,5 +126,24 @@ public class Door : MonoBehaviour
                 anim.SetBool("Close", true);
             }
         }
+    }
+
+    private void SetupPortalRenderTexture()
+    {
+        if (!usePortal)
+        {
+            return;
+        }
+
+        Camera portalCam = connectedPortalCam.GetComponent<Camera>();
+        portalCam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        portalMat.mainTexture = portalCam.targetTexture;
+
+        portalVisual.material = portalMat;
+    }
+
+    private void OnDisable()
+    {
+        DB.MenuPack.Setting_Resolution.OnResolutionChanged -= SetupPortalRenderTexture;
     }
 }

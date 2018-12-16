@@ -12,6 +12,8 @@ namespace DB.MenuPack
         private Resolution[] availableResolutions;
         [SerializeField] private TMP_Dropdown resolutionDropdown;
 
+        public static event Action OnResolutionChanged = delegate { };
+
         public override void Init()
         {
             base.Init();
@@ -40,6 +42,7 @@ namespace DB.MenuPack
             if (newResolution.width != Screen.currentResolution.width && newResolution.height != Screen.currentResolution.height)
             {
                 Screen.SetResolution(newResolution.width, newResolution.height, Screen.fullScreenMode);
+                OnResolutionChanged();
             }
         }
     }
