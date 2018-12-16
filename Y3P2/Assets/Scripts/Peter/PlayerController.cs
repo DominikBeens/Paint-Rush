@@ -32,8 +32,7 @@ public class PlayerController : MonoBehaviour
     private float bobSpeed;
     [SerializeField]
     private float bobLimit = 0.7F;
-    [SerializeField]
-    private float bobRestingPoint = 0.7F;
+    private Vector3 bobRestingPoint;
     [SerializeField]
     private float maxBob;
     [SerializeField]
@@ -56,7 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float slopeAssistForce = 20;
 
-    [SerializeField] private GameObject headObject;
+    [SerializeField] private Transform headObject;
     [SerializeField] private Transform spine;
 
     private Rigidbody rb;
@@ -100,8 +99,11 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         cameras = GetComponentsInChildren<Camera>();
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        bobRestingPoint = headObject.transform.localPosition;
     }
 
     private void FixedUpdate()
@@ -363,37 +365,33 @@ public class PlayerController : MonoBehaviour
 
     private void HeadBob()
     {
-       
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         if(x != 0 || y != 0)
         {
-            if(headObject.transform.localPosition.y >= maxBob)
+            if(headObject.localPosition.y >= bobRestingPoint.y + maxBob)
             {
                 topBob = true;
             }
-            else if(headObject.transform.localPosition.y <= minBob)
+            else if(headObject.localPosition.y <= bobRestingPoint.y + minBob)
             {
                 topBob = false;
             }
-           
 
             if (topBob)
             {
-                headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, headObject.transform.localPosition + new Vector3(0,  -bobLimit, 0), bobSpeed * Time.deltaTime);
+                headObject.localPosition = Vector3.Lerp(headObject.localPosition, new Vector3(headObject.localPosition.x, bobRestingPoint.y - bobLimit, headObject.localPosition.z), bobSpeed * Time.deltaTime);
             }
             else if (!topBob)
             {
-                headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, headObject.transform.localPosition + new Vector3(0, bobLimit, 0), bobSpeed * Time.deltaTime);
+                headObject.localPosition = Vector3.Lerp(headObject.localPosition, new Vector3(headObject.localPosition.x, bobRestingPoint.y + bobLimit, headObject.localPosition.z), bobSpeed * Time.deltaTime);
             }
         }
         else
         {
-            headObject.transform.localPosition = Vector3.Lerp(headObject.transform.localPosition, new Vector3(0, bobRestingPoint, 0), bobSpeed * Time.deltaTime);
+            headObject.localPosition = Vector3.Lerp(headObject.localPosition, bobRestingPoint, bobSpeed * Time.deltaTime);
         }
-
-
     }
 
     private void WallRun()
