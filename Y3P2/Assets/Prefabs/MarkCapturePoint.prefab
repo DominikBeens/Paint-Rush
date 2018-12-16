@@ -366,6 +366,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1344112807479660319}
+  - {fileID: 2806474640359869929}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -397,10 +398,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 6.5
+  m_Radius: 7
   m_Height: 15
   m_Direction: 1
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &6176944619634122886
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +475,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
+--- !u!4 &2806474640359869929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6051066574926524596, guid: b88d0008a9bbf6a448e6a7473918b2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8433884400750886237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7659027170586922033
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,3 +640,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &8433884400750886237
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  m_Modification:
+    m_TransformParent: {fileID: 1139547251072179664}
+    m_Modifications:
+    - target: {fileID: 6051066574926524596, guid: b88d0008a9bbf6a448e6a7473918b2e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051066574926524596, guid: b88d0008a9bbf6a448e6a7473918b2e3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b88d0008a9bbf6a448e6a7473918b2e3, type: 3}
