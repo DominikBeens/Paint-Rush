@@ -278,7 +278,7 @@ Shader "AdultLink/HoloShield"
 }
 /*ASEBEGIN
 Version=15600
--402;304;1275;938;2418.593;652.0457;2.153078;False;False
+429;46;1484;918;4400.666;1230.465;3.730294;False;True
 Node;AmplifyShaderEditor.RangedFloatNode;158;-4119.539,617.2936;Float;False;Property;_Noisescale;Noise scale;34;0;Create;True;0;0;False;0;50;30;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector3Node;149;-4099.565,355.6561;Float;False;Property;_Noisespeed;Noise speed;35;0;Create;True;0;0;False;0;0,0,0;0,0,5;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleTimeNode;147;-4098.759,505.885;Float;False;1;0;FLOAT;1;False;1;FLOAT;0
@@ -535,4 +535,4 @@ WireConnection;0;2;42;0
 WireConnection;0;9;44;0
 WireConnection;0;11;75;0
 ASEEND*/
-//CHKSM=20DD8DC9FDA42850B56A7F83AA261D7896A4439A
+//CHKSM=632C54331DEE5BCA93220635AE66E3664533A34A
