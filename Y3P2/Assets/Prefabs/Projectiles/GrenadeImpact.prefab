@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6209836411900763352}
   - component: {fileID: 8450614584880246157}
   - component: {fileID: 3704417997782793823}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: GrenadeImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 819196055962338357}
   - component: {fileID: 4533272177335356607}
   - component: {fileID: 2533304751711332728}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: ForceField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4805,7 +4805,7 @@ GameObject:
   - component: {fileID: 4159672592989855537}
   - component: {fileID: 5134385676870595204}
   - component: {fileID: 2511725013187172713}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9486,7 +9486,7 @@ GameObject:
   - component: {fileID: 3340710959386088136}
   - component: {fileID: 1476602166659792889}
   - component: {fileID: 8500949156051071382}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14176,7 +14176,7 @@ GameObject:
   - component: {fileID: 5166218774199949119}
   - component: {fileID: 1782413784767114969}
   - component: {fileID: 5702593986095595855}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18866,7 +18866,7 @@ GameObject:
   - component: {fileID: 2440301112762261094}
   - component: {fileID: 7683154518785655805}
   - component: {fileID: 1037135264676230036}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: ForceField (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

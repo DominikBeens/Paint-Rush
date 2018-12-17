@@ -141,12 +141,12 @@ public class Projectile : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(impactObjectToSpawn))
         {
-            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(impactObjectToSpawn, hitCollider.ClosestPoint(transform.position), transform.rotation);
-            PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
-            if (pip)
-            {
-                pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType));
-            }
+            GameObject newSpawn = ObjectPooler.instance.GrabFromPool(impactObjectToSpawn, transform.position, transform.rotation);
+            //PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
+            //if (pip)
+            //{
+            //    pip.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)fireData.paintType));
+            //}
         }
     }
 
