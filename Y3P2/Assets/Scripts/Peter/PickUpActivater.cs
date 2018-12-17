@@ -21,10 +21,14 @@ public class PickUpActivater : MonoBehaviour {
     {
         if(pkm.CurrentPickUp != null)
         {
-            if (Input.GetKeyDown("f") && !waiting)
+            if(transform == PlayerManager.localPlayer)
             {
-                ActivatePickUp(pkm.CurrentPickUp);
+                if (Input.GetKeyDown("f") && !waiting)
+                {
+                    ActivatePickUp(pkm.CurrentPickUp);
+                }
             }
+           
         }
     }
 

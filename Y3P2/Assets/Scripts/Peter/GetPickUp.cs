@@ -35,13 +35,19 @@ public class GetPickUp : MonoBehaviourPunCallbacks
     {
         if (other.transform.root.tag == "Player")
         {
+            if (other.transform.root == PlayerManager.localPlayer)
+            {
+                if (!cooldown)
+                {
+                    other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
+                    other.transform.root.GetComponent<PlayerPickUpManager>().SetPickUp(myPickup);
+                    UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
+                    NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
+
+                }
+            }
             if (!cooldown)
             {
-                other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
-                other.transform.root.GetComponent<PlayerPickUpManager>().SetPickUp(myPickup);
-                UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
-                NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
-
                 StartCoroutine(Cooldown());
                 DestroyObject();
             }
