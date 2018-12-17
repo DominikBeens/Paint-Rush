@@ -54,6 +54,8 @@ public class UIManager : MonoBehaviour
     [Space]
 
     [SerializeField] private Image pickUpImage;
+    [SerializeField] private Image pickUpImageParent;
+    public Image PickUpImageParent { get { return pickUpImageParent; } }
 
     private void Awake()
     {

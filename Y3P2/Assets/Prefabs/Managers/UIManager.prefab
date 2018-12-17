@@ -564,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9014218877558178615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -963,6 +963,7 @@ MonoBehaviour:
   markImage: {fileID: 7160411951937309069}
   portalEffectAnim: {fileID: 4509900141927236615}
   pickUpImage: {fileID: 3249461624665298034}
+  pickUpImageParent: {fileID: 5741914144295083542}
 --- !u!114 &8251015420781023221
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Innerfresnelintensity: 0.037
+    - _Innerfresnelintensity: 0.06
     - _Invert: 1
     - _Invertmaintexture: 1
     - _Invertsecondarytexture: 0
@@ -125,7 +125,7 @@ Material:
     - _TessMax: 25
     - _TessMin: 10
     - _TessPhongStrength: 0.5
-    - _TessValue: 3
+    - _TessValue: 1
     - _Texintensity: 4
     - _UVSec: 0
     - _ZWrite: 1
@@ -142,6 +142,6 @@ Material:
     - _Noisespeed: {r: 0, g: 0, b: 0, a: 0}
     - _Panningspeed: {r: 0, g: 0.1, b: 0, a: 0}
     - _Secondarycolor: {r: 0.051886797, g: 0.3382505, b: 1, a: 1}
-    - _Secondarypanningspeed: {r: 0, g: 1, b: 0, a: 0}
+    - _Secondarypanningspeed: {r: 0, g: 0.2, b: 0, a: 0}
     - _Staticcolor: {r: 0.26470587, g: 0.6957404, b: 1, a: 0.978}
     - _Staticpanningspeed: {r: 0, g: 2, b: 0, a: 0}

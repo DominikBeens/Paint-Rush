@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnJump = delegate { };
 
     private bool infinJet;
+    private float jetBoostCooldownReduction = 1;
 
     public void Inititalise(bool local)
     {
@@ -297,10 +298,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void JumpJet()
     {
-        if (!infinJet)
-        {
-            canJump = false;
-        }
+        
+        canJump = false;
 
         OnJump();
 
@@ -346,20 +345,25 @@ public class PlayerController : MonoBehaviour
 
         if (!jumpCooldown)
         {
-            StartCoroutine(JumpCooldown());
+            if (!infinJet)
+            {
+                StartCoroutine(JumpCooldown(jumpCooldownTime));
+            }
+            else
+            {
+                StartCoroutine(JumpCooldown(jetBoostCooldownReduction));
+            }
         }
 
     }
-    private IEnumerator JumpCooldown()
+    private IEnumerator JumpCooldown(float f)
     {
         jumpCooldown = true;
-        if (!infinJet)
-        {
-            //GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
-            StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(jumpCooldownTime));
-        }
+    
+        //GetComponent<PlayerPickUpManager>().StartCoroutine(GetComponent<PlayerPickUpManager>().JumpCooldownIcon(jumpCooldownTime));
+        StartCoroutine(UIManager.instance.ShowJumpCooldownIcon(f));
         
-        yield return new WaitForSeconds(jumpCooldownTime);
+        yield return new WaitForSeconds(f);
         jumpCooldown = false;
         canJump = true;
 

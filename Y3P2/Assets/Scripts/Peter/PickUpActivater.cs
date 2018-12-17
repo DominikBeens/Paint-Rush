@@ -34,8 +34,14 @@ public class PickUpActivater : MonoBehaviour {
 
     public void ActivatePickUp(PickUp pickUp)
     {
-
-        NotificationManager.instance.NewLocalNotification("Activated" + pickUp.PickUpText + "Duration: <Color = blue> " + pickUp.Duration + "/color");
+        if(pickUp.Duration > 0)
+        {
+            NotificationManager.instance.NewLocalNotification("Activated " + pickUp.PickUpText + "<color=yellow> Duration:  " + pickUp.Duration + "</color>");
+        }
+        else
+        {
+            NotificationManager.instance.NewLocalNotification("Activated " + pickUp.PickUpText);
+        }
         if (pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
             if (!waiting)
@@ -70,7 +76,7 @@ public class PickUpActivater : MonoBehaviour {
 
         pkm.SetPickUp(null);
         UIManager.instance.SetPickUpImage(null, true);
-
+        UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
 
     }
 

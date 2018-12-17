@@ -41,6 +41,7 @@ public class GetPickUp : MonoBehaviourPunCallbacks
                 {
                     other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
                     other.transform.root.GetComponent<PlayerPickUpManager>().SetPickUp(myPickup);
+                    UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(true);
                     UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
                     NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
 

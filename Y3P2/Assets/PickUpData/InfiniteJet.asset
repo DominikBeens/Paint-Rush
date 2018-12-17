@@ -15,6 +15,6 @@ MonoBehaviour:
   itemPrefab: {fileID: 7153504960439862523, guid: 9dea328b62b59f147a3648a11e0d85e2,
     type: 3}
   pickUpType: 0
-  duration: 0.5
+  duration: 6
   pickUpSprite: {fileID: 21300000, guid: 74c4d1091bf26e141bf1c5e3f26a4402, type: 3}
-  pickUpText: Infinite Jump
+  pickUpText: Jet Boost
