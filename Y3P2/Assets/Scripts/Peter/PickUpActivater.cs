@@ -34,7 +34,9 @@ public class PickUpActivater : MonoBehaviour {
 
     public void ActivatePickUp(PickUp pickUp)
     {
-        if(pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
+
+        NotificationManager.instance.NewLocalNotification("Activated" + pickUp.PickUpText + "Duration: <Color = blue> " + pickUp.Duration + "/color");
+        if (pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
             if (!waiting)
             {

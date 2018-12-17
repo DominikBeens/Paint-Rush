@@ -696,9 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d855c8a52b0a5ca42b37281e26332c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloakShader: {fileID: 2100000, guid: b3369fffd5dfaba4c8f9197fd4a1e99f, type: 2}
-  objectsToCloak:
-  - {fileID: 8853835202364098068}
+  cloakShader: {fileID: 2100000, guid: 56669b4f6b15cf346aac921d4880f2eb, type: 2}
+  objectsToCloak: []
 --- !u!114 &6755712924151259553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +958,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 254405205403291217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6489444038497899677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6451677872865368780, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+    type: 3}
+  m_PrefabInstance: {fileID: 254405205403291217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2605289374748128216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6489444038497899677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4e1677d7a78eb48aed546db4aa81db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defMaterial: {fileID: 0}
 --- !u!1 &6489444038497899679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6451677872865368782, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
@@ -1152,6 +1170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 6451677872870643662, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f0a6a86e908f6204ab518387a784ed36, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18bf9b3758f910042a4f4fb3fe0d5527, type: 3}
 --- !u!1001 &2748154433815853541
