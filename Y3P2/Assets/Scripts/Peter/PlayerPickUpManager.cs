@@ -13,6 +13,10 @@ public class PlayerPickUpManager : MonoBehaviour {
     public List<GameObject> objectsToCloak = new List<GameObject>();
     public List<GameObject> ObjectsToCloak { get { return ObjectsToCloak; } }
 
+
+    private PickUp currentPickUp;
+    public PickUp CurrentPickUp { get { return currentPickUp; } }
+
     private void Start()
     {
         //UIManager.instance.JumpCooldownIcon.SetActive(false);
@@ -39,6 +43,11 @@ public class PlayerPickUpManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void SetPickUp(PickUp pickUp)
+    {
+        currentPickUp = pickUp;
     }
    
 }

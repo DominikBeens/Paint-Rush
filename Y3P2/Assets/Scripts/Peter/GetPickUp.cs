@@ -38,7 +38,9 @@ public class GetPickUp : MonoBehaviourPunCallbacks
             if (!cooldown)
             {
                 other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
-                other.transform.root.GetComponent<PickUpActivater>().ActivatePickUp(myPickup);
+                // other.transform.root.GetComponent<PickUpActivater>().ActivatePickUp(myPickup);
+                 other.transform.root.GetComponent<PlayerPickUpManager>().SetPickUp(myPickup);
+                UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
 
                 StartCoroutine(Cooldown());
                 DestroyObject();

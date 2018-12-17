@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71cbecdae50dcf44682e0e48e96ea228, type: 3}
-  m_Name: InstantJetpack
+  m_Name: InfiniteJet
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7153504960439862523, guid: 9dea328b62b59f147a3648a11e0d85e2,
     type: 3}
   pickUpType: 0
-  duration: 6
+  duration: 0.5
+  pickUpSprite: {fileID: 21300000, guid: 74c4d1091bf26e141bf1c5e3f26a4402, type: 3}

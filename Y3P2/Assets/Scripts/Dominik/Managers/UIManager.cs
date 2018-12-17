@@ -51,6 +51,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Animator portalEffectAnim;
 
+    [Space]
+
+    [SerializeField] private Image pickUpImage;
+
     private void Awake()
     {
         if (!instance)
@@ -108,6 +112,20 @@ public class UIManager : MonoBehaviour
             }
 
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void SetPickUpImage(Sprite pickUpSprite, bool afterUse)
+    {
+        if (!afterUse)
+        {
+            pickUpImage.sprite = pickUpSprite;
+            pickUpImage.color = new Color(pickUpImage.color.r, pickUpImage.color.g, pickUpImage.color.b, 1);
+        }
+        else
+        {
+            pickUpImage.sprite = null;
+            pickUpImage.color = new Color(pickUpImage.color.r, pickUpImage.color.g, pickUpImage.color.b, 0);
         }
     }
 

@@ -13,6 +13,10 @@ public class PickUp : Item {
     private PickUpType pickUpType;
     public PickUpType Type { get { return pickUpType; } }
     [SerializeField]
-    private int duration;
-    public int Duration { get { return duration; } }
+    private float duration;
+    public float Duration { get { return duration; } }
+
+    [SerializeField]
+    private Sprite pickUpSprite;
+    public Sprite PickUpSprite { get { return pickUpSprite; } }
 }

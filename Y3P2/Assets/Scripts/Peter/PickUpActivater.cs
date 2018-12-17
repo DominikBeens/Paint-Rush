@@ -15,6 +15,17 @@ public class PickUpActivater : MonoBehaviour {
         entity = GetComponentInChildren<Entity>();
     }
 
+    private void Update()
+    {
+        if(pkm.CurrentPickUp != null)
+        {
+            if (Input.GetKeyDown("f"))
+            {
+                ActivatePickUp(pkm.CurrentPickUp);
+            }
+        }
+    }
+
     public void ActivatePickUp(PickUp pickUp)
     {
         if(pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
@@ -39,6 +50,12 @@ public class PickUpActivater : MonoBehaviour {
                 }
             }
         }
+
+
+        pkm.SetPickUp(null);
+        UIManager.instance.SetPickUpImage(null, true);
+
+
     }
 
     private IEnumerator Duration(PickUp pickUp)
