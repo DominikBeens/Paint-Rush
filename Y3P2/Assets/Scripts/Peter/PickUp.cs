@@ -6,7 +6,8 @@ public class PickUp : Item {
     public enum PickUpType
     {
         InfiniteJetpack,
-        Cloak
+        Cloak,
+        PulseRemote
     }
 
     [SerializeField]

@@ -40212,7 +40212,7 @@ PrefabInstance:
     - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
         type: 3}
       propertyPath: pickUps.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
         type: 3}
@@ -40394,6 +40394,12 @@ PrefabInstance:
       propertyPath: lobbySpawnPoint
       value: 
       objectReference: {fileID: 1317880356}
+    - target: {fileID: 5676588778306319679, guid: 437ba519886b3b24dbc66b87e21e1783,
+        type: 3}
+      propertyPath: pickUps.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: db94d6c6762f21b41bb51065d0998170,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 437ba519886b3b24dbc66b87e21e1783, type: 3}
 --- !u!1001 &1964262143

@@ -56,4 +56,5 @@ MonoBehaviour:
   - SpawnPickupRPC
   - SyncMyPickup
   - NetworkTeleport
+  - PulseRemote
   DisableAutoOpenWizard: 1

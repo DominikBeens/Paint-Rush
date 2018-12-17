@@ -7,11 +7,13 @@ public class PickUpActivater : MonoBehaviour {
 
     private bool waiting;
     private PlayerPickUpManager pkm;
+    private PickUpManager pckm;
     private Entity entity;
 
     private void Start()
     {
         pkm = GetComponent<PlayerPickUpManager>();
+        pckm = FindObjectOfType<PickUpManager>();
         entity = GetComponentInChildren<Entity>();
     }
 
@@ -50,12 +52,26 @@ public class PickUpActivater : MonoBehaviour {
                 }
             }
         }
+        else if (pickUp.Type == PickUp.PickUpType.PulseRemote)
+        {
+            if (!waiting)
+            {
+                GetComponent<PhotonView>().RPC("PulseRemote", RpcTarget.All);
+                StartCoroutine(Duration(pickUp));
+            }
+        }
 
 
         pkm.SetPickUp(null);
         UIManager.instance.SetPickUpImage(null, true);
 
 
+    }
+
+    [PunRPC]
+    private void PulseRemote()
+    {
+        ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", pckm.Points[0].transform.position, Quaternion.identity);
     }
 
     private IEnumerator Duration(PickUp pickUp)
