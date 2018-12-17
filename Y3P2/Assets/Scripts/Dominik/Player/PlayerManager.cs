@@ -137,10 +137,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private bool IsConnectedAndMine()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex != 1)
-        {
-            return true;
-        }
         return PhotonNetwork.IsConnected && photonView.IsMine ? true : false;
     }
 
