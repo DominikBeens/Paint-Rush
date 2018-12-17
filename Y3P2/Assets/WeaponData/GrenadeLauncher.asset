@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
   fireRate: 0.5
-  paintDamage: 10
+  paintDamage: 0
   spawnParticleOnImpact: 0
   spawnDecalOnImpact: 0
   projectilePoolName: Grenade
+  projectileSpeed: 50

@@ -59,6 +59,18 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
     private void WeaponSlot_OnFireWeapon()
     {
+        if (WeaponSlot.currentWeapon is Weapon_HitScan)
+        {
+            Fire_HitScan();
+        }
+        else if (WeaponSlot.currentWeapon is Weapon_Projectile)
+        {
+            Fire_Projectile();
+        }
+    }
+
+    private void Fire_HitScan()
+    {
         screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
 
         bool paintImpact = false;
@@ -109,21 +121,27 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         }
 
         photonView.RPC("SpawnEffects", RpcTarget.All, paintImpact, paintDecal, hitPoint, paintDecalRot, paintImpactRot, (int)WeaponSlot.currentPaintType);
+    }
 
-        //Weapon weapon = WeaponSlot.currentWeapon;
+    private void Fire_Projectile()
+    {
+        Weapon_Projectile weapon = WeaponSlot.currentWeapon as Weapon_Projectile;
 
-        //ProjectileManager.ProjectileData data = new ProjectileManager.ProjectileData
-        //{
-        //    spawnPosition = projectileSpawn.position,
-        //    spawnRotation = fireDirection != Vector3.zero ? Quaternion.LookRotation(fireDirection, Vector3.forward) : projectileSpawn.rotation,
-        //    //spawnRotation = projectileSpawn.rotation,
-        //    projectilePool = weapon.bulletPoolName,
-        //    speed = weapon.bulletSpeed,
-        //    paintType = (int)weapon.paintType,
-        //    paintAmount = weapon.paintDamage,
-        //    projectileOwnerID = PlayerManager.instance.photonView.ViewID,
-        //};
-        //ProjectileManager.instance.FireProjectile(data);
+        ProjectileManager.ProjectileData data = new ProjectileManager.ProjectileData
+        {
+            spawnPosition = projectileSpawn.position,
+            //spawnRotation = fireDirection != Vector3.zero ? Quaternion.LookRotation(fireDirection, Vector3.forward) : projectileSpawn.rotation,
+            spawnRotation = projectileSpawn.rotation,
+            projectilePool = weapon.projectilePoolName,
+            speed = weapon.projectileSpeed,
+            paintType = (int)WeaponSlot.currentPaintType,
+            paintAmount = weapon.paintDamage,
+            projectileOwnerID = PlayerManager.instance.photonView.ViewID,
+        };
+        ProjectileManager.instance.FireProjectile(data);
+
+        //photonView.RPC("SpawnEffects", RpcTarget.All, paintImpact, paintDecal, hitPoint, paintDecalRot, paintImpactRot, (int)WeaponSlot.currentPaintType);
+        photonView.RPC("SpawnEffects", RpcTarget.All, false, false, Vector3.zero, Quaternion.identity, Quaternion.identity, (int)WeaponSlot.currentPaintType);
     }
 
     private void WeaponSlot_OnEquipWeapon(Weapon weapon)

@@ -74,3 +74,8 @@ MonoBehaviour:
       type: 3}
     poolSize: 10
     autoExpand: 1
+  - poolName: GrenadeImpact
+    poolPrefab: {fileID: 694926173406181603, guid: 660ba0d89cd9641498784fa57676f9ee,
+      type: 3}
+    poolSize: 10
+    autoExpand: 1

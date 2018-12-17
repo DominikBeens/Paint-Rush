@@ -14,11 +14,14 @@ public class Projectile : MonoBehaviour
     [SerializeField] private string myPoolName;
     [SerializeField] private float selfDestroyTime = 5f;
 
+    public enum MoveType { Continuous, Impact };
+    [SerializeField] private MoveType moveType;
+
     [Header("Visual")]
     [SerializeField] private GameObject projectileModel;
     [SerializeField] private bool randomizeSize;
     [SerializeField] private float randomizeAmount;
-    [SerializeField] private TrailRenderer trailRenderer;
+    //[SerializeField] private TrailRenderer trailRenderer;
 
     [Space(10)]
 
@@ -56,14 +59,22 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = transform.forward * fireData.speed;
+        if (moveType == MoveType.Continuous)
+        {
+            rb.velocity = transform.forward * fireData.speed;
+        }
     }
 
     public void Fire(FireData fireData)
     {
         this.fireData = fireData;
         OnFire(this);
-        SetColors();
+        //SetColors();
+
+        if (moveType == MoveType.Impact)
+        {
+            rb.AddForce(transform.forward * fireData.speed, ForceMode.Impulse);
+        }
 
         if (randomizeSize)
         {
@@ -80,8 +91,8 @@ public class Projectile : MonoBehaviour
             projectileMats[i].color = color;
         }
 
-        trailRenderer.startColor = color;
-        trailRenderer.endColor = color;
+        //trailRenderer.startColor = color;
+        //trailRenderer.endColor = color;
     }
 
     private void RandomizeSize()
@@ -100,17 +111,14 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Environment")
-        {
-            hitCollider = other;
-            HandleHitEnvironment();
-            return;
-        }
+        hitCollider = other;
+        HandleHitEnvironment();
     }
 
     private void HandleHitEntity(Entity entity)
     {
-        if (fireData.ownerID == PlayerManager.instance.photonView.ViewID)
+        // Projectile needs to be mine and do more than 0 damage to trigger the Hit();
+        if (fireData.ownerID == PlayerManager.instance.photonView.ViewID && fireData.paintAmount > 0)
         {
             entity.Hit(fireData.paintType, fireData.paintAmount);
         }
