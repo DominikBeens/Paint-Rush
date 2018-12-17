@@ -107,7 +107,10 @@ public class PickUpActivater : MonoBehaviour {
         {
             foreach (GameObject r in pkm.objectsToCloak)
             {
-                r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
+                if(r != null)
+                {
+                    r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
+                }
             }
 
             if (GameManager.CurrentGameSate == GameManager.GameState.Playing && !entity.photonView.IsMine)

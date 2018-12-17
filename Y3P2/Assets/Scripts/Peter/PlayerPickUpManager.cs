@@ -31,6 +31,8 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     public void CheckChildren()
     {
+        objectsToCloak.Clear();
+
         GetDefaultMat[] mats = transform.GetComponentsInChildren<GetDefaultMat>();
 
         foreach (GetDefaultMat df in mats)
