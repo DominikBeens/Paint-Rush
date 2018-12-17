@@ -19,7 +19,7 @@ public class PickUpActivater : MonoBehaviour {
     {
         if(pkm.CurrentPickUp != null)
         {
-            if (Input.GetKeyDown("f"))
+            if (Input.GetKeyDown("f") && !waiting)
             {
                 ActivatePickUp(pkm.CurrentPickUp);
             }

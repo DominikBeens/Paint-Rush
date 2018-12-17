@@ -17,3 +17,4 @@ MonoBehaviour:
   pickUpType: 0
   duration: 0.5
   pickUpSprite: {fileID: 21300000, guid: 74c4d1091bf26e141bf1c5e3f26a4402, type: 3}
+  pickUpText: Infinite Jump

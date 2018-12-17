@@ -19,4 +19,8 @@ public class PickUp : Item {
     [SerializeField]
     private Sprite pickUpSprite;
     public Sprite PickUpSprite { get { return pickUpSprite; } }
+
+    [SerializeField]
+    private string pickUpText;
+    public string PickUpText { get { return pickUpText; } }
 }
