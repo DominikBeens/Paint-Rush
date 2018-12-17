@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Items/Weapon")]
 public class Weapon : Item
 {
 
-    [Space(10)]
+    [Header("Default Settings")]
 
     public float fireRate = 0.2f;
     public float paintDamage = 1f;
-    public string paintImpactPoolName;
-    public string paintDecalPoolName;
+    public bool spawnParticleOnImpact;
+    public bool spawnDecalOnImpact;
 }

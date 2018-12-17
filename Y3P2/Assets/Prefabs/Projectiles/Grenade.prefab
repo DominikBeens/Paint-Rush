@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &505763385183105221
 Transform:
   m_ObjectHideFlags: 0
@@ -9356,7 +9356,7 @@ GameObject:
   - component: {fileID: 5401163936512135927}
   - component: {fileID: 7867570475538803061}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9391,13 +9391,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75f233021b54ac4abef8635f345b4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPoolName: Bullet
+  myPoolName: Grenade
   selfDestroyTime: 5
   projectileModel: {fileID: 2759223811692718975}
   randomizeSize: 1
   randomizeAmount: 0.01
   trailRenderer: {fileID: 5307555991809058192}
-  impactObjectToSpawn: PaintImpact
+  impactObjectToSpawn: 
 --- !u!54 &5401163936512135927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9443,7 +9443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6301495286555114580
 Transform:
   m_ObjectHideFlags: 0

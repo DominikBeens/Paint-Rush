@@ -22,6 +22,7 @@ public class WeaponSlot : EquipmentSlot
 
     [SerializeField] private Transform weaponSpawn;
     [SerializeField] private Weapon startingWeapon;
+    [SerializeField] private Weapon testWeapon;
 
     public override void Initialise(bool local)
     {
@@ -44,6 +45,11 @@ public class WeaponSlot : EquipmentSlot
 
         HandleMousePaintSwitching();
         HandleKeyPaintSwitching();
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            EquipWeapon(currentWeapon == startingWeapon ? testWeapon : startingWeapon);
+        }
     }
 
     private void HandleFiring()
