@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WeaponDisplay
-  m_Shader: {fileID: 4800000, guid: 61054a61bebe19f49a8d9767c1c3212d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7c0d3a992591a594983ea04e22e540da, type: 3}
   m_ShaderKeywords: _SHARPENNN_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -67,12 +67,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: e3933cb2e2577fb4ab81423186807589, type: 3}
         m_Scale: {x: 1, y: 40}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Static:
         m_Texture: {fileID: 2800000, guid: e3933cb2e2577fb4ab81423186807589, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 2800000, guid: 5a225669b449f104ebfe1ac897d85446, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
