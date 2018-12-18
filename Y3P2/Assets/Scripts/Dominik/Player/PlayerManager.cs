@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (IsConnectedAndMine())
         {
-            entity.GetComponent<Collider>().enabled = false;
+            //entity.GetComponent<Collider>().enabled = false;
             GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
 
             DontDestroyOnLoad(gameObject);

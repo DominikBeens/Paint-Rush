@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody rb;
     private Transform owner;
-    private Collider hitCollider;
     private List<Material> projectileMats = new List<Material>();
     private Vector3 defaultSize;
 
@@ -113,7 +112,6 @@ public class Projectile : MonoBehaviour
                 // Check if that player isnt the same player that fired the projectile because we dont want to hit ourselves.
                 if (player.photonView.ViewID != fireData.ownerID)
                 {
-                    hitCollider = entity.myCollider;
                     HandleHitEntity(entity);
                     return;
                 }
@@ -126,13 +124,11 @@ public class Projectile : MonoBehaviour
             // If we didnt hit a player but some other entity, hit it.
             else
             {
-                hitCollider = entity.myCollider;
                 HandleHitEntity(entity);
                 return;
             }
         }
 
-        hitCollider = other;
         HandleHitEnvironment();
     }
 
@@ -186,7 +182,6 @@ public class Projectile : MonoBehaviour
     private void ResetProjectile()
     {
         rb.velocity = Vector3.zero;
-        hitCollider = null;
         CancelInvoke();
     }
 
