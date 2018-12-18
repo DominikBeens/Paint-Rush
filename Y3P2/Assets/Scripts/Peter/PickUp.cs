@@ -19,6 +19,10 @@ public class PickUp : Item {
     public float Duration { get { return duration; } }
 
     [SerializeField]
+    private float damage;
+    public float Damage { get { return damage; } }
+
+    [SerializeField]
     private Sprite pickUpSprite;
     public Sprite PickUpSprite { get { return pickUpSprite; } }
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 3835856506215770195, guid: ac6831aa2af3b5c44a0bb37887affa71,
     type: 3}
   pickUpType: 3
-  duration: 20
+  duration: 10
+  damage: -2
   pickUpSprite: {fileID: 21300000, guid: 01cb2fdf322aa0b40aaff1cc0c875332, type: 3}
   pickUpText: Color vacuum
