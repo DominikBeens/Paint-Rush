@@ -45,7 +45,9 @@ public class UIManager : MonoBehaviour
 
     [Space]
 
+    private float markHealth;
     [SerializeField] private Image markImage;
+    [SerializeField] private TextMeshProUGUI markHealthText;
 
     [Space]
 
@@ -78,6 +80,7 @@ public class UIManager : MonoBehaviour
         ToggleLeaderboardAndStats(false);
 
         markImage.enabled = false;
+        markHealthText.enabled = false;
         hitPlayerPanel.SetActive(false);
     }
 
@@ -87,6 +90,7 @@ public class UIManager : MonoBehaviour
         WeaponSlot_OnChangeAmmoType(crosshairColor);
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
+        PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
     }
 
     public IEnumerator ShowJumpCooldownIcon(float cooldown)
@@ -293,12 +297,28 @@ public class UIManager : MonoBehaviour
     private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
     {
         markImage.color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
+        markHealthText.color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
+        markHealth = 100;
+        markHealthText.text = markHealth + "%";
+
+        markHealthText.enabled = true;
         markImage.enabled = true;
     }
 
     private void PaintController_OnPaintMarkDestroyed()
     {
         markImage.enabled = false;
+        markHealthText.enabled = false;
+    }
+
+    private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
+    {
+        if (markHealthText.enabled)
+        {
+            markHealth -= amount;
+            markHealth = Mathf.Clamp(markHealth, 0, 100);
+            markHealthText.text = markHealth + "%";
+        }
     }
 
     private void ToggleCrosshair(bool b)
@@ -325,5 +345,6 @@ public class UIManager : MonoBehaviour
 
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
+        PlayerManager.instance.entity.paintController.OnPaintValueModified -= PaintController_OnPaintValueModified;
     }
 }
