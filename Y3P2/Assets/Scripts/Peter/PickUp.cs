@@ -7,7 +7,8 @@ public class PickUp : Item {
     {
         InfiniteJetpack,
         Cloak,
-        PulseRemote
+        PulseRemote,
+        ColorVac
     }
 
     [SerializeField]

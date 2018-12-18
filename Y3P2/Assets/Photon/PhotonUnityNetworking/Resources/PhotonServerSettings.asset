@@ -61,4 +61,5 @@ MonoBehaviour:
   - CheckChildren
   - ResetCloak
   - HitAllRPC
+  - ColorVac
   DisableAutoOpenWizard: 1

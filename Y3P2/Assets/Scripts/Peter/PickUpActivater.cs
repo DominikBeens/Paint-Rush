@@ -10,6 +10,9 @@ public class PickUpActivater : MonoBehaviour {
     private PickUpManager pckm;
     private Entity entity;
 
+    private bool reducePaint = false;
+  
+
     private void Start()
     {
         pkm = GetComponent<PlayerPickUpManager>();
@@ -29,6 +32,15 @@ public class PickUpActivater : MonoBehaviour {
                 }
             }
            
+        }
+
+        if (Input.GetKeyDown("o"))
+        {
+            entity.HitAll(10);
+        }
+        if (reducePaint)
+        {
+            entity.HitAll(-Time.deltaTime);
         }
     }
 
@@ -70,7 +82,14 @@ public class PickUpActivater : MonoBehaviour {
                 StartCoroutine(Duration(pickUp));
             }
         }
-
+        else if (pickUp.Type == PickUp.PickUpType.ColorVac)
+        {
+            if (!waiting)
+            {
+                GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+                StartCoroutine(Duration(pickUp));
+            }
+        }
 
         pkm.SetPickUp(null);
         UIManager.instance.SetPickUpImage(null, true);
@@ -83,6 +102,21 @@ public class PickUpActivater : MonoBehaviour {
     {
         ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", pckm.Points[0].transform.position, Quaternion.identity);
     }
+
+    [PunRPC]
+    private void ColorVac()
+    {
+        if (!reducePaint)
+        {
+            reducePaint = true;
+        }
+        else
+        {
+            reducePaint = false;
+        }
+    }
+
+  
 
     private IEnumerator Duration(PickUp pickUp)
     {
@@ -104,6 +138,10 @@ public class PickUpActivater : MonoBehaviour {
         else if(pickUp.Type == PickUp.PickUpType.Cloak)
         {
             GetComponent<PhotonView>().RPC("ResetCloak", RpcTarget.All);
+        }
+        else if (pickUp.Type == PickUp.PickUpType.ColorVac)
+        {
+            GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
         }
     }
 
