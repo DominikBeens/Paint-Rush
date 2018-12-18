@@ -32,6 +32,7 @@ public class PaintUIBar : MonoBehaviour
         float amountFixed = amount / 100;
         float percentage = barFillAmount + amountFixed;
         barFillAmount = percentage;
+        barFillAmount = Mathf.Clamp01(barFillAmount);
         StartCoroutine(LerpBar(percentage));
     }
 

@@ -88,11 +88,6 @@ public class PaintUI : MonoBehaviour
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
     {
-        if (amount <= 0)
-        {
-            return;
-        }
-
         if (myEntity.paintController.CurrentPaintMark == null)
         {
             for (int i = 0; i < paintUIBars.Length; i++)

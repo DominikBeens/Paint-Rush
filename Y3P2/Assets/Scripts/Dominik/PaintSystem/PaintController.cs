@@ -84,7 +84,7 @@ public class PaintController
         }
     }
 
-    public void AddPaint(PaintType color, float amount, int attackerID)
+    public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
         if (CurrentPaintMark == null)
         {

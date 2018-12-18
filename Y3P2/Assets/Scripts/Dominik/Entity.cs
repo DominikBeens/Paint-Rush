@@ -37,11 +37,26 @@ public class Entity : MonoBehaviourPunCallbacks
         photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
     }
 
+    public void HitAll(float amount)
+    {
+        photonView.RPC("HitAllRPC", RpcTarget.All, amount, PlayerManager.instance.photonView.ViewID);
+    }
+
     [PunRPC]
     private void HitRPC(int paintColor, float amount, int attackerID)
     {
         OnHit.Invoke();
-        paintController.AddPaint((PaintController.PaintType)paintColor, amount, attackerID);
+        paintController.ModifyPaint((PaintController.PaintType)paintColor, amount, attackerID);
+    }
+
+    [PunRPC]
+    private void HitAllRPC(float amount, int attackerID)
+    {
+        OnHit.Invoke();
+        for (int i = 0; i < paintController.PaintValues.Count; i++)
+        {
+            paintController.ModifyPaint(paintController.PaintValues[i].paintType, amount, attackerID);
+        }
     }
 
     [PunRPC]
