@@ -45,6 +45,7 @@ public class ForceExplosion : MonoBehaviour
                 rb.AddForce(Vector3.up * explosionUpForce, ForceMode.Impulse);
 
                 hitPlayer = true;
+                NotificationManager.instance.NewLocalNotification("Explosion hit");
             }
         }
     }

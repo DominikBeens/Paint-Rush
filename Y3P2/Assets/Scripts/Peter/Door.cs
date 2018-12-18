@@ -61,6 +61,11 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.transform.root.tag != "Player")
+        {
+            return;
+        }
+
         if (!nearbyPlayers.Contains(other))
         {
             nearbyPlayers.Add(other);

@@ -36,12 +36,13 @@ public class PaintUILocalPlayer : MonoBehaviour
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
     {
-        if (amount <= 0 || paintType != myPaintType || PlayerManager.instance.entity.paintController.CurrentPaintMark != null)
+        if (paintType != myPaintType || PlayerManager.instance.entity.paintController.CurrentPaintMark != null)
         {
             return;
         }
 
         paintFillAmount += amount;
+        paintFillAmount = Mathf.Clamp(paintFillAmount, 0, 100);
         imageFill.fillAmount = paintFillAmount / 100;
     }
 

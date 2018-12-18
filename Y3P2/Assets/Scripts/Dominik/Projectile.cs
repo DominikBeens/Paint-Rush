@@ -106,9 +106,30 @@ public class Projectile : MonoBehaviour
         Entity entity = other.GetComponent<Entity>();
         if (entity)
         {
-            hitCollider = entity.myCollider;
-            HandleHitEntity(entity);
-            return;
+            // If we hit a player.
+            PlayerManager player = other.transform.root.GetComponent<PlayerManager>();
+            if (player)
+            {
+                // Check if that player isnt the same player that fired the projectile because we dont want to hit ourselves.
+                if (player.photonView.ViewID != fireData.ownerID)
+                {
+                    hitCollider = entity.myCollider;
+                    HandleHitEntity(entity);
+                    return;
+                }
+                // If it is then ignore him.
+                else
+                {
+                    return;
+                }
+            }
+            // If we didnt hit a player but some other entity, hit it.
+            else
+            {
+                hitCollider = entity.myCollider;
+                HandleHitEntity(entity);
+                return;
+            }
         }
 
         hitCollider = other;

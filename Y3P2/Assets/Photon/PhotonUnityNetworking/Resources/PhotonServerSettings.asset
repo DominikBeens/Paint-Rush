@@ -60,4 +60,5 @@ MonoBehaviour:
   - ActivatePickUp
   - CheckChildren
   - ResetCloak
+  - HitAllRPC
   DisableAutoOpenWizard: 1

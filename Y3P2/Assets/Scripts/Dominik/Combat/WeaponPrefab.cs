@@ -67,6 +67,11 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         {
             Fire_Projectile();
         }
+
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        {
+            SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsFired);
+        }
     }
 
     private void Fire_HitScan()
@@ -111,11 +116,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
                     paintImpact = true;
                     hitPoint = hitFromWeapon.point;
                     paintImpactRot = Quaternion.LookRotation(ray.direction);
-                }
-
-                if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
-                {
-                    SaveManager.instance.SaveStat(SaveManager.SavedStat.ShotsFired);
                 }
             }
         }
