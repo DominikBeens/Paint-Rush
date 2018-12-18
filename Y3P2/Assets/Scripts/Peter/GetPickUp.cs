@@ -39,7 +39,9 @@ public class GetPickUp : MonoBehaviourPunCallbacks
             {
                 if (!cooldown)
                 {
-                    other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
+
+                    other.transform.root.GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
+                   // other.transform.root.GetComponent<PlayerPickUpManager>().CheckChildren();
                     other.transform.root.GetComponent<PlayerPickUpManager>().SetPickUp(myPickup);
                     UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(true);
                     UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);

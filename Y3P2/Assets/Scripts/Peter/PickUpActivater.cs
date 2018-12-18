@@ -55,13 +55,11 @@ public class PickUpActivater : MonoBehaviour {
         {
             if (!waiting)
             {
-                ActivateCloak();
+                GetComponent<PhotonView>().RPC("ActivateCloak", RpcTarget.All);
+                //ActivateCloak();
                 StartCoroutine(Duration(pickUp));
 
-                if (!entity.photonView.IsMine)
-                {
-                    entity.paintController.ToggleUI(false);
-                }
+               
             }
         }
         else if (pickUp.Type == PickUp.PickUpType.PulseRemote)
@@ -103,28 +101,40 @@ public class PickUpActivater : MonoBehaviour {
         {
             GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack();
         }
-        else if (pickUp.Type == PickUp.PickUpType.Cloak)
+        else if(pickUp.Type == PickUp.PickUpType.Cloak)
         {
-            foreach (GameObject r in pkm.objectsToCloak)
-            {
-                if(r != null)
-                {
-                    r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
-                }
-            }
-
-            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && !entity.photonView.IsMine)
-            {
-                entity.paintController.ToggleUI(true);
-            }
+            GetComponent<PhotonView>().RPC("ResetCloak", RpcTarget.All);
         }
     }
 
+    [PunRPC]
     private void ActivateCloak()
     {
+        if (!entity.photonView.IsMine)
+        {
+            entity.paintController.ToggleUI(false);
+        }
+
         foreach (GameObject r in pkm.objectsToCloak)
         {
             r.GetComponent<Renderer>().material = pkm.CloakShader;
+        }
+    }
+
+    [PunRPC]
+    private void ResetCloak()
+    {
+        foreach (GameObject r in pkm.objectsToCloak)
+        {
+            if (r != null)
+            {
+                r.GetComponent<Renderer>().material = r.GetComponent<GetDefaultMat>().DefMaterial;
+            }
+        }
+
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing && !entity.photonView.IsMine)
+        {
+            entity.paintController.ToggleUI(true);
         }
     }
 }

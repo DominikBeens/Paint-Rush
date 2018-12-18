@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
 public class PlayerPickUpManager : MonoBehaviour {
@@ -17,9 +18,21 @@ public class PlayerPickUpManager : MonoBehaviour {
     private PickUp currentPickUp;
     public PickUp CurrentPickUp { get { return currentPickUp; } }
 
+
     private void Start()
     {
         //UIManager.instance.JumpCooldownIcon.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(GameManager.CurrentGameSate == GameManager.GameState.Respawning)
+        {
+            if(currentPickUp != null)
+            {
+                ResetCurrentPickUp();
+            }
+        }
     }
 
     public IEnumerator JumpCooldownIcon(float coolDowntime)
@@ -29,6 +42,7 @@ public class PlayerPickUpManager : MonoBehaviour {
         UIManager.instance.JumpCooldownIcon.SetActive(false);
     }
 
+    [PunRPC]
     public void CheckChildren()
     {
         objectsToCloak.Clear();
@@ -50,6 +64,13 @@ public class PlayerPickUpManager : MonoBehaviour {
     public void SetPickUp(PickUp pickUp)
     {
         currentPickUp = pickUp;
+    }
+
+    public void ResetCurrentPickUp()
+    {
+        SetPickUp(null);
+        UIManager.instance.SetPickUpImage(null, true);
+        UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
     }
    
 }
