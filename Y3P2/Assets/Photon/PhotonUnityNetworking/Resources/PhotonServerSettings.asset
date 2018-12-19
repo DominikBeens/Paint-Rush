@@ -62,4 +62,5 @@ MonoBehaviour:
   - ResetCloak
   - HitAllRPC
   - ColorVac
+  - ResetAllPaint
   DisableAutoOpenWizard: 1
