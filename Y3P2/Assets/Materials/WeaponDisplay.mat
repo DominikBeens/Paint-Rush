@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WeaponDisplay
-  m_Shader: {fileID: 4800000, guid: 7c0d3a992591a594983ea04e22e540da, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6a04139e0a4f1d64ea0d4bbccde62fb1, type: 3}
   m_ShaderKeywords: _SHARPENNN_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -93,6 +93,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Addnoise: 0
+    - _AmbientOcclusion: 1
     - _Bias: 0
     - _BumpScale: 1
     - _ChromaticAberration: 0.1
@@ -129,11 +130,13 @@ Material:
     - _Pulseoffset: 0
     - _Pulsephase: 0
     - _Scale: 1.2
+    - _ScrollSpeed: 0.05
     - _Secondarytextureintensity: 1
     - _Seondarytextureintensity: 1
     - _Sharpen: 0
     - _Sharpennn: 1
     - _Sharpennoise: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -142,20 +145,24 @@ Material:
     - _TessPhongStrength: 1
     - _TessValue: 32
     - _Texintensity: 4
+    - _Timescale: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
     - _test: 0
     m_Colors:
+    - _BaseColor: {r: 0.10588237, g: 0.9058824, b: 1, a: 0.454902}
     - _Bordercolor: {r: 0, g: 0.70980394, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Edgecolor: {r: 0, g: 0.35876274, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _MainPanningspeed: {r: 0.05, g: -0.05, b: 0, a: 0}
     - _Maincolor: {r: 0.7360761, g: 1, b: 0, a: 1}
     - _Mainpanningspeed: {r: 0.05, g: -0.05, b: 0, a: 0}
     - _Noisespeed: {r: 0, g: 0, b: 5, a: 0}
     - _Panningspeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _Scale: {r: 17, g: 6, b: 0, a: 0}
     - _Secondarycolor: {r: 0, g: 0.120423555, b: 1, a: 1}
     - _Secondarypanningspeed: {r: 0, g: -1, b: 0, a: 0}
     - _Staticcolor: {r: 0.26470587, g: 0.6957404, b: 1, a: 0.978}
