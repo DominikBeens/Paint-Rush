@@ -4,13 +4,23 @@ using UnityEngine;
 public class CustomTransformSync : MonoBehaviourPunCallbacks, IPunObservable
 {
 
+    private Quaternion rotToSync;
     private Quaternion syncedRot;
+
+    [SerializeField] private float smoothSpeed = 1f;
 
     private void LateUpdate()
     {
-        if (!photonView.IsMine)
+        if (photonView.IsMine)
+        {
+            rotToSync = transform.localRotation;
+        }
+        else
         {
             transform.localRotation = syncedRot;
+            //transform.localRotation = Quaternion.Slerp(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
+            //Debug.LogWarning("Current: " + transform.localRotation.eulerAngles + " Synced: " + syncedRot.eulerAngles);
+            //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
         }
     }
 
@@ -20,7 +30,7 @@ public class CustomTransformSync : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (photonView.IsMine)
             {
-                stream.SendNext(transform.localRotation);
+                stream.SendNext(rotToSync);
             }
         }
         else
