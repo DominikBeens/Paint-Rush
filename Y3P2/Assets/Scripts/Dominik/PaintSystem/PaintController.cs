@@ -68,6 +68,11 @@ public class PaintController
         myEntity = entity;
         myPlayerManager = myEntity.transform.root.GetComponent<PlayerManager>();
         SetDefaultPaintValues();
+
+        if (entity.photonView.IsMine)
+        {
+            GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        }
     }
 
     private void SetDefaultPaintValues()
@@ -86,6 +91,13 @@ public class PaintController
 
     public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
+        // TODO: this is temporary, dont forget to remove this.
+        if (myEntity.photonView.IsMine && GameManager.CurrentGameSate != GameManager.GameState.Playing)
+        {
+            NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nis bad and could be caused by a slow RPC. \nThis could lead to data desync!");
+            Debug.LogWarning("WARNING: Modifying paint values while not playing is bad and could be caused by a slow RPC. This could lead to data desync!");
+        }
+
         if (CurrentPaintMark == null)
         {
             for (int i = 0; i < paintValues.Count; i++)
@@ -125,18 +137,30 @@ public class PaintController
         }
     }
 
-    private void ResetPaint(PaintType color)
+    public void ResetPaint(PaintType? color = null)
     {
         for (int i = 0; i < paintValues.Count; i++)
         {
-            if (paintValues[i].paintType == color)
+            if (color != null)
             {
-                paintValues[i].paintValue = 0;
-                paintValues[i].resetFinish = Time.time + 0.5f;
-                OnPaintValueReset(paintValues[i].paintType);
-                return;
+                if (paintValues[i].paintType == color)
+                {
+                    ResetPaintValue(paintValues[i]);
+                    return;
+                }
+            }
+            else
+            {
+                ResetPaintValue(paintValues[i]);
             }
         }
+    }
+
+    private void ResetPaintValue(PaintValue paintValue)
+    {
+        paintValue.paintValue = 0;
+        paintValue.resetFinish = Time.time + 0.5f;
+        OnPaintValueReset(paintValue.paintType);
     }
 
     public Color GetPaintColor(PaintType paintType)
@@ -236,8 +260,21 @@ public class PaintController
         ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
     }
 
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Respawning)
+        {
+            myEntity.photonView.RPC("ResetAllPaint", RpcTarget.All);
+        }
+    }
+
     public void ToggleUI(bool toggle)
     {
         OnToggleUI(toggle);
+    }
+
+    public void UnsubscribeEvents()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 }

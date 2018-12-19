@@ -34,12 +34,28 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void Hit(int paintColor, float amount)
     {
-        photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
+        // Extra check if were online and playing just to be safe and to try to prevent data desync.
+        if (PhotonNetwork.IsConnected && GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        {
+            photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
+        }
+        else
+        {
+            HitRPC(paintColor, amount, PlayerManager.instance.photonView.ViewID);
+        }
     }
 
     public void HitAll(float amount)
     {
-        photonView.RPC("HitAllRPC", RpcTarget.All, amount, PlayerManager.instance.photonView.ViewID);
+        // Extra check if were online and playing just to be safe and to try to prevent data desync.
+        if (PhotonNetwork.IsConnected && GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        {
+            photonView.RPC("HitAllRPC", RpcTarget.All, amount, PlayerManager.instance.photonView.ViewID);
+        }
+        else
+        {
+            HitAllRPC(amount, PlayerManager.instance.photonView.ViewID);
+        }
     }
 
     [PunRPC]
@@ -87,6 +103,12 @@ public class Entity : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    private void ResetAllPaint()
+    {
+        paintController.ResetPaint();
+    }
+
+    [PunRPC]
     public void SyncCaptureMark(Vector3 capturePoint)
     {
         paintController.MarkCaptured();
@@ -98,6 +120,14 @@ public class Entity : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Destroy(transform.root.gameObject);
+        }
+    }
+
+    public override void OnDisable()
+    {
+        if (photonView.IsMine)
+        {
+            paintController.UnsubscribeEvents();
         }
     }
 }
