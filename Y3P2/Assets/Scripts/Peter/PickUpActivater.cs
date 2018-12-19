@@ -119,7 +119,7 @@ public class PickUpActivater : MonoBehaviour {
       
         for (int i = 0; i < t; i++)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.5F);
             entity.HitAll(d);
             if (i >= t -1)
             {
