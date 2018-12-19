@@ -33,10 +33,10 @@ public class PickUpActivater : MonoBehaviour {
            
         }
 
-        //if (Input.GetKeyDown("o"))
-        //{
-        //    entity.HitAll(10);
-        //}
+        if (Input.GetKeyDown("o"))
+        {
+            entity.HitAll(10);
+        }
     }
 
     public void ActivatePickUp(PickUp pickUp)
@@ -103,9 +103,13 @@ public class PickUpActivater : MonoBehaviour {
     {
         if (!reducePaint)
         {
-            float f = pkm.CurrentPickUp.Duration;
-            float d = pkm.CurrentPickUp.Damage;
-            StartCoroutine(ReducePaint(f, d));
+            if(pkm.CurrentPickUp != null)
+            {
+                float f = pkm.CurrentPickUp.Duration;
+                float d = pkm.CurrentPickUp.Damage;
+                StartCoroutine(ReducePaint(f, d));
+            }
+
         }
     }
 
@@ -117,7 +121,7 @@ public class PickUpActivater : MonoBehaviour {
         {
             yield return new WaitForSeconds(1);
             entity.HitAll(d);
-            if (i > t)
+            if (i >= t -1)
             {
                 reducePaint = false;
             }
