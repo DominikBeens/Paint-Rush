@@ -388,6 +388,7 @@ MonoBehaviour:
   capturePercentageText: {fileID: 2871939954018123988}
   hitProgressLoss: 5
   captureUIAnim: {fileID: 3556201591715559427}
+  effects: {fileID: 6752653641357336700}
 --- !u!136 &4500244782208628513
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -475,12 +476,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
---- !u!4 &2806474640359869929 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6051066574926524596, guid: b88d0008a9bbf6a448e6a7473918b2e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 8433884400750886237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7659027170586922033
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +635,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6752653641357336700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2935524076597075233, guid: b88d0008a9bbf6a448e6a7473918b2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8433884400750886237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2806474640359869929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6051066574926524596, guid: b88d0008a9bbf6a448e6a7473918b2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8433884400750886237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8433884400750886237
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class RespawnCam : MonoBehaviour
     public GameObject RespawnCamObject { get { return respawnCamObject; } }
 
     [SerializeField] private float timeTillRespawn = 3f;
+    [SerializeField] private TextMeshProUGUI respawnText;
     [SerializeField] private TextMeshProUGUI timeTillRespawnText;
 
     private void Awake()
@@ -32,7 +33,8 @@ public class RespawnCam : MonoBehaviour
                 }
             }
 
-            timeTillRespawnText.text = Mathf.Clamp((respawnTime - Time.time), 0, timeTillRespawn).ToString("F2");
+            respawnText.text = Time.time > respawnTime ? "Press <color=#00FFFF>SPACE</color> to respawn!" : "Press <color=#00FFFF>SPACE</color> to respawn in";
+            timeTillRespawnText.text = Time.time > respawnTime ? "" : Mathf.Clamp((respawnTime - Time.time), 0, timeTillRespawn).ToString("F2");
         }
     }
 

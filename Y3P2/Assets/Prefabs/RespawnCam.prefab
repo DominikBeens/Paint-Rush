@@ -445,6 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTillRespawn: 3
+  respawnText: {fileID: 2887520043863499475}
   timeTillRespawnText: {fileID: 3609875228107261838}
 --- !u!1 &2887520043863499469
 GameObject:
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 2887520043863499474}
   - component: {fileID: 2887520043863499475}
   m_Layer: 0
-  m_Name: TextMeshPro Text
+  m_Name: RespawnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

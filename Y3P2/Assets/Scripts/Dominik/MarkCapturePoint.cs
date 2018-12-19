@@ -14,6 +14,7 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private TextMeshProUGUI capturePercentageText;
     [Range(0, 100)] [SerializeField] private float hitProgressLoss = 15f;
     [SerializeField] private Animator captureUIAnim;
+    [SerializeField] private GameObject effects;
 
     public class CapturingPlayer
     {
@@ -62,11 +63,6 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            PaintController_OnPaintValueModified(PaintController.PaintType.Cyan, 10);
-        }
-
         if (capturingPlayer != null)
         {
             captureProgress += Time.deltaTime;
