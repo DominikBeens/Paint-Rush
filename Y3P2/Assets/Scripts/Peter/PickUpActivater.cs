@@ -116,7 +116,6 @@ public class PickUpActivater : MonoBehaviour {
     private IEnumerator ReducePaint(float t, float d)
     {
         reducePaint = true;
-      
         for (int i = 0; i < t; i++)
         {
             yield return new WaitForSeconds(.5F);

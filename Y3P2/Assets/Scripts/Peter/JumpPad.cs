@@ -6,6 +6,8 @@ public class JumpPad : MonoBehaviour {
 
     public float upForce = 10;
     public float forwardForce = 2000;
+
+    private bool launched;
 	
     private void Launch(Rigidbody player)
     {
@@ -15,9 +17,17 @@ public class JumpPad : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root.tag == "Player" && other.transform.root.GetComponent<Photon.Pun.PhotonView>().IsMine)
+        if(other.transform.root.tag == "Player" && other.transform.root.GetComponent<Photon.Pun.PhotonView>().IsMine && !launched)
         {
             Launch(other.transform.root.GetComponent<Rigidbody>());
+            StartCoroutine(Wait());
         }
+    }
+
+    private IEnumerator Wait()
+    {
+        launched = true;
+        yield return new WaitForSeconds(.1F);
+        launched = false;
     }
 }

@@ -21,6 +21,7 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     private void Start()
     {
+        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
         //UIManager.instance.JumpCooldownIcon.SetActive(false);
     }
 

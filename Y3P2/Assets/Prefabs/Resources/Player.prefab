@@ -573,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 947849086869027135}
   hitInfoDetectionCol: {fileID: 1383097251931640073}
+  playerAnimController: {fileID: 0}
   entity: {fileID: 0}
   playerController: {fileID: 0}
   weaponSlot: {fileID: 0}
@@ -641,7 +642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 6489444038505195359}
   moveSpeed: 120
   wallRunSpeed: 144
   fovNotMoving: 80
@@ -954,12 +954,6 @@ GameObject:
 --- !u!4 &6489444038498191551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6451677872865461998, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
-    type: 3}
-  m_PrefabInstance: {fileID: 254405205403291217}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &6489444038505195359 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6451677872874727694, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
     type: 3}
   m_PrefabInstance: {fileID: 254405205403291217}
   m_PrefabAsset: {fileID: 0}
