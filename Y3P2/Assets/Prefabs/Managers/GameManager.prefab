@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8092508238407817626}
   - component: {fileID: 5676588778306319679}
   - component: {fileID: 1959163461}
-  - component: {fileID: 205725295369162634}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,12 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUps:
   - {fileID: 11400000, guid: dd2d6eb0db7196a47860617d3d439903, type: 2}
+  - {fileID: 11400000, guid: 15b0e629d6866bf49a54766dab82cee8, type: 2}
+  - {fileID: 11400000, guid: db94d6c6762f21b41bb51065d0998170, type: 2}
+  - {fileID: 11400000, guid: 65ad529a2386ba9489cc16896650af6f, type: 2}
+  - {fileID: 11400000, guid: 224421c3558c7a342a8382416662dda7, type: 2}
   playerPrefab: {fileID: 2650361930823773455, guid: eb8708ea9ed6a69439c44afd642d38d9,
     type: 3}
   projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}
   notificationManagerPrefab: {fileID: 3695199288008570729, guid: ee612cd5932be7b459f21d9a7df68062,
     type: 3}
   scoreBoardManagerPrefab: {fileID: 2216714638174310125, guid: 420fcb2b82703b142a4a24d8163fb257,
+    type: 3}
+  timeManagerPrefab: {fileID: 5879413457945049219, guid: 1e71fcf6fbe57a14d9128ef14c5e43ce,
     type: 3}
   playerSpawnPoints:
   - {fileID: 0}
@@ -65,7 +70,6 @@ MonoBehaviour:
   - {fileID: 0}
   lobbySpawnPoint: {fileID: 0}
   respawnBooth: {fileID: 0}
-  testInt: 0
 --- !u!114 &1959163461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,25 +87,3 @@ MonoBehaviour:
   - {fileID: 0}
   itemPadPrefab: {fileID: 4311975012744393303, guid: 55b9150b9876efa41b3edf3d4109c017,
     type: 3}
---- !u!114 &205725295369162634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823163395761721995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 0
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  viewIdField: 999
-  InstantiationId: 999
-  isRuntimeInstantiated: 0

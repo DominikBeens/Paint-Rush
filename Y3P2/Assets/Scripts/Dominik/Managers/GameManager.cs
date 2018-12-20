@@ -35,11 +35,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject projectileManagerPrefab;
     [SerializeField] private GameObject notificationManagerPrefab;
     [SerializeField] private GameObject scoreBoardManagerPrefab;
+    [SerializeField] private GameObject timeManagerPrefab;
 
     [Space(10)]
 
     [SerializeField] private List<Transform> playerSpawnPoints = new List<Transform>();
-    // Temp(?)
+    // Temp(?) / Refactorable
     public Transform lobbySpawnPoint;
     public Transform respawnBooth;
 
@@ -69,6 +70,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (!FindObjectOfType<ScoreboardManager>())
             {
                 PhotonNetwork.InstantiateSceneObject(scoreBoardManagerPrefab.name, Vector3.zero, Quaternion.identity);
+            }
+
+            if (!FindObjectOfType<TimeManager>())
+            {
+                PhotonNetwork.InstantiateSceneObject(timeManagerPrefab.name, Vector3.zero, Quaternion.identity);
             }
         }
     }

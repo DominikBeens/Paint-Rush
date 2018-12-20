@@ -64,4 +64,5 @@ MonoBehaviour:
   - ColorVac
   - ResetAllPaint
   - TestGMRPC
+  - SyncTime
   DisableAutoOpenWizard: 1
