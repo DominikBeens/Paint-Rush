@@ -16,8 +16,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject hitInfoDetectionCol;
 
-    private PlayerAnimationController playerAnimController;
-
+    [HideInInspector] public PlayerAnimationController playerAnimController;
     [HideInInspector] public Entity entity;
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;

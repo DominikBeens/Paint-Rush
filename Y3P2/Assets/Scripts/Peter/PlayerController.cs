@@ -3,9 +3,7 @@ using System.Collections;
 using System;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private Animator anim;
-    
+
     [SerializeField]
     private float moveSpeed = 20;
     [SerializeField]
@@ -53,6 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float slideForce = 91;
     private bool sliding;
+    public event Action<bool> OnSlide = delegate { };
 
     [SerializeField]
     private float slopeAssistForce = 20;
@@ -499,7 +498,7 @@ public class PlayerController : MonoBehaviour
         sliding = true;
         //Change player collider
 
-        anim.SetTrigger("Slide");
+        OnSlide(true);
 
         rb.AddRelativeForce(Vector3.forward * slideForce, ForceMode.Impulse);
 
@@ -509,8 +508,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SlideDuration()
     {
-        yield return new WaitForSeconds(.5F); //Make slide animation duration
+        yield return new WaitForSeconds(PlayerManager.instance.playerAnimController.GetSlideDuration());
         sliding = false;
+        OnSlide(false);
     }
 
     private float GetSettingsManagerMouseSens()
