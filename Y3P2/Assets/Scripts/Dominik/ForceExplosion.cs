@@ -6,10 +6,12 @@ public class ForceExplosion : MonoBehaviour
     private CollisionEventZone collisionZone;
     private Collider explosionCollider;
     private bool hitPlayer;
+    private Projectile.FireData fireData;
 
     [SerializeField] private string myPoolName;
     [SerializeField] private float explosionForce = 50f;
     [SerializeField] private float explosionUpForce = 10f;
+    [SerializeField] private bool dealDamage;
 
     private void Awake()
     {
@@ -26,6 +28,11 @@ public class ForceExplosion : MonoBehaviour
 
         Invoke("DisableCollider", 0.1f);
         Invoke("ReturnToPool", 2);
+    }
+
+    public void Init(Projectile.FireData fireData)
+    {
+        this.fireData = fireData;
     }
 
     private void AddForce(Transform player)

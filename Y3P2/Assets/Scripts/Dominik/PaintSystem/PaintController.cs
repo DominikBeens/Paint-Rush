@@ -183,7 +183,7 @@ public class PaintController
 
         for (int i = 0; i < paintValues.Count; i++)
         {
-            values[i] = "<color=#" + ColorUtility.ToHtmlStringRGBA(paintValues[i].paintColor) + ">" + paintValues[i].paintValue + "</color>";
+            values[i] = $"<color=#{ ColorUtility.ToHtmlStringRGBA(paintValues[i].paintColor) }> { paintValues[i].paintValue } </color>";
         }
 
         return string.Join(" <=> ", values);
@@ -213,7 +213,7 @@ public class PaintController
             if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
             {
                 PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
-                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
+                NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }</color> has claimed a mark!");
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
             }
 
@@ -244,7 +244,7 @@ public class PaintController
 
         if (PlayerManager.instance.entity == myEntity)
         {
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "'s</color> mark has been destroyed!");
+            NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }'s</color> mark has been destroyed!");
         }
     }
 
@@ -255,7 +255,7 @@ public class PaintController
         if (PlayerManager.instance.entity == myEntity)
         {
             SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
+            NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }</color> has gained a game-point!");
         }
 
         ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
