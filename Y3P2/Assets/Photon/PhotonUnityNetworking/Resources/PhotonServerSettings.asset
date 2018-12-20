@@ -63,4 +63,5 @@ MonoBehaviour:
   - HitAllRPC
   - ColorVac
   - ResetAllPaint
+  - TestGMRPC
   DisableAutoOpenWizard: 1

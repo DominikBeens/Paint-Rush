@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8092508238407817626}
   - component: {fileID: 5676588778306319679}
   - component: {fileID: 1959163461}
+  - component: {fileID: 205725295369162634}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -62,7 +63,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  lobbySpawnPoint: {fileID: 0}
   respawnBooth: {fileID: 0}
+  testInt: 0
 --- !u!114 &1959163461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,3 +83,25 @@ MonoBehaviour:
   - {fileID: 0}
   itemPadPrefab: {fileID: 4311975012744393303, guid: 55b9150b9876efa41b3edf3d4109c017,
     type: 3}
+--- !u!114 &205725295369162634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823163395761721995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 999
+  InstantiationId: 999
+  isRuntimeInstantiated: 0

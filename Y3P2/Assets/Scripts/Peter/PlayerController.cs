@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private bool grounded;
+    public bool IsGrounded { get { return grounded; } }
     private bool forceGravity = true;
     private float xMove;
     private float yMove;

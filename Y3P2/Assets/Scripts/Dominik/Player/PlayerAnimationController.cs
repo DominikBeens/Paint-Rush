@@ -22,6 +22,9 @@ public class PlayerAnimationController : MonoBehaviour
         initialised = true;
         //PlayerManager.instance.playerController.OnJump += PlayerController_OnJump;
         PlayerManager.instance.playerController.OnSlide += PlayerController_OnSlide;
+
+        //PlayerManager.instance.playerController.OnStartWallRun += PlayerController_OnStartWallRun;
+        //PlayerManager.instance.playerController.OnStopWallRun += PlayerController_OnStopWallRun;
     }
 
     private void PlayerController_OnJump()
@@ -62,8 +65,8 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
-        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-        anim.SetFloat("Vertical", Input.GetAxis("Vertical"));
+        anim.SetFloat("Horizontal", PlayerManager.instance.playerController.IsGrounded ? Input.GetAxis("Horizontal") : 0);
+        anim.SetFloat("Vertical", PlayerManager.instance.playerController.IsGrounded ? Input.GetAxis("Vertical") : 0);
     }
 
     private void OnDisable()
