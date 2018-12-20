@@ -92,7 +92,7 @@ public class PaintController
     public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
         // TODO: this is temporary, dont forget to remove this.
-        if (myPlayerManager.PlayerState != GameManager.GameState.Playing)
+        if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing)
         {
             NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nis bad and could be caused by a slow RPC. \nThis could lead to data desync!");
             Debug.LogWarning("WARNING: Modifying paint values while not playing is bad and could be caused by a slow RPC. This could lead to data desync!");

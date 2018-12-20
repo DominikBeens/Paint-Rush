@@ -152,6 +152,11 @@ public class WeaponSlot : EquipmentSlot
             pv.transform.localPosition = Vector3.zero;
             pv.transform.localRotation = Quaternion.identity;
         }
+        else
+        {
+            NotificationManager.instance.NewLocalNotification("<color=red>DEBUG: Couldnt find PhotonView to parent weapon to!");
+            Debug.LogWarning("Couldnt find PhotonView to parent weapon to! Weapon might be floating in space right now.");
+        }
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
