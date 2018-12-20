@@ -11,6 +11,10 @@ public class PlayerPickUpManager : MonoBehaviour {
     public Material CloakShader { get { return cloakShader; } }
 
     [SerializeField]
+    private Weapon defaultWeapon;
+    public Weapon DefaultWeapon { get { return defaultWeapon; } }
+
+    [SerializeField]
     public List<GameObject> objectsToCloak = new List<GameObject>();
     public List<GameObject> ObjectsToCloak { get { return ObjectsToCloak; } }
 
@@ -62,6 +66,11 @@ public class PlayerPickUpManager : MonoBehaviour {
         }
     }
 
+    public void CheckChildrenRPC()
+    {
+        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
+    }
+
     public void SetPickUp(PickUp pickUp)
     {
         currentPickUp = pickUp;
@@ -72,6 +81,12 @@ public class PlayerPickUpManager : MonoBehaviour {
         SetPickUp(null);
         UIManager.instance.SetPickUpImage(null, true);
         UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
+    }
+
+    public void ResetWeapon()
+    {
+        GetComponent<WeaponSlot>().EquipWeapon(defaultWeapon);
+        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
     }
    
 }

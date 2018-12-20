@@ -8,7 +8,8 @@ public class PickUp : Item {
         InfiniteJetpack,
         Cloak,
         PulseRemote,
-        ColorVac
+        ColorVac,
+        GrenadeLauncher
     }
 
     [SerializeField]
@@ -29,4 +30,8 @@ public class PickUp : Item {
     [SerializeField]
     private string pickUpText;
     public string PickUpText { get { return pickUpText; } }
+
+    [SerializeField]
+    private Weapon weapon;
+    public Weapon Weapon { get { return weapon; } }
 }

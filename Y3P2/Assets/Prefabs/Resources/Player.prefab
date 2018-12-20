@@ -232,8 +232,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 697026185227533249}
-  viewIdField: 11
-  InstantiationId: 11
+  viewIdField: 6
+  InstantiationId: 6
   isRuntimeInstantiated: 0
 --- !u!114 &697026185227533249
 MonoBehaviour:
@@ -420,8 +420,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 12
-  InstantiationId: 12
+  viewIdField: 7
+  InstantiationId: 7
   isRuntimeInstantiated: 0
 --- !u!114 &4986804991086715181
 MonoBehaviour:
@@ -612,8 +612,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2650361930823773680}
   - {fileID: 2650361930823773683}
-  viewIdField: 10
-  InstantiationId: 10
+  viewIdField: 4
+  InstantiationId: 4
   isRuntimeInstantiated: 0
 --- !u!114 &2650361930823773680
 MonoBehaviour:
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloakShader: {fileID: 2100000, guid: 56669b4f6b15cf346aac921d4880f2eb, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: 9838cdd61a7deba4882592e15de3830c, type: 2}
   objectsToCloak: []
 --- !u!114 &6755712924151259553
 MonoBehaviour:
@@ -785,8 +786,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 13
-  InstantiationId: 13
+  viewIdField: 5
+  InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!1 &6336988621551237993
 GameObject:
@@ -1003,8 +1004,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 3689212818480374325}
-  viewIdField: 3
-  InstantiationId: 3
+  viewIdField: 8
+  InstantiationId: 8
   isRuntimeInstantiated: 0
 --- !u!114 &7469031432376245154
 MonoBehaviour:
@@ -1062,8 +1063,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 6424966253660183105}
-  viewIdField: 1
-  InstantiationId: 1
+  viewIdField: 9
+  InstantiationId: 9
   isRuntimeInstantiated: 0
 --- !u!1 &8853835202364098068
 GameObject:

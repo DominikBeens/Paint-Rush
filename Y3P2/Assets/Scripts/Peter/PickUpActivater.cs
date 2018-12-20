@@ -11,6 +11,7 @@ public class PickUpActivater : MonoBehaviour {
     private Entity entity;
 
     private bool reducePaint = false;
+    private bool grenadeLauncer; //TEMP
 
     private void Start()
     {
@@ -33,10 +34,20 @@ public class PickUpActivater : MonoBehaviour {
            
         }
 
-        if (Input.GetKeyDown("o"))
+        if (grenadeLauncer)
         {
-            entity.HitAll(10);
+            if (Input.GetMouseButtonDown(0))
+            {
+                pkm.ResetWeapon();
+                grenadeLauncer = false; //TEMP CODE FOR GRENADE LAUNCHER
+                waiting = false;
+            }
         }
+
+        //if (Input.GetKeyDown("o"))
+        //{
+        //    entity.HitAll(10);
+        //}
     }
 
     public void ActivatePickUp(PickUp pickUp)
@@ -83,6 +94,15 @@ public class PickUpActivater : MonoBehaviour {
             {
                 GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
                 StartCoroutine(Duration(pickUp));
+            }
+        }
+        else if (pickUp.Type == PickUp.PickUpType.GrenadeLauncher)
+        {
+            if (!waiting)
+            {
+                GetComponent<WeaponSlot>().EquipWeapon(pickUp.Weapon);
+                grenadeLauncer = true; //TEMP
+                waiting = true;
             }
         }
 
