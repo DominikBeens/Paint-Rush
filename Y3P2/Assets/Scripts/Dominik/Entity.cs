@@ -45,12 +45,12 @@ public class Entity : MonoBehaviourPunCallbacks
         }
     }
 
-    public void HitAll(float amount)
+    public void HitAll(float amount, int overrideAttackerID = -1)
     {
         // Extra check if were online and playing just to be safe and to try to prevent data desync.
         if (PhotonNetwork.IsConnected && GameManager.CurrentGameSate == GameManager.GameState.Playing)
         {
-            photonView.RPC("HitAllRPC", RpcTarget.All, amount, PlayerManager.instance.photonView.ViewID);
+            photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
         }
         else
         {

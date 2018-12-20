@@ -81,6 +81,7 @@ MonoBehaviour:
   myPoolName: GrenadeImpact
   explosionForce: 50
   explosionUpForce: 75
+  dealDamage: 1
 --- !u!135 &8450614584880246157
 SphereCollider:
   m_ObjectHideFlags: 0

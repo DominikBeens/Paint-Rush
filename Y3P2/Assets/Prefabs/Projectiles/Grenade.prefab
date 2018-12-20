@@ -4759,6 +4759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPoolName: Grenade
   selfDestroyTime: 5
+  dealDamageOnHit: 0
   moveType: 1
   projectileModel: {fileID: 2759223811692718975}
   randomizeSize: 0

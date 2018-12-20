@@ -51,6 +51,11 @@ public class ForceExplosion : MonoBehaviour
                 rb.AddForce((rb.transform.position - fixedCurrentPosition) * explosionForce, ForceMode.Impulse);
                 rb.AddForce(Vector3.up * explosionUpForce, ForceMode.Impulse);
 
+                if (dealDamage)
+                {
+                    PlayerManager.instance.entity.HitAll(fireData.paintAmount, fireData.ownerID);
+                }
+
                 hitPlayer = true;
             }
         }

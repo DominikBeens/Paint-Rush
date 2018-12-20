@@ -92,7 +92,7 @@ public class PaintController
     public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
         // TODO: this is temporary, dont forget to remove this.
-        if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing)
+        if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing && attackerID != PlayerManager.instance.photonView.ViewID)
         {
             NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nis bad and could be caused by a slow RPC. \nThis could lead to data desync!");
             Debug.LogWarning("WARNING: Modifying paint values while not playing is bad and could be caused by a slow RPC. This could lead to data desync!");
@@ -210,14 +210,21 @@ public class PaintController
 
         if (attackerID == PlayerManager.instance.photonView.ViewID)
         {
-            if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
+            if (myEntity == PlayerManager.instance.entity)
             {
-                PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
-                NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }</color> has claimed a mark!");
-                SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
+                NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }</color> has killed himself!");
             }
+            else
+            {
+                if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
+                {
+                    PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
+                    NotificationManager.instance.NewNotification($"<color=#{ GameManager.personalColorString }> { PhotonNetwork.NickName }</color> has claimed a mark!");
+                    SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
+                }
 
-            SaveManager.instance.SaveStat(SaveManager.SavedStat.Kills);
+                SaveManager.instance.SaveStat(SaveManager.SavedStat.Kills);
+            }
         }
         else
         {
@@ -232,7 +239,7 @@ public class PaintController
             }
         }
 
-        if (PlayerManager.instance.entity == myEntity)
+        if (myEntity == PlayerManager.instance.entity)
         {
             GameManager.CurrentGameSate = GameManager.GameState.Respawning;
         }

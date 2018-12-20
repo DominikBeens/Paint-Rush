@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private string myPoolName;
     [SerializeField] private float selfDestroyTime = 5f;
+    [SerializeField] private bool dealDamageOnHit = true;
 
     public enum MoveType { Continuous, Impact };
     [SerializeField] private MoveType moveType;
@@ -135,7 +136,7 @@ public class Projectile : MonoBehaviour
     private void HandleHitEntity(Entity entity)
     {
         // Projectile needs to be mine and do more than 0 damage to trigger the Hit();
-        if (fireData.ownerID == PlayerManager.instance.photonView.ViewID && fireData.paintAmount > 0)
+        if (fireData.ownerID == PlayerManager.instance.photonView.ViewID && dealDamageOnHit)
         {
             entity.Hit(fireData.paintType, fireData.paintAmount);
         }
@@ -159,6 +160,12 @@ public class Projectile : MonoBehaviour
         if (!string.IsNullOrEmpty(impactObjectToSpawn))
         {
             GameObject newSpawn = ObjectPooler.instance.GrabFromPool(impactObjectToSpawn, transform.position, transform.rotation);
+            ForceExplosion forceExplosion = newSpawn.GetComponent<ForceExplosion>();
+            if (forceExplosion)
+            {
+                forceExplosion.Init(fireData);
+            }
+
             //PaintImpactParticle pip = newSpawn.GetComponent<PaintImpactParticle>();
             //if (pip)
             //{
@@ -188,10 +195,5 @@ public class Projectile : MonoBehaviour
     private void OnDisable()
     {
         ResetProjectile();
-
-        //if (!string.IsNullOrEmpty(prefabToSpawnOnDeath))
-        //{
-        //    GameObject newSpawn = ObjectPooler.instance.GrabFromPool(prefabToSpawnOnDeath, transform.position, Quaternion.identity);
-        //}
     }
 }
