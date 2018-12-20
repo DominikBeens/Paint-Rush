@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6026052ad77bc4da048450ceb77070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 6489444038505195359}
   moveSpeed: 120
   wallRunSpeed: 144
   fovNotMoving: 80
@@ -956,6 +957,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 254405205403291217}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6489444038505195359 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6451677872874727694, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+    type: 3}
+  m_PrefabInstance: {fileID: 254405205403291217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3689212818480374325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +984,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: Vertical
+  - Type: 9
+    SynchronizeType: 0
+    Name: Slide
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

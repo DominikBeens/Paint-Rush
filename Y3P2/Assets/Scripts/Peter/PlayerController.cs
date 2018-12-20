@@ -3,6 +3,8 @@ using System.Collections;
 using System;
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private Animator anim;
     
     [SerializeField]
     private float moveSpeed = 20;
@@ -497,7 +499,7 @@ public class PlayerController : MonoBehaviour
         sliding = true;
         //Change player collider
 
-        //Play animation
+        anim.SetTrigger("Slide");
 
         rb.AddRelativeForce(Vector3.forward * slideForce, ForceMode.Impulse);
 
