@@ -28,7 +28,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
             {
                 if (Input.GetKeyDown("f") && !waiting)
                 {
-                    ActivatePickUp(pkm.CurrentPickUp);
+                    if (pkm.HasPickUp)
+                    {
+                        ActivatePickUp(pkm.CurrentPickUp);
+                    }
                 }
             }
            
@@ -48,6 +51,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
 
     public void ActivatePickUp(PickUp pickUp)
     {
+
         if(pickUp.Duration > 0)
         {
             NotificationManager.instance.NewLocalNotification("Activated " + pickUp.PickUpText + "<color=yellow> Duration:  " + pickUp.Duration + "</color>");
@@ -101,10 +105,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
             }
         }
 
-        pkm.SetPickUp(null);
         UIManager.instance.SetPickUpImage(null, true);
         UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
 
+        pkm.ResetHasPickUp();
     }
 
     [PunRPC]

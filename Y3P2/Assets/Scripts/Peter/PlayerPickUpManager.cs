@@ -22,6 +22,9 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     private PickUp currentPickUp;
     public PickUp CurrentPickUp { get { return currentPickUp; } }
 
+    private bool hasPickUp;
+    public bool HasPickUp { get { return hasPickUp; } }
+
 
     private void Start()
     {
@@ -51,11 +54,14 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
 
     private IEnumerator ResetPickUpOnDeath()
     {
+        NotificationManager.instance.NewLocalNotification("Reset 1");
+
         yield return new WaitForEndOfFrame();
         GetComponent<PickUpActivater>().StopCoroutine("Duration");
         GetComponent<PickUpActivater>().ResetWaiting();
         GetComponent<PickUpActivater>().ResetPickUp(currentPickUp);
         ResetCurrentPickUp();
+        NotificationManager.instance.NewLocalNotification("Reset 2");
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
@@ -103,6 +109,7 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     public void SetPickUp(PickUp pickUp)
     {
         currentPickUp = pickUp;
+        hasPickUp = true;
     }
 
     public void ResetCurrentPickUp()
@@ -116,6 +123,11 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     {
         PlayerManager.instance.weaponSlot.EquipWeapon(defaultWeapon);
         photonView.RPC("CheckChildren", RpcTarget.AllBuffered);
+    }
+
+    public void ResetHasPickUp()
+    {
+        hasPickUp = false;
     }
 
     public override void OnDisable()
