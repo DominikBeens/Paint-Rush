@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PickUpActivater : MonoBehaviour {
+public class PickUpActivater : MonoBehaviourPunCallbacks{
 
     private bool waiting;
     private PlayerPickUpManager pkm;
@@ -17,6 +17,7 @@ public class PickUpActivater : MonoBehaviour {
         pkm = GetComponent<PlayerPickUpManager>();
         pckm = FindObjectOfType<PickUpManager>();
         entity = GetComponentInChildren<Entity>();
+
     }
 
     private void Update()
@@ -38,6 +39,7 @@ public class PickUpActivater : MonoBehaviour {
         //    entity.HitAll(10);
         //}
     }
+
 
     public void ResetWaiting()
     {
@@ -142,7 +144,7 @@ public class PickUpActivater : MonoBehaviour {
     }
   
 
-    private IEnumerator Duration(PickUp pickUp)
+    public IEnumerator Duration(PickUp pickUp)
     {
         if (!waiting)
         {
@@ -153,7 +155,7 @@ public class PickUpActivater : MonoBehaviour {
         }
     }
 
-    private void ResetPickUp(PickUp pickUp)
+    public void ResetPickUp(PickUp pickUp)
     {
         if (pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
@@ -166,6 +168,10 @@ public class PickUpActivater : MonoBehaviour {
         else if (pickUp.Type == PickUp.PickUpType.ColorVac)
         {
             GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+        }
+        else if (pickUp.Type == PickUp.PickUpType.GrenadeLauncher)
+        {
+            pkm.ResetWeapon();
         }
     }
 

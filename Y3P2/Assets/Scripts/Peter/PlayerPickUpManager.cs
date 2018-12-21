@@ -49,13 +49,22 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
         GetComponent<PickUpActivater>().ResetWaiting();
     }
 
+    private IEnumerator ResetPickUpOnDeath()
+    {
+        yield return new WaitForEndOfFrame();
+        GetComponent<PickUpActivater>().StopCoroutine("Duration");
+        GetComponent<PickUpActivater>().ResetWaiting();
+        GetComponent<PickUpActivater>().ResetPickUp(currentPickUp);
+        ResetCurrentPickUp();
+    }
+
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
         if (newState == GameManager.GameState.Respawning)
         {
             if (currentPickUp != null)
             {
-                ResetCurrentPickUp();
+                StartCoroutine(ResetPickUpOnDeath());
             }
         }
     }
