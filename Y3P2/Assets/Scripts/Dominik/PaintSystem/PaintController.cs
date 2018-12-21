@@ -93,8 +93,7 @@ public class PaintController
     {
         if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing && attackerID != PlayerManager.instance.photonView.ViewID)
         {
-            // TODO: this is temporary, dont forget to remove this.
-            NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nPossible ata desync!");
+            NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nPossible data desync!");
             Debug.LogWarning("WARNING: Modifying paint values while not playing is bad and could be caused by a slow RPC. This could lead to data desync!");
             return;
         }

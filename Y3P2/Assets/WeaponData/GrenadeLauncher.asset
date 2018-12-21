@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GrenadeLauncher
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
+  pickupExclusive: 1
   fireRate: 0.5
   paintDamage: 25
   spawnParticleOnImpact: 0

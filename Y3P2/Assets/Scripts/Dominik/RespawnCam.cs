@@ -19,6 +19,7 @@ public class RespawnCam : MonoBehaviour
         respawnCamObject.SetActive(false);
 
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
     }
 
     private void Update()
@@ -40,16 +41,38 @@ public class RespawnCam : MonoBehaviour
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
-        for (int i = 0; i < transform.childCount; i++)
+        if (newState == GameManager.GameState.Respawning)
         {
-            transform.GetChild(i).gameObject.SetActive(newState == GameManager.GameState.Respawning ? true : false);
+            ToggleChildren(true);
+        }
+        else
+        {
+            ToggleChildren(false);
         }
 
         respawnTime = newState == GameManager.GameState.Respawning ? Time.time + timeTillRespawn : respawnTime;
     }
 
+    private void SceneManager_OnGamePaused(bool toggle)
+    {
+        if (GameManager.CurrentGameSate == GameManager.GameState.Respawning)
+        {
+            ToggleChildren(!toggle);
+            respawnCamObject.SetActive(true);
+        }
+    }
+
+    private void ToggleChildren(bool toggle)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(toggle);
+        }
+    }
+
     private void OnDisable()
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
-public class PlayerPickUpManager : MonoBehaviour {
+public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
 
     [SerializeField]
     private Material cloakShader;
@@ -25,15 +25,35 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     private void Start()
     {
-        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
-        //UIManager.instance.JumpCooldownIcon.SetActive(false);
+        photonView.RPC("CheckChildren", RpcTarget.AllBuffered);
+
+        if (photonView.IsMine)
+        {
+            GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+            WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
+        }
     }
 
-    private void Update()
+    private void WeaponSlot_OnFireWeapon()
     {
-        if(GameManager.CurrentGameSate == GameManager.GameState.Respawning)
+        if (WeaponSlot.currentWeapon.pickupExclusive)
         {
-            if(currentPickUp != null)
+            StartCoroutine(ResetPickupWeapon());
+        }
+    }
+
+    private IEnumerator ResetPickupWeapon()
+    {
+        yield return new WaitForEndOfFrame();
+        ResetWeapon();
+        GetComponent<PickUpActivater>().ResetWaiting();
+    }
+
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Respawning)
+        {
+            if (currentPickUp != null)
             {
                 ResetCurrentPickUp();
             }
@@ -68,7 +88,7 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     public void CheckChildrenRPC()
     {
-        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
+        photonView.RPC("CheckChildren", RpcTarget.AllBuffered);
     }
 
     public void SetPickUp(PickUp pickUp)
@@ -85,8 +105,16 @@ public class PlayerPickUpManager : MonoBehaviour {
 
     public void ResetWeapon()
     {
-        GetComponent<WeaponSlot>().EquipWeapon(defaultWeapon);
-        GetComponent<PhotonView>().RPC("CheckChildren", RpcTarget.AllBuffered);
+        PlayerManager.instance.weaponSlot.EquipWeapon(defaultWeapon);
+        photonView.RPC("CheckChildren", RpcTarget.AllBuffered);
     }
-   
+
+    public override void OnDisable()
+    {
+        if (photonView.IsMine)
+        {
+            GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+            WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
+        }
+    }
 }
