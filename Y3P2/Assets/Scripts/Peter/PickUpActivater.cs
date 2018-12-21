@@ -186,7 +186,10 @@ public class PickUpActivater : MonoBehaviour {
 
         foreach (GameObject r in pkm.objectsToCloak)
         {
-            r.GetComponent<Renderer>().material = pkm.CloakShader;
+            if(r != null)
+            {
+                r.GetComponent<Renderer>().material = pkm.CloakShader;
+            }
         }
     }
 
