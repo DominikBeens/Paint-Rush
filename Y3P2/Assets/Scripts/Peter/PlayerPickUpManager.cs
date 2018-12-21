@@ -43,7 +43,7 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
 
     private void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("p") && photonView.IsMine)
         {
             transform.position = pickUpRoomLocation.position;
         }

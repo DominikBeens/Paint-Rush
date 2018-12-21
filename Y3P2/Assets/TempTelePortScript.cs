@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class TempTelePortScript : MonoBehaviour {
 
@@ -8,7 +9,10 @@ public class TempTelePortScript : MonoBehaviour {
     {
         if (other.transform.root.tag == "Player")
         {
-            GameManager.instance.SetGameState(1);
+            if (other.GetComponent<PhotonView>().IsMine)
+            {
+                GameManager.instance.SetGameState(1);
+            }
         }
     }
 }

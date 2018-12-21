@@ -37,10 +37,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
            
         }
 
-        //if (Input.GetKeyDown("o"))
-        //{
-        //    entity.HitAll(10);
-        //}
+        if (Input.GetKeyDown("o"))
+        {
+            entity.HitAll(10);
+        }
     }
 
 
@@ -92,7 +92,8 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         {
             if (!waiting)
             {
-                GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+                // GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+                ColorVac();
                 StartCoroutine(Duration(pickUp));
             }
         }
@@ -171,7 +172,8 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         }
         else if (pickUp.Type == PickUp.PickUpType.ColorVac)
         {
-            GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+            //GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
+            ColorVac();
         }
         else if (pickUp.Type == PickUp.PickUpType.GrenadeLauncher)
         {
