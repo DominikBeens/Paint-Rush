@@ -1,7 +1,8 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class GetPickUp : MonoBehaviourPunCallbacks
 {
@@ -16,6 +17,10 @@ public class GetPickUp : MonoBehaviourPunCallbacks
     private GameObject pickUpObject;
 
     private bool cooldown;
+
+    public bool cheatPad; //I know it's public
+    
+    public List<PickUp> pickUps = new List<PickUp>(); //It's temporary cheating code
 
     private void Start()
     {
@@ -85,10 +90,18 @@ public class GetPickUp : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[pickupType].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-        }
+            if (!cheatPad)
+            {
+                pickUpObject = PhotonNetwork.InstantiateSceneObject(GameManager.instance.PickUps[pickupType].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                myPickup = GameManager.instance.PickUps[pickupType];
+            }
+            else
+            {
+                pickUpObject = PhotonNetwork.InstantiateSceneObject(pickUps[0].itemPrefab.name, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                myPickup = pickUps[0];
+            }
 
-        myPickup = GameManager.instance.PickUps[pickupType];
+        }
     }
 
     // Receive myPickup data.

@@ -25,6 +25,8 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     private bool hasPickUp;
     public bool HasPickUp { get { return hasPickUp; } }
 
+    public Transform pickUpRoomLocation; //Also temp cheat code
+
 
     private void Start()
     {
@@ -34,6 +36,16 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
         {
             GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
+        }
+
+        pickUpRoomLocation = GameObject.Find("PickRoomSpawnPos").transform;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("p"))
+        {
+            transform.position = pickUpRoomLocation.position;
         }
     }
 
