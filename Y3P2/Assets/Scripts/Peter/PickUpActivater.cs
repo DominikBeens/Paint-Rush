@@ -173,7 +173,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         else if (pickUp.Type == PickUp.PickUpType.ColorVac)
         {
             //GetComponent<PhotonView>().RPC("ColorVac", RpcTarget.All);
-            ColorVac();
+            reducePaint = false;
         }
         else if (pickUp.Type == PickUp.PickUpType.GrenadeLauncher)
         {
