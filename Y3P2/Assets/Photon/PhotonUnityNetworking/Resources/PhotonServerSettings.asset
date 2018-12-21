@@ -65,4 +65,5 @@ MonoBehaviour:
   - ResetAllPaint
   - TestGMRPC
   - SyncTime
+  - StartCountdown
   DisableAutoOpenWizard: 1

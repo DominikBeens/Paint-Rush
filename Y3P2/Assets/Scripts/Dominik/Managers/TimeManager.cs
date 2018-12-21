@@ -3,7 +3,7 @@ using Photon.Realtime;
 using System;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviourPunCallbacks
+public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public static TimeManager instance;
@@ -11,11 +11,26 @@ public class TimeManager : MonoBehaviourPunCallbacks
     private const int GAME_TIME_IN_SECONDS = 600;
     private const int PEOPLE_NEEDED_TO_START_GAME = 2;
 
-    private static bool gameInProgress;
     private static float currentGameTime;
 
     public event Action OnStartGame = delegate { };
     public event Action OnEndGame = delegate { };
+
+    public enum GameTimeState { WaitingForPlayers, Starting, InProgress, Ending };
+    private GameTimeState gameTimeState;
+    public GameTimeState CurrentGameTimeState
+    {
+        get
+        {
+            return gameTimeState;
+        }
+        private set
+        {
+            gameTimeState = value;
+            OnGameTimeStateChanged(gameTimeState);
+        }
+    }
+    public static event Action<GameTimeState> OnGameTimeStateChanged = delegate { };
 
     private void Awake()
     {
@@ -29,9 +44,18 @@ public class TimeManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void Start()
+    {
+        // First one to join.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            CurrentGameTimeState = GameTimeState.WaitingForPlayers;
+        }
+    }
+
     private void Update()
     {
-        if (gameInProgress)
+        if (CurrentGameTimeState == GameTimeState.InProgress)
         {
             currentGameTime -= Time.deltaTime;
 
@@ -42,10 +66,7 @@ public class TimeManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                TryStartGame();
-            }
+            TryStartGame();
         }
 
         if (Input.GetKeyDown(KeyCode.N))
@@ -58,24 +79,44 @@ public class TimeManager : MonoBehaviourPunCallbacks
         }
     }
 
+    [PunRPC]
+    private void StartCountdown()
+    {
+
+    }
+
     private void StartGame()
     {
+        if (CurrentGameTimeState == GameTimeState.InProgress)
+        {
+            return;
+        }
+
         OnStartGame();
-
-        NotificationManager.instance.NewNotification("<color=red>Game Started!");
-
+        CurrentGameTimeState = GameTimeState.InProgress;
         currentGameTime = GAME_TIME_IN_SECONDS;
-        gameInProgress = true;
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            NotificationManager.instance.NewNotification("<color=red>Game Started!");
+        }
     }
 
     private void EndGame()
     {
+        if (CurrentGameTimeState == GameTimeState.Ending)
+        {
+            return;
+        }
+
         OnEndGame();
-
-        NotificationManager.instance.NewNotification("<color=red>Game Ended!");
-
+        CurrentGameTimeState = GameTimeState.Ending;
         currentGameTime = 0;
-        gameInProgress = false;
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            NotificationManager.instance.NewNotification("<color=red>Game Ended!");
+        }
     }
 
     private void TryStartGame()
@@ -83,7 +124,23 @@ public class TimeManager : MonoBehaviourPunCallbacks
         int peopleOnline = PhotonNetwork.CurrentRoom.PlayerCount;
         if (peopleOnline >= PEOPLE_NEEDED_TO_START_GAME)
         {
-            // Start countdown to start the game.
+            if (CurrentGameTimeState != GameTimeState.Starting)
+            {
+                CurrentGameTimeState = GameTimeState.Starting;
+            }
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                // Start countdown to start the game.
+                // Send RPC to start game.
+            }
+        }
+        else
+        {
+            if (CurrentGameTimeState != GameTimeState.WaitingForPlayers)
+            {
+                CurrentGameTimeState = GameTimeState.WaitingForPlayers;
+            }
         }
     }
 
@@ -95,18 +152,28 @@ public class TimeManager : MonoBehaviourPunCallbacks
         return minutes + ":" + seconds;
     }
 
-    [PunRPC]
-    private void SyncTime(bool gameInProgress, float currentGameTime)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        TimeManager.currentGameTime = currentGameTime;
-        TimeManager.gameInProgress = gameInProgress;
-    }
-
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        if (PhotonNetwork.IsMasterClient)
+        if (stream.IsWriting)
         {
-            photonView.RPC("SyncTime", RpcTarget.Others, gameInProgress, currentGameTime);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                stream.SendNext(currentGameTime);
+                stream.SendNext((int)CurrentGameTimeState);
+            }
+        }
+        else
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                currentGameTime = (float)stream.ReceiveNext();
+
+                GameTimeState syncedState = (GameTimeState)stream.ReceiveNext();
+                if (syncedState != CurrentGameTimeState)
+                {
+                    CurrentGameTimeState = syncedState;
+                }
+            }
         }
     }
 }

@@ -11,6 +11,9 @@ public class TextCharBlinker : MonoBehaviour
     [SerializeField] private string character = ".";
     [SerializeField] private float blinkSpeed = 1f;
 
+    //public enum BlinkType { Remove, Replace };
+    //[SerializeField] private BlinkType blinkType;
+
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -24,9 +27,26 @@ public class TextCharBlinker : MonoBehaviour
             {
                 nextBlinkTime = Time.time + blinkSpeed;
 
-                text.text = add ? text.text + character : text.text.Substring(0, text.text.Length - 1);
+                text.text = add ? text.text + character : GetStringWithoutLastChar();
                 add = !add;
+
+                //switch (blinkType)
+                //{
+                //    case BlinkType.Remove:
+
+                //        text.text = add ? text.text + character : GetStringWithoutLastChar();
+                //        break;
+                //    case BlinkType.Replace:
+
+                //        text.text = add ? GetStringWithoutLastChar() + character : GetStringWithoutLastChar() + " ";
+                //        break;
+                //}
             }
         }
+    }
+
+    private string GetStringWithoutLastChar()
+    {
+        return text.text.Substring(0, text.text.Length - 1);
     }
 }
