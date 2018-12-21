@@ -161,8 +161,11 @@ public class WeaponSlot : EquipmentSlot
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        int[] ids = GetEquipedItemIDs(weaponSpawn);
-        ParentEquipment(ids[0], ids[1]);
+        if (photonView.IsMine)
+        {
+            int[] ids = GetEquipedItemIDs(weaponSpawn);
+            ParentEquipment(ids[0], ids[1]);
+        }
     }
 
     private void SceneManager_OnGamePaused(bool b)
