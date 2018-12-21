@@ -8,7 +8,8 @@ public class TimeManager : MonoBehaviourPunCallbacks
 
     public static TimeManager instance;
 
-    public const int GAME_TIME_IN_SECONDS = 600;
+    private const int GAME_TIME_IN_SECONDS = 600;
+    private const int PEOPLE_NEEDED_TO_START_GAME = 2;
 
     private static bool gameInProgress;
     private static float currentGameTime;
@@ -37,6 +38,13 @@ public class TimeManager : MonoBehaviourPunCallbacks
             if (currentGameTime <= 0)
             {
                 EndGame();
+            }
+        }
+        else
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                TryStartGame();
             }
         }
 
@@ -68,6 +76,15 @@ public class TimeManager : MonoBehaviourPunCallbacks
 
         currentGameTime = 0;
         gameInProgress = false;
+    }
+
+    private void TryStartGame()
+    {
+        int peopleOnline = PhotonNetwork.CurrentRoom.PlayerCount;
+        if (peopleOnline >= PEOPLE_NEEDED_TO_START_GAME)
+        {
+            // Start countdown to start the game.
+        }
     }
 
     public string GetFormattedGameTime()
