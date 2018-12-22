@@ -6,6 +6,7 @@ public class SetLayer : MonoBehaviour
     [SerializeField] private int setToLayer;
     [SerializeField] private bool recursive;
     [SerializeField] private bool onlyChangeIfIsNotMine = true;
+    public bool OnlyChangeIfIsNotMine { get { return onlyChangeIfIsNotMine; } }
 
     private void Awake()
     {

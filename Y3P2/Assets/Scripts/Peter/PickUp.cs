@@ -9,7 +9,8 @@ public class PickUp : Item {
         Cloak,
         PulseRemote,
         ColorVac,
-        GrenadeLauncher
+        GrenadeLauncher,
+        ForceField
     }
 
     [SerializeField]

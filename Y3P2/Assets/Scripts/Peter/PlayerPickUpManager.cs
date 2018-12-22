@@ -11,6 +11,10 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     public Material CloakShader { get { return cloakShader; } }
 
     [SerializeField]
+    private Material forceFieldShader;
+    public Material ForceFieldShader { get { return forceFieldShader; } }
+
+    [SerializeField]
     private Weapon defaultWeapon;
     public Weapon DefaultWeapon { get { return defaultWeapon; } }
 
@@ -18,12 +22,19 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     public List<GameObject> objectsToCloak = new List<GameObject>();
     public List<GameObject> ObjectsToCloak { get { return ObjectsToCloak; } }
 
+    [SerializeField]
+    public List<GameObject> objectsToShield = new List<GameObject>();
+    public List<GameObject> ObjectsToShield { get { return objectsToShield; } }
+
 
     private PickUp currentPickUp;
     public PickUp CurrentPickUp { get { return currentPickUp; } }
 
     private bool hasPickUp;
     public bool HasPickUp { get { return hasPickUp; } }
+
+    private bool shielded;
+    public bool Shielded { get { return shielded; } }
 
     public Transform pickUpRoomLocation; //Also temp cheat code
 
@@ -140,6 +151,11 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     public void ResetHasPickUp()
     {
         hasPickUp = false;
+    }
+
+    public void SetShieldedBool(bool value)
+    {
+        shielded = value;
     }
 
     public override void OnDisable()

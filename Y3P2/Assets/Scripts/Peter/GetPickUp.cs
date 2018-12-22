@@ -49,25 +49,30 @@ public class GetPickUp : MonoBehaviourPunCallbacks
                     UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(true);
                     UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
                     NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
-
                 }
             }
             if (!cooldown)
             {
                 StartCoroutine(Cooldown());
-                DestroyObject();
+                photonView.RPC("DestroyObject", RpcTarget.All);
             }
         }
     }
 
+    [PunRPC]
     private void DestroyObject()
     {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+
         if (PhotonNetwork.IsMasterClient && pickUpObject != null)
         {
             PhotonNetwork.Destroy(pickUpObject);
-        }
+            myPickup = null;
 
-        myPickup = null;
+        }
     }
 
     private void SpawnPickUp()
@@ -82,6 +87,7 @@ public class GetPickUp : MonoBehaviourPunCallbacks
         if (myPickup == null)
         {
             photonView.RPC("SpawnPickupRPC", RpcTarget.All, pickupType);
+            photonView.RPC("SyncMyPickup", RpcTarget.Others, (int)myPickup.Type);
         }
     }
 

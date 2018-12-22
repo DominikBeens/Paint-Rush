@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db94d6c6762f21b41bb51065d0998170, type: 2}
   - {fileID: 11400000, guid: 65ad529a2386ba9489cc16896650af6f, type: 2}
   - {fileID: 11400000, guid: 224421c3558c7a342a8382416662dda7, type: 2}
+  - {fileID: 11400000, guid: 24b5da26c7866614b9d95e4f4d56c959, type: 2}
   playerPrefab: {fileID: 2650361930823773455, guid: eb8708ea9ed6a69439c44afd642d38d9,
     type: 3}
   projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}

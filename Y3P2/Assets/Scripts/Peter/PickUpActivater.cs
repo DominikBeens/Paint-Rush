@@ -12,6 +12,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
 
     private bool reducePaint = false;
 
+
     private void Start()
     {
         pkm = GetComponent<PlayerPickUpManager>();
@@ -105,11 +106,39 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
                 waiting = true;
             }
         }
+        else if (pickUp.Type == PickUp.PickUpType.ForceField)
+        {
+            if (!waiting)
+            {
+                photonView.RPC("ForceField", RpcTarget.All);
+                StartCoroutine(Duration(pickUp));
+            }
+        }
 
         UIManager.instance.SetPickUpImage(null, true);
         UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
 
         pkm.ResetHasPickUp();
+    }
+
+    [PunRPC]
+    private void ForceField()
+    {
+        pkm.SetShieldedBool(true);
+        foreach (GameObject g in pkm.ObjectsToShield)
+        {
+            g.GetComponent<Renderer>().material = pkm.ForceFieldShader;
+        }
+    }
+
+    [PunRPC]
+    private void ResetForceField()
+    {
+        pkm.SetShieldedBool(false);
+        foreach (GameObject g in pkm.ObjectsToShield)
+        {
+            g.GetComponent<Renderer>().material = g.GetComponent<GetDefaultMat>().DefMaterial;
+        }
     }
 
     [PunRPC]
@@ -178,6 +207,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         else if (pickUp.Type == PickUp.PickUpType.GrenadeLauncher)
         {
             pkm.ResetWeapon();
+        }
+        else if (pickUp.Type == PickUp.PickUpType.ForceField)
+        {
+            GetComponent<PhotonView>().RPC("ResetForceField", RpcTarget.All);
         }
     }
 

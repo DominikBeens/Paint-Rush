@@ -66,4 +66,7 @@ MonoBehaviour:
   - TestGMRPC
   - SyncTime
   - StartCountdown
+  - ForceField
+  - ResetForceField
+  - DestroyObject
   DisableAutoOpenWizard: 1
