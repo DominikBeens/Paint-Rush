@@ -1,5 +1,4 @@
 ﻿using Photon.Pun;
-using Photon.Realtime;
 using System;
 using UnityEngine;
 
@@ -12,11 +11,12 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     private const int PEOPLE_NEEDED_TO_START_GAME = 2;
 
     private static float currentGameTime;
+    public static float countdownTime;
 
     public event Action OnStartGame = delegate { };
     public event Action OnEndGame = delegate { };
 
-    public enum GameTimeState { WaitingForPlayers, Starting, InProgress, Ending };
+    public enum GameTimeState { WaitingForPlayers, Ready, Starting, InProgress, Ending };
     private GameTimeState gameTimeState;
     public GameTimeState CurrentGameTimeState
     {
@@ -31,6 +31,9 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
     public static event Action<GameTimeState> OnGameTimeStateChanged = delegate { };
+
+    [SerializeField] private float startGameCountdownTime = 10f;
+    [SerializeField] private float endGameCountdownTime = 10f;
 
     private void Awake()
     {
@@ -55,20 +58,33 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if (CurrentGameTimeState == GameTimeState.InProgress)
+        switch (CurrentGameTimeState)
         {
-            currentGameTime -= Time.deltaTime;
+            case GameTimeState.WaitingForPlayers:
+                HandleState_WaitingForPlayers();
+                break;
 
-            if (currentGameTime <= 0)
-            {
-                EndGame();
-            }
+            case GameTimeState.Ready:
+                HandleState_Ready();
+                break;
+
+            case GameTimeState.Starting:
+                HandleState_Starting();
+                break;
+
+            case GameTimeState.InProgress:
+                HandleState_InProgress();
+                break;
+
+            case GameTimeState.Ending:
+                HandleState_Ending();
+                break;
         }
-        else
+
+        if (Input.GetKeyDown(KeyCode.B))
         {
             TryStartGame();
         }
-
         if (Input.GetKeyDown(KeyCode.N))
         {
             StartGame();
@@ -76,6 +92,56 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         if (Input.GetKeyDown(KeyCode.M))
         {
             EndGame();
+        }
+    }
+
+    private void HandleState_WaitingForPlayers()
+    {
+        if (EnoughPeopleToStart())
+        {
+            CurrentGameTimeState = GameTimeState.Ready;
+        }
+    }
+
+    private void HandleState_Ready()
+    {
+        if (!EnoughPeopleToStart())
+        {
+            CurrentGameTimeState = GameTimeState.WaitingForPlayers;
+        }
+    }
+
+    private void HandleState_Starting()
+    {
+        countdownTime -= Time.deltaTime;
+        if (countdownTime <= 0)
+        {
+            StartGame();
+        }
+
+        if (!EnoughPeopleToStart())
+        {
+            CurrentGameTimeState = GameTimeState.WaitingForPlayers;
+            countdownTime = 0;
+        }
+    }
+
+    private void HandleState_InProgress()
+    {
+        currentGameTime -= Time.deltaTime;
+
+        if (currentGameTime <= 0)
+        {
+            EndGame();
+        }
+    }
+
+    private void HandleState_Ending()
+    {
+        countdownTime -= Time.deltaTime;
+        if (countdownTime <= 0)
+        {
+            CurrentGameTimeState = GameTimeState.WaitingForPlayers;
         }
     }
 
@@ -112,6 +178,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         OnEndGame();
         CurrentGameTimeState = GameTimeState.Ending;
         currentGameTime = 0;
+        countdownTime = endGameCountdownTime;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -121,8 +188,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void TryStartGame()
     {
-        int peopleOnline = PhotonNetwork.CurrentRoom.PlayerCount;
-        if (peopleOnline >= PEOPLE_NEEDED_TO_START_GAME)
+        if (EnoughPeopleToStart())
         {
             if (CurrentGameTimeState != GameTimeState.Starting)
             {
@@ -131,8 +197,10 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
             if (PhotonNetwork.IsMasterClient)
             {
+                countdownTime = startGameCountdownTime;
+
                 // Start countdown to start the game.
-                // Send RPC to start game.
+                // Send RPC maybe to start game.
             }
         }
         else
@@ -142,6 +210,11 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
                 CurrentGameTimeState = GameTimeState.WaitingForPlayers;
             }
         }
+    }
+
+    private bool EnoughPeopleToStart()
+    {
+        return PhotonNetwork.CurrentRoom.PlayerCount >= PEOPLE_NEEDED_TO_START_GAME;
     }
 
     public string GetFormattedGameTime()
@@ -160,6 +233,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 stream.SendNext(currentGameTime);
                 stream.SendNext((int)CurrentGameTimeState);
+                stream.SendNext(countdownTime);
             }
         }
         else
@@ -173,6 +247,8 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     CurrentGameTimeState = syncedState;
                 }
+
+                countdownTime = (float)stream.ReceiveNext();
             }
         }
     }

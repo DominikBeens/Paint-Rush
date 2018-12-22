@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameStatusPanel : MonoBehaviour
 {
 
     [SerializeField] private List<GameTimeStateText> gameTimeStateInfoPanels = new List<GameTimeStateText>();
+    [SerializeField] private TextMeshProUGUI countdownText;
 
     [System.Serializable]
     public struct GameTimeStateText
@@ -16,6 +18,24 @@ public class GameStatusPanel : MonoBehaviour
     private void Awake()
     {
         TimeManager.OnGameTimeStateChanged += TimeManager_OnGameTimeStateChanged;
+    }
+
+    private void Update()
+    {
+        if (TimeManager.countdownTime > 0)
+        {
+            if (countdownText)
+            {
+                countdownText.text = TimeManager.countdownTime.ToString("F2");
+            }
+        }
+        else
+        {
+            if (countdownText && !string.IsNullOrEmpty(countdownText.text))
+            {
+                countdownText.text = "";
+            }
+        }
     }
 
     private void TimeManager_OnGameTimeStateChanged(TimeManager.GameTimeState newState)
