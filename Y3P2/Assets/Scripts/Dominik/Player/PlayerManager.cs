@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector] public Entity entity;
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;
+    [HideInInspector] public PlayerPickUpManager playerPickupManager;
     #endregion
 
     private void Awake()
@@ -40,6 +41,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         playerController = GetComponentInChildren<PlayerController>();
         weaponSlot = GetComponentInChildren<WeaponSlot>();
         playerAnimController = GetComponentInChildren<PlayerAnimationController>();
+        playerPickupManager = GetComponentInChildren<PlayerPickUpManager>();
     }
 
     private void Initialise()

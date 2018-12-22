@@ -34,40 +34,43 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void Hit(int paintColor, float amount)
     {
-        if (!transform.root.GetComponent<PlayerPickUpManager>().Shielded) //I really don't know where else to put this bool
+        if (PlayerManager.instance.playerPickupManager.Shielded)
         {
-            // Extra check if were online and playing just to be safe and to try to prevent data desync.
-            if (PhotonNetwork.IsConnected)
-            {
-                if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
-                {
-                    photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
-                }
-            }
-            else
-            {
-                HitRPC(paintColor, amount, PlayerManager.instance.photonView.ViewID);
-            }
+            return;
+        }
 
+        // Extra check if were online and playing just to be safe and to try to prevent data desync.
+        if (PhotonNetwork.IsConnected)
+        {
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+            {
+                photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
+            }
+        }
+        else
+        {
+            HitRPC(paintColor, amount, PlayerManager.instance.photonView.ViewID);
         }
     }
 
     public void HitAll(float amount, int overrideAttackerID = -1)
     {
-        if (!transform.root.GetComponent<PlayerPickUpManager>().Shielded) //I really don't know where else to put this bool
+        if (PlayerManager.instance.playerPickupManager.Shielded)
         {
-            // Extra check if were online and playing just to be safe and to try to prevent data desync.
-            if (PhotonNetwork.IsConnected)
+            return;
+        }
+
+        // Extra check if were online and playing just to be safe and to try to prevent data desync.
+        if (PhotonNetwork.IsConnected)
+        {
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
             {
-                if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
-                {
-                    photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
-                }
+                photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
             }
-            else
-            {
-                HitAllRPC(amount, PlayerManager.instance.photonView.ViewID);
-            }
+        }
+        else
+        {
+            HitAllRPC(amount, PlayerManager.instance.photonView.ViewID);
         }
     }
 
