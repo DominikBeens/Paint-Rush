@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 2650361930823773454}
   - component: {fileID: 8177310174421126496}
   - component: {fileID: 6755712924151259553}
+  - component: {fileID: 8267685950012661229}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -555,10 +556,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 947849086869027135}
   hitInfoDetectionCol: {fileID: 1383097251931640073}
+  playerInteractionController: {fileID: 0}
   playerAnimController: {fileID: 0}
   entity: {fileID: 0}
   playerController: {fileID: 0}
   weaponSlot: {fileID: 0}
+  playerPickupManager: {fileID: 0}
 --- !u!114 &2650361930823773682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,15 +666,6 @@ MonoBehaviour:
   objectsToCloak: []
   objectsToShield:
   - {fileID: 6489444038497899677}
-  forceFieldLayer:
-    serializedVersion: 2
-    m_Bits: 32768
-  defaultHitBoxLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  otherDefaultHitBoxLayer:
-    serializedVersion: 2
-    m_Bits: 1024
   pickUpRoomLocation: {fileID: 0}
 --- !u!114 &6755712924151259553
 MonoBehaviour:
@@ -685,6 +679,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc08195f420503644bac78dca18b048f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8267685950012661229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650361930823773455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbd11191f1a3e245b32e10da3b57dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactMask:
+    serializedVersion: 2
+    m_Bits: 65536
+  interactDistance: 5
+  interactKey: 101
 --- !u!4 &3433519484634455298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
@@ -851,7 +862,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 30519
+    m_Bits: 128823
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

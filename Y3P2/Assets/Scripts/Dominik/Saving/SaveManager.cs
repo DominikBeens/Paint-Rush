@@ -49,6 +49,21 @@ public class SaveManager : MonoBehaviour
         return PlayerPrefs.GetInt(stat.ToString());
     }
 
+    public void ResetAllStats()
+    {
+        for (int i = 0; i < Enum.GetValues(typeof(SavedStat)).Length; i++)
+        {
+            string key = Enum.GetName(typeof(SavedStat), i);
+
+            if (PlayerPrefs.HasKey(key))
+            {
+                PlayerPrefs.SetInt(key, 0);
+            }
+        }
+
+        OnStatSaved();
+    }
+
     //private void LoadAppSettings()
     //{
     //    if (File.Exists(Application.persistentDataPath + "/SaveData.xml"))

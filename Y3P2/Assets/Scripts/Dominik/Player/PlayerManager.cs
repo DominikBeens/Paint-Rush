@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     #region PlayerComponents
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject hitInfoDetectionCol;
+    [SerializeField] private PlayerInteractionController playerInteractionController;
 
     [HideInInspector] public PlayerAnimationController playerAnimController;
     [HideInInspector] public Entity entity;
@@ -42,6 +43,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         weaponSlot = GetComponentInChildren<WeaponSlot>();
         playerAnimController = GetComponentInChildren<PlayerAnimationController>();
         playerPickupManager = GetComponentInChildren<PlayerPickUpManager>();
+        playerInteractionController = GetComponentInChildren<PlayerInteractionController>();
     }
 
     private void Initialise()
@@ -52,6 +54,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         playerController.Inititalise(IsConnectedAndMine());
         weaponSlot.Initialise(IsConnectedAndMine());
         playerAnimController.Initialise(IsConnectedAndMine());
+        playerInteractionController.Initialise(IsConnectedAndMine());
 
         if (IsConnectedAndMine())
         {

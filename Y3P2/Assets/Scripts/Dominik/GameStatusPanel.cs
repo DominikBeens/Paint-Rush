@@ -46,6 +46,16 @@ public class GameStatusPanel : MonoBehaviour
         }
     }
 
+    public void StartMatchButton()
+    {
+        TimeManager.instance.StartMatchButton();
+    }
+
+    public void EnterArenaButton()
+    {
+        TimeManager.instance.EnterArenaButton();
+    }
+
     private void OnDisable()
     {
         TimeManager.OnGameTimeStateChanged -= TimeManager_OnGameTimeStateChanged;

@@ -69,4 +69,5 @@ MonoBehaviour:
   - ForceField
   - ResetForceField
   - DestroyObject
+  - StartMatchRPC
   DisableAutoOpenWizard: 1

@@ -83,15 +83,15 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            TryStartGame();
+            TryStartMatch();
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            StartGame();
+            StartMatch();
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            EndGame();
+            EndMatch();
         }
     }
 
@@ -116,7 +116,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         countdownTime -= Time.deltaTime;
         if (countdownTime <= 0)
         {
-            StartGame();
+            StartMatch();
         }
 
         if (!EnoughPeopleToStart())
@@ -132,7 +132,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (currentGameTime <= 0)
         {
-            EndGame();
+            EndMatch();
         }
     }
 
@@ -146,29 +146,34 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    private void StartCountdown()
+    private void StartMatchRPC()
     {
-
+        TryStartMatch();
     }
 
-    private void StartGame()
+    private void StartMatch()
     {
         if (CurrentGameTimeState == GameTimeState.InProgress)
         {
             return;
         }
 
-        OnStartGame();
+        //OnStartGame();
         CurrentGameTimeState = GameTimeState.InProgress;
         currentGameTime = GAME_TIME_IN_SECONDS;
 
+        if (GameManager.CurrentGameSate == GameManager.GameState.Lobby)
+        {
+            GameManager.CurrentGameSate = GameManager.GameState.Playing;
+        }
+
         if (PhotonNetwork.IsMasterClient)
         {
-            NotificationManager.instance.NewNotification("<color=red>Game Started!");
+            NotificationManager.instance.NewNotification("<color=red>Match Started!");
         }
     }
 
-    private void EndGame()
+    private void EndMatch()
     {
         if (CurrentGameTimeState == GameTimeState.Ending)
         {
@@ -182,11 +187,11 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PhotonNetwork.IsMasterClient)
         {
-            NotificationManager.instance.NewNotification("<color=red>Game Ended!");
+            NotificationManager.instance.NewNotification("<color=red>Match Ended!");
         }
     }
 
-    private void TryStartGame()
+    private void TryStartMatch()
     {
         if (EnoughPeopleToStart())
         {
@@ -209,6 +214,45 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 CurrentGameTimeState = GameTimeState.WaitingForPlayers;
             }
+        }
+    }
+
+    public void StartMatchButton()
+    {
+        switch (CurrentGameTimeState)
+        {
+            case GameTimeState.WaitingForPlayers:
+                NotificationManager.instance.NewLocalNotification("<color=red>Not enough players to start");
+                break;
+
+            case GameTimeState.Ready:
+                photonView.RPC("StartMatchRPC", RpcTarget.MasterClient);
+                NotificationManager.instance.NewNotification("<color=red>Match starting soon...");
+                break;
+
+            case GameTimeState.Starting:
+                NotificationManager.instance.NewLocalNotification("<color=red>Match is already starting...");
+                break;
+
+            case GameTimeState.InProgress:
+                NotificationManager.instance.NewLocalNotification("<color=red>Can't start match when there's one in progress!");
+                break;
+
+            case GameTimeState.Ending:
+                NotificationManager.instance.NewLocalNotification("<color=red>Can't start match when there's one ending!");
+                break;
+        }
+    }
+
+    public void EnterArenaButton()
+    {
+        if (CurrentGameTimeState == GameTimeState.InProgress)
+        {
+            GameManager.CurrentGameSate = GameManager.GameState.Playing;
+        }
+        else
+        {
+            NotificationManager.instance.NewLocalNotification("<color=red>Can't enter the arena at this time.");
         }
     }
 
