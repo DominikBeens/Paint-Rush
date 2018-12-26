@@ -98,6 +98,11 @@ public class PaintController
             return;
         }
 
+        if (myEntity == PlayerManager.instance.entity)
+        {
+            UIManager.instance.ScreenHitEffect(GetPaintColor(color));
+        }
+
         if (CurrentPaintMark == null)
         {
             for (int i = 0; i < paintValues.Count; i++)

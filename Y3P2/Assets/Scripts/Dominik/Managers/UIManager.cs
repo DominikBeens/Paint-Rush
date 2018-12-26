@@ -59,6 +59,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image pickUpImageParent;
     public Image PickUpImageParent { get { return pickUpImageParent; } }
 
+    [Space]
+
+    [SerializeField] private Animator screenHitAnim;
+    [SerializeField] private Image screenHitImage;
+
     private void Awake()
     {
         if (!instance)
@@ -332,6 +337,16 @@ public class UIManager : MonoBehaviour
     private void PortalTeleporter_OnUsePortal()
     {
         portalEffectAnim.SetTrigger("Trigger");
+    }
+
+    public void ScreenHitEffect(Color paintColor)
+    {
+        bool invert = Random.Range(0, 2) == 0 ? true : false;
+        float randomScale = Random.Range(invert ? -1f : 1f, invert ? -1.1f : 1.1f);
+        screenHitImage.transform.localScale = new Vector3(randomScale, randomScale, 1);
+
+        screenHitImage.color = paintColor;
+        screenHitAnim.SetTrigger("Hit");
     }
 
     private void OnDisable()
