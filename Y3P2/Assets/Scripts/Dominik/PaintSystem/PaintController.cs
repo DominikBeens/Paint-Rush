@@ -73,6 +73,11 @@ public class PaintController
         {
             GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
         }
+
+        if (myPlayerManager)
+        {
+            myPlayerManager.OnPlayerStateChanged += MyPlayerManager_OnPlayerStateChanged;
+        }
     }
 
     private void SetDefaultPaintValues()
@@ -93,8 +98,6 @@ public class PaintController
     {
         if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing && attackerID != PlayerManager.instance.photonView.ViewID)
         {
-            NotificationManager.instance.NewLocalNotification("<color=red>WARNING: Modifying paint values while not playing \nPossible data desync!");
-            Debug.LogWarning("WARNING: Modifying paint values while not playing is bad and could be caused by a slow RPC. This could lead to data desync!");
             return;
         }
 
@@ -272,12 +275,19 @@ public class PaintController
         ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
     }
 
+    // TODO: Monitor 'MyPlayerManager_OnPlayerStateChanged' if it's consistant then remove this and the void in Entity.
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
         if (newState == GameManager.GameState.Respawning)
         {
-            myEntity.photonView.RPC("ResetAllPaint", RpcTarget.All);
+            //myEntity.photonView.RPC("ResetAllPaint", RpcTarget.All);
         }
+    }
+
+    private void MyPlayerManager_OnPlayerStateChanged(GameManager.GameState newState)
+    {
+        ResetPaint();
+        CurrentPaintMark = null;
     }
 
     public void ToggleUI(bool toggle)
@@ -288,5 +298,10 @@ public class PaintController
     public void UnsubscribeEvents()
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+
+        if (myPlayerManager)
+        {
+            myPlayerManager.OnPlayerStateChanged -= MyPlayerManager_OnPlayerStateChanged;
+        }
     }
 }

@@ -141,7 +141,7 @@ public class Door : MonoBehaviour
         }
 
         Camera portalCam = connectedPortalCam.GetComponent<Camera>();
-        portalCam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        portalCam.targetTexture = new RenderTexture(Screen.width / 2, Screen.height / 2, 24);
         portalMat.mainTexture = portalCam.targetTexture;
 
         portalVisual.material = portalMat;

@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using System;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -11,6 +12,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     // the one from the GameManager not since everyone has his own GameManager.
     private GameManager.GameState playerState;
     public GameManager.GameState PlayerState { get { return playerState; } }
+
+    public event Action<GameManager.GameState> OnPlayerStateChanged = delegate { };
 
     #region PlayerComponents
     [SerializeField] private GameObject playerCamera;
@@ -118,6 +121,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private void SetPlayerState(GameManager.GameState newState)
     {
         playerState = newState;
+        OnPlayerStateChanged(newState);
 
         if (!photonView.IsMine)
         {

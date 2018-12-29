@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (!sliding)
+        if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
         {
             Movement();
         }
