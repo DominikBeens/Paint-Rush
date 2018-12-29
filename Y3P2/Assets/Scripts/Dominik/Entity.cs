@@ -42,7 +42,7 @@ public class Entity : MonoBehaviourPunCallbacks
         // Extra check if were online and playing just to be safe and to try to prevent data desync.
         if (PhotonNetwork.IsConnected)
         {
-            if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
             {
                 photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
             }
@@ -63,7 +63,7 @@ public class Entity : MonoBehaviourPunCallbacks
         // Extra check if were online and playing just to be safe and to try to prevent data desync.
         if (PhotonNetwork.IsConnected)
         {
-            if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
             {
                 photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
             }

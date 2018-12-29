@@ -33,6 +33,7 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         }
 
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        TimeManager.OnStartMatch += ResetScoreBoardPoints;
     }
 
     private void Start()
@@ -154,6 +155,15 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void ResetScoreBoardPoints()
+    {
+        for (int i = 0; i < playerScores.Count; i++)
+        {
+            playerScores[i].playerGamePoints = 0;
+            OnScoreboardUpdated();
+        }
+    }
+
     public void GetScoreBoardToText(TMPro.TextMeshProUGUI text)
     {
         text.text = "";
@@ -180,5 +190,6 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
     public override void OnDisable()
     {
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        TimeManager.OnStartMatch -= ResetScoreBoardPoints;
     }
 }

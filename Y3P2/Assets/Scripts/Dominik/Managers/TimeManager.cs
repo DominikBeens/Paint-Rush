@@ -13,21 +13,21 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     private static float currentGameTime;
     public static float countdownTime;
 
-    public event Action OnStartGame = delegate { };
-    public event Action OnEndGame = delegate { };
+    public static event Action OnStartMatch = delegate { };
+    public static event Action OnEndMatch = delegate { };
 
     public enum GameTimeState { WaitingForPlayers, Ready, Starting, InProgress, Ending };
     private GameTimeState gameTimeState;
-    public GameTimeState CurrentGameTimeState
+    public static GameTimeState CurrentGameTimeState
     {
         get
         {
-            return gameTimeState;
+            return instance.gameTimeState;
         }
         private set
         {
-            gameTimeState = value;
-            OnGameTimeStateChanged(gameTimeState);
+            instance.gameTimeState = value;
+            OnGameTimeStateChanged(instance.gameTimeState);
         }
     }
     public static event Action<GameTimeState> OnGameTimeStateChanged = delegate { };
@@ -81,17 +81,13 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            TryStartMatch();
-        }
         if (Input.GetKeyDown(KeyCode.N))
         {
             StartMatch();
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            EndMatch();
+            currentGameTime = 5f;
         }
     }
 
@@ -158,9 +154,9 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        //OnStartGame();
         CurrentGameTimeState = GameTimeState.InProgress;
         currentGameTime = GAME_TIME_IN_SECONDS;
+        OnStartMatch();
 
         if (GameManager.CurrentGameSate == GameManager.GameState.Lobby)
         {
@@ -180,10 +176,10 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        OnEndGame();
         CurrentGameTimeState = GameTimeState.Ending;
         currentGameTime = 0;
         countdownTime = endGameCountdownTime;
+        OnEndMatch();
 
         if (PhotonNetwork.IsMasterClient)
         {
