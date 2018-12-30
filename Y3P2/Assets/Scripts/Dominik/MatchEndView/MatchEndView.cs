@@ -78,7 +78,7 @@ public class MatchEndView : MonoBehaviour
                 playerPositions[i].SetupVisual(scores[i]);
                 player.entity.paintController.ToggleUI(false);
 
-                if (scores[i].playerName == Photon.Pun.PhotonNetwork.NickName)
+                if (scores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
                 {
                     PlayerManager.instance.Teleport(playerPositions[i].transform.position);
                 }

@@ -126,6 +126,18 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         currentGameTime -= Time.deltaTime;
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (currentGameTime == 60)
+            {
+                NotificationManager.instance.NewNotification("<color=red>One minute remaining!");
+            }
+            if (currentGameTime == 10)
+            {
+                NotificationManager.instance.NewNotification("<color=red>Ten seconds remaining!");
+            }
+        }
+
         if (currentGameTime <= 0)
         {
             EndMatch();
