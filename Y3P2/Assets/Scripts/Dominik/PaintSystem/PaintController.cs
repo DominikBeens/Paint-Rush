@@ -214,6 +214,7 @@ public class PaintController
     private void PaintFilled(PaintType color, int attackerID)
     {
         ResetPaint(color);
+        ObjectPooler.instance.GrabFromPool("TeleportParticle", myEntity.transform.position, myEntity.transform.rotation);
 
         if (attackerID == PlayerManager.instance.photonView.ViewID)
         {

@@ -8,8 +8,8 @@ public class Entity : MonoBehaviourPunCallbacks
 
     [HideInInspector] public Collider myCollider;
 
-    [SerializeField] private int entityID;
-    public enum EntityType { Humanoid, Prop };
+    //[SerializeField] private int entityID;
+    public enum EntityType { Humanoid, Prop, TestDummy };
     [SerializeField] private EntityType entityType;
 
     [Space(10)]
@@ -39,17 +39,16 @@ public class Entity : MonoBehaviourPunCallbacks
             return;
         }
 
-        // Extra check if were online and playing just to be safe and to try to prevent data desync.
-        if (PhotonNetwork.IsConnected)
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
         {
-            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
-            {
-                photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
-            }
+            photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
         }
         else
         {
-            HitRPC(paintColor, amount, PlayerManager.instance.photonView.ViewID);
+            if (entityType == EntityType.TestDummy)
+            {
+                photonView.RPC("HitRPC", RpcTarget.All, paintColor, amount, PlayerManager.instance.photonView.ViewID);
+            }
         }
     }
 
@@ -60,17 +59,16 @@ public class Entity : MonoBehaviourPunCallbacks
             return;
         }
 
-        // Extra check if were online and playing just to be safe and to try to prevent data desync.
-        if (PhotonNetwork.IsConnected)
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
         {
-            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
-            {
-                photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
-            }
+            photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
         }
         else
         {
-            HitAllRPC(amount, PlayerManager.instance.photonView.ViewID);
+            if (entityType == EntityType.TestDummy)
+            {
+                photonView.RPC("HitAllRPC", RpcTarget.All, amount, overrideAttackerID != -1 ? overrideAttackerID : PlayerManager.instance.photonView.ViewID);
+            }
         }
     }
 

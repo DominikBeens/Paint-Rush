@@ -79,3 +79,8 @@ MonoBehaviour:
       type: 3}
     poolSize: 10
     autoExpand: 1
+  - poolName: TeleportParticle
+    poolPrefab: {fileID: 3586644663071760818, guid: 2dea7f46c86b58747901f7810eb46d5a,
+      type: 3}
+    poolSize: 10
+    autoExpand: 1

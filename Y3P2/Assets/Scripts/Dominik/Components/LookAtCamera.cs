@@ -21,7 +21,7 @@ public class LookAtCamera : MonoBehaviour
     {
         target = GameManager.CurrentGameSate == GameManager.GameState.Playing ? mainCam : respawnCam;
 
-        if (!target)
+        if (!target || GameManager.CurrentGameSate == GameManager.GameState.Lobby)
         {
             return;
         }
