@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbff85844270c2c42bcb8003209e6488, type: 3}
-  m_Name: GrenadeLauncher
+  m_Name: M052
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 125, guid: 19161a7c84b9e9849b052fd9ff4177c0, type: 3}
+  itemPrefab: {fileID: 125, guid: fc01583d84e2322448446a32708cb55a, type: 3}
   pickupExclusive: 1
   fireRate: 0.5
   paintDamage: 25

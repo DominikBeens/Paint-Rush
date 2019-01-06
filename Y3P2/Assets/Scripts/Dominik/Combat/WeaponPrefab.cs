@@ -39,7 +39,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             paintDisplayBars = GetComponentsInChildren<PaintUILocalPlayer>();
             for (int i = 0; i < PlayerManager.instance.entity.paintController.PaintValues.Count; i++)
             {
-                if (paintDisplayBars[i])
+                if (paintDisplayBars.Length > 0 && paintDisplayBars[i])
                 {
                     paintDisplayBars[i].Initialise(PlayerManager.instance.entity.paintController.PaintValues[i]);
                 }
