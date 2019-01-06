@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 namespace DB.MenuPack
 {
@@ -31,10 +31,10 @@ namespace DB.MenuPack
             }
 
             SetupDefaultSettings();
-            InitAllSettings();
+            InitSettings();
         }
 
-        private void InitAllSettings()
+        private void InitSettings()
         {
             Setting[] settings = GetComponentsInChildren<Setting>(true);
             for (int i = 0; i < settings.Length; i++)
@@ -72,11 +72,6 @@ namespace DB.MenuPack
             SetupShadowQualityDropdown();
         }
 
-        public bool HasOpenUI()
-        {
-            return settingsPanel.activeInHierarchy;
-        }
-
         private void SetupVSyncDropdown()
         {
             if (!dropdown_VSync)
@@ -88,10 +83,10 @@ namespace DB.MenuPack
             dropdown_VSync.ClearOptions();
 
             List<string> vSyncOptions = new List<string>
-        {
-            "Off",
-            "On"
-        };
+            {
+                "Off",
+                "On"
+            };
             dropdown_VSync.AddOptions(vSyncOptions);
             dropdown_VSync.value = QualitySettings.vSyncCount;
 
@@ -108,19 +103,60 @@ namespace DB.MenuPack
 
             dropdown_AntiAliasing.ClearOptions();
 
-            //List<string> antiAliasingOptions = new List<string>(QualitySettings.antiAliasing);
-
             List<string> antiAliasingOptions = new List<string>
-        {
-            "Off",
-            "2x MSAA",
-            "4x MSAA",
-            "8x MSAA"
-        };
+            {
+                "Off",
+                "2x MSAA",
+                "4x MSAA",
+                "8x MSAA"
+            };
             dropdown_AntiAliasing.AddOptions(antiAliasingOptions);
-            dropdown_AntiAliasing.value = QualitySettings.antiAliasing;
 
-            dropdown_AntiAliasing.onValueChanged.AddListener((int i) => QualitySettings.antiAliasing = i);
+            switch (QualitySettings.antiAliasing)
+            {
+                case 0:
+                    dropdown_AntiAliasing.value = 0;
+                    break;
+
+                case 2:
+                    dropdown_AntiAliasing.value = 1;
+                    break;
+
+                case 4:
+                    dropdown_AntiAliasing.value = 2;
+                    break;
+
+                case 8:
+                    dropdown_AntiAliasing.value = 3;
+                    break;
+            }
+
+            dropdown_AntiAliasing.onValueChanged.AddListener((int i) => OnAAValueChanged(i));
+        }
+
+        private void OnAAValueChanged(int i)
+        {
+            // Switch i which is dropdown_AntiAliasing.value.
+            switch (i)
+            {
+                case 0:
+                    i = 0;
+                    break;
+
+                case 1:
+                    i = 2;
+                    break;
+
+                case 2:
+                    i = 4;
+                    break;
+
+                case 3:
+                    i = 8;
+                    break;
+            }
+
+            QualitySettings.antiAliasing = i;
         }
 
         private void SetupTextureQualityDropdown()
@@ -157,15 +193,18 @@ namespace DB.MenuPack
             dropdown_ShadowQuality.ClearOptions();
 
             List<string> shadowQualityOptions = new List<string>
-        {
-            "Low",
-            "Medium",
-            "High",
-            "Very High"
-        };
+            {
+                "Low",
+                "Medium",
+                "High",
+                "Very High"
+            };
             shadowQualityOptions.Reverse();
             dropdown_ShadowQuality.AddOptions(shadowQualityOptions);
-            dropdown_ShadowQuality.value = (int)QualitySettings.shadowResolution;
+
+            // Adjust value because we reversed the shadowQualityOptions list.
+            int dropdownValue = Mathf.Abs((int)QualitySettings.shadowResolution - (dropdown_ShadowQuality.options.Count - 1));
+            dropdown_ShadowQuality.value = dropdownValue;
 
             dropdown_ShadowQuality.onValueChanged.AddListener((int i) => OnShadowQualityValueChanged(i));
         }
@@ -173,25 +212,7 @@ namespace DB.MenuPack
         private void OnShadowQualityValueChanged(int i)
         {
             // Reverse i because shadowQualityOptions in SetupShadowQualityDropdown() gets reversed so that the highest quality is at the top of the dropdown menu.
-            switch (i)
-            {
-                case 0:
-
-                    i = 3;
-                    break;
-                case 1:
-
-                    i = 2;
-                    break;
-                case 2:
-
-                    i = 1;
-                    break;
-                case 3:
-
-                    i = 0;
-                    break;
-            }
+            i = Mathf.Abs(i - (dropdown_ShadowQuality.options.Count - 1));
 
             QualitySettings.shadowResolution = (ShadowResolution)i;
             print(QualitySettings.shadowResolution);

@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 namespace DB.MenuPack
 {
@@ -38,7 +38,7 @@ namespace DB.MenuPack
         [SerializeField] private string pauseInputButton = "Cancel";
         [SerializeField] private bool canPauseWithSpecifiedButton = true;
         [SerializeField] private GameObject pausePanel;
-        [SerializeField] private List<int> cannotPauseScenes = new List<int>();
+        [SerializeField] private List<int> cannotPauseSceneIndexes = new List<int>();
 
         public static event Action OnLevelLoaded = delegate { };
         public static event Action<bool> OnGamePaused = delegate { };
@@ -70,7 +70,7 @@ namespace DB.MenuPack
                 // If canPauseWithSpecifiedButton is set to true and the player pressed Escape, pause the game.
                 if (canPauseWithSpecifiedButton)
                 {
-                    if (!cannotPauseScenes.Contains(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex))
+                    if (!cannotPauseSceneIndexes.Contains(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex))
                     {
                         PauseGame();
                     }
@@ -120,6 +120,7 @@ namespace DB.MenuPack
             StartCoroutine(LoadSceneAsync(index, stopTimeWhenLoading));
         }
 
+        // Use the default scenemanager to load a scene.
         public void LoadSceneInstant(int index)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(index);
@@ -151,10 +152,7 @@ namespace DB.MenuPack
             transitionComplete = false;
 
             // Display the loading bar is showLoadingBar is set to true.
-            if (showLoadingBar)
-            {
-                loadingBar.SetActive(true);
-            }
+            loadingBar.SetActive(showLoadingBar ? true : false);
 
             // Load the level asynchronously and output the progress to the loading bar.
             AsyncOperation loadScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(index);
@@ -197,12 +195,6 @@ namespace DB.MenuPack
             {
                 return false;
             }
-        }
-
-        public void ReturnToMainMenu()
-        {
-            PauseGame();
-            GameManager.instance.LeaveRoom();
         }
 
         public void QuitGame()

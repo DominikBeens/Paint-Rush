@@ -50,14 +50,12 @@ namespace DB.MenuPack
                 if (newSetting == FullScreenMode.ExclusiveFullScreen || newSetting == FullScreenMode.FullScreenWindow)
                 {
                     Screen.fullScreen = true;
-                    Resolution resolution = Screen.currentResolution;
-                    Screen.SetResolution(resolution.width, resolution.height, true);
+                    Screen.SetResolution(Screen.width, Screen.height, true);
                 }
                 else
                 {
                     Screen.fullScreen = false;
-                    Resolution resolution = Screen.currentResolution;
-                    Screen.SetResolution(resolution.width, resolution.height, false);
+                    Screen.SetResolution(Screen.width, Screen.height, false);
                 }
             }
         }

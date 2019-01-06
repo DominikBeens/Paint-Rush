@@ -7,7 +7,7 @@ namespace DB.MenuPack
     public class Setting_MouseSens : Setting
     {
 
-        public static float mouseSensitivity = 1f;
+        public static float mouseSensitivity = 0.1f;
         private const string mouseSensPrefKey = "MouseSensitivity";
 
         [SerializeField] private float minSensitivity = 0.01f;

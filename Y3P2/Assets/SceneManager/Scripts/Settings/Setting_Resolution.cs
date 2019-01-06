@@ -22,7 +22,7 @@ namespace DB.MenuPack
             availableResolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().Reverse().ToArray();
             List<string> resolutionDropdownOptions = new List<string>();
             // Get our default dropdown value by finding the index of our current resolution in the array of available resolutions.
-            int currentResolutionDropdownIndex = Array.FindIndex(availableResolutions, i => i.width == Screen.currentResolution.width && i.height == Screen.currentResolution.height);
+            int currentResolutionDropdownIndex = Array.FindIndex(availableResolutions, i => i.width == Screen.width && i.height == Screen.height);
 
             for (int i = 0; i < availableResolutions.Length; i++)
             {
@@ -39,7 +39,7 @@ namespace DB.MenuPack
         {
             Resolution newResolution = availableResolutions[setting];
 
-            if (newResolution.width != Screen.currentResolution.width && newResolution.height != Screen.currentResolution.height)
+            if (newResolution.width != Screen.width && newResolution.height != Screen.height)
             {
                 Screen.SetResolution(newResolution.width, newResolution.height, Screen.fullScreenMode);
                 OnResolutionChanged();

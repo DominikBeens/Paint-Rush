@@ -8,9 +8,9 @@ namespace DB.MenuPack
     public class Setting_Audio : Setting
     {
 
-        private const string volumePrefKey = "AudioMainVolume";
-
         [Space(10)]
+
+        [SerializeField] private string audioPrefKey = "AudioMainVolume";
 
         [SerializeField] private AudioMixer mixer;
         [SerializeField] private string volumeParameter;
@@ -27,7 +27,7 @@ namespace DB.MenuPack
 
             audioSlider.minValue = 0;
             audioSlider.maxValue = 100;
-            audioSlider.value = PlayerPrefs.HasKey(volumePrefKey) ? PlayerPrefs.GetFloat(volumePrefKey) : defaultVolume;
+            audioSlider.value = !string.IsNullOrEmpty(audioPrefKey) && PlayerPrefs.HasKey(audioPrefKey) ? PlayerPrefs.GetFloat(audioPrefKey) : defaultVolume;
             audioSlider.onValueChanged.AddListener(SetMixerVolume);
 
             if (mixer)
@@ -45,7 +45,10 @@ namespace DB.MenuPack
             }
             audioPercentageText.text = Mathf.Round(audioSlider.value) + "%";
 
-            PlayerPrefs.SetFloat(volumePrefKey, value);
+            if (!string.IsNullOrEmpty(audioPrefKey))
+            {
+                PlayerPrefs.SetFloat(audioPrefKey, value);
+            }
         }
     }
 }
