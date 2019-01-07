@@ -672,21 +672,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlaceHolderCustomizationTerminal
       objectReference: {fileID: 0}
-    - target: {fileID: 5699519997305866821, guid: a9ca003804f420e4dba5f7ac0d68c156,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000022887718
-      objectReference: {fileID: 0}
-    - target: {fileID: 2042871203633563839, guid: a9ca003804f420e4dba5f7ac0d68c156,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5390303779012484457, guid: a9ca003804f420e4dba5f7ac0d68c156,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ca003804f420e4dba5f7ac0d68c156, type: 3}
 --- !u!1001 &4168075276999993731

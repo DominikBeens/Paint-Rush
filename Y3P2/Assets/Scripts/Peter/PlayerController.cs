@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour
     private bool infinJet;
     private float jetBoostCooldownReduction = 1;
 
+    private AnimationClip winEmote; //Probably needs to go to a different script but idk where right now
+
     public void Inititalise(bool local)
     {
         if (!local)
@@ -135,7 +137,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
+        if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
         {
             Movement();
         }
@@ -148,6 +150,18 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             return;
+        }
+
+        if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
+        {
+            if(winEmote != null && !PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                PlayWinEmote();
+            }
+            else if(PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play("Locomotion", 0);
+            }
         }
 
         Debug.DrawRay(transform.position + new Vector3(0, .01F, 0), transform.forward, Color.red);
@@ -180,7 +194,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && canJump && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
+        if (Input.GetButtonDown("Jump") && canJump && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
         {
             if (sliding)
             {
@@ -189,7 +203,7 @@ public class PlayerController : MonoBehaviour
             JumpJet();
         }
 
-        if (Input.GetButton("Jump") && !grounded && !sliding)
+        if (Input.GetButton("Jump") && !grounded && !sliding && !CustomizationTerminal.customizing)
         {
             WallRun();
         }
@@ -216,7 +230,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
+            if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
             {
                 Slide();
             }
@@ -226,7 +240,17 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraRotation();
+        if(!CustomizationTerminal.customizing)
+        {
+            CameraRotation();
+        }
+        else
+        {
+            if (spine.eulerAngles != new Vector3(-15, spine.eulerAngles.y, spine.eulerAngles.z))
+            {
+                spine.eulerAngles = new Vector3(-15, spine.eulerAngles.y, spine.eulerAngles.z);
+            }
+        }
     }
 
     /// <summary>
@@ -534,5 +558,15 @@ public class PlayerController : MonoBehaviour
         {
             infinJet = false;
         }
+    }
+
+    public void SetWinEmote(AnimationClip clip)
+    {
+        winEmote = clip;
+    }
+
+    public void PlayWinEmote()
+    {
+        PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play(winEmote.name, 0);
     }
 }
