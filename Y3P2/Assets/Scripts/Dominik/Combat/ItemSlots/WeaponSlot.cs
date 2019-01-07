@@ -111,7 +111,11 @@ public class WeaponSlot : EquipmentSlot
 
     private bool CanUseWeapon()
     {
-        return currentWeapon != null && equipedItem != null && GameManager.CurrentGameSate != GameManager.GameState.Respawning && !gamePaused;
+        return currentWeapon != null && 
+            equipedItem != null && 
+            GameManager.CurrentGameSate != GameManager.GameState.Respawning && 
+            !gamePaused && 
+            TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending;
     }
 
     public void HitEntity()

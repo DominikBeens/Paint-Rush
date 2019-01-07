@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && canJump)
+        if (Input.GetButtonDown("Jump") && canJump && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
         {
             if (sliding)
             {
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (!sliding)
+            if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending)
             {
                 Slide();
             }
