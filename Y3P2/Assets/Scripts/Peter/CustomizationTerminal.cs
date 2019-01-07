@@ -9,7 +9,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     [SerializeField]
     private TextMeshProUGUI nameText;
     private Transform localPlayer;
-    private PlayerController pcontroller;
+    private PlayerAnimationController pcontroller;
     public static bool customizing;
 
     [SerializeField]
@@ -19,7 +19,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
-        pcontroller = localPlayer.GetComponent<PlayerController>();
+        pcontroller = localPlayer.GetComponentInChildren<PlayerAnimationController>();
         nameText.color = GameManager.personalColor;
 
         SetVictoryEmote(0);

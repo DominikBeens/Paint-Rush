@@ -6,10 +6,13 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator anim;
     private bool initialised;
 
+    private AnimationClip winEmote;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
     }
+
 
     public void Initialise(bool local)
     {
@@ -67,6 +70,18 @@ public class PlayerAnimationController : MonoBehaviour
 
         anim.SetFloat("Horizontal", CanAnimateMovement() ? Input.GetAxis("Horizontal") : 0);
         anim.SetFloat("Vertical", CanAnimateMovement() ? Input.GetAxis("Vertical") : 0);
+
+        if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
+        {
+            if (winEmote != null && !PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                PlayWinEmote();
+            }
+            else if (PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play("Locomotion", 0);
+            }
+        }
     }
 
     private bool CanAnimateMovement()
@@ -81,5 +96,15 @@ public class PlayerAnimationController : MonoBehaviour
             //PlayerManager.instance.playerController.OnJump -= PlayerController_OnJump;
             PlayerManager.instance.playerController.OnSlide -= PlayerController_OnSlide;
         }
+    }
+
+    public void SetWinEmote(AnimationClip clip)
+    {
+        winEmote = clip;
+    }
+
+    public void PlayWinEmote()
+    {
+        PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play(winEmote.name, 0);
     }
 }
