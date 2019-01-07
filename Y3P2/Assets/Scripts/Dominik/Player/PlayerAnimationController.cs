@@ -65,8 +65,13 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
-        anim.SetFloat("Horizontal", PlayerManager.instance.playerController.IsGrounded ? Input.GetAxis("Horizontal") : 0);
-        anim.SetFloat("Vertical", PlayerManager.instance.playerController.IsGrounded ? Input.GetAxis("Vertical") : 0);
+        anim.SetFloat("Horizontal", CanAnimateMovement() ? Input.GetAxis("Horizontal") : 0);
+        anim.SetFloat("Vertical", CanAnimateMovement() ? Input.GetAxis("Vertical") : 0);
+    }
+
+    private bool CanAnimateMovement()
+    {
+        return PlayerManager.instance.playerController.IsGrounded && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending;
     }
 
     private void OnDisable()

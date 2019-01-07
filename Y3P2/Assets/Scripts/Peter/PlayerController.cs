@@ -144,6 +144,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.Ending)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
 
         Debug.DrawRay(transform.position + new Vector3(0, .01F, 0), transform.forward, Color.red);
 
