@@ -101,7 +101,7 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
 
                         if (WeaponSlot.currentWeapon.spawnDecalOnImpact)
                         {
-                            paintDecal = true;
+                            //paintDecal = true;
                             hitPoint = hitFromWeapon.point;
                             paintDecalRot = Quaternion.LookRotation(-hitFromWeapon.normal);
                         }
