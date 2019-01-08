@@ -115,7 +115,8 @@ public class WeaponSlot : EquipmentSlot
             equipedItem != null && 
             GameManager.CurrentGameSate != GameManager.GameState.Respawning && 
             !gamePaused && 
-            TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending;
+            TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending &&
+            !CustomizationTerminal.customizing;
     }
 
     public void HitEntity()

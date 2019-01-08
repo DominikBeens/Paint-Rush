@@ -74,14 +74,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
         {
-            if (winEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
-            {
-                PlayWinEmote();
-            }
-            else if (anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
-            {
-               anim.Play("Locomotion", 0);
-            }
+            ToggleWinEmote(anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name) ? false : true);
         }
     }
 
@@ -104,8 +97,21 @@ public class PlayerAnimationController : MonoBehaviour
         winEmote = clip;
     }
 
-    public void PlayWinEmote()
+    public void ToggleWinEmote(bool toggle)
     {
-        anim.Play(winEmote.name, 0);
+        if (toggle)
+        {
+            if (winEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                anim.Play(winEmote.name, 0);
+            }
+        }
+        else
+        {
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            {
+                anim.Play("Locomotion", 0);
+            }
+        }
     }
 }

@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        TimeManager.OnGameTimeStateChanged += TimeManager_OnGameTimeStateChanged;
         PortalTeleporter.OnUsePortal += PortalTeleporter_OnUsePortal;
 
         ToggleLeaderboardAndStats(false);
@@ -170,6 +171,16 @@ public class UIManager : MonoBehaviour
             case GameManager.GameState.Playing:
 
                 ToggleCrosshair(!b);
+                break;
+        }
+    }
+
+    private void TimeManager_OnGameTimeStateChanged(TimeManager.GameTimeState newState)
+    {
+        switch (newState)
+        {
+            case TimeManager.GameTimeState.Ending:
+                ToggleCrosshair(false);
                 break;
         }
     }
@@ -356,6 +367,7 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        TimeManager.OnGameTimeStateChanged -= TimeManager_OnGameTimeStateChanged;
         PortalTeleporter.OnUsePortal -= PortalTeleporter_OnUsePortal;
 
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;

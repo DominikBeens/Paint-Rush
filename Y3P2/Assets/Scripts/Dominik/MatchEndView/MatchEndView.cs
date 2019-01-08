@@ -56,6 +56,7 @@ public class MatchEndView : MonoBehaviour
             matchEndCam.SetActive(false);
             countdownObject.SetActive(false);
             ToggleAllPlayerPositions(false);
+            PlayerManager.instance.playerAnimController.ToggleWinEmote(false);
 
             if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
             {
@@ -81,6 +82,7 @@ public class MatchEndView : MonoBehaviour
                 if (scores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
                 {
                     PlayerManager.instance.Teleport(playerPositions[i].transform.position);
+                    PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
                 }
             }
         }
