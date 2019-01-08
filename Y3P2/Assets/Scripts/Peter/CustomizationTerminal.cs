@@ -12,19 +12,33 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private Animator previewCharacterAnimator;
     private Transform localPlayer;
     private PlayerAnimationController pcontroller;
+    private PlayerAudioManager paudio;
     public static bool customizing;
 
     [SerializeField]
     private List<AnimationClip> emotes = new List<AnimationClip>();
     public List<AnimationClip> Emotes { get { return emotes; } }
 
+    [SerializeField]
+    private List<AudioClip> music = new List<AudioClip>();
+    public List<AudioClip> Music { get { return music; } }
+
+    [SerializeField]
+    private AudioSource terminalAudioSource;
+
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
         pcontroller = localPlayer.GetComponentInChildren<PlayerAnimationController>();
+        paudio = localPlayer.GetComponent<PlayerAudioManager>();
         nameText.color = GameManager.personalColor;
 
+        terminalAudioSource = GetComponent<AudioSource>();
+
         SetVictoryEmote(0);
+        SetVictoryMusic(0);
+
+        terminalAudioSource.clip = paudio.WinMusic;
     }
 
     private void Update()
@@ -36,6 +50,16 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
                 customizing = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+
+                //if (!previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
+                //{
+                //    previewCharacterAnimator.Play("Locomotion", 0);
+                //}
+
+                if (terminalAudioSource.isPlaying)
+                {
+                    terminalAudioSource.Stop();
+                }
             }
         }
     }
@@ -64,6 +88,21 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     public void SetVictoryEmote(int index)
     {
         pcontroller.SetWinEmote(emotes[index]);
+        if (!previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
+        {
+            previewCharacterAnimator.Play("Locomotion", 0);
+        }
+    }
+
+    public void SetVictoryMusic(int index)
+    {
+        paudio.SetWinMusic(music[index]);
+        terminalAudioSource.clip = paudio.WinMusic;
+
+        if (terminalAudioSource.isPlaying)
+        {
+            terminalAudioSource.Stop();
+        }
     }
 
     public void PreviewEmote()
@@ -75,6 +114,18 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         else
         {
             previewCharacterAnimator.Play("Locomotion", 0);
+        }
+    }
+
+    public void PreviewMusic()
+    {
+        if (!terminalAudioSource.isPlaying)
+        {
+            terminalAudioSource.Play();
+        }
+        else
+        {
+            terminalAudioSource.Stop();
         }
     }
 
