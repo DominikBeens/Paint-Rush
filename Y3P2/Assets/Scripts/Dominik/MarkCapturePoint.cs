@@ -34,7 +34,7 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
     {
-        if (capturingPlayer != null)
+        if (capturingPlayer != null && amount > 0)
         {
             captureProgress -= (hitProgressLoss / 100 * captureDuration);
             captureProgress = Mathf.Clamp(captureProgress, 0, captureDuration);

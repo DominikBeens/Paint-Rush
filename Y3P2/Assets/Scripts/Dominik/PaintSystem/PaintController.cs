@@ -101,7 +101,7 @@ public class PaintController
             return;
         }
 
-        if (myEntity == PlayerManager.instance.entity)
+        if (myEntity == PlayerManager.instance.entity && amount > 0)
         {
             UIManager.instance.ScreenHitEffect(GetPaintColor(color));
         }
