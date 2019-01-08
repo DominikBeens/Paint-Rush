@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     private bool initialised;
 
     private AnimationClip winEmote;
+    public AnimationClip WinEmote { get { return winEmote; } }
 
     private void Awake()
     {
@@ -73,13 +74,13 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
         {
-            if (winEmote != null && !PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            if (winEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
             {
                 PlayWinEmote();
             }
-            else if (PlayerManager.localPlayer.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
             {
-                PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play("Locomotion", 0);
+               anim.Play("Locomotion", 0);
             }
         }
     }
@@ -105,6 +106,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void PlayWinEmote()
     {
-        PlayerManager.localPlayer.GetComponentInChildren<Animator>().Play(winEmote.name, 0);
+        anim.Play(winEmote.name, 0);
     }
 }

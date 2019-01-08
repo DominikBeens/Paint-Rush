@@ -8,6 +8,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private TextMeshProUGUI nameText;
+    [SerializeField]
+    private Animator previewCharacterAnimator;
     private Transform localPlayer;
     private PlayerAnimationController pcontroller;
     public static bool customizing;
@@ -62,6 +64,18 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     public void SetVictoryEmote(int index)
     {
         pcontroller.SetWinEmote(emotes[index]);
+    }
+
+    public void PreviewEmote()
+    {
+        if(previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
+        {
+            previewCharacterAnimator.Play(pcontroller.WinEmote.name, 0);
+        }
+        else
+        {
+            previewCharacterAnimator.Play("Locomotion", 0);
+        }
     }
 
 }
