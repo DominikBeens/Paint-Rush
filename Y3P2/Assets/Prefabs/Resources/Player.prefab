@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &6489444038498191547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6451677872865461994, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
-    type: 3}
-  m_PrefabInstance: {fileID: 254405205403291217}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3433519484634455298 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2748154433815853541}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6489444038498191605 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6451677872865461924, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
-    type: 3}
-  m_PrefabInstance: {fileID: 254405205403291217}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &658432039695383430
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +500,7 @@ GameObject:
   - component: {fileID: 8267685950012661229}
   - component: {fileID: 1726389090183153332}
   - component: {fileID: 2862329405602310653}
+  - component: {fileID: 8791205208499543855}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -823,6 +806,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8791205208499543855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650361930823773455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ce2798e99e7b743bfb21def9338cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6489444038501013919}
+--- !u!4 &3433519484634455298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 685998645619123431, guid: 6468523df62da094b894b07c631724f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2748154433815853541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5549767682966204482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,9 +1061,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!4 &6489444038498191547 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6451677872865461994, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+    type: 3}
+  m_PrefabInstance: {fileID: 254405205403291217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6489444038497899677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6451677872865368780, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+    type: 3}
+  m_PrefabInstance: {fileID: 254405205403291217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6489444038501013919 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6451677872870643662, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
     type: 3}
   m_PrefabInstance: {fileID: 254405205403291217}
   m_PrefabAsset: {fileID: 0}
@@ -1157,6 +1171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cb83e54e6b7914092bbddfcac8d374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6489444038498191605 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6451677872865461924, guid: 18bf9b3758f910042a4f4fb3fe0d5527,
+    type: 3}
+  m_PrefabInstance: {fileID: 254405205403291217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6489444038497899807 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6451677872865368910, guid: 18bf9b3758f910042a4f4fb3fe0d5527,

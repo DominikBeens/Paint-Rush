@@ -73,4 +73,5 @@ MonoBehaviour:
   - DebugReduceGameTime
   - ToggleWinMusic
   - SetWinner
+  - SyncSkin
   DisableAutoOpenWizard: 1

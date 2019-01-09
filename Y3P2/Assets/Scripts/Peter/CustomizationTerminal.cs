@@ -24,6 +24,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     public List<AudioClip> Music { get { return music; } }
 
     [SerializeField]
+    private List<Material> skins = new List<Material>();
+    public List<Material> Skins { get { return skins; } }
+    private int selectedSkin;
+    [SerializeField]
     private AudioSource terminalAudioSource;
 
     [SerializeField]
@@ -34,6 +38,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private GameObject audioVisualizer;
     public GameObject AudioVisualizer { get { return audioVisualizer; } }
 
+    [SerializeField]
+    private Renderer previewCharRenderer;
+
+    private SyncPlayerSkin skinSyncer;
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
@@ -48,6 +56,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
         terminalAudioSource.clip = paudio.WinMusic;
         audioVisualizer.SetActive(false);
+
+        skinSyncer = localPlayer.GetComponent<SyncPlayerSkin>();
 
     }
 
@@ -147,5 +157,28 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
             terminalAudioSource.Stop();
         }
     }
+
+    public void SetSkin(int i)
+    {
+
+       
+        if(selectedSkin < skins.Count - 1)
+        {
+            selectedSkin += i;
+        }
+        else if(selectedSkin == skins.Count -1)
+        {
+            selectedSkin = 0;
+        }
+        if(selectedSkin < 0)
+        {
+            selectedSkin = skins.Count - 1;
+        }
+
+       previewCharRenderer.material = skins[selectedSkin];
+        skinSyncer.SyncThisPlayerSkin(selectedSkin);
+    }
+
+  
 
 }
