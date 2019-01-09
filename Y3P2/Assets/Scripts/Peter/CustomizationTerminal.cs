@@ -26,6 +26,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     [SerializeField]
     private AudioSource terminalAudioSource;
 
+    [SerializeField]
+    private GameObject terminalCamera;
+    public GameObject TerminalCamera { get { return terminalCamera; } }
+
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
@@ -39,6 +43,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         SetVictoryMusic(0);
 
         terminalAudioSource.clip = paudio.WinMusic;
+
     }
 
     private void Update()
@@ -50,6 +55,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
                 customizing = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+
+                terminalCamera.SetActive(false);
 
                 //if (!previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
                 //{
@@ -64,11 +71,11 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SetNameColor(Image value)
+    public void SetNameColor(Color value)
     {
-        GameManager.personalColor = value.color;
-        GameManager.personalColorString = ColorUtility.ToHtmlStringRGBA(value.color);
-        nameText.color = value.color;
+        GameManager.personalColor = value;
+        GameManager.personalColorString = ColorUtility.ToHtmlStringRGBA(value);
+        nameText.color = value;
     }
 
     public void SetRandomNameColor()
@@ -83,6 +90,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         customizing = true;
+
+        terminalCamera.SetActive(true);
     }
 
     public void SetVictoryEmote(int index)
