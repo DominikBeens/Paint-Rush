@@ -9,6 +9,8 @@ public class PlayerAnimationController : MonoBehaviour
     private AnimationClip winEmote;
     public AnimationClip WinEmote { get { return winEmote; } }
 
+    private int emoteIndex;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -74,7 +76,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
         {
-            ToggleWinEmote(anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name) ? false : true);
+            ToggleWinEmote(anim.GetCurrentAnimatorStateInfo(0).IsName("Emote") ? false : true);
         }
     }
 
@@ -92,25 +94,29 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    public void SetWinEmote(AnimationClip clip)
+    public void SetWinEmote(int index , CustomizationTerminal terminal)
     {
-        winEmote = clip;
+        winEmote = terminal.Emotes[index];
+        emoteIndex = index;
     }
 
     public void ToggleWinEmote(bool toggle)
     {
         if (toggle)
         {
-            if (winEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            if (winEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName("Emote"))
             {
-                anim.Play(winEmote.name, 0);
+                //anim.Play(winEmote.name, 0);
+                anim.SetBool("Emote", true);
+                anim.SetFloat("EmoteIndex", emoteIndex);
             }
         }
         else
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName(winEmote.name))
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Emote"))
             {
-                anim.Play("Locomotion", 0);
+                // anim.Play("Locomotion", 0);
+                anim.SetBool("Emote", false);
             }
         }
     }

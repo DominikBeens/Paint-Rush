@@ -87,7 +87,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     public void SetVictoryEmote(int index)
     {
-        pcontroller.SetWinEmote(emotes[index]);
+        pcontroller.SetWinEmote(index, this);
         if (!previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
         {
             previewCharacterAnimator.Play("Locomotion", 0);
