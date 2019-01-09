@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 5970270889773251286}
   - component: {fileID: 4960522065781038679}
   - component: {fileID: 5011982728621427921}
+  - component: {fileID: 6552522602881767548}
   m_Layer: 0
   m_Name: ScoreCanvas
   m_TagString: Untagged
@@ -722,3 +723,15 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &6552522602881767548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282518878231516717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

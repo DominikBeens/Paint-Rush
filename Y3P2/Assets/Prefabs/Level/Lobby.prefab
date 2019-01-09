@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 8896815897705617387}
   - component: {fileID: 5541503835038030582}
   - component: {fileID: 470484686821945036}
+  - component: {fileID: 8421116185582921985}
   m_Layer: 0
   m_Name: GameTimeCanvas
   m_TagString: Untagged
@@ -276,6 +277,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTimeText: {fileID: 7119266964076628015}
+--- !u!114 &8421116185582921985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555315043557721750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &585517089289963352
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +779,7 @@ GameObject:
   - component: {fileID: 3211657916726542491}
   - component: {fileID: 5260017447291403907}
   - component: {fileID: 5375660160710223287}
+  - component: {fileID: 2362791791028839238}
   m_Layer: 0
   m_Name: StatusCanvas
   m_TagString: Untagged
@@ -841,6 +855,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &2362791791028839238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373607077117489505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415402061301481674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1303,7 @@ GameObject:
   - component: {fileID: 8449906491363794734}
   - component: {fileID: 4236244941503285906}
   - component: {fileID: 6291823968857824832}
+  - component: {fileID: 7381124943188232234}
   m_Layer: 0
   m_Name: CountdownCanvas
   m_TagString: Untagged
@@ -1347,6 +1374,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &7381124943188232234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679869290276520170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787260864810842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1913,7 @@ GameObject:
   - component: {fileID: 1852787261054307859}
   - component: {fileID: 1852787261054307857}
   - component: {fileID: 1852787261054307856}
+  - component: {fileID: 474725109600014003}
   m_Layer: 0
   m_Name: TextCanvas
   m_TagString: Untagged
@@ -1944,6 +1984,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &474725109600014003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787261054307858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787261107421901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +2007,7 @@ GameObject:
   - component: {fileID: 1852787261107421898}
   - component: {fileID: 1852787261107421896}
   - component: {fileID: 1852787261107421899}
+  - component: {fileID: 1913063864407088796}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -2026,6 +2079,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &1913063864407088796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787261107421901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787261114685404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2102,7 @@ GameObject:
   - component: {fileID: 1852787261114685405}
   - component: {fileID: 1852787261114685403}
   - component: {fileID: 1852787261114685402}
+  - component: {fileID: 5798029326941516259}
   m_Layer: 0
   m_Name: CamCanvas
   m_TagString: Untagged
@@ -2107,6 +2173,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &5798029326941516259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787261114685404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787261161133079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,6 +2625,7 @@ GameObject:
   - component: {fileID: 1852787261398336512}
   - component: {fileID: 1852787261398336526}
   - component: {fileID: 1852787261398336513}
+  - component: {fileID: 1261714289369669930}
   m_Layer: 0
   m_Name: CamCanvas
   m_TagString: Untagged
@@ -2617,6 +2696,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &1261714289369669930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787261398336515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787261410228290
 GameObject:
   m_ObjectHideFlags: 0
@@ -4911,6 +5002,7 @@ GameObject:
   - component: {fileID: 1852787262596756147}
   - component: {fileID: 1852787262596756145}
   - component: {fileID: 1852787262596756144}
+  - component: {fileID: 669980011734832808}
   m_Layer: 0
   m_Name: TextCanvas
   m_TagString: Untagged
@@ -4981,6 +5073,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &669980011734832808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787262596756146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787262596923037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5187,7 @@ GameObject:
   - component: {fileID: 1852787262603800192}
   - component: {fileID: 1852787262603800195}
   - component: {fileID: 1852787262603800194}
+  - component: {fileID: 2628631896955668547}
   m_Layer: 2
   m_Name: TriggerPopupCanvas
   m_TagString: Untagged
@@ -5172,6 +5277,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2628631896955668547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787262603800196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787262622937359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,6 +5891,7 @@ GameObject:
   - component: {fileID: 1852787262925332863}
   - component: {fileID: 1852787262925332861}
   - component: {fileID: 1852787262925332860}
+  - component: {fileID: 8604431589387341956}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -5845,6 +5963,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &8604431589387341956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852787262925332862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852787262954119243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6446,6 +6576,7 @@ GameObject:
   - component: {fileID: 4930806376568405845}
   - component: {fileID: 1965674278810078680}
   - component: {fileID: 6886812704325654726}
+  - component: {fileID: 4120551054472660128}
   m_Layer: 2
   m_Name: TEMPCanvas
   m_TagString: Untagged
@@ -6516,6 +6647,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &4120551054472660128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104523500355753816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4362344952253824692
 GameObject:
   m_ObjectHideFlags: 0
@@ -8058,6 +8201,7 @@ GameObject:
   - component: {fileID: 4587178847298717841}
   - component: {fileID: 3058846496185375268}
   - component: {fileID: 5824074156000582607}
+  - component: {fileID: 438382871618498034}
   m_Layer: 2
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -8147,6 +8291,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &438382871618498034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447999629783086921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6515980139635918852
 GameObject:
   m_ObjectHideFlags: 0
@@ -8914,6 +9070,7 @@ GameObject:
   - component: {fileID: 7165462939725983397}
   - component: {fileID: 135234406034397871}
   - component: {fileID: 5377743141294939030}
+  - component: {fileID: 4406730380107706083}
   m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
@@ -8984,6 +9141,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &4406730380107706083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7229808643640306126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7464674512720424688
 GameObject:
   m_ObjectHideFlags: 0
@@ -9231,6 +9400,7 @@ GameObject:
   - component: {fileID: 994930721967312187}
   - component: {fileID: 2390615653920002869}
   - component: {fileID: 6959536592904199655}
+  - component: {fileID: 794262038050204258}
   m_Layer: 2
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -9320,6 +9490,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &794262038050204258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160389124140821236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8373056328719896303
 GameObject:
   m_ObjectHideFlags: 0
@@ -9672,6 +9854,7 @@ GameObject:
   - component: {fileID: 5308279786188494069}
   - component: {fileID: 4744909291988345436}
   - component: {fileID: 2529364150845006382}
+  - component: {fileID: 3127709298228174407}
   m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
@@ -9742,6 +9925,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &3127709298228174407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708549793388373497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8750438397879461598
 GameObject:
   m_ObjectHideFlags: 0
@@ -9993,6 +10188,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size
       value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706454922686902073, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706454922686902073, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861605923532300933, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861605923532300933, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698666486712754562, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698666486712754562, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ca003804f420e4dba5f7ac0d68c156, type: 3}

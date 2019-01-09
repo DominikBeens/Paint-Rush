@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4897730532265181360}
   - component: {fileID: 3139737737675374917}
   - component: {fileID: 6943858409041680154}
+  - component: {fileID: 3047681661259648745}
   m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &3047681661259648745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722131177483872787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2874629899594838657
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +426,7 @@ GameObject:
   - component: {fileID: 3163164552246215941}
   - component: {fileID: 1956377937110325184}
   - component: {fileID: 2613709687433479082}
+  - component: {fileID: 2053082930335296686}
   m_Layer: 2
   m_Name: PopupCanvas
   m_TagString: Untagged
@@ -502,6 +516,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2053082930335296686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718426913368987281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90e8feddb6eee44392ddded3c5d20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4774394833188841020
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +540,7 @@ GameObject:
   - component: {fileID: 6052053383898478794}
   - component: {fileID: 9059944270007279307}
   m_Layer: 16
-  m_Name: EnterArenaButton
+  m_Name: WorldSpaceButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
