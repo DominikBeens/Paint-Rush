@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &5282606161493695389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5282606161500697725 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6034352307615697672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1029663914765448199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3897853850599212508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135,
+    type: 3}
+  m_PrefabInstance: {fileID: 3898358684724055350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8845766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1654,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5526274810472117893}
   - component: {fileID: 2695947556024460653}
-  - component: {fileID: 1786624860815463346}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1693,14 +1716,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1786624860815463346
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453460712389910489}
-  m_Enabled: 1
 --- !u!1 &617876228194126603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1864,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: TMPro.TMP_Dropdown+DropdownEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &920802807078225308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1367623113585302, guid: 3787256bfa6f0e44b9def35b7764354e,
+    type: 3}
+  m_PrefabInstance: {fileID: 919722367549945610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &922534102410127316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4219367459737822, guid: 3787256bfa6f0e44b9def35b7764354e,
@@ -2192,6 +2213,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3777adacf035ca94c81d10dc9f422203, type: 3}
   terminalAudioSource: {fileID: 0}
   terminalCamera: {fileID: 453460712389910489}
+  audioVisualizer: {fileID: 920802807078225308}
 --- !u!82 &1708536252515490802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3330,12 +3352,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!4 &3897853850599212508 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135,
-    type: 3}
-  m_PrefabInstance: {fileID: 3898358684724055350}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3906846895011398378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3346,7 +3362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4439056938201135921}
   - component: {fileID: 1810740524904425420}
-  - component: {fileID: 3957635741940528154}
   m_Layer: 0
   m_Name: AudioVisualizerCamera
   m_TagString: Untagged
@@ -3411,14 +3426,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3957635741940528154
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3906846895011398378}
-  m_Enabled: 1
 --- !u!1 &3936791304843982340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,24 +3836,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!4 &5282606161493695389 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5282606161500697725 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6034352307615697672 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1029663914765448199}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5617583515688722956
 GameObject:
   m_ObjectHideFlags: 0
@@ -5030,7 +5019,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3284666691618599301}
   - component: {fileID: 2845076498038500220}
-  - component: {fileID: 568564734601818303}
   m_Layer: 0
   m_Name: EmotePreviewCamera
   m_TagString: Untagged
@@ -5094,14 +5082,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &568564734601818303
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8022764058715553068}
-  m_Enabled: 1
 --- !u!1 &8209091275202702125
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,7 +6549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135, type: 3}
       propertyPath: m_LocalRotation.x

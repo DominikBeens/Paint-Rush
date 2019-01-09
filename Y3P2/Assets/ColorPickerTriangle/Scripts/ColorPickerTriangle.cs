@@ -154,7 +154,9 @@ public class ColorPickerTriangle : MonoBehaviour {
         TheColor.a = 1f;
 
         terminal.SetNameColor(TheColor);
-
+        terminal.AudioVisualizer.GetComponent<SimpleSpectrum>().colorMin = TheColor;
+        terminal.AudioVisualizer.GetComponent<SimpleSpectrum>().colorMax = TheColor;
+        terminal.AudioVisualizer.GetComponent<SimpleSpectrum>().RebuildSpectrum();
     }
 
     private void ChangeTriangleColor(Color c)

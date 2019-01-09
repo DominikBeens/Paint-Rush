@@ -337,7 +337,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ToggleCrosshair(bool b)
+    public void ToggleCrosshair(bool b)
     {
         for (int i = 0; i < crosshair.Count; i++)
         {

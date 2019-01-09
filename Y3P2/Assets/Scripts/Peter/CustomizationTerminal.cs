@@ -30,6 +30,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private GameObject terminalCamera;
     public GameObject TerminalCamera { get { return terminalCamera; } }
 
+    [SerializeField]
+    private GameObject audioVisualizer;
+    public GameObject AudioVisualizer { get { return audioVisualizer; } }
+
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
@@ -43,6 +47,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         SetVictoryMusic(0);
 
         terminalAudioSource.clip = paudio.WinMusic;
+        audioVisualizer.SetActive(false);
 
     }
 
@@ -57,6 +62,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
                 Cursor.lockState = CursorLockMode.Locked;
 
                 terminalCamera.SetActive(false);
+                audioVisualizer.SetActive(false);
+                UIManager.instance.ToggleCrosshair(true);
 
                 //if (!previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
                 //{
@@ -92,6 +99,9 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         customizing = true;
 
         terminalCamera.SetActive(true);
+        audioVisualizer.SetActive(true);
+
+        UIManager.instance.ToggleCrosshair(false);
     }
 
     public void SetVictoryEmote(int index)
