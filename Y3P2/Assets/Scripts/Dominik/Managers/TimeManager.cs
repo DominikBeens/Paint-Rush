@@ -13,6 +13,8 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     private static float currentGameTime;
     public static float countdownTime;
 
+    private bool notifiedCurrentGameTime;
+
     public static event Action OnStartMatch = delegate { };
     public static event Action OnEndMatch = delegate { };
 
@@ -87,7 +89,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            currentGameTime = 5f;
+            currentGameTime = 65f;
         }
     }
 
@@ -126,15 +128,38 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         currentGameTime -= Time.deltaTime;
 
+        // Displaying game time notifications. Ugly but I'm tired okay.
         if (PhotonNetwork.IsMasterClient)
         {
-            if (currentGameTime == 60)
+            if (currentGameTime <= 61 && currentGameTime > 60 && !notifiedCurrentGameTime)
             {
-                NotificationManager.instance.NewNotification("<color=red>One minute remaining!");
+                NotificationManager.instance.NewNotification("<color=red>Sixty seconds remaining!");
+                notifiedCurrentGameTime = true;
             }
-            if (currentGameTime == 10)
+            else if (currentGameTime <= 51 && currentGameTime > 50 && notifiedCurrentGameTime)
+            {
+                NotificationManager.instance.NewNotification("<color=red>Fifty seconds remaining!");
+                notifiedCurrentGameTime = false;
+            }
+            else if (currentGameTime <= 41 && currentGameTime > 40 && !notifiedCurrentGameTime)
+            {
+                NotificationManager.instance.NewNotification("<color=red>Fourty seconds remaining!");
+                notifiedCurrentGameTime = true;
+            }
+            else if (currentGameTime <= 31 && currentGameTime > 30 && notifiedCurrentGameTime)
+            {
+                NotificationManager.instance.NewNotification("<color=red>Thirty seconds remaining!");
+                notifiedCurrentGameTime = false;
+            }
+            else if (currentGameTime <= 21 && currentGameTime > 20 && !notifiedCurrentGameTime)
+            {
+                NotificationManager.instance.NewNotification("<color=red>Twenty seconds remaining!");
+                notifiedCurrentGameTime = true;
+            }
+            else if (currentGameTime <= 11 && currentGameTime > 10 && notifiedCurrentGameTime)
             {
                 NotificationManager.instance.NewNotification("<color=red>Ten seconds remaining!");
+                notifiedCurrentGameTime = false;
             }
         }
 
@@ -211,9 +236,6 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 countdownTime = startGameCountdownTime;
-
-                // Start countdown to start the game.
-                // Send RPC maybe to start game.
             }
         }
         else
@@ -286,6 +308,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
                 stream.SendNext(currentGameTime);
                 stream.SendNext((int)CurrentGameTimeState);
                 stream.SendNext(countdownTime);
+                stream.SendNext(notifiedCurrentGameTime);
             }
         }
         else
@@ -301,6 +324,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
                 }
 
                 countdownTime = (float)stream.ReceiveNext();
+                notifiedCurrentGameTime = (bool)stream.ReceiveNext();
             }
         }
     }
