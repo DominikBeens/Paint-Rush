@@ -1,38 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Photon.Pun;
 
-public class PlayerAudioManager : MonoBehaviour {
+public class PlayerAudioManager : MonoBehaviourPunCallbacks
+{
 
     private AudioSource source;
+    private CustomizationTerminal terminal;
+    private bool isPlayingMusic;
+    public bool IsPlayingMusic { get { return isPlayingMusic; } }
 
     private AudioClip winMusic;
     public AudioClip WinMusic { get { return winMusic; } }
 
-	// Use this for initialization
-	void Awake () {
+    private int currentWinMusicIndex;
+
+	private void Awake ()
+    {
+        terminal = FindObjectOfType<CustomizationTerminal>();
         source = GetComponent<AudioSource>();
         source.loop = true;
 	}
 
-    public void SetWinMusic(AudioClip music)
+    public void SetWinMusic(AudioClip music, int index)
     {
         winMusic = music;
-        if(source != null)
+        currentWinMusicIndex = index;
+
+        if (source != null)
         {
             source.clip = winMusic;
         }
     }
 
-    public void ToggleWinMusic(bool toggle)
+    public void PlayWinMusic(bool toggle)
     {
+        photonView.RPC("ToggleWinMusic", RpcTarget.All, toggle, currentWinMusicIndex);
+    }
+
+    [PunRPC]
+    private void ToggleWinMusic(bool toggle, int musicIndex)
+    {
+        SetWinMusic(terminal.Music[musicIndex], musicIndex);
+
         if (toggle)
         {
             source.Play();
+            isPlayingMusic = true;
         }
         else
         {
             source.Stop();
+            isPlayingMusic = false;
         }
     }
 }

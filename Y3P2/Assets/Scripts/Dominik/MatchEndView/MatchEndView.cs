@@ -57,7 +57,12 @@ public class MatchEndView : MonoBehaviour
             countdownObject.SetActive(false);
             ToggleAllPlayerPositions(false);
             PlayerManager.instance.playerAnimController.ToggleWinEmote(false);
-            PlayerManager.instance.playerAudioManager.ToggleWinMusic(false);
+
+            if (PlayerManager.instance.playerAudioManager.IsPlayingMusic)
+            {
+                //PlayerManager.instance.playerAudioManager.photonView.RPC("ToggleWinMusic", Photon.Pun.RpcTarget.All, false);
+                PlayerManager.instance.playerAudioManager.PlayWinMusic(false);
+            }
 
             if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
             {
@@ -84,7 +89,13 @@ public class MatchEndView : MonoBehaviour
                 {
                     PlayerManager.instance.Teleport(playerPositions[i].transform.position);
                     PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
-                    PlayerManager.instance.playerAudioManager.ToggleWinMusic(true);
+
+                    // If we're the one with the highest score.
+                    if (i == 0)
+                    {
+                        //PlayerManager.instance.playerAudioManager.photonView.RPC("ToggleWinMusic", Photon.Pun.RpcTarget.All, true);
+                        PlayerManager.instance.playerAudioManager.PlayWinMusic(true);
+                    }
                 }
             }
         }

@@ -89,7 +89,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            currentGameTime = 65f;
+            currentGameTime = 5f;
         }
     }
 
@@ -217,6 +217,9 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         currentGameTime = 0;
         countdownTime = endGameCountdownTime;
         OnEndMatch();
+
+        // TEMP.
+        //NotificationManager.instance.NewLocalNotification("TEMP: END MATCH");
 
         if (PhotonNetwork.IsMasterClient)
         {

@@ -115,7 +115,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     public void SetVictoryMusic(int index)
     {
-        paudio.SetWinMusic(music[index]);
+        paudio.SetWinMusic(music[index], index);
         terminalAudioSource.clip = paudio.WinMusic;
 
         if (terminalAudioSource.isPlaying)
