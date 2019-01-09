@@ -59,11 +59,11 @@ Material:
     - _Brightness: 0.5
     - _BumpScale: 1
     - _CLAMPOUT: 0
-    - _CamScroll: 55
+    - _CamScroll: 1
     - _Cutoff: 0.5
     - _Darkmatter: 20
     - _DetailNormalMapScale: 1
-    - _Distfading: 50
+    - _Distfading: 60
     - _DstBlend: 0
     - _Formuparam: 420
     - _Glossiness: 0.5
@@ -72,7 +72,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Saturation: 62
+    - _Saturation: 100
     - _SrcBlend: 1
     - _StepSize: 312
     - _Tile: 800
@@ -81,7 +81,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Center: {r: 0, g: 0.3, b: 0.5, a: 0}
-    - _Color: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+    - _Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Rotation: {r: 4, g: 5, b: 3, a: 0.2}
     - _Scroll: {r: 0.1, g: 0.1, b: -0.3, a: 0}
