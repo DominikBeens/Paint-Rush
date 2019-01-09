@@ -30,6 +30,11 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             instance.gameTimeState = value;
             OnGameTimeStateChanged(instance.gameTimeState);
+
+            if (value == GameTimeState.Ending)
+            {
+                OnEndMatch();
+            }
         }
     }
     public static event Action<GameTimeState> OnGameTimeStateChanged = delegate { };
@@ -216,7 +221,6 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
         CurrentGameTimeState = GameTimeState.Ending;
         currentGameTime = 0;
         countdownTime = endGameCountdownTime;
-        OnEndMatch();
 
         // TEMP.
         //NotificationManager.instance.NewLocalNotification("TEMP: END MATCH");

@@ -60,7 +60,6 @@ public class MatchEndView : MonoBehaviour
 
             if (PlayerManager.instance.playerAudioManager.IsPlayingMusic)
             {
-                //PlayerManager.instance.playerAudioManager.photonView.RPC("ToggleWinMusic", Photon.Pun.RpcTarget.All, false);
                 PlayerManager.instance.playerAudioManager.PlayWinMusic(false);
             }
 
@@ -93,7 +92,6 @@ public class MatchEndView : MonoBehaviour
                     // If we're the one with the highest score.
                     if (i == 0)
                     {
-                        //PlayerManager.instance.playerAudioManager.photonView.RPC("ToggleWinMusic", Photon.Pun.RpcTarget.All, true);
                         PlayerManager.instance.playerAudioManager.PlayWinMusic(true);
                     }
                 }
