@@ -71,4 +71,5 @@ MonoBehaviour:
   - DestroyObject
   - StartMatchRPC
   - DebugReduceGameTime
+  - ToggleWinMusic
   DisableAutoOpenWizard: 1
