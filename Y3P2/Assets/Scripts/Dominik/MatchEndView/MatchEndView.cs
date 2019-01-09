@@ -57,6 +57,7 @@ public class MatchEndView : MonoBehaviour
             countdownObject.SetActive(false);
             ToggleAllPlayerPositions(false);
             PlayerManager.instance.playerAnimController.ToggleWinEmote(false);
+            PlayerManager.instance.playerAudioManager.ToggleWinMusic(false);
 
             if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
             {
@@ -83,6 +84,7 @@ public class MatchEndView : MonoBehaviour
                 {
                     PlayerManager.instance.Teleport(playerPositions[i].transform.position);
                     PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
+                    PlayerManager.instance.playerAudioManager.ToggleWinMusic(true);
                 }
             }
         }

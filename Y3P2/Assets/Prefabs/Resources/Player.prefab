@@ -575,7 +575,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 947849086869027135}
   hitInfoDetectionCol: {fileID: 1383097251931640073}
-  playerInteractionController: {fileID: 0}
   playerAnimController: {fileID: 0}
   entity: {fileID: 0}
   playerController: {fileID: 0}
@@ -1116,7 +1115,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Slide
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &6101474279057865220
 MonoBehaviour:

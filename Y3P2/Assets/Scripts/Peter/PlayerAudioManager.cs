@@ -24,10 +24,15 @@ public class PlayerAudioManager : MonoBehaviour {
         }
     }
 
-    public void PlayWinMusic()
+    public void ToggleWinMusic(bool toggle)
     {
-        source.Play();
+        if (toggle)
+        {
+            source.Play();
+        }
+        else
+        {
+            source.Stop();
+        }
     }
-	
-	
 }

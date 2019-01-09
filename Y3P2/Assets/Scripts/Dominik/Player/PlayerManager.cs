@@ -1,6 +1,6 @@
 ﻿using Photon.Pun;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public WeaponSlot weaponSlot;
     [HideInInspector] public PlayerPickUpManager playerPickupManager;
+    [HideInInspector] public PlayerAudioManager playerAudioManager;
     #endregion
 
     private void Awake()
@@ -48,6 +49,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         playerAnimController = GetComponentInChildren<PlayerAnimationController>();
         playerPickupManager = GetComponentInChildren<PlayerPickUpManager>();
         playerInteractionController = GetComponentInChildren<PlayerInteractionController>();
+        playerAudioManager = GetComponentInChildren<PlayerAudioManager>();
     }
 
     private void Initialise()
