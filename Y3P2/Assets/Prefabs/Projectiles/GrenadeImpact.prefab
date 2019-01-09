@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 8760434442795546925}
   - component: {fileID: 184047711487373835}
   - component: {fileID: 6977833801650360801}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Paint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14210,7 +14210,7 @@ GameObject:
   - component: {fileID: 3490562020664981125}
   - component: {fileID: 5161489110945515558}
   - component: {fileID: 4271748648497842488}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18902,7 +18902,7 @@ GameObject:
   - component: {fileID: 4942000489774568367}
   - component: {fileID: 3480747370291215772}
   - component: {fileID: 3580251242992618686}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
