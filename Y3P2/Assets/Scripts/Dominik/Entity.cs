@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviourPunCallbacks
 {
 
-    [HideInInspector] public Collider myCollider;
+    private PlayerManager myPlayerManager;
 
     //[SerializeField] private int entityID;
     public enum EntityType { Humanoid, Prop, TestDummy };
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        myCollider = GetComponent<Collider>();
+        myPlayerManager = transform.root.GetComponent<PlayerManager>();
         paintController.Initialise(this);
 
         if (photonView && !photonView.IsMine)
@@ -34,7 +34,7 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void Hit(int paintColor, float amount)
     {
-        if (PlayerManager.instance.playerPickupManager.Shielded)
+        if (myPlayerManager && myPlayerManager.playerPickupManager.Shielded)
         {
             return;
         }
@@ -54,7 +54,7 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void HitAll(float amount, int overrideAttackerID = -1)
     {
-        if (PlayerManager.instance.playerPickupManager.Shielded)
+        if (myPlayerManager && myPlayerManager.playerPickupManager.Shielded)
         {
             return;
         }
