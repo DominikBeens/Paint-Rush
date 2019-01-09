@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &5282606161493695389 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5282606161500697725 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6034352307615697672 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1029663914765448199}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3897853850599212508 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135,
-    type: 3}
-  m_PrefabInstance: {fileID: 3898358684724055350}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8845766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1824,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Crab rave
       m_Image: {fileID: 0}
+    - m_Text: All the single furries
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2211,6 +2189,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b4b3797b481296a40946ea65874c3e1a, type: 3}
   - {fileID: 8300000, guid: d5066856af1b4ff498f1bd4028da4718, type: 3}
   - {fileID: 8300000, guid: 3777adacf035ca94c81d10dc9f422203, type: 3}
+  - {fileID: 8300000, guid: 84a51a22b3cb83e4b8a270f8a1573b05, type: 3}
   terminalAudioSource: {fileID: 0}
   terminalCamera: {fileID: 453460712389910489}
   audioVisualizer: {fileID: 920802807078225308}
@@ -3352,6 +3331,12 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!4 &3897853850599212508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135,
+    type: 3}
+  m_PrefabInstance: {fileID: 3898358684724055350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3906846895011398378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,6 +3821,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!4 &5282606161493695389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5282606161500697725 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6034352307615697672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1029663914765448199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5617583515688722956
 GameObject:
   m_ObjectHideFlags: 0
