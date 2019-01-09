@@ -49,6 +49,8 @@ public class GetPickUp : MonoBehaviourPunCallbacks
                     UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(true);
                     UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
                     NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
+
+                    SaveManager.instance.SaveStat(SaveManager.SavedStat.PickupsCollected);
                 }
             }
             if (!cooldown)
