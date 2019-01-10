@@ -25,14 +25,29 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
         photonView.RPC("SyncSkin", RpcTarget.All, i);
     }
 
+    public void SyncSkinForOthers(int i)
+    {
+        //Function does get called when player joins
+        //Skin don't sync tho
+        photonView.RPC("SyncSkin", RpcTarget.Others, i);
+    }
+
     [PunRPC]
     private void SyncSkin(int i)
     {
         model.material = terminal.Skins[i];
+
+      
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        photonView.RPC("SyncSkin", RpcTarget.Others, terminal.Skins.IndexOf(model.material));
+        SyncPlayerSkin[] players = FindObjectsOfType<SyncPlayerSkin>();
+
+        foreach (SyncPlayerSkin s in players)
+        {
+            s.SyncSkinForOthers(terminal.Skins.IndexOf(s.model.material));
+
+        }
     }
 }

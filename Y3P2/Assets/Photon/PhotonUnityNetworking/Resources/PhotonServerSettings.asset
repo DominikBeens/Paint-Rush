@@ -74,4 +74,5 @@ MonoBehaviour:
   - ToggleWinMusic
   - SetWinner
   - SyncSkin
+  - SetMat
   DisableAutoOpenWizard: 1

@@ -42,6 +42,11 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private Renderer previewCharRenderer;
 
     private SyncPlayerSkin skinSyncer;
+
+    [SerializeField]
+    private Material secretSkin;
+
+    private string secretCode;
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
@@ -158,27 +163,72 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         }
     }
 
-    public void SetSkin(int i)
-    {
+    //public void SetSkin(int i)
+    //{
 
        
-        if(selectedSkin < skins.Count - 1)
+    //    if(selectedSkin < skins.Count - 1)
+    //    {
+    //        selectedSkin += i;
+    //    }
+       
+    //    if(selectedSkin < 0)
+    //    {
+    //        selectedSkin = skins.Count - 1;
+    //    }
+
+    //   previewCharRenderer.material = skins[selectedSkin];
+    //    skinSyncer.SyncThisPlayerSkin(selectedSkin);
+    //}
+
+   public void ScrollSkinR()
+    {
+        if (selectedSkin < skins.Count - 1)
         {
-            selectedSkin += i;
+            selectedSkin += 1;
         }
-        else if(selectedSkin == skins.Count -1)
+        else if( selectedSkin == skins.Count - 1)
         {
             selectedSkin = 0;
         }
-        if(selectedSkin < 0)
+
+        previewCharRenderer.material = skins[selectedSkin];
+        skinSyncer.SyncThisPlayerSkin(selectedSkin);
+
+    }
+
+    public void ScrollSkinL()
+    {
+        if (selectedSkin > 0)
+        {
+            selectedSkin -= 1;
+        }
+        else
         {
             selectedSkin = skins.Count - 1;
         }
 
-       previewCharRenderer.material = skins[selectedSkin];
+        previewCharRenderer.material = skins[selectedSkin];
         skinSyncer.SyncThisPlayerSkin(selectedSkin);
     }
 
-  
+    public void SecretButton(string s)
+    {
+        secretCode += s;
 
+        NotificationManager.instance.NewLocalNotification(secretCode);
+       
+        if(secretCode.Length > 4)
+        {
+            secretCode = "";
+        }
+        else if(secretCode == "pepe")
+        {
+            if (!skins.Contains(secretSkin))
+            {
+                skins.Add(secretSkin);
+            }
+        }
+
+    }
 }
