@@ -7,14 +7,20 @@ public class MarkCapturePoint : MonoBehaviour
 
     private CapturingPlayer capturingPlayer;
     private float captureProgress;
+    private bool indicatorActive;
 
     [SerializeField] private float captureDuration = 3f;
-    [SerializeField] private GameObject canvas;
+    [SerializeField] private Canvas catureCanvas;
     [SerializeField] private Image captureProgressFill;
     [SerializeField] private TextMeshProUGUI capturePercentageText;
     [Range(0, 100)] [SerializeField] private float hitProgressLoss = 15f;
     [SerializeField] private Animator captureUIAnim;
     [SerializeField] private GameObject effects;
+    [SerializeField] private Canvas captureIndicatorCanvas;
+
+    [Space]
+
+    [SerializeField] private MarkCapturePoint otherCapturePoint;
 
     public class CapturingPlayer
     {
@@ -24,12 +30,15 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void Awake()
     {
-        canvas.SetActive(false);
+        catureCanvas.enabled = false;
+        captureIndicatorCanvas.enabled = false;
     }
 
     private void Start()
     {
         PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
+        PlayerManager.instance.entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
+        PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
@@ -42,17 +51,39 @@ public class MarkCapturePoint : MonoBehaviour
         }
     }
 
+    private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
+    {
+        indicatorActive = true;
+        captureIndicatorCanvas.enabled = true;
+    }
+
+    private void PaintController_OnPaintMarkDestroyed()
+    {
+        indicatorActive = false;
+        captureIndicatorCanvas.enabled = false;
+    }
+
     private void StartCapturing(CapturingPlayer player)
     {
-        canvas.SetActive(true);
+        catureCanvas.enabled = true;
         captureProgress = 0;
         capturingPlayer = player;
+
+        if (indicatorActive)
+        {
+            captureIndicatorCanvas.enabled = false;
+        }
     }
 
     private void StopCapturing(CapturingPlayer player)
     {
-        canvas.SetActive(false);
+        catureCanvas.enabled = false;
         capturingPlayer = null;
+
+        if (indicatorActive)
+        {
+            captureIndicatorCanvas.enabled = true;
+        }
     }
 
     private void FinishCapturing()
@@ -107,5 +138,7 @@ public class MarkCapturePoint : MonoBehaviour
     private void OnDisable()
     {
         PlayerManager.instance.entity.paintController.OnPaintValueModified -= PaintController_OnPaintValueModified;
+        PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
+        PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
     }
 }
