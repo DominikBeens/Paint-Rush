@@ -12,6 +12,7 @@ public class NotificationManager : MonoBehaviourPunCallbacks
 
     private Queue<string> localNotificationQueue = new Queue<string>();
     private float nextLocalNotificationTime;
+    private string lastLocalQueueEntry;
 
     [SerializeField] private Transform notificationSpawn;
     [SerializeField] private Transform localNotificationSpawn;
@@ -57,7 +58,13 @@ public class NotificationManager : MonoBehaviourPunCallbacks
 
     public void NewLocalNotification(string text)
     {
+        if (text == lastLocalQueueEntry && localNotificationQueue.Contains(lastLocalQueueEntry))
+        {
+            return;
+        }
+
         localNotificationQueue.Enqueue(text);
+        lastLocalQueueEntry = text;
     }
 
     [PunRPC]

@@ -38,8 +38,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Image> jumpCDBars = new List<Image>();
 
     [Header("Mark Canvas")]
+    [SerializeField] private GameObject markObject;
     [SerializeField] private Image markImage;
     [SerializeField] private TextMeshProUGUI markHealthText;
+    [SerializeField] private ParticleSystem markParticle;
     private float markHealth;
 
     [Header("Portal Effect Canvas")]
@@ -78,8 +80,7 @@ public class UIManager : MonoBehaviour
 
         ToggleLeaderboardAndStats(false);
 
-        markImage.enabled = false;
-        markHealthText.enabled = false;
+        markObject.SetActive(false);
         hitPlayerPanel.SetActive(false);
     }
 
@@ -307,19 +308,23 @@ public class UIManager : MonoBehaviour
 
     private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
     {
-        markImage.color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
-        markHealthText.color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
+        Color color = PlayerManager.instance.entity.paintController.GetPaintColor(mark.markType);
+
+        markImage.color = color;
+        markHealthText.color = color;
+
+        ParticleSystem.MainModule particle = markParticle.main;
+        particle.startColor = color;
+
         markHealth = 100;
         markHealthText.text = markHealth + "%";
 
-        markHealthText.enabled = true;
-        markImage.enabled = true;
+        markObject.SetActive(true);
     }
 
     private void PaintController_OnPaintMarkDestroyed()
     {
-        markImage.enabled = false;
-        markHealthText.enabled = false;
+        markObject.SetActive(false);
     }
 
     private void PaintController_OnPaintValueModified(PaintController.PaintType paintType, float amount)
