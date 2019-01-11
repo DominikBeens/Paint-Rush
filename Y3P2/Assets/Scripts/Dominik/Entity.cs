@@ -117,12 +117,6 @@ public class Entity : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void ResetAllPaint()
-    {
-        paintController.ResetPaint();
-    }
-
-    [PunRPC]
     public void SyncCaptureMark(Vector3 capturePoint)
     {
         paintController.MarkCaptured();

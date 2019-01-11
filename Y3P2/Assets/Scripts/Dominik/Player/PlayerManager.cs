@@ -104,7 +104,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             case GameManager.GameState.Lobby:
 
-                transform.position = GameManager.instance.lobbySpawnPoint.position;
+                Vector3 pos = GameManager.instance.lobbySpawnPoint.position;
+                pos.x += UnityEngine.Random.Range(-2, 2);
+                pos.z += UnityEngine.Random.Range(-2, 2);
+                transform.position = pos;
                 playerController.enabled = true;
                 break;
             case GameManager.GameState.Playing:

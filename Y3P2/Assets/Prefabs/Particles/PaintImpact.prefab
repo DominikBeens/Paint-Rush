@@ -1,5 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &2281562291262282638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1391565747124304110, guid: e3fbd4ff522934645b53f47a771e27b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 929546355895739232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &625668206879939230
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +48,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625668206879939230}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 15
   simulationSpeed: 0.7
   stopAction: 3
   looping: 0
@@ -4706,12 +4712,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!4 &2281562291262282638 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1391565747124304110, guid: e3fbd4ff522934645b53f47a771e27b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 929546355895739232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1824224075707167627
 GameObject:
   m_ObjectHideFlags: 0

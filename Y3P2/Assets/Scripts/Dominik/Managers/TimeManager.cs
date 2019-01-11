@@ -31,9 +31,20 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             instance.gameTimeState = value;
             OnGameTimeStateChanged(instance.gameTimeState);
 
-            if (value == GameTimeState.Ending)
+            switch (value)
             {
-                OnEndMatch();
+                case GameTimeState.InProgress:
+                    OnStartMatch();
+
+                    if (GameManager.CurrentGameSate == GameManager.GameState.Lobby && currentGameTime > (GAME_TIME_IN_SECONDS - 10))
+                    {
+                        GameManager.CurrentGameSate = GameManager.GameState.Playing;
+                    }
+                    break;
+
+                case GameTimeState.Ending:
+                    OnEndMatch();
+                    break;
             }
         }
     }
@@ -196,14 +207,8 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        CurrentGameTimeState = GameTimeState.InProgress;
         currentGameTime = GAME_TIME_IN_SECONDS;
-        OnStartMatch();
-
-        if (GameManager.CurrentGameSate == GameManager.GameState.Lobby)
-        {
-            GameManager.CurrentGameSate = GameManager.GameState.Playing;
-        }
+        CurrentGameTimeState = GameTimeState.InProgress;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -218,12 +223,9 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        CurrentGameTimeState = GameTimeState.Ending;
         currentGameTime = 0;
         countdownTime = endGameCountdownTime;
-
-        // TEMP.
-        //NotificationManager.instance.NewLocalNotification("TEMP: END MATCH");
+        CurrentGameTimeState = GameTimeState.Ending;
 
         if (PhotonNetwork.IsMasterClient)
         {

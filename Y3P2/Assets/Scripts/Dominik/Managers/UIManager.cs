@@ -19,50 +19,43 @@ public class UIManager : MonoBehaviour
     }
     private LastHitTransform lastHitTransform;
 
+    [Header("Crosshair Canvas")]
     [SerializeField] private List<Image> crosshair = new List<Image>();
     [SerializeField] private Animator crosshairAnim;
 
-    [Space]
-
+    [Header("Hit Player Canvas")]
     [SerializeField] private LayerMask playerLayerMask;
     [SerializeField] private GameObject hitPlayerPanel;
     [SerializeField] private TextMeshProUGUI hitPlayerText;
 
-    [Space]
-
+    [Header("Tab Canvas")]
     [SerializeField] private GameObject leaderboardAndStatsCanvas;
 
-    [Space]
-
-    [SerializeField]
-    private GameObject jumpCooldownIcon;
+    [Header("Jump Canvas")]
+    [SerializeField] private GameObject jumpCooldownIcon;
     public GameObject JumpCooldownIcon { get { return jumpCooldownIcon; } }
-
-    [Space]
-
     [SerializeField] private GameObject jumpCooldown;
     [SerializeField] private List<Image> jumpCDBars = new List<Image>();
 
-    [Space]
-
-    private float markHealth;
+    [Header("Mark Canvas")]
     [SerializeField] private Image markImage;
     [SerializeField] private TextMeshProUGUI markHealthText;
+    private float markHealth;
 
-    [Space]
-
+    [Header("Portal Effect Canvas")]
     [SerializeField] private Animator portalEffectAnim;
 
-    [Space]
-
+    [Header("Pickup Canvas")]
     [SerializeField] private Image pickUpImage;
     [SerializeField] private Image pickUpImageParent;
     public Image PickUpImageParent { get { return pickUpImageParent; } }
 
-    [Space]
-
+    [Header("Screen Hit Canvas")]
     [SerializeField] private Animator screenHitAnim;
     [SerializeField] private Image screenHitImage;
+
+    [Header("Paint Values Canvas")]
+    [SerializeField] private Transform paintValuesCanvas;
 
     private void Awake()
     {
@@ -97,6 +90,8 @@ public class UIManager : MonoBehaviour
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
         PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
+
+        SetupPaintValuesUI();
     }
 
     public IEnumerator ShowJumpCooldownIcon(float cooldown)
@@ -358,6 +353,18 @@ public class UIManager : MonoBehaviour
 
         screenHitImage.color = paintColor;
         screenHitAnim.SetTrigger("Hit");
+    }
+
+    private void SetupPaintValuesUI()
+    {
+        PaintUILocalPlayer[] paintDisplayBars = paintValuesCanvas.GetComponentsInChildren<PaintUILocalPlayer>();
+        for (int i = 0; i < PlayerManager.instance.entity.paintController.PaintValues.Count; i++)
+        {
+            if (paintDisplayBars.Length > 0 && paintDisplayBars[i])
+            {
+                paintDisplayBars[i].Initialise(PlayerManager.instance.entity.paintController.PaintValues[i]);
+            }
+        }
     }
 
     private void OnDisable()

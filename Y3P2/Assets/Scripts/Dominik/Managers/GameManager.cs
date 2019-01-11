@@ -83,7 +83,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!PlayerManager.instance && playerPrefab)
         {
-            PhotonNetwork.Instantiate(playerPrefab.name, lobbySpawnPoint.position, lobbySpawnPoint.rotation);
+            Vector3 pos = lobbySpawnPoint.position;
+            pos.x += UnityEngine.Random.Range(-2, 2);
+            pos.z += UnityEngine.Random.Range(-2, 2);
+            PhotonNetwork.Instantiate(playerPrefab.name, pos, lobbySpawnPoint.rotation);
 
             personalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
             personalColorString = ColorUtility.ToHtmlStringRGBA(personalColor);

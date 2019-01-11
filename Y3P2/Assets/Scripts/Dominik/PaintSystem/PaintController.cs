@@ -69,14 +69,10 @@ public class PaintController
         myPlayerManager = myEntity.transform.root.GetComponent<PlayerManager>();
         SetDefaultPaintValues();
 
-        if (entity.photonView.IsMine)
-        {
-            GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
-        }
-
         if (myPlayerManager)
         {
             myPlayerManager.OnPlayerStateChanged += MyPlayerManager_OnPlayerStateChanged;
+            TimeManager.OnEndMatch += TimeManager_OnEndMatch;
         }
     }
 
@@ -276,33 +272,33 @@ public class PaintController
         ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);
     }
 
-    // TODO: Monitor 'MyPlayerManager_OnPlayerStateChanged' if it's consistant then remove this and the void in Entity.
-    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
-    {
-        if (newState == GameManager.GameState.Respawning)
-        {
-            //myEntity.photonView.RPC("ResetAllPaint", RpcTarget.All);
-        }
-    }
-
-    private void MyPlayerManager_OnPlayerStateChanged(GameManager.GameState newState)
-    {
-        ResetPaint();
-        CurrentPaintMark = null;
-    }
-
     public void ToggleUI(bool toggle)
     {
         OnToggleUI(toggle);
     }
 
+    private void ResetPaintAndMark()
+    {
+        ResetPaint();
+        CurrentPaintMark = null;
+    }
+
+    private void MyPlayerManager_OnPlayerStateChanged(GameManager.GameState newState)
+    {
+        ResetPaintAndMark();
+    }
+
+    private void TimeManager_OnEndMatch()
+    {
+        ResetPaintAndMark();
+    }
+
     public void UnsubscribeEvents()
     {
-        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-
         if (myPlayerManager)
         {
             myPlayerManager.OnPlayerStateChanged -= MyPlayerManager_OnPlayerStateChanged;
+            TimeManager.OnEndMatch -= TimeManager_OnEndMatch;
         }
     }
 }
