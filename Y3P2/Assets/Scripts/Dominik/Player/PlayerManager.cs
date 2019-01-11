@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector] public WeaponSlot weaponSlot;
     [HideInInspector] public PlayerPickUpManager playerPickupManager;
     [HideInInspector] public PlayerAudioManager playerAudioManager;
+    [HideInInspector] public SyncPlayerSkin playerSkinSync;
     #endregion
 
     private void Awake()
@@ -50,6 +51,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         playerPickupManager = GetComponentInChildren<PlayerPickUpManager>();
         playerInteractionController = GetComponentInChildren<PlayerInteractionController>();
         playerAudioManager = GetComponentInChildren<PlayerAudioManager>();
+        playerSkinSync = GetComponentInChildren<SyncPlayerSkin>();
     }
 
     private void Initialise()

@@ -40,11 +40,13 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private Renderer previewCharRenderer;
+    public Renderer PreviewCharRenderer { get { return previewCharRenderer; } }
 
     private SyncPlayerSkin skinSyncer;
 
     [SerializeField]
     private Material secretSkin;
+    public Material SecretSkin { get { return secretSkin; } }
 
     private string secretCode;
     private void Start()
@@ -216,7 +218,6 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     {
         secretCode += s;
 
-        NotificationManager.instance.NewLocalNotification(secretCode);
        
         if(secretCode.Length > 4)
         {
@@ -224,11 +225,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         }
         else if(secretCode == "pepe")
         {
-            if (!skins.Contains(secretSkin))
-            {
-                skins.Add(secretSkin);
-            }
+            skinSyncer.Pepe();
         }
 
     }
+
+   
 }

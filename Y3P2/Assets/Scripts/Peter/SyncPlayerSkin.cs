@@ -8,6 +8,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     [SerializeField]
     private Renderer model;
+    private int skinIndex;
 
     private CustomizationTerminal terminal;
     // Use this for initialization
@@ -22,33 +23,61 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public void SyncThisPlayerSkin(int i)
     {
-        photonView.RPC("SyncSkin", RpcTarget.AllBuffered, i);
+        photonView.RPC("SyncSkin", RpcTarget.All, i);
+
     }
 
-    //public void SyncSkinForOthers(int i)
-    //{
-        //Function does get called when player joins
-        //Skin don't sync tho
-        //  NotificationManager.instance.NewLocalNotification("EWGIOBWIGOBEOSIDBIOGWBSOIGIBWODSJKGEBVS");
-       // photonView.RPC("SyncSkin", RpcTarget.Others, i);
-    //}
 
     [PunRPC]
     private void SyncSkin(int i)
     {
-        model.material = terminal.Skins[i];
+        skinIndex = i;
+        model.material = terminal.Skins[skinIndex];
 
       
     }
 
-    //public override void OnPlayerEnteredRoom(Player newPlayer)
-    //{
-    //    SyncPlayerSkin[] players = FindObjectsOfType<SyncPlayerSkin>();
+    [PunRPC]
+    private void SyncMat()
+    {
+        PlayerManager.instance.playerSkinSync.model.material = terminal.Skins[skinIndex]; //Every client changes its own skin to what it should be, but other clients dont see this
+        NotificationManager.instance.NewLocalNotification("did RPC");
+    }
 
-    //    foreach (SyncPlayerSkin s in players)
-    //    {
-    //        s.SyncSkinForOthers(terminal.Skins.IndexOf(s.model.material));
+    public void SetModelMat(Material m)
+    {
+        model.material = m;
+    }
 
-    //    }
-    //}
+    private void CallMatSync()
+    {
+        NotificationManager.instance.NewLocalNotification("called sync");
+        photonView.RPC("SyncMat", RpcTarget.AllViaServer);
+    }
+
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        photonView.RPC("SyncThisPlayerSkinOthers", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void SyncThisPlayerSkinOthers()
+    {
+        PlayerManager.instance.playerSkinSync.CallMatSync();
+    }
+
+    public void Pepe()
+    {
+        terminal.PreviewCharRenderer.material = terminal.SecretSkin;
+        photonView.RPC("BecomePepe", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void BecomePepe()
+    {
+        SetModelMat(terminal.SecretSkin);
+    }
+
+
 }
