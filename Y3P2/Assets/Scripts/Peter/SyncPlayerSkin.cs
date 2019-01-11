@@ -8,12 +8,14 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     [SerializeField]
     private Renderer model;
+    private GetDefaultMat getMat;
     private int skinIndex;
 
     private CustomizationTerminal terminal;
     // Use this for initialization
     void Start () {
         terminal = FindObjectOfType<CustomizationTerminal>();
+        getMat = model.GetComponent<GetDefaultMat>();
     }
 	
 	// Update is called once per frame
@@ -33,7 +35,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     {
         skinIndex = i;
         model.material = terminal.Skins[skinIndex];
-
+        getMat.UpdateMaterial(terminal.Skins[skinIndex]);
       
     }
 
@@ -41,6 +43,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     private void SyncMat()
     {
         PlayerManager.instance.playerSkinSync.model.material = terminal.Skins[skinIndex]; //Every client changes its own skin to what it should be, but other clients dont see this
+        getMat.UpdateMaterial(terminal.Skins[skinIndex]);
         NotificationManager.instance.NewLocalNotification("did RPC");
     }
 
@@ -58,7 +61,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        photonView.RPC("SyncThisPlayerSkinOthers", RpcTarget.All);
+       // photonView.RPC("SyncThisPlayerSkinOthers", RpcTarget.All);
     }
 
     [PunRPC]
@@ -77,6 +80,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     private void BecomePepe()
     {
         SetModelMat(terminal.SecretSkin);
+        getMat.UpdateMaterial(terminal.SecretSkin);
     }
 
 

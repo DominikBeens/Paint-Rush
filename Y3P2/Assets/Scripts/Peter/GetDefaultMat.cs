@@ -12,6 +12,11 @@ public class GetDefaultMat : MonoBehaviour {
 	void Start () {
         defMaterial = GetComponent<Renderer>().material;
 	}
+
+    public void UpdateMaterial(Material newMat)
+    {
+        defMaterial = newMat;
+    }
 	
 	
 }

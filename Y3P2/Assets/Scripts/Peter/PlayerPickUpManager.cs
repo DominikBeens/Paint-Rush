@@ -77,14 +77,12 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
 
     private IEnumerator ResetPickUpOnDeath()
     {
-        NotificationManager.instance.NewLocalNotification("Reset 1");
 
         yield return new WaitForEndOfFrame();
         GetComponent<PickUpActivater>().StopCoroutine("Duration");
         GetComponent<PickUpActivater>().ResetWaiting();
         GetComponent<PickUpActivater>().ResetPickUp(currentPickUp);
         ResetCurrentPickUp();
-        NotificationManager.instance.NewLocalNotification("Reset 2");
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)

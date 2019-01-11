@@ -581,6 +581,7 @@ MonoBehaviour:
   weaponSlot: {fileID: 0}
   playerPickupManager: {fileID: 0}
   playerAudioManager: {fileID: 0}
+  playerSkinSync: {fileID: 0}
 --- !u!114 &2650361930823773682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
   slopeAssistForce: 20
   headObject: {fileID: 6812881449859578988}
   spine: {fileID: 6489444038498191679}
+  jetBoostCooldownReduction: 0.75
   jumpCooldownTime: 2
 --- !u!114 &8177310174421126496
 MonoBehaviour:

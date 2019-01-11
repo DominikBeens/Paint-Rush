@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnJump = delegate { };
 
     private bool infinJet;
+    [SerializeField]
     private float jetBoostCooldownReduction = 1;
 
     
@@ -151,8 +152,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
             return;
         }
-
-      
 
         Debug.DrawRay(transform.position + new Vector3(0, .01F, 0), transform.forward, Color.red);
 
