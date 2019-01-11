@@ -22,15 +22,16 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public void SyncThisPlayerSkin(int i)
     {
-        photonView.RPC("SyncSkin", RpcTarget.All, i);
+        photonView.RPC("SyncSkin", RpcTarget.AllBuffered, i);
     }
 
-    public void SyncSkinForOthers(int i)
-    {
+    //public void SyncSkinForOthers(int i)
+    //{
         //Function does get called when player joins
         //Skin don't sync tho
-        photonView.RPC("SyncSkin", RpcTarget.Others, i);
-    }
+        //  NotificationManager.instance.NewLocalNotification("EWGIOBWIGOBEOSIDBIOGWBSOIGIBWODSJKGEBVS");
+       // photonView.RPC("SyncSkin", RpcTarget.Others, i);
+    //}
 
     [PunRPC]
     private void SyncSkin(int i)
@@ -40,14 +41,14 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
       
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        SyncPlayerSkin[] players = FindObjectsOfType<SyncPlayerSkin>();
+    //public override void OnPlayerEnteredRoom(Player newPlayer)
+    //{
+    //    SyncPlayerSkin[] players = FindObjectsOfType<SyncPlayerSkin>();
 
-        foreach (SyncPlayerSkin s in players)
-        {
-            s.SyncSkinForOthers(terminal.Skins.IndexOf(s.model.material));
+    //    foreach (SyncPlayerSkin s in players)
+    //    {
+    //        s.SyncSkinForOthers(terminal.Skins.IndexOf(s.model.material));
 
-        }
-    }
+    //    }
+    //}
 }
