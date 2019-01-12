@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject notificationManagerPrefab;
     [SerializeField] private GameObject scoreBoardManagerPrefab;
     [SerializeField] private GameObject timeManagerPrefab;
+    [SerializeField] private GameObject markCapturePointManagerPrefab;
 
     [Space(10)]
 
@@ -57,25 +58,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            if (!FindObjectOfType<ProjectileManager>())
-            {
-                PhotonNetwork.InstantiateSceneObject(projectileManagerPrefab.name, Vector3.zero, Quaternion.identity);
-            }
-
-            if (!FindObjectOfType<NotificationManager>())
-            {
-                PhotonNetwork.InstantiateSceneObject(notificationManagerPrefab.name, Vector3.zero, Quaternion.identity);
-            }
-
-            if (!FindObjectOfType<ScoreboardManager>())
-            {
-                PhotonNetwork.InstantiateSceneObject(scoreBoardManagerPrefab.name, Vector3.zero, Quaternion.identity);
-            }
-
-            if (!FindObjectOfType<TimeManager>())
-            {
-                PhotonNetwork.InstantiateSceneObject(timeManagerPrefab.name, Vector3.zero, Quaternion.identity);
-            }
+            InstantiateNetworkedManagers();
         }
     }
 
@@ -93,6 +76,34 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         CurrentGameSate = GameState.Lobby;
+    }
+
+    private void InstantiateNetworkedManagers()
+    {
+        if (!FindObjectOfType<ProjectileManager>())
+        {
+            PhotonNetwork.InstantiateSceneObject(projectileManagerPrefab.name, Vector3.zero, Quaternion.identity);
+        }
+
+        if (!FindObjectOfType<NotificationManager>())
+        {
+            PhotonNetwork.InstantiateSceneObject(notificationManagerPrefab.name, Vector3.zero, Quaternion.identity);
+        }
+
+        if (!FindObjectOfType<ScoreboardManager>())
+        {
+            PhotonNetwork.InstantiateSceneObject(scoreBoardManagerPrefab.name, Vector3.zero, Quaternion.identity);
+        }
+
+        if (!FindObjectOfType<TimeManager>())
+        {
+            PhotonNetwork.InstantiateSceneObject(timeManagerPrefab.name, Vector3.zero, Quaternion.identity);
+        }
+
+        if (!FindObjectOfType<MarkCapturePointManager>())
+        {
+            PhotonNetwork.InstantiateSceneObject(markCapturePointManagerPrefab.name, Vector3.zero, Quaternion.identity);
+        }
     }
 
     // Used in UnityEvents like in CollisionEventZone.cs

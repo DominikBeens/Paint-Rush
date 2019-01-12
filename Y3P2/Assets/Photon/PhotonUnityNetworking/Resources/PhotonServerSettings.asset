@@ -80,4 +80,5 @@ MonoBehaviour:
   - SyncOtherRPC
   - SyncMat
   - BecomePepe
+  - ShuffleCapturePoint
   DisableAutoOpenWizard: 1

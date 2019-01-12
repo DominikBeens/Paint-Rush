@@ -51,9 +51,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65ad529a2386ba9489cc16896650af6f, type: 2}
   - {fileID: 11400000, guid: 224421c3558c7a342a8382416662dda7, type: 2}
   - {fileID: 11400000, guid: 24b5da26c7866614b9d95e4f4d56c959, type: 2}
-  customizationTerminal: {fileID: 1029663916344998604, guid: a9ca003804f420e4dba5f7ac0d68c156,
-    type: 3}
-  terminalSpawn: {fileID: 0}
   playerPrefab: {fileID: 2650361930823773455, guid: eb8708ea9ed6a69439c44afd642d38d9,
     type: 3}
   projectileManagerPrefab: {fileID: 388, guid: de5ebbae30815c14c834758c0cd32020, type: 3}
@@ -62,6 +59,8 @@ MonoBehaviour:
   scoreBoardManagerPrefab: {fileID: 2216714638174310125, guid: 420fcb2b82703b142a4a24d8163fb257,
     type: 3}
   timeManagerPrefab: {fileID: 5879413457945049219, guid: 1e71fcf6fbe57a14d9128ef14c5e43ce,
+    type: 3}
+  markCapturePointManagerPrefab: {fileID: 715594261201004308, guid: 8d632b83ce2285e41b74f31f480a54e2,
     type: 3}
   playerSpawnPoints:
   - {fileID: 0}

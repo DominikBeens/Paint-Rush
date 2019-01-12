@@ -53,7 +53,6 @@ public class PaintUI : MonoBehaviour
     private void InitUIBars()
     {
         //paintUIBars = GetComponentsInChildren<PaintUIBar>();
-
         for (int i = 0; i < myEntity.paintController.PaintValues.Count; i++)
         {
             paintUIBars[i].Initialise(myEntity.paintController.PaintValues[i], myEntity == PlayerManager.instance.entity ? true : false);

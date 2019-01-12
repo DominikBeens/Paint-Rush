@@ -191,7 +191,7 @@ public class UIManager : MonoBehaviour
     {
         screenMiddle = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
         RaycastHit hit;
-        if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hit, 100, playerLayerMask))
+        if (Physics.Raycast(mainCam.ScreenPointToRay(screenMiddle), out hit, 500, playerLayerMask))
         {
             // If we hit someone new.
             if (hit.transform != lastHitTransform.transform)

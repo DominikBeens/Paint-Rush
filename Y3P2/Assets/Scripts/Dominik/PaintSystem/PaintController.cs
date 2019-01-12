@@ -85,7 +85,7 @@ public class PaintController
         paintValues.Add(new PaintValue { paintType = PaintType.Yellow, paintColor = new Color(255, 255, 0, 255) });
 
         // If this is our PaintController, also initialise the UIManager.
-        if (PlayerManager.instance.entity.paintController == this && WeaponSlot.currentWeapon)
+        if (myPlayerManager && myPlayerManager.photonView.IsMine && WeaponSlot.currentWeapon)
         {
             UIManager.instance.Initialise(GetPaintColor(WeaponSlot.currentPaintType));
         }
@@ -127,7 +127,7 @@ public class PaintController
             if (color != CurrentPaintMark.markType)
             {
                 CurrentPaintMark.markValue -= amount * 2;
-                OnPaintValueModified(color, amount);
+                OnPaintValueModified(color, amount * 2);
 
                 if (CurrentPaintMark.markValue <= 0)
                 {

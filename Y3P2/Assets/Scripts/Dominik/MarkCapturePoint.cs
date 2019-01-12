@@ -5,9 +5,16 @@ using TMPro;
 public class MarkCapturePoint : MonoBehaviour
 {
 
+    private bool isActive;
     private CapturingPlayer capturingPlayer;
     private float captureProgress;
     private bool indicatorActive;
+
+    [Header("Unique ID")]
+    [SerializeField] private int capturePointID;
+    public int CapturePointID { get { return capturePointID; } }
+
+    [Space]
 
     [SerializeField] private float captureDuration = 3f;
     [SerializeField] private Canvas catureCanvas;
@@ -17,10 +24,6 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private Animator captureUIAnim;
     [SerializeField] private GameObject effects;
     [SerializeField] private Canvas captureIndicatorCanvas;
-
-    [Space]
-
-    [SerializeField] private MarkCapturePoint otherCapturePoint;
 
     public class CapturingPlayer
     {
@@ -34,8 +37,10 @@ public class MarkCapturePoint : MonoBehaviour
         captureIndicatorCanvas.enabled = false;
     }
 
-    private void Start()
+    public void Init()
     {
+        MarkCapturePointManager.OnCapturePointChanged += ToggleCapturePointAccesibility;
+
         PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated += PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed += PaintController_OnPaintMarkDestroyed;
@@ -54,7 +59,7 @@ public class MarkCapturePoint : MonoBehaviour
     private void PaintController_OnPaintMarkActivated(PaintController.PaintMark mark)
     {
         indicatorActive = true;
-        captureIndicatorCanvas.enabled = true;
+        captureIndicatorCanvas.enabled = isActive;
     }
 
     private void PaintController_OnPaintMarkDestroyed()
@@ -68,28 +73,21 @@ public class MarkCapturePoint : MonoBehaviour
         catureCanvas.enabled = true;
         captureProgress = 0;
         capturingPlayer = player;
-
-        if (indicatorActive)
-        {
-            captureIndicatorCanvas.enabled = false;
-        }
+        captureIndicatorCanvas.enabled = !indicatorActive;
     }
 
     private void StopCapturing(CapturingPlayer player)
     {
         catureCanvas.enabled = false;
         capturingPlayer = null;
-
-        if (indicatorActive)
-        {
-            captureIndicatorCanvas.enabled = true;
-        }
+        captureIndicatorCanvas.enabled = indicatorActive;
     }
 
     private void FinishCapturing()
     {
         capturingPlayer.entityCapturing.photonView.RPC("SyncCaptureMark", Photon.Pun.RpcTarget.All, transform.localPosition);
         StopCapturing(capturingPlayer);
+        MarkCapturePointManager.instance.PointCaptured();
     }
 
     private void Update()
@@ -100,7 +98,7 @@ public class MarkCapturePoint : MonoBehaviour
             captureProgressFill.fillAmount = captureProgress / captureDuration;
             capturePercentageText.text = (captureProgressFill.fillAmount * 100).ToString("F0") + "%";
 
-            if (capturingPlayer.entityCapturing.paintController.CurrentPaintMark == null)
+            if (capturingPlayer.entityCapturing.paintController.CurrentPaintMark == null || !isActive)
             {
                 StopCapturing(capturingPlayer);
             }
@@ -114,6 +112,11 @@ public class MarkCapturePoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!isActive)
+        {
+            return;
+        }
+
         if (other.transform.root.tag == "Player")
         {
             Entity entity = other.transform.root.GetComponentInChildren<Entity>();
@@ -135,8 +138,17 @@ public class MarkCapturePoint : MonoBehaviour
         }
     }
 
+    public void ToggleCapturePointAccesibility(MarkCapturePoint newPoint)
+    {
+        isActive = newPoint == this;
+        effects.SetActive(isActive);
+        captureIndicatorCanvas.enabled = isActive && indicatorActive;
+    }
+
     private void OnDisable()
     {
+        MarkCapturePointManager.OnCapturePointChanged -= ToggleCapturePointAccesibility;
+
         PlayerManager.instance.entity.paintController.OnPaintValueModified -= PaintController_OnPaintValueModified;
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;
         PlayerManager.instance.entity.paintController.OnPaintMarkDestroyed -= PaintController_OnPaintMarkDestroyed;
