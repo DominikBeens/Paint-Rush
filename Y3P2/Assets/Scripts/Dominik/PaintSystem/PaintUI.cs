@@ -1,13 +1,16 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PaintUI : MonoBehaviour
 {
 
     private bool initialised;
     private Entity myEntity;
-    private PaintUIBar[] paintUIBars;
+    // private PaintUIBar[] paintUIBars;
+    [SerializeField]
+    private List<PaintUIBar> paintUIBars = new List<PaintUIBar>();
     private Animator anim;
 
     [SerializeField] private GameObject markObject;
@@ -49,7 +52,7 @@ public class PaintUI : MonoBehaviour
 
     private void InitUIBars()
     {
-        paintUIBars = GetComponentsInChildren<PaintUIBar>();
+        //paintUIBars = GetComponentsInChildren<PaintUIBar>();
 
         for (int i = 0; i < myEntity.paintController.PaintValues.Count; i++)
         {
@@ -90,7 +93,7 @@ public class PaintUI : MonoBehaviour
     {
         if (myEntity.paintController.CurrentPaintMark == null)
         {
-            for (int i = 0; i < paintUIBars.Length; i++)
+            for (int i = 0; i < paintUIBars.Count; i++)
             {
                 if (paintUIBars[i].BarType == paintType)
                 {
@@ -111,7 +114,7 @@ public class PaintUI : MonoBehaviour
 
     private void PaintController_OnPaintValueReset(PaintController.PaintType paintType)
     {
-        for (int i = 0; i < paintUIBars.Length; i++)
+        for (int i = 0; i < paintUIBars.Count; i++)
         {
             if (paintUIBars[i].BarType == paintType)
             {
@@ -148,7 +151,7 @@ public class PaintUI : MonoBehaviour
 
     public void TogglePaintUIBars(bool toggle)
     {
-        for (int i = 0; i < paintUIBars.Length; i++)
+        for (int i = 0; i < paintUIBars.Count; i++)
         {
             paintUIBars[i].ToggleUI(toggle);
         }
