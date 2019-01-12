@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &4069123019192047060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7801187410732002492, guid: 94e41b4b5a6f8e847b03a87dbe41265c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6069461749162097000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1878627115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4069123019627991529, guid: f6b36b8d99a53bc4686041579825878f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4069123019215405762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &59013680
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,12 +660,6 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.43164754, b: 0, a: 0}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!4 &1878627115 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4069123019627991529, guid: f6b36b8d99a53bc4686041579825878f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4069123019215405762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &504106227
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +821,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 00a6b0f49de5ee1489693012da53bc7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 490993396f111c44380c91451ef01355, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -933,7 +939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -303, y: 81}
+  m_AnchoredPosition: {x: -210.9, y: 57.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &942805738
@@ -1005,12 +1011,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &4069123019192047060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7801187410732002492, guid: 94e41b4b5a6f8e847b03a87dbe41265c,
-    type: 3}
-  m_PrefabInstance: {fileID: 6069461749162097000}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1141264085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,12 +1420,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 99355e09319b36948975f5416b258d35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a17512a68982ce444917580bc3f7c5b0, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!1 &1215747956
@@ -7982,6 +7982,7 @@ MonoBehaviour:
   weaponSlot: {fileID: 0}
   playerPickupManager: {fileID: 0}
   playerAudioManager: {fileID: 0}
+  playerSkinSync: {fileID: 0}
 --- !u!114 &2263027971103364325
 MonoBehaviour:
   m_ObjectHideFlags: 0
