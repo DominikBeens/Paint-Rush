@@ -38,10 +38,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
            
         }
 
-        if (Input.GetKeyDown("o"))
-        {
-            entity.Hit(2, 10);
-        }
+        //if (Input.GetKeyDown("o"))
+        //{
+        //    entity.Hit(2, 10);
+        //}
     }
 
 
@@ -144,7 +144,13 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
     [PunRPC]
     private void PulseRemote()
     {
-        ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", pckm.Points[0].transform.position, Quaternion.identity);
+        foreach (MarkCapturePoint g in pckm.Points)
+        {
+            if (g.IsActive)
+            {
+                ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", g.transform.position, Quaternion.identity);
+            }
+        }
     }
 
     [PunRPC]

@@ -6,6 +6,7 @@ public class MarkCapturePoint : MonoBehaviour
 {
 
     private bool isActive;
+    public bool IsActive { get { return isActive; } }
     private CapturingPlayer capturingPlayer;
     private float captureProgress;
     private bool indicatorActive;
