@@ -21,7 +21,7 @@ public class Entity : MonoBehaviourPunCallbacks
     public UnityEvent OnHit;
     public UnityEvent OnDeath;
 
-    private void Awake()
+    private void Start()
     {
         myPlayerManager = transform.root.GetComponent<PlayerManager>();
         paintController.Initialise(this);

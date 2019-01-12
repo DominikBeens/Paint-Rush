@@ -107,19 +107,19 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 Vector3 pos = GameManager.instance.lobbySpawnPoint.position;
                 pos.x += UnityEngine.Random.Range(-2, 2);
                 pos.z += UnityEngine.Random.Range(-2, 2);
-                transform.position = pos;
+                Teleport(pos);
                 playerController.enabled = true;
                 break;
             case GameManager.GameState.Playing:
 
                 Transform randomSpawn = GameManager.instance.GetRandomSpawn();
-                transform.position = randomSpawn.position;
+                Teleport(randomSpawn.position);
                 transform.rotation = randomSpawn.rotation;
                 playerController.enabled = true;
                 break;
             case GameManager.GameState.Respawning:
 
-                transform.position = GameManager.instance.respawnBooth.position;
+                Teleport(GameManager.instance.respawnBooth.position);
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
                 playerController.enabled = false;
                 break;

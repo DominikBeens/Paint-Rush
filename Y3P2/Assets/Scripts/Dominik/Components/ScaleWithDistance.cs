@@ -11,6 +11,7 @@ public class ScaleWithDistance : MonoBehaviour
     private Transform respawnCam;
 
     [SerializeField] private float scaleModifier = 1f;
+    [SerializeField] private float maxSize = 100;
 
     private void Start()
     {
@@ -32,6 +33,6 @@ public class ScaleWithDistance : MonoBehaviour
         Vector3 directionToTarget = target.position - transform.position;
         float dSqrToTarget = directionToTarget.sqrMagnitude;
 
-        transform.localScale = new Vector3(Mathf.Clamp((dSqrToTarget * scaleModifier / 1000), originalSize, 100), Mathf.Clamp((dSqrToTarget * scaleModifier / 1000), originalSize, 100), 1);
+        transform.localScale = new Vector3(Mathf.Clamp((dSqrToTarget * scaleModifier / 1000), originalSize, maxSize), Mathf.Clamp((dSqrToTarget * scaleModifier / 1000), originalSize, maxSize), 1);
     }
 }

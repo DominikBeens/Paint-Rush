@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleModifier: 1
+  maxSize: 4
 --- !u!1 &9129282088705884863
 GameObject:
   m_ObjectHideFlags: 0
