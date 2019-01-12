@@ -38,10 +38,10 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
            
         }
 
-        //if (Input.GetKeyDown("o"))
-        //{
-        //    entity.Hit(2, 10);
-        //}
+        if (Input.GetKeyDown("o"))
+        {
+            entity.Hit(2, 10);
+        }
     }
 
 
@@ -167,7 +167,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         reducePaint = true;
         for (int i = 0; i < t; i++)
         {
-            yield return new WaitForSeconds(.25F);
+            yield return new WaitForSeconds(.15F);
             entity.HitAll(d);
             if (i >= t -1)
             {

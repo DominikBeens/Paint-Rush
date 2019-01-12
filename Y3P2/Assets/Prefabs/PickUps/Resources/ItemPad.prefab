@@ -214,10 +214,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea571fdff6b09324f861cf72b756db12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCooldown: 1
-  maxCooldown: 6
+  minCooldown: 7
+  maxCooldown: 10
   myPickup: {fileID: 0}
   pickUpObject: {fileID: 0}
+  cheatPad: 0
+  pickUps: []
 --- !u!114 &4009889317990867397
 MonoBehaviour:
   m_ObjectHideFlags: 0
