@@ -127,6 +127,7 @@ public class PaintController
             if (color != CurrentPaintMark.markType)
             {
                 CurrentPaintMark.markValue -= amount * 2;
+                CurrentPaintMark.markValue = Mathf.Clamp(CurrentPaintMark.markValue, 0, 100);
                 OnPaintValueModified(color, amount * 2);
 
                 if (CurrentPaintMark.markValue <= 0)
