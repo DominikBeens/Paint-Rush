@@ -45,6 +45,11 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private SyncPlayerSkin skinSyncer;
 
     [SerializeField]
+    private GameObject colorPicker;
+    [SerializeField]
+    private GameObject previewCamRenderTexture;
+
+    [SerializeField]
     private Material secretSkin;
     public Material SecretSkin { get { return secretSkin; } }
 
@@ -65,6 +70,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         audioVisualizer.SetActive(false);
 
         skinSyncer = localPlayer.GetComponent<SyncPlayerSkin>();
+
+        GameManager.OnGameStateChanged += DisableEnableOnStateChange;
 
     }
 
@@ -92,6 +99,20 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
                     terminalAudioSource.Stop();
                 }
             }
+        }
+    }
+
+    private void DisableEnableOnStateChange(GameManager.GameState gameState)
+    {
+        if(gameState == GameManager.GameState.Lobby)
+        {
+            colorPicker.SetActive(true);
+            previewCamRenderTexture.SetActive(true);
+        }
+        else
+        {
+            colorPicker.SetActive(false);
+            previewCamRenderTexture.SetActive(false);
         }
     }
 
