@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hitPlayerText;
 
     [Header("Tab Canvas")]
-    [SerializeField] private GameObject leaderboardAndStatsCanvas;
+    [SerializeField] private Canvas leaderboardAndStatsCanvas;
 
     [Header("Jump Canvas")]
     [SerializeField] private GameObject jumpCooldownIcon;
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject markObject;
     [SerializeField] private Image markImage;
     [SerializeField] private TextMeshProUGUI markHealthText;
-    [SerializeField] private ParticleSystem markParticle;
+    private ParticleSystem[] markParticles;
     private float markHealth;
 
     [Header("Portal Effect Canvas")]
@@ -58,6 +58,11 @@ public class UIManager : MonoBehaviour
 
     [Header("Paint Values Canvas")]
     [SerializeField] private Transform paintValuesCanvas;
+
+    [Header("Game Tech Stats Canvas")]
+    [SerializeField] private Canvas gameTechStatsCanvas;
+    [SerializeField] private TextMeshProUGUI gameTechStatsText;
+    private FPSCounter fpsCounter = new FPSCounter();
 
     private void Awake()
     {
@@ -81,7 +86,11 @@ public class UIManager : MonoBehaviour
         ToggleLeaderboardAndStats(false);
 
         markObject.SetActive(false);
+        markParticles = markObject.GetComponentsInChildren<ParticleSystem>();
+
         hitPlayerPanel.SetActive(false);
+
+        ToggleGameTechStatsCanvas(DB.MenuPack.Setting_GameStatsDisplay.settingValue);
     }
 
     public void Initialise(Color crosshairColor)
@@ -185,6 +194,9 @@ public class UIManager : MonoBehaviour
     {
         HandleTargetedPlayerPanel();
         HandleLeaderboardAndStatsPanel();
+
+        fpsCounter.Update();
+        ShowGameTechStats();
     }
 
     private void HandleTargetedPlayerPanel()
@@ -285,9 +297,9 @@ public class UIManager : MonoBehaviour
 
     private void ToggleLeaderboardAndStats(bool toggle)
     {
-        if (toggle != leaderboardAndStatsCanvas.activeInHierarchy)
+        if (toggle != leaderboardAndStatsCanvas.enabled)
         {
-            leaderboardAndStatsCanvas.SetActive(toggle);
+            leaderboardAndStatsCanvas.enabled = toggle;
         }
     }
 
@@ -313,8 +325,11 @@ public class UIManager : MonoBehaviour
         markImage.color = color;
         markHealthText.color = color;
 
-        ParticleSystem.MainModule particle = markParticle.main;
-        particle.startColor = color;
+        for (int i = 0; i < markParticles.Length; i++)
+        {
+            ParticleSystem.MainModule particle = markParticles[i].main;
+            particle.startColor = color;
+        }
 
         markHealth = 100;
         markHealthText.text = markHealth + "%";
@@ -369,6 +384,19 @@ public class UIManager : MonoBehaviour
             {
                 paintDisplayBars[i].Initialise(PlayerManager.instance.entity.paintController.PaintValues[i]);
             }
+        }
+    }
+
+    public void ToggleGameTechStatsCanvas(bool toggle)
+    {
+        gameTechStatsCanvas.enabled = toggle;
+    }
+
+    private void ShowGameTechStats()
+    {
+        if (gameTechStatsCanvas.enabled)
+        {
+            gameTechStatsText.text = string.Format("FPS: <color=red>{0}</color> Ms: <color=red>{1}", fpsCounter.FrameRate.ToString("F0"), Photon.Pun.PhotonNetwork.GetPing());
         }
     }
 
