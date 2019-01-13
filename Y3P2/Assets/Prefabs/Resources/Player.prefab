@@ -718,6 +718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c79a72a5c120b34497d38dc8b8d9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playableAudioClips:
+  - clip: {fileID: 8300000, guid: a71460a1d60c9e047b26df4fa3fe9af3, type: 3}
+    trigger: change_ammo
 --- !u!82 &2862329405602310653
 AudioSource:
   m_ObjectHideFlags: 0
