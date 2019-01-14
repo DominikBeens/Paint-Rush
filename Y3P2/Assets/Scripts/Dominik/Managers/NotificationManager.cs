@@ -22,6 +22,8 @@ public class NotificationManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform localNotificationSpawn;
     [SerializeField] private float notificationInterval = 1f;
 
+    private PlayerAudioManager audioManager;
+
     private void Awake()
     {
         if (!instance)
@@ -32,6 +34,11 @@ public class NotificationManager : MonoBehaviourPunCallbacks
         {
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<PlayerAudioManager>();
     }
 
     private void Update()
@@ -94,21 +101,27 @@ public class NotificationManager : MonoBehaviourPunCallbacks
                 break;
 
             case NotificationType.MarkCaptured:
+                audioManager.PlayClipOnce(audioManager.GetClip("mark_captured"));
                 break;
 
             case NotificationType.MarkGained:
+                audioManager.PlayClipOnce(audioManager.GetClip("mark_claimed"));
                 break;
 
             case NotificationType.MarkDestroyed:
+                audioManager.PlayClipOnce(audioManager.GetClip("mark_destroyed"));
                 break;
 
             case NotificationType.KillStreak:
+                audioManager.PlayClipOnce(audioManager.GetClip("killingspree"));
                 break;
 
             case NotificationType.JoinedGame:
+                audioManager.PlayClipOnce(audioManager.GetClip("joined_game"));
                 break;
 
             case NotificationType.LeftGame:
+                audioManager.PlayClipOnce(audioManager.GetClip("left_game"));
                 break;
         }
     }

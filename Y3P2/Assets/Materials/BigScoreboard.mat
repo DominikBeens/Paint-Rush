@@ -7,28 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LobbyGround
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
+  m_Name: BigScoreboard
+  m_Shader: {fileID: 4800000, guid: 61054a61bebe19f49a8d9767c1c3212d, type: 3}
+  m_ShaderKeywords: _ENABLEDISTORTION_ON _INVERT_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Albedo:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Depth:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -49,14 +40,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 013144a27d62ad94fa096db6d33f465f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Normal:
+    - _Maintexture:
+        m_Texture: {fileID: 2800000, guid: e3933cb2e2577fb4ab81423186807589, type: 3}
+        m_Scale: {x: 1, y: 100}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -68,11 +59,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ShieldPattern:
+    - _Secondarytexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ShieldPatternWaves:
+    - _Static:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -81,47 +76,66 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Bias: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 10
+    - _Distortionscale: 0.49
+    - _Distortionspeed: 0.88
+    - _DstBlend: 0
+    - _Enabledistortion: 1
+    - _Enablenoise: 0
+    - _Enablepulsation: 0
+    - _Extraroughness: 6.77
+    - _GlobalFade: 1
+    - _Globalopacity: 1
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HitSize: 0.2
-    - _HitTime: 0
-    - _IntersectIntensity: 0.2
+    - _Innerfresnelintensity: 0.705
+    - _Invert: 1
+    - _Invertmaintexture: 0
+    - _Invertsecondarytexture: 0
+    - _Maintextureintensity: 2.34
     - _Metallic: 0
-    - _Mode: 3
+    - _Mode: 0
+    - _Noisescale: 1002
+    - _Noisesize: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.07
+    - _Outerfresnelintensity: 0.634
     - _Parallax: 0.02
-    - _ShieldAnimSpeed: 3
-    - _ShieldDistortion: 0.01
-    - _ShieldPatternPower: 5
-    - _ShieldPatternSize: 5
-    - _ShieldRimPower: 7
-    - _Smoothness: 0
+    - _Power: 0
+    - _Pulseamplitude: 0.25
+    - _Pulsefrequency: 1
+    - _Pulseoffset: 0
+    - _Pulsephase: 0
+    - _Scale: 1.5
+    - _Secondarytextureintensity: 1
+    - _Seondarytextureintensity: 1
+    - _Sharpennoise: 0
     - _SmoothnessTextureChannel: 0
-    - _Specular: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TransAmbient: 0.2
-    - _TransDirect: 1
-    - _TransNormalDistortion: 0.1
-    - _TransScattering: 2
-    - _TransShadow: 0.9
-    - _Translucency: 1
+    - _TessMax: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 32
+    - _Texintensity: 4
     - _UVSec: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     - __dirty: 0
+    - _test: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.33333334}
-    - _Color0: {r: 0, g: 0, b: 0, a: 0}
-    - _Color1: {r: 0, g: 0, b: 0, a: 0}
+    - _Bordercolor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Edgecolor: {r: 0, g: 0.0323627, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HitColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HitPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _IntersectColor: {r: 0.03137255, g: 0.25882348, b: 0.31764707, a: 1}
-    - _ShieldPatternColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 0, g: 0, b: 0, a: 0}
+    - _MainPanningspeed: {r: 0, g: 0, b: 0, a: 0}
+    - _Maincolor: {r: 0, g: 0.80642533, b: 1, a: 1}
+    - _Mainpanningspeed: {r: 0, g: -3, b: 0, a: 0}
+    - _Noisespeed: {r: 0, g: 0, b: 0, a: 0}
+    - _Panningspeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _Secondarycolor: {r: 1, g: 0, b: 0, a: 1}
+    - _Secondarypanningspeed: {r: 0, g: 0, b: 0, a: 0}
+    - _Staticcolor: {r: 0.2647059, g: 0.6957404, b: 1, a: 0.978}
+    - _Staticpanningspeed: {r: 0, g: 2, b: 0, a: 0}
