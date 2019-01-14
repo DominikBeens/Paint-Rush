@@ -33,7 +33,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
 	}
 
-    private AudioClip GetClip(string trigger)
+    public AudioClip GetClip(string trigger)
     {
         for (int i = 0; i < playableAudioClips.Count; i++)
         {
@@ -46,7 +46,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         return null;
     }
 
-    private void PlayClipOnce(AudioClip clip)
+    public void PlayClipOnce(AudioClip clip)
     {
         if (!clip || isPlayingMusic)
         {

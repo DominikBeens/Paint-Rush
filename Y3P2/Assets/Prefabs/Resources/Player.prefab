@@ -721,6 +721,18 @@ MonoBehaviour:
   playableAudioClips:
   - clip: {fileID: 8300000, guid: a71460a1d60c9e047b26df4fa3fe9af3, type: 3}
     trigger: change_ammo
+  - clip: {fileID: 8300000, guid: c13b530ba643f0345892e65c8500749a, type: 3}
+    trigger: joined_game
+  - clip: {fileID: 8300000, guid: cd4f9275907e04d47bc8b63131a6cf78, type: 3}
+    trigger: left_game
+  - clip: {fileID: 8300000, guid: 116a250fc1a23e44eab6addac6a6eee9, type: 3}
+    trigger: mark_claimed
+  - clip: {fileID: 8300000, guid: e95adb49a2b98534f90dde326a229952, type: 3}
+    trigger: mark_destroyed
+  - clip: {fileID: 8300000, guid: c879c150b3ccc7348b3dd1695a465406, type: 3}
+    trigger: mark_captured
+  - clip: {fileID: 8300000, guid: 2508b2487fe08c6408a00940c303603d, type: 3}
+    trigger: killingspree
 --- !u!82 &2862329405602310653
 AudioSource:
   m_ObjectHideFlags: 0
