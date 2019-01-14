@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &6034352307615697672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1029663914765448199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5282606161493695389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5282606161500697725 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5282606161504766653 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8747051640038319970, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056749796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,30 +3834,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!4 &5282606161493695389 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5282606161500697725 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &5282606161504766653 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8747051640038319970, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6034352307615697672 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1029663914765448199}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5617583515688722956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6732,11 +6732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4219367459737822, guid: 3787256bfa6f0e44b9def35b7764354e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.73
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4219367459737822, guid: 3787256bfa6f0e44b9def35b7764354e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.73
+      value: 11.6
       objectReference: {fileID: 0}
     - target: {fileID: 4219367459737822, guid: 3787256bfa6f0e44b9def35b7764354e, type: 3}
       propertyPath: m_LocalRotation.x
