@@ -225,7 +225,7 @@ public class PaintController
                 if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
                 {
                     PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
-                    NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!");
+                    NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!", NotificationManager.NotificationType.MarkGained);
                     SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
                 }
 
@@ -257,7 +257,7 @@ public class PaintController
 
         if (PlayerManager.instance.entity == myEntity)
         {
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "'s</color> mark has been destroyed!");
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "'s</color> mark has been destroyed!", NotificationManager.NotificationType.MarkDestroyed);
         }
     }
 
@@ -268,7 +268,7 @@ public class PaintController
         if (PlayerManager.instance.entity == myEntity)
         {
             SaveManager.instance.SaveStat(SaveManager.SavedStat.GamePointsGained);
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!");
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has gained a game-point!", NotificationManager.NotificationType.MarkCaptured);
         }
 
         ScoreboardManager.instance.RegisterPlayerGamePoint(myPlayerManager.photonView.ViewID);

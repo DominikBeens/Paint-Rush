@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            NotificationManager.instance.NewNotification("<color=red>" + newPlayer.NickName + "</color> has entered the game!");
+            NotificationManager.instance.NewNotification("<color=red>" + newPlayer.NickName + "</color> has entered the game!", NotificationManager.NotificationType.JoinedGame);
         }
     }
 
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            NotificationManager.instance.NewNotification("<color=red>" + otherPlayer.NickName + "</color> has left the game!");
+            NotificationManager.instance.NewNotification("<color=red>" + otherPlayer.NickName + "</color> has left the game!", NotificationManager.NotificationType.LeftGame);
         }
     }
 

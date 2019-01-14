@@ -90,21 +90,21 @@ public class ScoreboardManager : MonoBehaviourPunCallbacks
         switch (consecutivePoints)
         {
             case 3:
-                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a killing spree!");
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a killing spree!", NotificationManager.NotificationType.KillStreak);
                 return;
 
             case 4:
-                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a rampage!");
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is on a rampage!", NotificationManager.NotificationType.KillStreak);
                 return;
 
             case 5:
-                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is dominating!");
+                NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is dominating!", NotificationManager.NotificationType.KillStreak);
                 return;
         }
 
         if (consecutivePoints >= 6)
         {
-            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is legendary!");
+            NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> is legendary!", NotificationManager.NotificationType.KillStreak);
         }
     }
 
