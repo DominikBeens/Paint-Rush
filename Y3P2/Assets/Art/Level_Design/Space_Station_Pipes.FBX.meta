@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: 874bf167a12ec954bb6beda2c77a2748
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Pipe_Straight_Long_Details093
+    100002: Pipe_Straight_Long_Details099
+    100004: Pipe_Straight_Long_Details100
+    100006: Pipe_Straight_Long_Details101
+    100008: Pipe_Straight_Long_Details122
+    100010: Pipe_Straight_Long_Details123
+    100012: Pipe_Straight_Long_Details124
+    100014: Pipe_Straight_Long_Details125
+    100016: //RootNode
+    400000: Pipe_Straight_Long_Details093
+    400002: Pipe_Straight_Long_Details099
+    400004: Pipe_Straight_Long_Details100
+    400006: Pipe_Straight_Long_Details101
+    400008: Pipe_Straight_Long_Details122
+    400010: Pipe_Straight_Long_Details123
+    400012: Pipe_Straight_Long_Details124
+    400014: Pipe_Straight_Long_Details125
+    400016: //RootNode
+    2100000: No Name
+    2300000: Pipe_Straight_Long_Details093
+    2300002: Pipe_Straight_Long_Details099
+    2300004: Pipe_Straight_Long_Details100
+    2300006: Pipe_Straight_Long_Details101
+    2300008: Pipe_Straight_Long_Details122
+    2300010: Pipe_Straight_Long_Details123
+    2300012: Pipe_Straight_Long_Details124
+    2300014: Pipe_Straight_Long_Details125
+    3300000: Pipe_Straight_Long_Details093
+    3300002: Pipe_Straight_Long_Details099
+    3300004: Pipe_Straight_Long_Details100
+    3300006: Pipe_Straight_Long_Details101
+    3300008: Pipe_Straight_Long_Details122
+    3300010: Pipe_Straight_Long_Details123
+    3300012: Pipe_Straight_Long_Details124
+    3300014: Pipe_Straight_Long_Details125
+    4300000: Pipe_Straight_Long_Details093
+    4300002: Pipe_Straight_Long_Details099
+    4300004: Pipe_Straight_Long_Details100
+    4300006: Pipe_Straight_Long_Details101
+    4300008: Pipe_Straight_Long_Details122
+    4300010: Pipe_Straight_Long_Details123
+    4300012: Pipe_Straight_Long_Details124
+    4300014: Pipe_Straight_Long_Details125
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
