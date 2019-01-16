@@ -25,8 +25,14 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public void SyncThisPlayerSkin(int i)
     {
-        photonView.RPC("SyncSkin", RpcTarget.All, i);
+        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer); //WIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIP
+        StartCoroutine(Wait(i));
+    }
 
+    private IEnumerator Wait(int i)
+    {
+        yield return new WaitForSeconds(.1F);
+        photonView.RPC("SyncSkin", RpcTarget.AllBuffered, i);
     }
 
 
