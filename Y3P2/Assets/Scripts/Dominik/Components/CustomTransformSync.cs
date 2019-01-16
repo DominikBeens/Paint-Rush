@@ -17,8 +17,19 @@ public class CustomTransformSync : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            transform.localRotation = syncedRot;
+            if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
+            {
+                transform.localRotation = syncedRot;
+            }
+            else
+            {
+                Vector3 defaultRot = syncedRot.eulerAngles;
+                defaultRot.x = PlayerController.defaultAngleX;
+                transform.localEulerAngles = defaultRot;
+            }
+
             //transform.localRotation = Quaternion.Slerp(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
+
             //Debug.LogWarning("Current: " + transform.localRotation.eulerAngles + " Synced: " + syncedRot.eulerAngles);
             //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
         }

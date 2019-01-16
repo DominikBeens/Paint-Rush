@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float myCamRotateSpeed = 80;
     private float angleLimit = 70;
     private float currentAngle;
+    public static float defaultAngleX;
+
 
     private bool topBob;
     [SerializeField]
@@ -77,8 +79,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jetBoostCooldownReduction = 1;
 
-    
-
     public void Inititalise(bool local)
     {
         if (!local)
@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         bobRestingPoint = headObject.transform.localPosition;
+        defaultAngleX = spine.eulerAngles.x;
     }
 
     private void FixedUpdate()
@@ -304,11 +305,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.Ending)
+        {
+            spine.eulerAngles = new Vector3(defaultAngleX, spine.eulerAngles.y, spine.eulerAngles.z);
+        }
+        else
+        {
+            spine.eulerAngles = new Vector3(-currentAngle, spine.eulerAngles.y, spine.eulerAngles.z);
+        }
+
+        // Old rotation stuff.
         //headObject.transform.localEulerAngles = new Vector3(-currentAngle, 0, 0);
         //spine.rotation = headObject.transform.rotation;
-
-        spine.eulerAngles = new Vector3(-currentAngle, spine.eulerAngles.y, spine.eulerAngles.z);
-
         //spine.localEulerAngles = headObject.transform.localEulerAngles;
         //spine.Rotate(headObject.transform.localEulerAngles);
     }
