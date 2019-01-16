@@ -93,10 +93,10 @@ public class PaintController
 
     public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
-        if (attackerID != PlayerManager.instance.photonView.ViewID)
-        {
-            return;
-        }
+        //if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing && attackerID != PlayerManager.instance.photonView.ViewID)
+        //{
+        //    return;
+        //}
 
         if (myEntity == PlayerManager.instance.entity && amount > 0)
         {
