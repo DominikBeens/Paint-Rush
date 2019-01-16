@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cbecdae50dcf44682e0e48e96ea228, type: 3}
   m_Name: GrenadeLauncherPickUp
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 1446332806545463280, guid: dedb92a0c5eb97b4ebad72dc6b3ec721,
+  itemPrefab: {fileID: 1446332806545463280, guid: ca3c3ffa599e840489f9fb106738eaf9,
     type: 3}
   pickUpType: 4
   duration: 0

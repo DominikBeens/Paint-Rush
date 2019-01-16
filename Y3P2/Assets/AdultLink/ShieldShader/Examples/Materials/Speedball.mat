@@ -94,11 +94,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Innerfresnelintensity: 0
+    - _Innerfresnelintensity: 0.1
     - _Invert: 1
     - _Invertmaintexture: 1
     - _Invertsecondarytexture: 0
-    - _Maintextureintensity: 0.15
+    - _Maintextureintensity: 1
     - _Metallic: 0
     - _Mode: 0
     - _Noisescale: 50
@@ -106,12 +106,12 @@ Material:
     - _OcclusionStrength: 1
     - _Outerfresnelintensity: 1
     - _Parallax: 0.02
-    - _Power: 1.2
-    - _Pulseamplitude: 0.05
-    - _Pulsefrequency: 9.79
+    - _Power: 1
+    - _Pulseamplitude: 0.22
+    - _Pulsefrequency: 5.01
     - _Pulseoffset: 0
     - _Pulsephase: 0
-    - _Scale: 2
+    - _Scale: 1
     - _Secondarytextureintensity: 0.75
     - _Seondarytextureintensity: 0.5
     - _Sharpen: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cbecdae50dcf44682e0e48e96ea228, type: 3}
   m_Name: ForceField
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 74972790501235757, guid: c441f923d2bb8eb498194378c744c5b8,
+  itemPrefab: {fileID: 1446332806545463280, guid: 5fb24de4dc6064042800eaf63b36cc6c,
     type: 3}
   pickUpType: 5
   duration: 2.5

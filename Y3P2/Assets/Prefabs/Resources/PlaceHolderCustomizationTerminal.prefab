@@ -1101,6 +1101,7 @@ MonoBehaviour:
   emotes:
   - {fileID: 7400000, guid: 3d92a3aa3a88d454ba5ff275b9de903f, type: 3}
   - {fileID: 7400000, guid: e5462e58bd3b01b40b8758e2fd34c076, type: 3}
+  - {fileID: 7400000, guid: db50bfd0df515c844ac19677029dce43, type: 2}
   music:
   - {fileID: 8300000, guid: e12c8f7f222d8ea44b5b5e822046bf2a, type: 3}
   - {fileID: 8300000, guid: b4b3797b481296a40946ea65874c3e1a, type: 3}
@@ -1108,13 +1109,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d6502358df5050a498f6ae0ccc71f6b1, type: 3}
   - {fileID: 8300000, guid: 75437a72887788c40bef941d7c6d7753, type: 3}
   skins:
-  - {fileID: 2100000, guid: 51a8264f63645154d8b16db5a95c51b4, type: 2}
+  - {fileID: 2100000, guid: affb5571625d49b4b9ea3e2fd16d1379, type: 2}
   - {fileID: 2100000, guid: e5e5c5da323e11a49b7f3584fbe2633e, type: 2}
   - {fileID: 2100000, guid: a2d1dccf833cf45458ce6ed81307fde4, type: 2}
   - {fileID: 2100000, guid: 1f594c7ca9f7e64459fcbe7ab8cb63a0, type: 2}
   - {fileID: 2100000, guid: bf05bc0bdec8b7a43b01bf2927140c17, type: 2}
   - {fileID: 2100000, guid: cc5220a3f9390e7458b0471f219ee7b2, type: 2}
-  - {fileID: 2100000, guid: affb5571625d49b4b9ea3e2fd16d1379, type: 2}
+  - {fileID: 2100000, guid: 51a8264f63645154d8b16db5a95c51b4, type: 2}
   terminalAudioSource: {fileID: 0}
   terminalCamera: {fileID: 453460712389910489}
   audioVisualizer: {fileID: 2529735897286231939}
@@ -2701,6 +2702,8 @@ MonoBehaviour:
     - m_Text: Chicken Dance
       m_Image: {fileID: 0}
     - m_Text: Weird Dance
+      m_Image: {fileID: 0}
+    - m_Text: Epic Dance
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7035,7 +7038,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 51a8264f63645154d8b16db5a95c51b4, type: 2}
+      objectReference: {fileID: 2100000, guid: affb5571625d49b4b9ea3e2fd16d1379, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8be019153952af45a498d3cf1014888, type: 3}
 --- !u!1001 &3898358684724055350
