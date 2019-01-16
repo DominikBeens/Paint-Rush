@@ -25,6 +25,7 @@ public class CustomTransformSync : MonoBehaviourPunCallbacks, IPunObservable
             {
                 Vector3 defaultRot = syncedRot.eulerAngles;
                 defaultRot.x = PlayerController.defaultAngleX;
+                defaultRot.z = PlayerController.defaultAngleZ;
                 transform.localEulerAngles = defaultRot;
             }
 

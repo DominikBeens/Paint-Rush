@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float angleLimit = 70;
     private float currentAngle;
     public static float defaultAngleX;
-
+    public static float defaultAngleZ;
 
     private bool topBob;
     [SerializeField]
@@ -110,7 +110,9 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         bobRestingPoint = headObject.transform.localPosition;
+
         defaultAngleX = spine.eulerAngles.x;
+        defaultAngleZ = spine.eulerAngles.z;
     }
 
     private void FixedUpdate()
@@ -307,7 +309,7 @@ public class PlayerController : MonoBehaviour
 
         if (TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.Ending)
         {
-            spine.eulerAngles = new Vector3(defaultAngleX, spine.eulerAngles.y, spine.eulerAngles.z);
+            spine.eulerAngles = new Vector3(defaultAngleX, spine.eulerAngles.y, defaultAngleZ);
         }
         else
         {

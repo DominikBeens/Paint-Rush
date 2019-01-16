@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c0d908b24ecaf4691a061a3797cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  capturePointID: 0
   captureDuration: 5
   catureCanvas: {fileID: 7949430077531394031}
   captureProgressFill: {fileID: 3798274663466787673}
@@ -391,7 +392,6 @@ MonoBehaviour:
   captureUIAnim: {fileID: 3556201591715559427}
   effects: {fileID: 6752653641357336700}
   captureIndicatorCanvas: {fileID: 4644404458690969252}
-  otherCapturePoint: {fileID: 0}
 --- !u!136 &4500244782208628513
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: effb17fef621b8444b6f625c3368d13b, type: 2}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_Color: {r: 1, g: 0, b: 0.13618708, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

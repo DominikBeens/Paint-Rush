@@ -604,8 +604,8 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1.5
+      scalar: 2.2
+      minScalar: 1.8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5334,8 +5334,8 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1.5
+      scalar: 2.2
+      minScalar: 1.8
       maxCurve:
         serializedVersion: 2
         m_Curve:
