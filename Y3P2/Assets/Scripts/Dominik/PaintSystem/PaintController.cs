@@ -283,6 +283,8 @@ public class PaintController
     {
         ResetPaint();
         CurrentPaintMark = null;
+
+        ToggleUI(false);
     }
 
     private void MyPlayerManager_OnPlayerStateChanged(GameManager.GameState newState)
