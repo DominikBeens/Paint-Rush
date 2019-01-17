@@ -14,10 +14,14 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     private CustomizationTerminal terminal;
     // Use this for initialization
     void Start () {
+        Components();
+    }
+	private void Components()
+    {
         terminal = FindObjectOfType<CustomizationTerminal>();
         getMat = model.GetComponent<GetDefaultMat>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -25,56 +29,73 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public void SyncThisPlayerSkin(int i)
     {
-        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer); //WIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIPWIP
-        StartCoroutine(Wait(i));
+        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
+        photonView.RPC("SetSkinIndex", RpcTarget.AllBuffered, i);
+
+        photonView.RPC("SyncSkin", RpcTarget.AllBuffered);
+        // StartCoroutine(Wait(i));
     }
 
-    private IEnumerator Wait(int i)
-    {
-        yield return new WaitForSeconds(.1F);
-        photonView.RPC("SyncSkin", RpcTarget.AllBuffered, i);
-    }
-
+    //private IEnumerator Wait(int i)
+    //{
+    //    yield return new WaitForSeconds(.1F);
+    //}
 
     [PunRPC]
-    private void SyncSkin(int i)
+    private void SetSkinIndex(int i)
     {
         skinIndex = i;
-        model.material = terminal.Skins[skinIndex];
+    }
+
+    [PunRPC]
+    private void SyncSkin()
+    {
+        model.material = terminal.Skins[skinIndex]; //NULLREFSOMEFUCKINGHOWIDKWHYFFS
+        if(model == null)
+        {
+            NotificationManager.instance.NewNotification("MODEL FAGGOT");
+        }
+        if (model.material == null)
+        {
+            NotificationManager.instance.NewNotification("MATERIAL FAGGOT");
+        }
+        if (terminal == null)
+        {
+            NotificationManager.instance.NewNotification("TERMINAL FAGGOT");
+        }
+        if (terminal.Skins == null)
+        {
+            NotificationManager.instance.NewNotification("SKINS FAGGOT");
+        }
+        if (terminal.Skins[skinIndex] == null)
+        {
+            NotificationManager.instance.NewNotification("SKINS[INDEX] FAGGOT");
+        }
+        if (skinIndex == null)
+        {
+            NotificationManager.instance.NewNotification("SKININDEX FAGGOT");
+        }
         getMat.UpdateMaterial(terminal.Skins[skinIndex]);
       
     }
 
-    [PunRPC]
-    private void SyncMat()
-    {
-        PlayerManager.instance.playerSkinSync.model.material = terminal.Skins[skinIndex]; //Every client changes its own skin to what it should be, but other clients dont see this
-        getMat.UpdateMaterial(terminal.Skins[skinIndex]);
-        NotificationManager.instance.NewLocalNotification("did RPC");
-    }
+
 
     public void SetModelMat(Material m)
     {
         model.material = m;
     }
 
-    private void CallMatSync()
-    {
-        NotificationManager.instance.NewLocalNotification("called sync");
-        photonView.RPC("SyncMat", RpcTarget.AllViaServer);
-    }
-
-
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-       // photonView.RPC("SyncThisPlayerSkinOthers", RpcTarget.All);
+        Components();
     }
 
-    [PunRPC]
-    public void SyncThisPlayerSkinOthers()
-    {
-        PlayerManager.instance.playerSkinSync.CallMatSync();
-    }
+
+
+
+
+
 
     public void Pepe()
     {

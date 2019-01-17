@@ -81,4 +81,5 @@ MonoBehaviour:
   - SyncMat
   - BecomePepe
   - ShuffleCapturePoint
+  - SetSkinIndex
   DisableAutoOpenWizard: 1

@@ -247,6 +247,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         else if(secretCode == "pepe")
         {
             skinSyncer.Pepe();
+            secretCode = "";
         }
 
     }
