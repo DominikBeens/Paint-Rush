@@ -1,5 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &4050113039164060432 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8831094967476752170, guid: 2c3d0d870de5ba547a2988e88f35b566,
+    type: 3}
+  m_PrefabInstance: {fileID: 4808364788847230010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &382091916
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +77,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 1
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &382091917
@@ -405,12 +411,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!4 &4050113039164060432 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8831094967476752170, guid: 2c3d0d870de5ba547a2988e88f35b566,
-    type: 3}
-  m_PrefabInstance: {fileID: 4808364788847230010}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678826806546496519
 GameObject:
   m_ObjectHideFlags: 0
