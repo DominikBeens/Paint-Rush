@@ -388,7 +388,7 @@ MonoBehaviour:
   catureCanvas: {fileID: 7949430077531394031}
   captureProgressFill: {fileID: 3798274663466787673}
   capturePercentageText: {fileID: 2871939954018123988}
-  hitProgressLoss: 5
+  hitProgressLoss: 3
   captureUIAnim: {fileID: 3556201591715559427}
   effects: {fileID: 6752653641357336700}
   captureIndicatorCanvas: {fileID: 4644404458690969252}

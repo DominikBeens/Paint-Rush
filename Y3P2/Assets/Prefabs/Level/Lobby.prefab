@@ -1523,7 +1523,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6291823968857824832
 MonoBehaviour:
@@ -7606,8 +7606,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278214143
-  m_fontColor: {r: 1, g: 0.3647059, b: 0, a: 1}
+    rgba: 4279848447
+  m_fontColor: {r: 1, g: 0.30397707, b: 0.0990566, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -11656,7 +11656,7 @@ PrefabInstance:
     - target: {fileID: 7396031032481396227, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4284149006854776627, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
@@ -11686,7 +11686,7 @@ PrefabInstance:
     - target: {fileID: 5180428872730133912, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4241813597590259183, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
@@ -11701,7 +11701,7 @@ PrefabInstance:
     - target: {fileID: 5180428872730133912, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669472561459970890, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
@@ -11711,7 +11711,7 @@ PrefabInstance:
     - target: {fileID: 669472561459970890, guid: a9ca003804f420e4dba5f7ac0d68c156,
         type: 3}
       propertyPath: m_Size
-      value: 0.9999999
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ca003804f420e4dba5f7ac0d68c156, type: 3}
