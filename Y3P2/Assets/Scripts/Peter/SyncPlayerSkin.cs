@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
+public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
 
     [SerializeField]
     private Renderer model;
@@ -12,6 +12,8 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     private int skinIndex;
 
     private CustomizationTerminal terminal;
+
+    private bool isPepe;
     // Use this for initialization
     void Start () {
         Components();
@@ -29,10 +31,8 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
 
     public void SyncThisPlayerSkin(int i)
     {
-        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
-        photonView.RPC("SetSkinIndex", RpcTarget.AllBuffered, i);
-
-        photonView.RPC("SyncSkin", RpcTarget.AllBuffered);
+        skinIndex = i;
+        SyncSkin();
         // StartCoroutine(Wait(i));
     }
 
@@ -41,50 +41,18 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     //    yield return new WaitForSeconds(.1F);
     //}
 
-    [PunRPC]
-    private void SetSkinIndex(int i)
-    {
-        skinIndex = i;
-    }
 
-    [PunRPC]
     private void SyncSkin()
     {
-        model.material = terminal.Skins[skinIndex]; //NULLREFSOMEFUCKINGHOWIDKWHYFFS
-        if(model == null)
-        {
-            NotificationManager.instance.NewNotification("MODEL FAGGOT");
-        }
-        if (model.material == null)
-        {
-            NotificationManager.instance.NewNotification("MATERIAL FAGGOT");
-        }
-        if (terminal == null)
-        {
-            NotificationManager.instance.NewNotification("TERMINAL FAGGOT");
-        }
-        if (terminal.Skins == null)
-        {
-            NotificationManager.instance.NewNotification("SKINS FAGGOT");
-        }
-        if (terminal.Skins[skinIndex] == null)
-        {
-            NotificationManager.instance.NewNotification("SKINS[INDEX] FAGGOT");
-        }
-        if (skinIndex == null)
-        {
-            NotificationManager.instance.NewNotification("SKININDEX FAGGOT");
-        }
+        isPepe = false;
+        model.material = terminal.Skins[skinIndex]; 
         getMat.UpdateMaterial(terminal.Skins[skinIndex]);
       
     }
 
 
 
-    public void SetModelMat(Material m)
-    {
-        model.material = m;
-    }
+  
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
@@ -100,15 +68,57 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks {
     public void Pepe()
     {
         terminal.PreviewCharRenderer.material = terminal.SecretSkin;
-        photonView.RPC("BecomePepe", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void BecomePepe()
-    {
-        SetModelMat(terminal.SecretSkin);
+        model.material = terminal.SecretSkin;
         getMat.UpdateMaterial(terminal.SecretSkin);
+        isPepe = true;
     }
 
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            if (PhotonNetwork.LocalPlayer.IsLocal )
+            {
+                stream.SendNext(isPepe);
+                if (!isPepe)
+                {
+                    stream.SendNext(skinIndex);
+                    model.material = terminal.Skins[skinIndex];
+                    getMat.UpdateMaterial(terminal.Skins[skinIndex]);
+                }
+                else
+                {
+                    model.material = terminal.SecretSkin;
+                    getMat.UpdateMaterial(terminal.SecretSkin);
+                }
+            
+            }
+        }
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.IsLocal)
+            {
+                isPepe = (bool)stream.ReceiveNext();
+                if (!isPepe)
+                {
+                    skinIndex = (int)stream.ReceiveNext();
+                }
+                if (!isPepe)
+                {
+                    if (model.material != terminal.Skins[skinIndex])
+                    {
+                        model.material = terminal.Skins[skinIndex];
+                        getMat.UpdateMaterial(terminal.Skins[skinIndex]);
+                    }
+                  
+                }
+                else if (isPepe)
+                {
+                    model.material = terminal.SecretSkin;
+                    getMat.UpdateMaterial(terminal.SecretSkin);
+                }
+            }
+        }
+    }
 }
