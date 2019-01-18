@@ -11,11 +11,20 @@ public class PlayerAnimationController : MonoBehaviour
 
     private int emoteIndex;
 
+    [Header("Arm Sway")]
+    [SerializeField] private bool sway = true;
+    [SerializeField] private float horizontalSwaySpeed = 3f;
+    [SerializeField] private float verticalSwaySpeed = 2f;
+    [SerializeField] private float leanSpeed = 2f;
+
+    private float horizontalSway;
+    private float verticalSway;
+    private float lean;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
     }
-
 
     public void Initialise(bool local)
     {
@@ -28,9 +37,7 @@ public class PlayerAnimationController : MonoBehaviour
         initialised = true;
         //PlayerManager.instance.playerController.OnJump += PlayerController_OnJump;
         PlayerManager.instance.playerController.OnSlide += PlayerController_OnSlide;
-
-        //PlayerManager.instance.playerController.OnStartWallRun += PlayerController_OnStartWallRun;
-        //PlayerManager.instance.playerController.OnStopWallRun += PlayerController_OnStopWallRun;
+        WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
     }
 
     private void PlayerController_OnJump()
@@ -74,24 +81,38 @@ public class PlayerAnimationController : MonoBehaviour
         anim.SetFloat("Horizontal", CanAnimateMovement() ? Input.GetAxis("Horizontal") : 0);
         anim.SetFloat("Vertical", CanAnimateMovement() ? Input.GetAxis("Vertical") : 0);
 
+        ArmSway();
+
         if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
         {
             ToggleWinEmote(anim.GetCurrentAnimatorStateInfo(0).IsName("Emote") ? false : true);
         }
     }
 
+    private void ArmSway()
+    {
+        if (!sway)
+        {
+            return;
+        }
+
+        horizontalSway = Mathf.Lerp(horizontalSway, Input.GetAxis("Mouse X") * 0.5f, Time.deltaTime * horizontalSwaySpeed);
+        verticalSway = Mathf.Lerp(verticalSway, Input.GetAxis("Mouse Y") * 0.5f, Time.deltaTime * verticalSwaySpeed);
+        lean = Mathf.Lerp(lean, Input.GetAxis("Horizontal"), Time.deltaTime * leanSpeed);
+
+        anim.SetFloat("SwayHor", horizontalSway);
+        anim.SetFloat("SwayVer", verticalSway);
+        anim.SetFloat("LeanHor", lean);
+    }
+
+    private void WeaponSlot_OnFireWeapon()
+    {
+        anim.SetTrigger("Recoil");
+    }
+
     private bool CanAnimateMovement()
     {
         return PlayerManager.instance.playerController.IsGrounded && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending;
-    }
-
-    private void OnDisable()
-    {
-        if (initialised)
-        {
-            //PlayerManager.instance.playerController.OnJump -= PlayerController_OnJump;
-            PlayerManager.instance.playerController.OnSlide -= PlayerController_OnSlide;
-        }
     }
 
     public void SetWinEmote(int index , CustomizationTerminal terminal)
@@ -118,6 +139,15 @@ public class PlayerAnimationController : MonoBehaviour
                 // anim.Play("Locomotion", 0);
                 anim.SetBool("Emote", false);
             }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (initialised)
+        {
+            PlayerManager.instance.playerController.OnSlide -= PlayerController_OnSlide;
+            WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
         }
     }
 }
