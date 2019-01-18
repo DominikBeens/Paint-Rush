@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Entity : MonoBehaviourPunCallbacks
+public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     private PlayerManager myPlayerManager;
@@ -136,6 +136,51 @@ public class Entity : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             paintController.UnsubscribeEvents();
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            if (photonView.IsMine)
+            {
+                if (paintController.CurrentPaintMark != null)
+                {
+                    stream.SendNext((int)paintController.CurrentPaintMark.markType);
+                    stream.SendNext(paintController.CurrentPaintMark.markValue);
+                }
+
+                stream.SendNext(paintController.CurrentPaintMark != null);
+
+                for (int i = 0; i < paintController.PaintValues.Count; i++)
+                {
+                    stream.SendNext(paintController.PaintValues[i].paintValue);
+                }
+            }
+        }
+        else
+        {
+            if (!photonView.IsMine)
+            {
+                int syncedMarkType = (int)stream.ReceiveNext();
+                float syncedMarkValue = (float)stream.ReceiveNext();
+
+                bool hasMark = (bool)stream.ReceiveNext();
+                if (paintController.CurrentPaintMark == null && hasMark)
+                {
+                    paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)syncedMarkType, markValue = syncedMarkValue };
+                }
+                else
+                {
+                    paintController.CurrentPaintMark.markValue = syncedMarkValue;
+                }
+
+                for (int i = 0; i < paintController.PaintValues.Count; i++)
+                {
+                    paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+                }
+            }
         }
     }
 }
