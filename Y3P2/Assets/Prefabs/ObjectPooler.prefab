@@ -47,18 +47,13 @@ MonoBehaviour:
   - poolName: PaintImpact
     poolPrefab: {fileID: 1824224075707167627, guid: 08fb72605ac01334197f462e0b3d2a0c,
       type: 3}
-    poolSize: 50
+    poolSize: 250
     autoExpand: 1
   - poolName: Notification
     poolPrefab: {fileID: 4416506912745935077, guid: 8f434ee21cfbc7d488a82a6cc67bf47e,
       type: 3}
     poolSize: 10
     autoExpand: 1
-  - poolName: PaintDecal
-    poolPrefab: {fileID: 73474177003812958, guid: e17ea91f90ca8084eb23fcd52ee08082,
-      type: 3}
-    poolSize: 250
-    autoExpand: 0
   - poolName: MarkCaptureExplosion
     poolPrefab: {fileID: 7791307342497338019, guid: 825d021c45fd28940b36b1115bfcd3a3,
       type: 3}
