@@ -37,10 +37,10 @@ public class WeaponSlot : EquipmentSlot
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            photonView.RPC("DebugSyncShoot", RpcTarget.All);
-        }
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    photonView.RPC("DebugSyncShoot", RpcTarget.All);
+        //}
 
         if (CanUseWeapon())
         {

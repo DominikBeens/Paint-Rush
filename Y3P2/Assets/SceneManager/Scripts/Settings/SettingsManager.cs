@@ -88,7 +88,9 @@ namespace DB.MenuPack
                 "On"
             };
             dropdown_VSync.AddOptions(vSyncOptions);
-            dropdown_VSync.value = QualitySettings.vSyncCount;
+            dropdown_VSync.value = 0;
+
+            QualitySettings.vSyncCount = 0;
 
             dropdown_VSync.onValueChanged.AddListener((int i) => QualitySettings.vSyncCount = i);
         }

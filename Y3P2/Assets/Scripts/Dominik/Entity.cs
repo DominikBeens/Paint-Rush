@@ -183,7 +183,6 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
                     else
                     {
                         paintController.SetMarkValue(syncedMarkValue);
-                        //paintController.CurrentPaintMark.markValue = syncedMarkValue;
                     }
                 }
                 else
@@ -197,7 +196,6 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
                 for (int i = 0; i < paintController.PaintValues.Count; i++)
                 {
                     syncedPaintValues.Insert(i, (float)stream.ReceiveNext());
-                    //syncedPaintValues[i] = (float)stream.ReceiveNext();
                 }
                 paintController.SetRawValues(syncedPaintValues);
             }

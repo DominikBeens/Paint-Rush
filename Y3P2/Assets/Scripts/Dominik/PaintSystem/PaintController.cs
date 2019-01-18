@@ -117,7 +117,6 @@ public class PaintController
                     if (paintValues[i].paintValue == 100)
                     {
                         myEntity.photonView.RPC("PaintFilled", RpcTarget.All, (int)color, attackerID);
-                        //PaintFilled(paintValues[i].paintType, attackerID);
                     }
                     return;
                 }
@@ -225,44 +224,24 @@ public class PaintController
         }
     }
 
-    //public void SetRawValues(List<float> values)
-    //{
-    //    for (int i = 0; i < paintValues.Count; i++)
-    //    {
-    //        SetRawValue(i, paintValues[i].paintType, values[i]);
-    //    }
-    //}
-
-    //private void SetRawValue(int paintTypeIndex, PaintType paintType, float value)
-    //{
-    //    if (paintValues[paintTypeIndex].paintType == paintType)
-    //    {
-    //        float difference = Mathf.Abs(paintValues[paintTypeIndex].paintValue - value);
-
-    //        if (difference != 0)
-    //        {
-    //            paintValues[paintTypeIndex].paintValue += difference;
-    //            paintValues[paintTypeIndex].paintValue = Mathf.Clamp(paintValues[paintTypeIndex].paintValue, 0, 100);
-
-    //            OnPaintValueModified(paintType, difference);
-    //        }
-    //    }
-    //}
-
     public void PaintFilled(int paintType, int attackerID)
     {
         PaintType paint = (PaintType)paintType;
         ResetPaint(paint);
         ObjectPooler.instance.GrabFromPool("TeleportParticle", myEntity.transform.position, myEntity.transform.rotation);
 
+        // I'm the attacker.
         if (attackerID == PlayerManager.instance.photonView.ViewID)
         {
+            // This is my entity. I killed myself.
             if (myEntity == PlayerManager.instance.entity)
             {
                 NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has killed himself!");
             }
+            // This not my entity.
             else
             {
+                // I don't have a mark, give me one.
                 if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
                 {
                     PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = paint, markValue = 100 };
@@ -273,8 +252,10 @@ public class PaintController
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.Kills);
             }
         }
+        // I'm not the attacker.
         else
         {
+            // Find that attacker and give him a mark.
             PhotonView pv = PhotonView.Find(attackerID);
             if (pv)
             {
@@ -286,6 +267,7 @@ public class PaintController
             }
         }
 
+        // If this is my entity whos paint bar got filled. Die.
         if (myEntity == PlayerManager.instance.entity)
         {
             GameManager.CurrentGameSate = GameManager.GameState.Respawning;
