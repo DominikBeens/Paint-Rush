@@ -93,14 +93,14 @@ public class PaintController
 
     public void ModifyPaint(PaintType color, float amount, int attackerID)
     {
-        //if (myPlayerManager && myPlayerManager.PlayerState != GameManager.GameState.Playing && attackerID != PlayerManager.instance.photonView.ViewID)
-        //{
-        //    return;
-        //}
-
         if (myEntity == PlayerManager.instance.entity && amount > 0)
         {
             UIManager.instance.ScreenHitEffect(GetPaintColor(color));
+        }
+
+        if (!myEntity.photonView.IsMine)
+        {
+            return;
         }
 
         if (CurrentPaintMark == null)
@@ -116,7 +116,8 @@ public class PaintController
 
                     if (paintValues[i].paintValue == 100)
                     {
-                        PaintFilled(paintValues[i].paintType, attackerID);
+                        myEntity.photonView.RPC("PaintFilled", RpcTarget.All, (int)color, attackerID);
+                        //PaintFilled(paintValues[i].paintType, attackerID);
                     }
                     return;
                 }
@@ -202,16 +203,56 @@ public class PaintController
         {
             difference = Mathf.Abs(paintValues[i].paintValue - values[i]);
 
-            paintValues[i].paintValue += difference;
-            paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
+            if (difference != 0)
+            {
+                paintValues[i].paintValue += difference;
+                paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
 
-            OnPaintValueModified(paintValues[i].paintType, difference);
+                OnPaintValueModified(paintValues[i].paintType, difference);
+            }
         }
     }
 
-    private void PaintFilled(PaintType color, int attackerID)
+    public void SetMarkValue(float amount)
     {
-        ResetPaint(color);
+        float difference = Mathf.Abs(CurrentPaintMark.markValue - amount);
+
+        if (difference != 0)
+        {
+            CurrentPaintMark.markValue -= difference;
+            CurrentPaintMark.markValue = Mathf.Clamp(CurrentPaintMark.markValue, 0, 100);
+            OnPaintValueModified(CurrentPaintMark.markType, difference);
+        }
+    }
+
+    //public void SetRawValues(List<float> values)
+    //{
+    //    for (int i = 0; i < paintValues.Count; i++)
+    //    {
+    //        SetRawValue(i, paintValues[i].paintType, values[i]);
+    //    }
+    //}
+
+    //private void SetRawValue(int paintTypeIndex, PaintType paintType, float value)
+    //{
+    //    if (paintValues[paintTypeIndex].paintType == paintType)
+    //    {
+    //        float difference = Mathf.Abs(paintValues[paintTypeIndex].paintValue - value);
+
+    //        if (difference != 0)
+    //        {
+    //            paintValues[paintTypeIndex].paintValue += difference;
+    //            paintValues[paintTypeIndex].paintValue = Mathf.Clamp(paintValues[paintTypeIndex].paintValue, 0, 100);
+
+    //            OnPaintValueModified(paintType, difference);
+    //        }
+    //    }
+    //}
+
+    public void PaintFilled(int paintType, int attackerID)
+    {
+        PaintType paint = (PaintType)paintType;
+        ResetPaint(paint);
         ObjectPooler.instance.GrabFromPool("TeleportParticle", myEntity.transform.position, myEntity.transform.rotation);
 
         if (attackerID == PlayerManager.instance.photonView.ViewID)
@@ -224,7 +265,7 @@ public class PaintController
             {
                 if (PlayerManager.instance.entity.paintController.CurrentPaintMark == null)
                 {
-                    PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
+                    PlayerManager.instance.entity.paintController.CurrentPaintMark = new PaintMark { markType = paint, markValue = 100 };
                     NotificationManager.instance.NewNotification("<color=#" + GameManager.personalColorString + "> " + PhotonNetwork.NickName + "</color> has claimed a mark!", NotificationManager.NotificationType.MarkGained);
                     SaveManager.instance.SaveStat(SaveManager.SavedStat.MarksGained);
                 }
@@ -240,7 +281,7 @@ public class PaintController
                 PlayerManager playerManager = pv.GetComponent<PlayerManager>();
                 if (playerManager && playerManager.entity.paintController.CurrentPaintMark == null)
                 {
-                    playerManager.entity.paintController.CurrentPaintMark = new PaintMark { markType = color, markValue = 100 };
+                    playerManager.entity.paintController.CurrentPaintMark = new PaintMark { markType = paint, markValue = 100 };
                 }
             }
         }
@@ -251,7 +292,7 @@ public class PaintController
         }
     }
 
-    private void MarkDestroyed()
+    public void MarkDestroyed()
     {
         CurrentPaintMark = null;
 

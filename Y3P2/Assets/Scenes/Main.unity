@@ -15632,16 +15632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchEndView
       objectReference: {fileID: 0}
-    - target: {fileID: 1149274320113621733, guid: e13d764a402aa504fbdfd72a3a25e04d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565270917012663275, guid: e13d764a402aa504fbdfd72a3a25e04d,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 127799
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13d764a402aa504fbdfd72a3a25e04d, type: 3}
 --- !u!1001 &73891873
@@ -33526,12 +33516,12 @@ PrefabInstance:
     - target: {fileID: 4751536089312003189, guid: beea372b6b487cf4f9cacccd431d1456,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0004043579
+      value: 0.00051116943
       objectReference: {fileID: 0}
     - target: {fileID: 7770440121757466618, guid: beea372b6b487cf4f9cacccd431d1456,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0002746582
+      value: -0.00036621094
       objectReference: {fileID: 0}
     - target: {fileID: 7692867466553451461, guid: beea372b6b487cf4f9cacccd431d1456,
         type: 3}

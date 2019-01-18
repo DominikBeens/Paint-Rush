@@ -7,6 +7,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     private PlayerManager myPlayerManager;
+    private List<float> syncedPaintValues = new List<float>();
 
     //[SerializeField] private int entityID;
     public enum EntityType { Humanoid, Prop, TestDummy };
@@ -26,10 +27,10 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         myPlayerManager = transform.root.GetComponent<PlayerManager>();
         paintController.Initialise(this);
 
-        if (photonView && !photonView.IsMine)
-        {
-            photonView.RPC("SendUpdates", RpcTarget.Others);
-        }
+        //if (photonView && !photonView.IsMine)
+        //{
+        //    photonView.RPC("SendUpdates", RpcTarget.Others);
+        //}
     }
 
     public void Hit(int paintColor, float amount)
@@ -90,6 +91,12 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
+    private void PaintFilled(int paintType, int attackerID)
+    {
+        paintController.PaintFilled(paintType, attackerID);
+    }
+
+    [PunRPC]
     private void SendUpdates()
     {
         if (photonView.IsMine)
@@ -145,13 +152,13 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (photonView.IsMine)
             {
+                stream.SendNext(paintController.CurrentPaintMark != null);
+
                 if (paintController.CurrentPaintMark != null)
                 {
                     stream.SendNext((int)paintController.CurrentPaintMark.markType);
                     stream.SendNext(paintController.CurrentPaintMark.markValue);
                 }
-
-                stream.SendNext(paintController.CurrentPaintMark != null);
 
                 for (int i = 0; i < paintController.PaintValues.Count; i++)
                 {
@@ -163,23 +170,36 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (!photonView.IsMine)
             {
-                int syncedMarkType = (int)stream.ReceiveNext();
-                float syncedMarkValue = (float)stream.ReceiveNext();
-
                 bool hasMark = (bool)stream.ReceiveNext();
-                if (paintController.CurrentPaintMark == null && hasMark)
+                if (hasMark)
                 {
-                    paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)syncedMarkType, markValue = syncedMarkValue };
+                    int syncedMarkType = (int)stream.ReceiveNext();
+                    float syncedMarkValue = (float)stream.ReceiveNext();
+
+                    if (paintController.CurrentPaintMark == null)
+                    {
+                        paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)syncedMarkType, markValue = syncedMarkValue };
+                    }
+                    else
+                    {
+                        paintController.SetMarkValue(syncedMarkValue);
+                        //paintController.CurrentPaintMark.markValue = syncedMarkValue;
+                    }
                 }
                 else
                 {
-                    paintController.CurrentPaintMark.markValue = syncedMarkValue;
+                    if (paintController.CurrentPaintMark != null)
+                    {
+                        paintController.MarkDestroyed();
+                    }
                 }
 
                 for (int i = 0; i < paintController.PaintValues.Count; i++)
                 {
-                    paintController.PaintValues[i].paintValue = (float)stream.ReceiveNext();
+                    syncedPaintValues.Insert(i, (float)stream.ReceiveNext());
+                    //syncedPaintValues[i] = (float)stream.ReceiveNext();
                 }
+                paintController.SetRawValues(syncedPaintValues);
             }
         }
     }

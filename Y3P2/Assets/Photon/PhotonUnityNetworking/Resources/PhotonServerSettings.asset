@@ -82,4 +82,6 @@ MonoBehaviour:
   - BecomePepe
   - ShuffleCapturePoint
   - SetSkinIndex
+  - DebugSyncShoot
+  - PaintFilled
   DisableAutoOpenWizard: 1

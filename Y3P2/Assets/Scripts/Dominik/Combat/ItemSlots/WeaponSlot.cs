@@ -39,7 +39,7 @@ public class WeaponSlot : EquipmentSlot
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            OnFireWeapon();
+            photonView.RPC("DebugSyncShoot", RpcTarget.All);
         }
 
         if (CanUseWeapon())
@@ -49,6 +49,12 @@ public class WeaponSlot : EquipmentSlot
 
         HandleMousePaintSwitching();
         HandleKeyPaintSwitching();
+    }
+
+    [PunRPC]
+    private void DebugSyncShoot()
+    {
+        OnFireWeapon();
     }
 
     private void HandleFiring()

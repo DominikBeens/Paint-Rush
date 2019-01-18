@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         get
         {
-            return instance.gameTimeState;
+            return instance ? instance.gameTimeState : GameTimeState.WaitingForPlayers;
         }
         private set
         {
