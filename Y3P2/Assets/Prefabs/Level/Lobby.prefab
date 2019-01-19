@@ -757,6 +757,7 @@ Transform:
   - {fileID: 382294808492855498}
   - {fileID: 6561860442917745348}
   - {fileID: 4040840271984561248}
+  - {fileID: 4095957952422436620}
   m_Father: {fileID: 8190029194038049460}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6520,6 +6521,12 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!4 &4095957952422436620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7287825429733089283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4040840271984561248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
@@ -12807,8 +12814,132 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6752918516704857293, guid: a9ca003804f420e4dba5f7ac0d68c156,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.69
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ca003804f420e4dba5f7ac0d68c156, type: 3}
+--- !u!1001 &7287825429733089283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  m_Modification:
+    m_TransformParent: {fileID: 3891191716957933612}
+    m_Modifications:
+    - target: {fileID: 4774394833188841020, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_Name
+      value: SpectateButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059944270007279307, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1115912824334563814, guid: 437ba519886b3b24dbc66b87e21e1783,
+        type: 3}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620715707566407775, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52392ddbaec068943b8c93ad9b74ba6f, type: 2}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059944270007279307, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SpawnSpectatorDrone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_text
+      value: Spectate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746061038345448381, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282584815998805771, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.88716006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.92387944
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.38268372
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 135
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3a01426dffcd26458865f2904c1216e, type: 3}
 --- !u!1001 &7343040314160214895
 PrefabInstance:
   m_ObjectHideFlags: 0
