@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capturePointID: 0
-  captureDuration: 5
+  captureDuration: 4
   catureCanvas: {fileID: 7949430077531394031}
   captureProgressFill: {fileID: 3798274663466787673}
   capturePercentageText: {fileID: 2871939954018123988}

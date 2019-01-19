@@ -115,7 +115,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     private void ReceiveUpdates(float val1, float val2, float val3, float val4, int markType, float markValue)
     {
         List<float> values = new List<float> { val1, val2, val3, val4 };
-        paintController.SetRawValues(values);
+        paintController.SyncPaintValues(values);
 
         if (markType != -1)
         {
@@ -182,7 +182,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
                     }
                     else
                     {
-                        paintController.SetMarkValue(syncedMarkValue);
+                        paintController.SyncMarkValue(syncedMarkValue);
                     }
                 }
                 else
@@ -197,7 +197,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     syncedPaintValues.Insert(i, (float)stream.ReceiveNext());
                 }
-                paintController.SetRawValues(syncedPaintValues);
+                paintController.SyncPaintValues(syncedPaintValues);
             }
         }
     }

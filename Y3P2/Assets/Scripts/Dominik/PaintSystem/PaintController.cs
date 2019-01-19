@@ -194,17 +194,15 @@ public class PaintController
         return string.Join(" <=> ", values);
     }
 
-    // Used for syncing paint values when new players join.
-    public void SetRawValues(List<float> values)
+    public void SyncPaintValues(List<float> values)
     {
-        float difference;
         for (int i = 0; i < paintValues.Count; i++)
         {
-            difference = Mathf.Abs(paintValues[i].paintValue - values[i]);
+            float difference = values[i] - paintValues[i].paintValue;
 
             if (difference != 0)
             {
-                paintValues[i].paintValue += difference;
+                paintValues[i].paintValue = values[i];
                 paintValues[i].paintValue = Mathf.Clamp(paintValues[i].paintValue, 0, 100);
 
                 OnPaintValueModified(paintValues[i].paintType, difference);
@@ -212,13 +210,13 @@ public class PaintController
         }
     }
 
-    public void SetMarkValue(float amount)
+    public void SyncMarkValue(float amount)
     {
-        float difference = Mathf.Abs(CurrentPaintMark.markValue - amount);
+        float difference = amount - CurrentPaintMark.markValue;
 
         if (difference != 0)
         {
-            CurrentPaintMark.markValue -= difference;
+            CurrentPaintMark.markValue = amount;
             CurrentPaintMark.markValue = Mathf.Clamp(CurrentPaintMark.markValue, 0, 100);
             OnPaintValueModified(CurrentPaintMark.markType, difference);
         }
