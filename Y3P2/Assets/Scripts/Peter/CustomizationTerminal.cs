@@ -173,7 +173,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         waitingEmote = true;
         previewCharacterAnimator.Play(pcontroller.NormalEmote.name, 0);
       //  yield return new WaitForSeconds(previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).length);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5F);
         previewCharacterAnimator.Play("Locomotion", 0);
         waitingEmote = false;
 

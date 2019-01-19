@@ -179,7 +179,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         waitingEmote = true;
         //yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length); Animations are too long for this right now
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5F);
         anim.SetBool("Emote", false);
         waitingEmote = false;
     }
