@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 {
 
+    private Rigidbody rb;
     private PlayerManager myPlayerManager;
     private List<float> syncedPaintValues = new List<float>();
 
@@ -24,6 +25,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Awake()
     {
+        rb = GetComponentInChildren<Rigidbody>();
         myPlayerManager = transform.root.GetComponent<PlayerManager>();
         paintController.Initialise(this);
 
@@ -128,6 +130,16 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         paintController.MarkCaptured();
         ObjectPooler.instance.GrabFromPool("MarkCaptureExplosion", capturePoint, Quaternion.identity);
+    }
+
+    [PunRPC]
+    private void KnockBack(Vector3 direction, float force)
+    {
+        if (rb)
+        {
+            rb.AddForce(direction * force, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * (0.5f * force), ForceMode.Impulse);
+        }
     }
 
     public void DestroyEntity()
