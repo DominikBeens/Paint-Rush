@@ -546,7 +546,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dab
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -810,7 +810,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: insult
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -994,7 +994,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wave
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -1158,13 +1158,13 @@ AnimatorStateMachine:
     m_Position: {x: 221, y: 755, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102740354332816906}
-    m_Position: {x: -264, y: 204, z: 0}
+    m_Position: {x: -252, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102583399933795702}
-    m_Position: {x: -264, y: 252, z: 0}
+    m_Position: {x: -252, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102081582587938652}
-    m_Position: {x: -264, y: 300, z: 0}
+    m_Position: {x: -252, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
