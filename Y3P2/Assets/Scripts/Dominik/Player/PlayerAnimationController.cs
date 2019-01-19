@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerAnimationController : MonoBehaviour
 {
@@ -9,7 +11,11 @@ public class PlayerAnimationController : MonoBehaviour
     private AnimationClip winEmote;
     public AnimationClip WinEmote { get { return winEmote; } }
 
+    private AnimationClip normalEmote;
+    public AnimationClip NormalEmote { get { return normalEmote; } }
+
     private int emoteIndex;
+    private int normalEmoteIndex;
 
     [Header("Arm Sway")]
     [SerializeField] private bool sway = true;
@@ -20,6 +26,8 @@ public class PlayerAnimationController : MonoBehaviour
     private float horizontalSway;
     private float verticalSway;
     private float lean;
+
+    private bool waitingEmote;
 
     private void Awake()
     {
@@ -85,7 +93,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Input.GetKeyDown("l")) ////////////////////////////////////////////////////////////////////////////////////////////PLACEHOLDER RIGHT HERE
         {
-            ToggleWinEmote(anim.GetCurrentAnimatorStateInfo(0).IsName("Emote") ? false : true);
+            PlayNormalEmote();
         }
     }
 
@@ -121,6 +129,15 @@ public class PlayerAnimationController : MonoBehaviour
         emoteIndex = index;
     }
 
+    public void SetEmote(int index, CustomizationTerminal terminal)
+    {
+        int i = index + terminal.Emotes.Count;
+
+
+        normalEmote = terminal.NormalEmotes[index];
+        normalEmoteIndex = i;
+    }
+
     public void ToggleWinEmote(bool toggle)
     {
         if (toggle)
@@ -140,6 +157,31 @@ public class PlayerAnimationController : MonoBehaviour
                 anim.SetBool("Emote", false);
             }
         }
+    }
+
+    public void PlayNormalEmote()
+    {
+       
+            if (normalEmote != null && !anim.GetCurrentAnimatorStateInfo(0).IsName("Emote"))
+            {
+                //anim.Play(winEmote.name, 0);
+                anim.SetBool("Emote", true);
+                anim.SetFloat("EmoteIndex", normalEmoteIndex);
+                if (!waitingEmote)
+                {
+                    StartCoroutine(ResetEmote());
+                }
+            }
+      
+    }
+
+    private IEnumerator ResetEmote()
+    {
+        waitingEmote = true;
+        //yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length); Animations are too long for this right now
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Emote", false);
+        waitingEmote = false;
     }
 
     private void OnDisable()

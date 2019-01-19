@@ -20,6 +20,10 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     public List<AnimationClip> Emotes { get { return emotes; } }
 
     [SerializeField]
+    private List<AnimationClip> normalEmotes = new List<AnimationClip>();
+    public List<AnimationClip> NormalEmotes { get { return normalEmotes; } }
+
+    [SerializeField]
     private List<AudioClip> music = new List<AudioClip>();
     public List<AudioClip> Music { get { return music; } }
 
@@ -52,6 +56,8 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     [SerializeField]
     private Material secretSkin;
     public Material SecretSkin { get { return secretSkin; } }
+    
+    private bool waitingEmote = false;
 
     private string secretCode;
     private void Start()
@@ -65,6 +71,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
         SetVictoryEmote(0);
         SetVictoryMusic(0);
+        SetEmote(0);
 
         terminalAudioSource.clip = paudio.WinMusic;
         audioVisualizer.SetActive(false);
@@ -151,6 +158,27 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         }
     }
 
+    public void SetEmote(int index)
+    {
+        pcontroller.SetEmote(index, this);
+
+        if (!waitingEmote)
+        {
+            StartCoroutine(ResetEmote());
+        }
+    }
+
+    private IEnumerator ResetEmote()
+    {
+        waitingEmote = true;
+        previewCharacterAnimator.Play(pcontroller.NormalEmote.name, 0);
+      //  yield return new WaitForSeconds(previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(1);
+        previewCharacterAnimator.Play("Locomotion", 0);
+        waitingEmote = false;
+
+    }
+
     public void SetVictoryMusic(int index)
     {
         paudio.SetWinMusic(music[index], index);
@@ -164,14 +192,18 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     public void PreviewEmote()
     {
-        if(previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
+        if (!waitingEmote)
         {
-            previewCharacterAnimator.Play(pcontroller.WinEmote.name, 0);
+            if (previewCharacterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
+            {
+                previewCharacterAnimator.Play(pcontroller.WinEmote.name, 0);
+            }
+            else
+            {
+                previewCharacterAnimator.Play("Locomotion", 0);
+            }
         }
-        else
-        {
-            previewCharacterAnimator.Play("Locomotion", 0);
-        }
+       
     }
 
     public void PreviewMusic()
