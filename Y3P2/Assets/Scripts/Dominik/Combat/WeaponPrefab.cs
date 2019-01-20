@@ -21,7 +21,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
             mainCam = Camera.main;
 
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
-            WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
             initialisedEvents = true;
         }
         else
@@ -53,7 +52,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         if (!initialisedEvents && photonView.IsMine)
         {
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
-            WeaponSlot.OnEquipWeapon += WeaponSlot_OnEquipWeapon;
             initialisedEvents = true;
         }
     }
@@ -145,19 +143,17 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         photonView.RPC("SpawnEffects", RpcTarget.All, false, false, Vector3.zero, Quaternion.identity, Quaternion.identity, (int)WeaponSlot.currentPaintType);
     }
 
-    private void WeaponSlot_OnEquipWeapon(Weapon weapon)
-    {
-
-    }
-
     [PunRPC]
     private void SpawnEffects(bool paintImpactParticle, bool paintDecal, Vector3 hitPosition, Quaternion decalRot, Quaternion paintImpactRot, int paintType)
     {
         paintMuzzleFlashParticle.Initialise(PlayerManager.instance.entity.paintController.GetPaintColor((PaintController.PaintType)paintType));
         muzzleFlashParticle.Play();
 
-        AudioController audioController = ObjectPooler.instance.GrabFromPool("Audio_GunFire", transform.position, Quaternion.identity).GetComponent<AudioController>();
-        audioController.Play(transform);
+        if (!photonView.IsMine)
+        {
+            AudioController audioController = ObjectPooler.instance.GrabFromPool("Audio_GunFire", transform.position, Quaternion.identity).GetComponent<AudioController>();
+            audioController.Play(transform);
+        }
 
         if (paintImpactParticle)
         {
@@ -194,7 +190,6 @@ public class WeaponPrefab : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
-            WeaponSlot.OnEquipWeapon -= WeaponSlot_OnEquipWeapon;
             initialisedEvents = false;
         }
     }

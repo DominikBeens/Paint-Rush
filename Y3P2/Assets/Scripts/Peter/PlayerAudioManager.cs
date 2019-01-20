@@ -20,8 +20,8 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
     [System.Serializable]
     public struct PlayableClip
     {
-        public AudioClip clip;
         public string trigger;
+        public AudioClip clip;
     }
 
 	private void Awake ()
@@ -30,6 +30,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         source = GetComponent<AudioSource>();
         source.loop = true;
 
+        WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
 	}
 
@@ -56,6 +57,12 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         source.loop = false;
         source.clip = clip;
         source.Play();
+    }
+
+    private void WeaponSlot_OnFireWeapon()
+    {
+        AudioController audioController = ObjectPooler.instance.GrabFromPool("Audio_GunFire", transform.position, Quaternion.identity).GetComponent<AudioController>();
+        audioController.Play(transform);
     }
 
     private void WeaponSlot_OnChangeAmmoType(Color color)
@@ -99,6 +106,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
 
     public override void OnDisable()
     {
+        WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
     }
 }

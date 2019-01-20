@@ -44,7 +44,7 @@ public class AudioController : MonoBehaviour
     }
 
 
-    private void Update()
+    private void LateUpdate()
     {
         if (target)
         {
