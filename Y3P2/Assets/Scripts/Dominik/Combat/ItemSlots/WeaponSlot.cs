@@ -37,11 +37,6 @@ public class WeaponSlot : EquipmentSlot
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    photonView.RPC("DebugSyncShoot", RpcTarget.All);
-        //}
-
         if (CanUseWeapon())
         {
             HandleFiring();
@@ -49,12 +44,6 @@ public class WeaponSlot : EquipmentSlot
 
         HandleMousePaintSwitching();
         HandleKeyPaintSwitching();
-    }
-
-    [PunRPC]
-    private void DebugSyncShoot()
-    {
-        OnFireWeapon();
     }
 
     private void HandleFiring()
@@ -127,7 +116,8 @@ public class WeaponSlot : EquipmentSlot
             GameManager.CurrentGameSate != GameManager.GameState.Respawning && 
             !gamePaused && 
             TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending &&
-            !CustomizationTerminal.customizing;
+            !CustomizationTerminal.customizing &&
+            !SpectatorManager.spectating;
     }
 
     public void HitEntity()

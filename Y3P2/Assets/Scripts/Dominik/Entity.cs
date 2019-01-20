@@ -10,7 +10,6 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     private PlayerManager myPlayerManager;
     private List<float> syncedPaintValues = new List<float>();
 
-    //[SerializeField] private int entityID;
     public enum EntityType { Humanoid, Prop, TestDummy };
     [SerializeField] private EntityType entityType;
 
@@ -142,14 +141,6 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    public void DestroyEntity()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Destroy(transform.root.gameObject);
-        }
-    }
-
     public override void OnDisable()
     {
         if (photonView.IsMine)
@@ -188,21 +179,11 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
                     int syncedMarkType = (int)stream.ReceiveNext();
                     float syncedMarkValue = (float)stream.ReceiveNext();
 
-                    if (paintController.CurrentPaintMark == null)
-                    {
-                        paintController.CurrentPaintMark = new PaintController.PaintMark { markType = (PaintController.PaintType)syncedMarkType, markValue = syncedMarkValue };
-                    }
-                    else
-                    {
-                        paintController.SyncMarkValue(syncedMarkValue);
-                    }
+                    paintController.SyncMark(hasMark, syncedMarkType, syncedMarkValue);
                 }
                 else
                 {
-                    if (paintController.CurrentPaintMark != null)
-                    {
-                        paintController.MarkDestroyed();
-                    }
+                    paintController.SyncMark(hasMark);
                 }
 
                 for (int i = 0; i < paintController.PaintValues.Count; i++)

@@ -75,22 +75,8 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         }
 
-        WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
-        WeaponSlot.OnHitEntity += WeaponSlot_OnHit;
-
-        DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
-        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
-        TimeManager.OnGameTimeStateChanged += TimeManager_OnGameTimeStateChanged;
-        PortalTeleporter.OnUsePortal += PortalTeleporter_OnUsePortal;
-
-        ToggleLeaderboardAndStats(false);
-
-        markObject.SetActive(false);
-        markParticles = markObject.GetComponentsInChildren<ParticleSystem>();
-
-        hitPlayerPanel.SetActive(false);
-
-        ToggleGameTechStatsCanvas(DB.MenuPack.Setting_GameStatsDisplay.settingValue);
+        SetupEvents();
+        SetupUI();
     }
 
     public void Initialise(Color crosshairColor)
@@ -102,6 +88,38 @@ public class UIManager : MonoBehaviour
         PlayerManager.instance.entity.paintController.OnPaintValueModified += PaintController_OnPaintValueModified;
 
         SetupPaintValuesUI();
+    }
+
+    private void Update()
+    {
+        HandleTargetedPlayerPanel();
+        HandleLeaderboardAndStatsPanel();
+
+        fpsCounter.Update();
+        ShowGameTechStats();
+    }
+
+    private void SetupEvents()
+    {
+        WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
+        WeaponSlot.OnHitEntity += WeaponSlot_OnHit;
+
+        DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        TimeManager.OnEndMatch += TimeManager_OnEndMatch;
+        PortalTeleporter.OnUsePortal += PortalTeleporter_OnUsePortal;
+    }
+
+    private void SetupUI()
+    {
+        ToggleLeaderboardAndStats(false);
+
+        markObject.SetActive(false);
+        markParticles = markObject.GetComponentsInChildren<ParticleSystem>();
+
+        hitPlayerPanel.SetActive(false);
+
+        ToggleGameTechStatsCanvas(DB.MenuPack.Setting_GameStatsDisplay.settingValue);
     }
 
     public IEnumerator ShowJumpCooldownIcon(float cooldown)
@@ -134,16 +152,8 @@ public class UIManager : MonoBehaviour
 
     public void SetPickUpImage(Sprite pickUpSprite, bool afterUse)
     {
-        if (!afterUse)
-        {
-            pickUpImage.sprite = pickUpSprite;
-            pickUpImage.color = new Color(pickUpImage.color.r, pickUpImage.color.g, pickUpImage.color.b, 1);
-        }
-        else
-        {
-            pickUpImage.sprite = null;
-            pickUpImage.color = new Color(pickUpImage.color.r, pickUpImage.color.g, pickUpImage.color.b, 0);
-        }
+        pickUpImage.sprite = !afterUse ? pickUpSprite : null;
+        pickUpImage.color = new Color(pickUpImage.color.r, pickUpImage.color.g, pickUpImage.color.b, !afterUse ? 1 : 0);
     }
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
@@ -171,7 +181,10 @@ public class UIManager : MonoBehaviour
         {
             case GameManager.GameState.Lobby:
 
-                ToggleCrosshair(!b);
+                if (!SpectatorManager.spectating)
+                {
+                    ToggleCrosshair(!b);
+                }
                 break;
             case GameManager.GameState.Playing:
 
@@ -180,23 +193,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void TimeManager_OnGameTimeStateChanged(TimeManager.GameTimeState newState)
+    private void TimeManager_OnEndMatch()
     {
-        switch (newState)
+        if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
         {
-            case TimeManager.GameTimeState.Ending:
-                ToggleCrosshair(false);
-                break;
+            ToggleCrosshair(false);
         }
-    }
-
-    private void Update()
-    {
-        HandleTargetedPlayerPanel();
-        HandleLeaderboardAndStatsPanel();
-
-        fpsCounter.Update();
-        ShowGameTechStats();
     }
 
     private void HandleTargetedPlayerPanel()
@@ -407,7 +409,7 @@ public class UIManager : MonoBehaviour
 
         DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
         GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-        TimeManager.OnGameTimeStateChanged -= TimeManager_OnGameTimeStateChanged;
+        TimeManager.OnEndMatch -= TimeManager_OnEndMatch;
         PortalTeleporter.OnUsePortal -= PortalTeleporter_OnUsePortal;
 
         PlayerManager.instance.entity.paintController.OnPaintMarkActivated -= PaintController_OnPaintMarkActivated;

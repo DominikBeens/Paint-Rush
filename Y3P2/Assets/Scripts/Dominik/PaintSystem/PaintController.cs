@@ -210,7 +210,29 @@ public class PaintController
         }
     }
 
-    public void SyncMarkValue(float amount)
+    public void SyncMark(bool hasMark, int markType = 0, float markValue = 0)
+    {
+        if (hasMark)
+        {
+            if (CurrentPaintMark == null)
+            {
+                CurrentPaintMark = new PaintMark { markType = (PaintType)markType, markValue = markValue };
+            }
+            else
+            {
+                SyncMarkValue(markValue);
+            }
+        }
+        else
+        {
+            if (CurrentPaintMark != null)
+            {
+                MarkDestroyed();
+            }
+        }
+    }
+
+    private void SyncMarkValue(float amount)
     {
         float difference = amount - CurrentPaintMark.markValue;
 
@@ -272,7 +294,7 @@ public class PaintController
         }
     }
 
-    public void MarkDestroyed()
+    private void MarkDestroyed()
     {
         CurrentPaintMark = null;
 

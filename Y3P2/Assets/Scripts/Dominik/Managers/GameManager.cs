@@ -106,13 +106,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // Used in UnityEvents like in CollisionEventZone.cs
-    public void SetGameState(int newState)
-    {
-        CurrentGameSate = (GameState)newState;
-    }
-
-    public Transform GetRandomSpawn()
+    public Transform GetRandomArenaSpawn()
     {
         return playerSpawnPoints[UnityEngine.Random.Range(0, playerSpawnPoints.Count)];
     }

@@ -112,7 +112,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 break;
             case GameManager.GameState.Playing:
 
-                Transform randomSpawn = GameManager.instance.GetRandomSpawn();
+                Transform randomSpawn = GameManager.instance.GetRandomArenaSpawn();
                 Teleport(randomSpawn.position);
                 transform.rotation = randomSpawn.rotation;
                 playerController.enabled = true;
@@ -158,7 +158,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Respawn()
     {
-        Transform randomSpawn = GameManager.instance.GetRandomSpawn();
+        Transform randomSpawn = GameManager.instance.GetRandomArenaSpawn();
         transform.position = randomSpawn.position;
         transform.rotation = randomSpawn.rotation;
     }

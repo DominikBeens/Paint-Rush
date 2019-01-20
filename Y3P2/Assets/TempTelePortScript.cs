@@ -11,7 +11,7 @@ public class TempTelePortScript : MonoBehaviour {
         {
             if (other.GetComponent<PhotonView>().IsMine)
             {
-                GameManager.instance.SetGameState(1);
+                GameManager.CurrentGameSate = GameManager.GameState.Playing;
             }
         }
     }
