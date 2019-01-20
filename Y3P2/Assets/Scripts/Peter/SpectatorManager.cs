@@ -9,6 +9,7 @@ public class SpectatorManager : MonoBehaviourPunCallbacks {
 
     [SerializeField]
     private GameObject spectatorDronePrefab;
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,11 +26,14 @@ public class SpectatorManager : MonoBehaviourPunCallbacks {
 
     public void SpawnSpectatorDrone()
     {
-
-        GameObject g =  PhotonNetwork.Instantiate(spectatorDronePrefab.name, new Vector3(-15, 60, 70), Quaternion.identity, 0);
-        spectating = true;
-        UIManager.instance.ToggleCrosshair(false);
+      
+            GameObject g = PhotonNetwork.Instantiate(spectatorDronePrefab.name, new Vector3(-15, 60, 70), Quaternion.identity, 0);
+            g.GetComponent<SpectateDrone>().DisableCam();
+            spectating = true;
+            UIManager.instance.ToggleCrosshair(false);
+     
     }
 
+   
 
 }

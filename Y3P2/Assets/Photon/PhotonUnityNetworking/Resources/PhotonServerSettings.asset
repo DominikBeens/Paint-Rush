@@ -85,4 +85,5 @@ MonoBehaviour:
   - DebugSyncShoot
   - PaintFilled
   - KnockBack
+  - DisableCamOthers
   DisableAutoOpenWizard: 1

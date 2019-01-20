@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class SpectateDrone : MonoBehaviour {
+public class SpectateDrone : MonoBehaviourPunCallbacks {
     [SerializeField]
     private float moveSpeed = 20;
 
@@ -45,5 +45,16 @@ public class SpectateDrone : MonoBehaviour {
             }
         }
            
+    }
+
+    public void DisableCam()
+    {
+        photonView.RPC("DisableCamOthers", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void DisableCamOthers()
+    {
+        GetComponentInChildren<Camera>().enabled = false;
     }
 }
