@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing && !SpectatorManager.spectating)
+        if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
         {
             Movement();
         }
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && canJump && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing && !SpectatorManager.spectating)
+        if (Input.GetButtonDown("Jump") && canJump && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
         {
             if (sliding)
             {
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
             JumpJet();
         }
 
-        if (Input.GetButton("Jump") && !grounded && !sliding && !CustomizationTerminal.customizing && !SpectatorManager.spectating)
+        if (Input.GetButton("Jump") && !grounded && !sliding && !CustomizationTerminal.customizing)
         {
             WallRun();
         }
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing && !SpectatorManager.spectating)
+            if (!sliding && TimeManager.CurrentGameTimeState != TimeManager.GameTimeState.Ending && !CustomizationTerminal.customizing)
             {
                 Slide();
             }
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!CustomizationTerminal.customizing && !SpectatorManager.spectating)
+        if(!CustomizationTerminal.customizing)
         {
             CameraRotation();
         }

@@ -53,6 +53,7 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
             if (Input.GetKeyDown("e"))
             {
                 PhotonNetwork.Destroy(gameObject);
+                GameManager.CurrentGameSate = GameManager.GameState.Lobby;
             }
         }
            
