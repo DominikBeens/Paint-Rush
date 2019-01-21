@@ -1,6 +1,11 @@
-﻿using UnityEngine;
-using Photon.Pun;
-public class SpectateDrone : MonoBehaviourPunCallbacks {
+﻿using Photon.Pun;
+using UnityEngine;
+
+public class SpectateDrone : MonoBehaviourPunCallbacks
+{
+
+    private Camera cam;
+
     [SerializeField]
     private float moveSpeed = 20;
 
@@ -12,10 +17,17 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
 
     private void Awake()
     {
-        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        cam = GetComponentInChildren<Camera>();
+        cam.enabled = photonView.IsMine;
+
+        if (photonView.IsMine)
+        {
+            GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+        }
     }
 
-    private void FixedUpdate () {
+    private void FixedUpdate()
+    {
 
         if (PhotonNetwork.LocalPlayer.IsLocal)
         {
@@ -50,7 +62,7 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
 
     private void Update()
     {
-        if (PhotonNetwork.LocalPlayer.IsLocal)
+        if (photonView.IsMine)
         {
             if (Input.GetKeyDown("e"))
             {
@@ -67,19 +79,11 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
         }
     }
 
-    public void DisableCam()
-    {
-        photonView.RPC("DisableCamOthers", RpcTarget.Others);
-    }
-
-    [PunRPC]
-    private void DisableCamOthers()
-    {
-        GetComponentInChildren<Camera>().enabled = false;
-    }
-
     public override void OnDisable()
     {
-        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        if (photonView.IsMine)
+        {
+            GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        }
     }
 }
