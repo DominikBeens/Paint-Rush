@@ -28,13 +28,10 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-
-        if (PhotonNetwork.LocalPlayer.IsLocal)
+        if (photonView.IsMine)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
-
-
 
             //transform.Translate(new Vector3(x, 0 , y) * moveSpeed * Time.deltaTime);
             Vector3 hMove = transform.right * x * moveSpeed * Time.deltaTime;
