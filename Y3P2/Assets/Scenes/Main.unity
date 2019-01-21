@@ -3798,7 +3798,7 @@ Camera:
   m_Depth: -5
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 127799
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: f224442316d3a1741bee39f4387f16d8, type: 2}
   m_TargetDisplay: 0
@@ -16488,6 +16488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &116048150
@@ -17431,6 +17436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &208582513
@@ -20836,6 +20846,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &523432307
@@ -21719,6 +21734,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &628406356
@@ -22751,6 +22771,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &704471452
@@ -22819,6 +22844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &713854378
@@ -23378,6 +23408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &767438673
@@ -24428,6 +24463,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &873455395
@@ -24865,6 +24905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &946677943
@@ -25857,6 +25902,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1019960921
@@ -26409,6 +26459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1084363364
@@ -27081,6 +27136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1150552517
@@ -28151,6 +28211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1285812497
@@ -28219,6 +28284,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1288751719
@@ -28230,17 +28300,17 @@ PrefabInstance:
     - target: {fileID: 5779148280434280743, guid: 16a1f893d2795e54ba6a548a127b5d7f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.57
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 5779148280434280743, guid: 16a1f893d2795e54ba6a548a127b5d7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.19
+      value: 33.65
       objectReference: {fileID: 0}
     - target: {fileID: 5779148280434280743, guid: 16a1f893d2795e54ba6a548a127b5d7f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.32
+      value: 36.57
       objectReference: {fileID: 0}
     - target: {fileID: 5779148280434280743, guid: 16a1f893d2795e54ba6a548a127b5d7f,
         type: 3}
@@ -28287,6 +28357,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1302222341
@@ -28712,6 +28787,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1368448712
@@ -30901,6 +30981,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1588095572
@@ -31245,6 +31330,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1607101402
@@ -31441,6 +31531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1623773547
@@ -31649,6 +31744,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1633010246
@@ -31857,6 +31957,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1666298666
@@ -32917,6 +33022,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1819652550
@@ -33645,6 +33755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1916915251
@@ -33713,6 +33828,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1919004306
@@ -33982,6 +34102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6842b55edbda0ae4c915b5302dafe999, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &1958059819
@@ -34878,6 +35003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci_fi_Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779148280436706247, guid: 16a1f893d2795e54ba6a548a127b5d7f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f697abf6ea6d8494d83122ef285072e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a1f893d2795e54ba6a548a127b5d7f, type: 3}
 --- !u!1001 &2029573459
@@ -36604,7 +36734,7 @@ PrefabInstance:
     - target: {fileID: 4499704084070176186, guid: beea372b6b487cf4f9cacccd431d1456,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 127799
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1269269493474247938, guid: beea372b6b487cf4f9cacccd431d1456,
         type: 3}
