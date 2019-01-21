@@ -12,8 +12,11 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
     private int skinIndex;
 
     private CustomizationTerminal terminal;
+    private PlayerPickUpManager pckm;
 
     private bool isPepe;
+    private bool shield;
+    private bool cloak;
     // Use this for initialization
     void Start () {
         Components();
@@ -21,6 +24,7 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
 	private void Components()
     {
         terminal = FindObjectOfType<CustomizationTerminal>();
+        pckm = GetComponent<PlayerPickUpManager>();
         getMat = model.GetComponent<GetDefaultMat>();
     }
 
@@ -60,8 +64,15 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
     }
 
 
+    public void ToggleShield(bool toggle)
+    {
+        shield = toggle;
+    }
 
-
+    public void ToggleCloak(bool toggle)
+    {
+        cloak = toggle;
+    }
 
 
 
@@ -81,18 +92,28 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
             if (PhotonNetwork.LocalPlayer.IsLocal )
             {
                 stream.SendNext(isPepe);
+                stream.SendNext(shield);
+                stream.SendNext(cloak);
                 if (!isPepe)
                 {
                     stream.SendNext(skinIndex);
                     model.material = terminal.Skins[skinIndex];
                     getMat.UpdateMaterial(terminal.Skins[skinIndex]);
                 }
+              
                 else
                 {
                     model.material = terminal.SecretSkin;
                     getMat.UpdateMaterial(terminal.SecretSkin);
                 }
-            
+                if (cloak)
+                {
+                    model.material = pckm.CloakShader;
+                }
+                if (shield)
+                {
+                    model.material = pckm.ForceFieldShader;
+                }
             }
         }
         else
@@ -100,6 +121,8 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
             if (PhotonNetwork.LocalPlayer.IsLocal)
             {
                 isPepe = (bool)stream.ReceiveNext();
+                shield = (bool)stream.ReceiveNext();
+                cloak = (bool)stream.ReceiveNext();
                 if (!isPepe)
                 {
                     skinIndex = (int)stream.ReceiveNext();
@@ -117,6 +140,14 @@ public class SyncPlayerSkin : MonoBehaviourPunCallbacks, IPunObservable {
                 {
                     model.material = terminal.SecretSkin;
                     getMat.UpdateMaterial(terminal.SecretSkin);
+                }
+                if (cloak)
+                {
+                    model.material = pckm.CloakShader;
+                }
+                if (shield)
+                {
+                    model.material = pckm.ForceFieldShader;
                 }
             }
         }

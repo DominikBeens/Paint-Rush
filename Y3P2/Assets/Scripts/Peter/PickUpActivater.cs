@@ -9,7 +9,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
     private PlayerPickUpManager pkm;
     private PickUpManager pckm;
     private Entity entity;
-
+    private SyncPlayerSkin skinSync;
     private bool reducePaint = false;
 
 
@@ -18,7 +18,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         pkm = GetComponent<PlayerPickUpManager>();
         pckm = FindObjectOfType<PickUpManager>();
         entity = GetComponentInChildren<Entity>();
-
+        skinSync = GetComponent<SyncPlayerSkin>();
     }
 
     private void Update()
@@ -75,6 +75,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
             if (!waiting)
             {
                 GetComponent<PhotonView>().RPC("ActivateCloak", RpcTarget.All);
+                skinSync.ToggleCloak(true);
                 //ActivateCloak();
                 StartCoroutine(Duration(pickUp));
 
@@ -111,6 +112,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
             if (!waiting)
             {
                 photonView.RPC("ForceField", RpcTarget.All);
+                skinSync.ToggleShield(true);
                 StartCoroutine(Duration(pickUp));
             }
         }
@@ -203,6 +205,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         }
         else if(pickUp.Type == PickUp.PickUpType.Cloak)
         {
+            skinSync.ToggleCloak(false);
             GetComponent<PhotonView>().RPC("ResetCloak", RpcTarget.All);
         }
         else if (pickUp.Type == PickUp.PickUpType.ColorVac)
@@ -217,6 +220,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         else if (pickUp.Type == PickUp.PickUpType.ForceField)
         {
             GetComponent<PhotonView>().RPC("ResetForceField", RpcTarget.All);
+            skinSync.ToggleShield(false);
         }
     }
 

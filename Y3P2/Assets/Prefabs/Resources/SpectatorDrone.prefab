@@ -519,7 +519,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 5551517768851910560}
-  m_PlaneDistance: 1
+  m_PlaneDistance: 0.31
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 5551517769273421255}
   - component: {fileID: 5551517769273421252}
   - component: {fileID: 5551517769273421248}
-  - component: {fileID: 5551517769273421251}
+  - component: {fileID: 4506300350633184838}
   m_Layer: 0
   m_Name: SpectatorDrone
   m_TagString: Untagged
@@ -673,7 +673,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!135 &5551517769273421251
+--- !u!135 &4506300350633184838
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

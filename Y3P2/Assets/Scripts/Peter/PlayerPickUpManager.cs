@@ -46,6 +46,7 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
         if (photonView.IsMine)
         {
             GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+            TimeManager.OnEndMatch += TimeManager_OnEndMatch;
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
         }
 
@@ -87,12 +88,17 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
 
     private void GameManager_OnGameStateChanged(GameManager.GameState newState)
     {
-        if (newState == GameManager.GameState.Respawning)
+        if (currentPickUp != null)
         {
-            if (currentPickUp != null)
-            {
-                StartCoroutine(ResetPickUpOnDeath());
-            }
+            StartCoroutine(ResetPickUpOnDeath());
+        }
+    }
+
+    private void TimeManager_OnEndMatch()
+    {
+        if (currentPickUp != null)
+        {
+            StartCoroutine(ResetPickUpOnDeath());
         }
     }
 
