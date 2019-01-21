@@ -2831,7 +2831,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2167261865778163144, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
 --- !u!1001 &772044392843196899
 PrefabInstance:
@@ -3301,7 +3302,8 @@ PrefabInstance:
       propertyPath: m_textInfo.wordCount
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2167261865778163144, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
 --- !u!1001 &2934144914441917716
 PrefabInstance:
@@ -4250,7 +4252,8 @@ PrefabInstance:
       propertyPath: m_textInfo.characterCount
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2167261865778163144, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04bf4566a8d27f84397ad7a0c1d6f634, type: 3}
 --- !u!1001 &6065537842119635866
 PrefabInstance:
