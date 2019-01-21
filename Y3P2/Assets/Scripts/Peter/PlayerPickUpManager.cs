@@ -36,7 +36,6 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
     private bool shielded;
     public bool Shielded { get { return shielded; } }
 
-    public Transform pickUpRoomLocation; //Also temp cheat code
 
 
     private void Start()
@@ -50,16 +49,8 @@ public class PlayerPickUpManager : MonoBehaviourPunCallbacks {
             WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
         }
 
-        pickUpRoomLocation = GameObject.Find("PickRoomSpawnPos").transform;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("p") && photonView.IsMine)
-        {
-            transform.position = pickUpRoomLocation.position;
-        }
-    }
 
     private void WeaponSlot_OnFireWeapon()
     {
