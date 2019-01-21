@@ -65,7 +65,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         {
             if (!waiting)
             {
-                GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack();
+                GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack(true);
                 StartCoroutine(Duration(pickUp));
             }
             
@@ -201,7 +201,7 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
     {
         if (pickUp.Type == PickUp.PickUpType.InfiniteJetpack)
         {
-            GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack();
+            GetComponentInChildren<PlayerController>().ToggleInfiniteJetPack(false);
         }
         else if(pickUp.Type == PickUp.PickUpType.Cloak)
         {

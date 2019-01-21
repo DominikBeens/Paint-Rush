@@ -547,16 +547,9 @@ public class PlayerController : MonoBehaviour
         return DB.MenuPack.SettingsManager.instance ? DB.MenuPack.Setting_MouseSens.mouseSensitivity * 2 : 0;
     }
 
-    public void ToggleInfiniteJetPack()
+    public void ToggleInfiniteJetPack(bool toggle)
     {
-        if (!infinJet)
-        {
-            infinJet = true;
-        }
-        else
-        {
-            infinJet = false;
-        }
+        infinJet = toggle;
     }
 
    
