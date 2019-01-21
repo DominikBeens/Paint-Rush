@@ -46,6 +46,13 @@ public class MatchEndView : MonoBehaviour
         {
             matchEndCam.SetActive(true);
         }
+        else
+        {
+            if (GameManager.CurrentGameSate == GameManager.GameState.Spectating)
+            {
+                GameManager.CurrentGameSate = GameManager.GameState.Lobby;
+            }
+        }
     }
 
     private void TimeManager_OnGameTimeStateChanged(TimeManager.GameTimeState newState)

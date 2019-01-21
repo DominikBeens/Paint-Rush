@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Photon.Pun;
 public class SpectateDrone : MonoBehaviourPunCallbacks {
     [SerializeField]
@@ -11,9 +9,13 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
 
     [SerializeField]
     private Rigidbody rb;
-    
-    // Update is called once per frame
-    void FixedUpdate () {
+
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+
+    private void FixedUpdate () {
 
         if (PhotonNetwork.LocalPlayer.IsLocal)
         {
@@ -52,11 +54,17 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
         {
             if (Input.GetKeyDown("e"))
             {
-                PhotonNetwork.Destroy(gameObject);
                 GameManager.CurrentGameSate = GameManager.GameState.Lobby;
             }
         }
-           
+    }
+
+    private void GameManager_OnGameStateChanged(GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Lobby)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
     public void DisableCam()
@@ -68,5 +76,10 @@ public class SpectateDrone : MonoBehaviourPunCallbacks {
     private void DisableCamOthers()
     {
         GetComponentInChildren<Camera>().enabled = false;
+    }
+
+    public override void OnDisable()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 }
