@@ -1,11 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &4738810166357603908 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: 4576504d1aaf96e429b09e0c63c3df65,
-    type: 3}
-  m_PrefabInstance: {fileID: 4738810166357994688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5522620
 GameObject:
   m_ObjectHideFlags: 0
@@ -31988,6 +31982,12 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 4576504d1aaf96e429b09e0c63c3df65, type: 3}
+--- !u!4 &4738810166357603908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 4576504d1aaf96e429b09e0c63c3df65,
+    type: 3}
+  m_PrefabInstance: {fileID: 4738810166357994688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7176419973364992558
 GameObject:
   m_ObjectHideFlags: 0
@@ -32282,14 +32282,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 4576504d1aaf96e429b09e0c63c3df65, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7734810d7f6e24a4299e72ba4d4ec524, type: 2}
     - target: {fileID: 100002, guid: 4576504d1aaf96e429b09e0c63c3df65, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 4576504d1aaf96e429b09e0c63c3df65, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d782ca4ad05d9c4d8f2d630c62f3068, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4576504d1aaf96e429b09e0c63c3df65, type: 3}
 --- !u!1001 &5300630352480847761
@@ -32298,61 +32298,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4738810166357603908}
     m_Modifications:
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.1249022
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 60.86343
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0116088865
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
+    - target: {fileID: 100000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_Name
-      value: Lobby_Glass
-      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7734810d7f6e24a4299e72ba4d4ec524, type: 2}
-    - target: {fileID: 100000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db5c173d43d83f44a733f3adc6ef0f4, type: 3}
