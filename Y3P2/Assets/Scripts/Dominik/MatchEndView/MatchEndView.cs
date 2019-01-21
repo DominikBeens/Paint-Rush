@@ -42,7 +42,7 @@ public class MatchEndView : MonoBehaviour
         countdownObject.SetActive(true);
         SetupPlayerPositions();
 
-        if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
+        if (IsCorrectGameState())
         {
             matchEndCam.SetActive(true);
         }
@@ -50,6 +50,7 @@ public class MatchEndView : MonoBehaviour
 
     private void TimeManager_OnGameTimeStateChanged(TimeManager.GameTimeState newState)
     {
+        // Returning to lobby.
         if (viewActive)
         {
             viewActive = false;
@@ -63,7 +64,7 @@ public class MatchEndView : MonoBehaviour
                 PlayerManager.instance.playerAudioManager.PlayWinMusic(false);
             }
 
-            if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
+            if (IsCorrectGameState())
             {
                 GameManager.CurrentGameSate = GameManager.GameState.Lobby;
             }
@@ -78,7 +79,7 @@ public class MatchEndView : MonoBehaviour
         {
             PlayerManager player = Photon.Pun.PhotonView.Find(scores[i].playerPhotonViewID).GetComponent<PlayerManager>();
 
-            if (player.PlayerState != GameManager.GameState.Lobby)
+            if (IsCorrectPlayerState(player))
             {
                 TogglePlayerPosition(i, true);
                 playerPositions[i].SetupVisual(scores[i]);
@@ -112,9 +113,19 @@ public class MatchEndView : MonoBehaviour
         playerPositions[index].ToggleVisuals(toggle);
     }
 
+    private bool IsCorrectGameState()
+    {
+        return GameManager.CurrentGameSate == GameManager.GameState.Playing || GameManager.CurrentGameSate == GameManager.GameState.Respawning;
+    }
+
+    private bool IsCorrectPlayerState(PlayerManager player)
+    {
+        return player.PlayerState == GameManager.GameState.Playing || player.PlayerState == GameManager.GameState.Respawning;
+    }
+
     private void OnDisable()
     {
         TimeManager.OnEndMatch -= TimeManager_OnEndMatch;
-        TimeManager.OnGameTimeStateChanged += TimeManager_OnGameTimeStateChanged;
+        TimeManager.OnGameTimeStateChanged -= TimeManager_OnGameTimeStateChanged;
     }
 }

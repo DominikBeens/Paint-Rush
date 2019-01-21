@@ -161,15 +161,18 @@ public class UIManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.Lobby:
-
                 ToggleCrosshair(true);
                 break;
+
             case GameManager.GameState.Playing:
-
                 ToggleCrosshair(true);
                 break;
-            case GameManager.GameState.Respawning:
 
+            case GameManager.GameState.Respawning:
+                ToggleCrosshair(false);
+                break;
+
+            case GameManager.GameState.Spectating:
                 ToggleCrosshair(false);
                 break;
         }
@@ -180,14 +183,10 @@ public class UIManager : MonoBehaviour
         switch (GameManager.CurrentGameSate)
         {
             case GameManager.GameState.Lobby:
-
-                if (!SpectatorManager.spectating)
-                {
-                    ToggleCrosshair(!b);
-                }
+                ToggleCrosshair(!b);
                 break;
-            case GameManager.GameState.Playing:
 
+            case GameManager.GameState.Playing:
                 ToggleCrosshair(!b);
                 break;
         }
@@ -195,7 +194,7 @@ public class UIManager : MonoBehaviour
 
     private void TimeManager_OnEndMatch()
     {
-        if (GameManager.CurrentGameSate != GameManager.GameState.Lobby)
+        if (GameManager.CurrentGameSate == GameManager.GameState.Playing || GameManager.CurrentGameSate == GameManager.GameState.Respawning)
         {
             ToggleCrosshair(false);
         }

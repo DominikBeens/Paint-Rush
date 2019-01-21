@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private List<PickUp> pickUps = new List<PickUp>();
     public List<PickUp> PickUps { get { return pickUps; } }
 
-    public enum GameState { Lobby, Playing, Respawning };
+    public enum GameState { Lobby, Playing, Respawning, Spectating };
     private GameState gameState;
     public static GameState CurrentGameSate
     {

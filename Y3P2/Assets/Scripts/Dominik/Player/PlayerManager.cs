@@ -75,10 +75,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        //TESTING
+        // DEBUG
         if (photonView.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.F1))
             {
                 if (GameManager.CurrentGameSate == GameManager.GameState.Playing)
                 {
@@ -103,24 +103,28 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         switch (newState)
         {
             case GameManager.GameState.Lobby:
-
                 Vector3 pos = GameManager.instance.lobbySpawnPoint.position;
                 pos.x += UnityEngine.Random.Range(-2, 2);
                 pos.z += UnityEngine.Random.Range(-2, 2);
                 Teleport(pos);
                 playerController.enabled = true;
                 break;
-            case GameManager.GameState.Playing:
 
+            case GameManager.GameState.Playing:
                 Transform randomSpawn = GameManager.instance.GetRandomArenaSpawn();
                 Teleport(randomSpawn.position);
                 transform.rotation = randomSpawn.rotation;
                 playerController.enabled = true;
                 break;
-            case GameManager.GameState.Respawning:
 
+            case GameManager.GameState.Respawning:
                 Teleport(GameManager.instance.respawnBooth.position);
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
+                playerController.enabled = false;
+                break;
+
+            case GameManager.GameState.Spectating:
+                Teleport(GameManager.instance.respawnBooth.position);
                 playerController.enabled = false;
                 break;
         }
@@ -136,15 +140,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             switch (newState)
             {
                 case GameManager.GameState.Lobby:
-
                     entity.paintController.ToggleUI(false);
                     break;
-                case GameManager.GameState.Playing:
 
+                case GameManager.GameState.Playing:
                     entity.paintController.ToggleUI(true);
                     break;
-                case GameManager.GameState.Respawning:
 
+                case GameManager.GameState.Respawning:
+                    entity.paintController.ToggleUI(false);
+                    break;
+
+                case GameManager.GameState.Spectating:
                     entity.paintController.ToggleUI(false);
                     break;
             }

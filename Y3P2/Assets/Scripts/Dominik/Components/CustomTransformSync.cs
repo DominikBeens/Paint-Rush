@@ -28,11 +28,6 @@ public class CustomTransformSync : MonoBehaviourPunCallbacks, IPunObservable
                 defaultRot.z = PlayerController.defaultAngleZ;
                 transform.localEulerAngles = defaultRot;
             }
-
-            //transform.localRotation = Quaternion.Slerp(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
-
-            //Debug.LogWarning("Current: " + transform.localRotation.eulerAngles + " Synced: " + syncedRot.eulerAngles);
-            //transform.localRotation = Quaternion.RotateTowards(transform.localRotation, syncedRot, Time.deltaTime * smoothSpeed);
         }
     }
 
