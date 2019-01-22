@@ -60,6 +60,9 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     private bool waitingEmote = false;
 
     private string secretCode;
+
+    [SerializeField]
+    private Animator anim;
     private void Start()
     {
         localPlayer = PlayerManager.localPlayer;
@@ -79,6 +82,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         skinSyncer = localPlayer.GetComponent<SyncPlayerSkin>();
 
         GameManager.OnGameStateChanged += DisableEnableOnStateChange;
+
 
     }
 
@@ -147,6 +151,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
         audioVisualizer.SetActive(true);
 
         UIManager.instance.ToggleCrosshair(false);
+        anim.SetBool("Customize", true);
     }
 
     public void SetVictoryEmote(int index)
@@ -285,5 +290,22 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     }
 
-   
+    public void ToggleColorUI(bool toggle)
+    {
+        anim.SetBool("Color", toggle);
+        anim.SetBool("SubMenu", toggle);
+    }
+
+    public void ToggleMusicUI(bool toggle)
+    {
+        anim.SetBool("Music", toggle);
+        anim.SetBool("SubMenu", toggle);
+    }
+
+    public void ToggleEmoteUI(bool toggle)
+    {
+        anim.SetBool("Emote", toggle);
+        anim.SetBool("SubMenu", toggle);
+    }
+
 }
