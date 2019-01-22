@@ -1,5 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &6448232418896417637 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 06ac03a6ced3ffe40ad7bcc72b1ca841,
+    type: 3}
+  m_PrefabInstance: {fileID: 6448232418896546277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &407186174398559631
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,12 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockY: 1
---- !u!4 &6448232418896417637 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 06ac03a6ced3ffe40ad7bcc72b1ca841,
-    type: 3}
-  m_PrefabInstance: {fileID: 6448232418896546277}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6448232418896546277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,5 +314,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b4e4c9dc9563ce4a874b21ef98df62a, type: 2}
+    - target: {fileID: 3300000, guid: 06ac03a6ced3ffe40ad7bcc72b1ca841, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: a091a498a559b7447bc8597dd01e1f44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ac03a6ced3ffe40ad7bcc72b1ca841, type: 3}

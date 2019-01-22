@@ -1,5 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &851108365038225675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 2693673583f25354f93ec2dee549456e,
+    type: 3}
+  m_PrefabInstance: {fileID: 851108365037835147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &407186174398559631
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,12 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!4 &851108365038225675 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 2693673583f25354f93ec2dee549456e,
-    type: 3}
-  m_PrefabInstance: {fileID: 851108365037835147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446332806545463280
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,5 +314,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b4e4c9dc9563ce4a874b21ef98df62a, type: 2}
+    - target: {fileID: 3300000, guid: 2693673583f25354f93ec2dee549456e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 40e9a2c175d708742b60209dc59fa185, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2693673583f25354f93ec2dee549456e, type: 3}

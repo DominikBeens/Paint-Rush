@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2693673583f25354f93ec2dee549456e
+guid: bdd9bd5dcaa98664fbedba84a833d5cd
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Icon_No_See
+    4300000: Icon_Boost
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -38,7 +38,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (myPlayerManager && myPlayerManager.playerPickupManager.Shielded)
         {
-            return;
+            amount /= 2;
         }
 
         if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
@@ -58,7 +58,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (myPlayerManager && myPlayerManager.playerPickupManager.Shielded)
         {
-            return;
+            amount /= 2;
         }
 
         if (GameManager.CurrentGameSate == GameManager.GameState.Playing && TimeManager.CurrentGameTimeState == TimeManager.GameTimeState.InProgress)
