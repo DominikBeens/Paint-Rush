@@ -17,6 +17,6 @@ MonoBehaviour:
   pickUpType: 3
   duration: 5
   damage: -10
-  pickUpSprite: {fileID: 21300000, guid: 01cb2fdf322aa0b40aaff1cc0c875332, type: 3}
+  pickUpSprite: {fileID: 21300000, guid: 6ab06e853034fce438285ed164c72dd7, type: 3}
   pickUpText: Color vacuum
   weapon: {fileID: 0}

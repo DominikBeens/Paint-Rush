@@ -17,6 +17,6 @@ MonoBehaviour:
   pickUpType: 0
   duration: 8
   damage: 0
-  pickUpSprite: {fileID: 21300000, guid: 74c4d1091bf26e141bf1c5e3f26a4402, type: 3}
+  pickUpSprite: {fileID: 21300000, guid: 18c7334af97312145bd3f3e268d4e1df, type: 3}
   pickUpText: Jet Boost
   weapon: {fileID: 0}
