@@ -15,7 +15,7 @@ public class RespawnCam : MonoBehaviour
 
     private void Awake()
     {
-        respawnCamObject = GetComponentInChildren<Camera>().gameObject;
+        respawnCamObject = GetComponentInChildren<Camera>(true).gameObject;
         respawnCamObject.SetActive(false);
 
         GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
