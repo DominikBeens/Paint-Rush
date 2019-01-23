@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image screenHitImage;
 
     [Header("Paint Values Canvas")]
-    [SerializeField] private Transform paintValuesCanvas;
+    [SerializeField] private Canvas paintValuesCanvas;
 
     [Header("Game Tech Stats Canvas")]
     [SerializeField] private Canvas gameTechStatsCanvas;
@@ -162,18 +162,22 @@ public class UIManager : MonoBehaviour
         {
             case GameManager.GameState.Lobby:
                 ToggleCrosshair(true);
+                paintValuesCanvas.enabled = false;
                 break;
 
             case GameManager.GameState.Playing:
                 ToggleCrosshair(true);
+                paintValuesCanvas.enabled = true;
                 break;
 
             case GameManager.GameState.Respawning:
                 ToggleCrosshair(false);
+                paintValuesCanvas.enabled = false;
                 break;
 
             case GameManager.GameState.Spectating:
                 ToggleCrosshair(false);
+                paintValuesCanvas.enabled = false;
                 break;
         }
     }
@@ -188,6 +192,7 @@ public class UIManager : MonoBehaviour
 
             case GameManager.GameState.Playing:
                 ToggleCrosshair(!b);
+                paintValuesCanvas.enabled = !b;
                 break;
         }
     }
