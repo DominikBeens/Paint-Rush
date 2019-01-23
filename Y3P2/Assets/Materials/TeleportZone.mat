@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: TeleportZone
   m_Shader: {fileID: 4800000, guid: 61054a61bebe19f49a8d9767c1c3212d, type: 3}
-  m_ShaderKeywords: _ENABLEDISTORTION_ON _ENABLENOISE_ON _INVERT_ON
+  m_ShaderKeywords: _ENABLEDISTORTION_ON _INVERT_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,7 +84,7 @@ Material:
     - _Distortionspeed: 0.78
     - _DstBlend: 0
     - _Enabledistortion: 1
-    - _Enablenoise: 1
+    - _Enablenoise: 0
     - _Enablepulsation: 0
     - _Extraroughness: 2.83
     - _GlobalFade: 1
@@ -119,7 +119,7 @@ Material:
     - _TessMax: 25
     - _TessMin: 10
     - _TessPhongStrength: 0.5
-    - _TessValue: 32
+    - _TessValue: 4
     - _Texintensity: 4
     - _UVSec: 0
     - _ZWrite: 1

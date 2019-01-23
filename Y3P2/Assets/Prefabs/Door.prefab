@@ -1,11 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &4050113039164060432 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8831094967476752170, guid: 2c3d0d870de5ba547a2988e88f35b566,
-    type: 3}
-  m_PrefabInstance: {fileID: 4808364788847230010}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &382091916
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,12 +103,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
   antialiasingMode: 0
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
     stationaryBlending: 0.95
     motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
   fastApproximateAntialiasing:
     fastMode: 0
     keepAlpha: 0
@@ -137,6 +134,7 @@ MonoBehaviour:
       size: 256
       exposure: 0.12
     overlaySettings:
+      linearDepth: 0
       motionColorIntensity: 4
       motionGridSize: 64
       colorBlindnessType: 0
@@ -411,6 +409,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!4 &4050113039164060432 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8831094967476752170, guid: 2c3d0d870de5ba547a2988e88f35b566,
+    type: 3}
+  m_PrefabInstance: {fileID: 4808364788847230010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1678826806546496519
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +823,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
