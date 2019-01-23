@@ -5,6 +5,7 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
 {
 
     private Camera cam;
+    private bool canRotate = true;
 
     [SerializeField]
     private float moveSpeed = 20;
@@ -23,6 +24,18 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+            DB.MenuPack.SceneManager.OnGamePaused += SceneManager_OnGamePaused;
+        }
+    }
+
+    private void Update()
+    {
+        if (photonView.IsMine)
+        {
+            if (Input.GetKeyDown("e"))
+            {
+                GameManager.CurrentGameSate = GameManager.GameState.Lobby;
+            }
         }
     }
 
@@ -41,8 +54,12 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
             float xx = Input.GetAxis("Mouse X");
             float yy = Input.GetAxis("Mouse Y");
 
-            transform.Rotate(new Vector3(-yy, 0, 0) * rotSpeed * Time.deltaTime);
-            transform.Rotate(new Vector3(0, xx, 0) * rotSpeed * Time.deltaTime, Space.World);
+            if (canRotate)
+            {
+                transform.Rotate(new Vector3(-yy, 0, 0) * rotSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(0, xx, 0) * rotSpeed * Time.deltaTime, Space.World);
+            }
+
             if (Input.GetKey(KeyCode.Space))
             {
                 //transform.Translate(Vector3.up * 1 * moveSpeed * Time.deltaTime);
@@ -52,18 +69,6 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
             {
                 // transform.Translate(Vector3.up * -1 * moveSpeed * Time.deltaTime);
                 rb.MovePosition(transform.localPosition + transform.up * -1 * moveSpeed * Time.deltaTime);
-
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (photonView.IsMine)
-        {
-            if (Input.GetKeyDown("e"))
-            {
-                GameManager.CurrentGameSate = GameManager.GameState.Lobby;
             }
         }
     }
@@ -76,11 +81,17 @@ public class SpectateDrone : MonoBehaviourPunCallbacks
         }
     }
 
+    private void SceneManager_OnGamePaused(bool b)
+    {
+        canRotate = !b;
+    }
+
     public override void OnDisable()
     {
         if (photonView.IsMine)
         {
             GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+            DB.MenuPack.SceneManager.OnGamePaused -= SceneManager_OnGamePaused;
         }
     }
 }

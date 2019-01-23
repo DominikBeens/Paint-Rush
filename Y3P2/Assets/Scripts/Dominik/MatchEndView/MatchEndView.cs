@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class MatchEndView : MonoBehaviour
 {
@@ -81,27 +81,32 @@ public class MatchEndView : MonoBehaviour
     private void SetupPlayerPositions()
     {
         List<ScoreboardManager.PlayerScore> scores = ScoreboardManager.instance.GetSortedPlayerScores();
+        List<PlayerManager> eligiblePlayers = new List<PlayerManager>();
 
         for (int i = 0; i < scores.Count; i++)
         {
             PlayerManager player = Photon.Pun.PhotonView.Find(scores[i].playerPhotonViewID).GetComponent<PlayerManager>();
-
-            if (IsCorrectPlayerState(player))
+            if (player && IsCorrectPlayerState(player))
             {
-                TogglePlayerPosition(i, true);
-                playerPositions[i].SetupVisual(scores[i]);
-                player.entity.paintController.ToggleUI(false);
+                eligiblePlayers.Add(player);
+            }
+        }
 
-                if (scores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
+        for (int i = 0; i < eligiblePlayers.Count; i++)
+        {
+            TogglePlayerPosition(i, true);
+            playerPositions[i].SetupVisual(scores[i]);
+            eligiblePlayers[i].entity.paintController.ToggleUI(false);
+
+            if (scores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
+            {
+                PlayerManager.instance.Teleport(playerPositions[i].transform.position);
+                PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
+
+                // If we're the one with the highest score.
+                if (i == 0)
                 {
-                    PlayerManager.instance.Teleport(playerPositions[i].transform.position);
-                    PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
-
-                    // If we're the one with the highest score.
-                    if (i == 0)
-                    {
-                        PlayerManager.instance.playerAudioManager.PlayWinMusic(true);
-                    }
+                    PlayerManager.instance.playerAudioManager.PlayWinMusic(true);
                 }
             }
         }

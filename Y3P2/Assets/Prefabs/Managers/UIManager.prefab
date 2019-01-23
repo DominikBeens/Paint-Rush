@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!224 &6697534151659312041 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 5691562567532170236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7398046749681182417 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 8405179796579155588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3896493402440407348 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 2602295767125459297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5250761298472182694 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 6543842101024832499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7168505183656113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1310,7 @@ MonoBehaviour:
   pickUpImageParent: {fileID: 5741914144295083542}
   screenHitAnim: {fileID: 5237212632356420510}
   screenHitImage: {fileID: 4624064287172392565}
-  paintValuesCanvas: {fileID: 7582931981995128061}
+  paintValuesCanvas: {fileID: 5913645270270525543}
   gameTechStatsCanvas: {fileID: 8831345027384214154}
   gameTechStatsText: {fileID: 1327626137297730436}
 --- !u!114 &8251015420781023221
@@ -6754,12 +6778,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
---- !u!224 &3896493402440407348 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 2602295767125459297}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3642733473085088913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7845,12 +7863,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!224 &5250761298472182694 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 6543842101024832499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5939838634182770092
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,12 +8022,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &6697534151659312041 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 5691562567532170236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6568344300844308057
 GameObject:
   m_ObjectHideFlags: 0
@@ -8351,12 +8357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!224 &7398046749681182417 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 8405179796579155588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6989133354876785287
 GameObject:
   m_ObjectHideFlags: 0
