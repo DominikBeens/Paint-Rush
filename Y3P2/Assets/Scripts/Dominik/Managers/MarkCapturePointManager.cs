@@ -108,7 +108,7 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
 
                 for (int i = 0; i < capturePoints.Length; i++)
                 {
-                    stream.SendNext(capturePoints[i].Shield.transform.eulerAngles.y);
+                    stream.SendNext(capturePoints[i].Shield.transform.localEulerAngles.y);
                 }
             }
         }
@@ -120,7 +120,7 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
 
                 for (int i = 0; i < capturePoints.Length; i++)
                 {
-                    capturePoints[i].Shield.transform.eulerAngles = new Vector3(0, (float)stream.ReceiveNext(), 0);
+                    capturePoints[i].Shield.transform.localEulerAngles = new Vector3(0, (float)stream.ReceiveNext(), 0);
                 }
             }
         }
