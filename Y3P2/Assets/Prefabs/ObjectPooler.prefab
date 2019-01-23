@@ -64,6 +64,11 @@ MonoBehaviour:
       type: 3}
     poolSize: 50
     autoExpand: 1
+  - poolName: Audio_Teleport
+    poolPrefab: {fileID: 7786150646678572763, guid: e3742863a9fa1a849bd4443dbd923dbb,
+      type: 3}
+    poolSize: 10
+    autoExpand: 1
   - poolName: Grenade
     poolPrefab: {fileID: 4348756039182807503, guid: 166f33a3c9d67644da92d3c72cb08d43,
       type: 3}

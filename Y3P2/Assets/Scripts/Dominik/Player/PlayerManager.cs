@@ -106,25 +106,25 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 Vector3 pos = GameManager.instance.lobbySpawnPoint.position;
                 pos.x += UnityEngine.Random.Range(-2, 2);
                 pos.z += UnityEngine.Random.Range(-2, 2);
-                Teleport(pos);
+                Teleport(pos, true);
                 playerController.enabled = true;
                 break;
 
             case GameManager.GameState.Playing:
                 Transform randomSpawn = GameManager.instance.GetRandomArenaSpawn();
-                Teleport(randomSpawn.position);
+                Teleport(randomSpawn.position, true);
                 transform.rotation = randomSpawn.rotation;
                 playerController.enabled = true;
                 break;
 
             case GameManager.GameState.Respawning:
-                Teleport(GameManager.instance.respawnBooth.position);
+                Teleport(GameManager.instance.respawnBooth.position, false);
                 SaveManager.instance.SaveStat(SaveManager.SavedStat.Deaths);
                 playerController.enabled = false;
                 break;
 
             case GameManager.GameState.Spectating:
-                Teleport(GameManager.instance.respawnBooth.position);
+                Teleport(GameManager.instance.respawnBooth.position, false);
                 playerController.enabled = false;
                 break;
         }
@@ -170,15 +170,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         transform.rotation = randomSpawn.rotation;
     }
 
-    public void Teleport(Vector3 destination)
+    public void Teleport(Vector3 destination, bool playAudio)
     {
-        photonView.RPC("NetworkTeleport", RpcTarget.All, destination);
+        photonView.RPC("NetworkTeleport", RpcTarget.All, destination, playAudio);
     }
 
     [PunRPC]
-    private void NetworkTeleport(Vector3 destination)
+    private void NetworkTeleport(Vector3 destination, bool playAudio)
     {
         transform.position = destination;
+
+        if (playAudio)
+        {
+            ObjectPooler.instance.GrabFromPool("Audio_Teleport", destination, Quaternion.identity);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

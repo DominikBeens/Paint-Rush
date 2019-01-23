@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     private Animator anim;
     private bool waiting;
     private Transform mainCam;
+    private AudioSource audioSource;
 
     private List<Collider> nearbyPlayers = new List<Collider>();
 
@@ -17,10 +18,16 @@ public class Door : MonoBehaviour
     [SerializeField] private Material portalMat;
     [SerializeField] private Renderer portalVisual;
 
+    [Space]
+
+    [SerializeField] private AudioClip openAudio;
+    [SerializeField] private AudioClip closeAudio;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         mainCam = Camera.main.transform;
+        audioSource = GetComponent<AudioSource>();
 
         if (usePortal)
         {
@@ -87,6 +94,7 @@ public class Door : MonoBehaviour
         if (other.transform.root.tag == "Player" && nearbyPlayers.Count <= 0)
         {
             anim.SetBool("Close", true);
+            PlayAudio(closeAudio);
         }
 
         if (usePortal)
@@ -100,6 +108,7 @@ public class Door : MonoBehaviour
         waiting = true;
         anim.SetBool("Close", false);
         anim.SetBool("Open", true);
+        PlayAudio(openAudio);
 
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
@@ -145,6 +154,15 @@ public class Door : MonoBehaviour
         portalMat.mainTexture = portalCam.targetTexture;
 
         portalVisual.material = portalMat;
+    }
+
+    private void PlayAudio(AudioClip clip)
+    {
+        if (audioSource)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
 
     private void OnDisable()

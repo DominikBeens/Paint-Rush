@@ -8,7 +8,13 @@ public class JumpPad : MonoBehaviour {
     public float forwardForce = 2000;
 
     private bool launched;
-	
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Launch(Rigidbody player)
     {
         player.AddRelativeForce(Vector3.forward * forwardForce, ForceMode.Impulse);
@@ -17,10 +23,22 @@ public class JumpPad : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.root.tag == "Player" && other.transform.root.GetComponent<Photon.Pun.PhotonView>().IsMine && !launched)
+        if(other.transform.root.tag == "Player" && !launched)
         {
-            Launch(other.transform.root.GetComponent<Rigidbody>());
-            StartCoroutine(Wait());
+            Photon.Pun.PhotonView pv = other.transform.root.GetComponent<Photon.Pun.PhotonView>();
+            if (pv)
+            {
+                if (pv.IsMine)
+                {
+                    Launch(other.transform.root.GetComponent<Rigidbody>());
+                    StartCoroutine(Wait());
+                }
+
+                if (audioSource)
+                {
+                    audioSource.Play();
+                }
+            }
         }
     }
 

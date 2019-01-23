@@ -100,7 +100,7 @@ public class MatchEndView : MonoBehaviour
 
             if (scores[i].playerPhotonViewID == PlayerManager.instance.photonView.ViewID)
             {
-                PlayerManager.instance.Teleport(playerPositions[i].transform.position);
+                PlayerManager.instance.Teleport(playerPositions[i].transform.position, false);
                 PlayerManager.instance.playerAnimController.ToggleWinEmote(true);
 
                 // If we're the one with the highest score.

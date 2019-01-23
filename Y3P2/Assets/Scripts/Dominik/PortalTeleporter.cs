@@ -28,7 +28,7 @@ public class PortalTeleporter : MonoBehaviour
         {
             OnUsePortal();
 
-            PlayerManager.instance.Teleport(new Vector3(connectedPortalCam.position.x, PlayerManager.localPlayer.position.y, connectedPortalCam.position.z));
+            PlayerManager.instance.Teleport(new Vector3(connectedPortalCam.position.x, PlayerManager.localPlayer.position.y, connectedPortalCam.position.z), true);
             mainCam.fieldOfView = FOV_KICK;
         }
     }
