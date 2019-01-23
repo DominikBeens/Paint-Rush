@@ -1,6 +1,8 @@
 ﻿using Photon.Pun;
 using System;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -43,6 +45,8 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
     private void SetupStartingCapturePoint()
     {
         capturePoints = FindObjectsOfType<MarkCapturePoint>();
+        Array.Sort(capturePoints, (x, y) => string.Compare(x.name, y.name));
+
         for (int i = 0; i < capturePoints.Length; i++)
         {
             capturePoints[i].Init();
@@ -118,9 +122,12 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 syncedActivePointID = (int)stream.ReceiveNext();
 
-                for (int i = 0; i < capturePoints.Length; i++)
+                if (capturePoints != null)
                 {
-                    capturePoints[i].Shield.transform.localEulerAngles = new Vector3(0, (float)stream.ReceiveNext(), 0);
+                    for (int i = 0; i < capturePoints.Length; i++)
+                    {
+                        capturePoints[i].Shield.transform.localEulerAngles = new Vector3(0, (float)stream.ReceiveNext(), 0);
+                    }
                 }
             }
         }
