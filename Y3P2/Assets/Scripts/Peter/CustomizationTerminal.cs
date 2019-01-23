@@ -86,6 +86,22 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     }
 
+    public void Exit()
+    {
+        customizing = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        terminalCamera.SetActive(false);
+        audioVisualizer.SetActive(false);
+        UIManager.instance.ToggleCrosshair(true);
+
+        if (terminalAudioSource.isPlaying)
+        {
+            terminalAudioSource.Stop();
+        }
+    }
+
     private void Update()
     {
         if (customizing)

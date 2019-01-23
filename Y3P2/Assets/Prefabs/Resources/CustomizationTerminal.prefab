@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &5282606161493695389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7586957855993894620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 86be63d180f22514f99c1a0430395858,
+    type: 3}
+  m_PrefabInstance: {fileID: 7586957855994285150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5282606161500697725 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5282606161504766653 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8747051640038319970, guid: c8be019153952af45a498d3cf1014888,
+    type: 3}
+  m_PrefabInstance: {fileID: 3471241014460771807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6034352307615697672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1029663914765448199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056749796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,11 +1968,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3329,11 +3359,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5023,7 +5053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7486929151146000455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5723,11 +5753,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5814,24 +5844,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!4 &5282606161493695389 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8747051640041535042, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5282606161500697725 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8747051640034072994, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &5282606161504766653 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8747051640038319970, guid: c8be019153952af45a498d3cf1014888,
-    type: 3}
-  m_PrefabInstance: {fileID: 3471241014460771807}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5292635809572956394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5897,7 +5909,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Button
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75aaee6a18145e94ba2746dc13a72c4c, type: 2}
   m_sharedMaterial: {fileID: 21432130739440214, guid: 75aaee6a18145e94ba2746dc13a72c4c,
@@ -5965,7 +5977,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2950303954307981490}
-    characterCount: 6
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -5973,11 +5985,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -6141,12 +6153,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!4 &6034352307615697672 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6770118138645184271, guid: c3a01426dffcd26458865f2904c1216e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1029663914765448199}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5617583515688722956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7108,7 +7114,7 @@ GameObject:
   - component: {fileID: 4383824656241074473}
   - component: {fileID: 1938117801800555152}
   m_Layer: 0
-  m_Name: Button (3)
+  m_Name: 'QuitButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7209,7 +7215,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4383824656241074473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549693792}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &7172390535668541723
@@ -7925,12 +7942,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!4 &7586957855993894620 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400002, guid: 86be63d180f22514f99c1a0430395858,
-    type: 3}
-  m_PrefabInstance: {fileID: 7586957855994285150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7745673614841735602
 GameObject:
   m_ObjectHideFlags: 0
