@@ -25,6 +25,9 @@ public class MarkCapturePoint : MonoBehaviour
     [SerializeField] private Animator captureUIAnim;
     [SerializeField] private GameObject effects;
     [SerializeField] private Canvas captureIndicatorCanvas;
+    [SerializeField] private GameObject shield;
+    public GameObject Shield { get { return shield; } }
+    [SerializeField] private float shieldRotateSpeed = 3f;
 
     public class CapturingPlayer
     {
@@ -36,6 +39,7 @@ public class MarkCapturePoint : MonoBehaviour
     {
         catureCanvas.enabled = false;
         captureIndicatorCanvas.enabled = false;
+        shield.SetActive(false);
     }
 
     public void Init()
@@ -109,6 +113,11 @@ public class MarkCapturePoint : MonoBehaviour
                 FinishCapturing();
             }
         }
+
+        if (isActive)
+        {
+            shield.transform.Rotate(new Vector3(0, Time.deltaTime * shieldRotateSpeed, 0));
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -144,6 +153,7 @@ public class MarkCapturePoint : MonoBehaviour
         isActive = newPoint == this;
         effects.SetActive(isActive);
         captureIndicatorCanvas.enabled = isActive && indicatorActive;
+        shield.SetActive(isActive);
     }
 
     private void OnDisable()

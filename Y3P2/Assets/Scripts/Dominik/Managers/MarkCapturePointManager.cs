@@ -105,6 +105,11 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 stream.SendNext(activePointID);
+
+                for (int i = 0; i < capturePoints.Length; i++)
+                {
+                    stream.SendNext(capturePoints[i].Shield.transform.eulerAngles.y);
+                }
             }
         }
         else
@@ -112,6 +117,11 @@ public class MarkCapturePointManager : MonoBehaviourPunCallbacks, IPunObservable
             if (!PhotonNetwork.IsMasterClient)
             {
                 syncedActivePointID = (int)stream.ReceiveNext();
+
+                for (int i = 0; i < capturePoints.Length; i++)
+                {
+                    capturePoints[i].Shield.transform.eulerAngles = new Vector3(0, (float)stream.ReceiveNext(), 0);
+                }
             }
         }
     }
