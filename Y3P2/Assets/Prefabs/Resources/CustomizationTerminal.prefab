@@ -10121,17 +10121,37 @@ PrefabInstance:
     - target: {fileID: 2284069961269908496, guid: c3a01426dffcd26458865f2904c1216e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2284069961269908496, guid: c3a01426dffcd26458865f2904c1216e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.522
+      value: 0.617
       objectReference: {fileID: 0}
     - target: {fileID: 2284069961269908496, guid: c3a01426dffcd26458865f2904c1216e,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677173823706164690, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677173823706164690, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677173823706164690, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677173823706164690, guid: c3a01426dffcd26458865f2904c1216e,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a01426dffcd26458865f2904c1216e, type: 3}
