@@ -5,15 +5,20 @@ using System.Collections.Generic;
 public class PlayerAudioManager : MonoBehaviourPunCallbacks
 {
 
-    private AudioSource source;
     private CustomizationTerminal terminal;
     private bool isPlayingMusic;
     public bool IsPlayingMusic { get { return isPlayingMusic; } }
+    private float defaultVolume;
 
     private AudioClip winMusic;
     public AudioClip WinMusic { get { return winMusic; } }
 
     private int currentWinMusicIndex;
+
+    [SerializeField] private AudioSource mainSource;
+    [SerializeField] private AudioSource secondarySource;
+
+    [Space]
 
     [SerializeField] private List<PlayableClip> playableAudioClips = new List<PlayableClip>();
 
@@ -22,40 +27,54 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
     {
         public string trigger;
         public AudioClip clip;
+
+        [Space]
+
+        public bool overrideVolume;
+        [Range(0, 1)] public float volume;
+
+        [Space]
+
+        public bool useSecondarySource;
     }
 
 	private void Awake ()
     {
         terminal = FindObjectOfType<CustomizationTerminal>();
-        source = GetComponent<AudioSource>();
-        source.loop = true;
+        mainSource.loop = true;
+        defaultVolume = mainSource.volume;
 
         WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
+        WeaponSlot.OnHitEntity += WeaponSlot_OnHitEntity;
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
 	}
 
-    public AudioClip GetClip(string trigger)
+    public PlayableClip GetClip(string trigger)
     {
         for (int i = 0; i < playableAudioClips.Count; i++)
         {
             if (playableAudioClips[i].trigger == trigger)
             {
-                return playableAudioClips[i].clip;
+                return playableAudioClips[i];
             }
         }
 
-        return null;
+        Debug.LogWarning("Couldn't find clip.");
+        return new PlayableClip();
     }
 
-    public void PlayClipOnce(AudioClip clip)
+    public void PlayClipOnce(PlayableClip playable)
     {
-        if (!clip || isPlayingMusic)
+        if (!playable.clip || isPlayingMusic)
         {
             return;
         }
 
+        AudioSource source = playable.useSecondarySource ? secondarySource : mainSource;
+
         source.loop = false;
-        source.clip = clip;
+        source.clip = playable.clip;
+        source.volume = playable.overrideVolume ? playable.volume : defaultVolume;
         source.Play();
     }
 
@@ -63,6 +82,11 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
     {
         AudioController audioController = ObjectPooler.instance.GrabFromPool("Audio_GunFire", transform.position, Quaternion.identity).GetComponent<AudioController>();
         audioController.Play(transform);
+    }
+
+    private void WeaponSlot_OnHitEntity()
+    {
+        PlayClipOnce(GetClip("hitmark"));
     }
 
     private void WeaponSlot_OnChangeAmmoType(Color color)
@@ -75,10 +99,10 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         winMusic = music;
         currentWinMusicIndex = index;
 
-        if (source != null)
+        if (mainSource != null)
         {
-            source.clip = winMusic;
-            source.loop = true;
+            mainSource.clip = winMusic;
+            mainSource.loop = true;
         }
     }
 
@@ -94,12 +118,12 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
 
         if (toggle)
         {
-            source.Play();
+            mainSource.Play();
             isPlayingMusic = true;
         }
         else
         {
-            source.Stop();
+            mainSource.Stop();
             isPlayingMusic = false;
         }
     }
@@ -107,6 +131,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
     public override void OnDisable()
     {
         WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
+        WeaponSlot.OnHitEntity -= WeaponSlot_OnHitEntity;
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
     }
 }

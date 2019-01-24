@@ -104,8 +104,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             case GameManager.GameState.Lobby:
                 Vector3 pos = GameManager.instance.lobbySpawnPoint.position;
-                pos.x += UnityEngine.Random.Range(-2, 2);
-                pos.z += UnityEngine.Random.Range(-2, 2);
+                pos.x += UnityEngine.Random.Range(-3, 3);
+                pos.z += UnityEngine.Random.Range(-3, 3);
                 Teleport(pos, true);
                 playerController.enabled = true;
                 break;

@@ -50,6 +50,7 @@ public class GetPickUp : MonoBehaviourPunCallbacks
                     UIManager.instance.SetPickUpImage(myPickup.PickUpSprite, false);
                     NotificationManager.instance.NewLocalNotification(myPickup.PickUpText);
 
+                    PlayerManager.instance.playerAudioManager.PlayClipOnce(PlayerManager.instance.playerAudioManager.GetClip("pickup_gained"));
                     SaveManager.instance.SaveStat(SaveManager.SavedStat.PickupsCollected);
                 }
             }
