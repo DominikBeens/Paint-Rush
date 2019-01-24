@@ -930,7 +930,7 @@ Camera:
   m_GameObject: {fileID: 504106227}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -9783,7 +9783,6 @@ MonoBehaviour:
   defaultWeapon: {fileID: 0}
   objectsToCloak: []
   objectsToShield: []
-  pickUpRoomLocation: {fileID: 0}
 --- !u!114 &7377182943696296118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13166,6 +13165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cb83e54e6b7914092bbddfcac8d374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sway: 1
+  horizontalSwaySpeed: 3
+  verticalSwaySpeed: 2
+  leanSpeed: 2
 --- !u!1 &7038909790603062666
 GameObject:
   m_ObjectHideFlags: 0
@@ -15817,7 +15820,12 @@ PrefabInstance:
     - target: {fileID: 3586644663071760818, guid: 2dea7f46c86b58747901f7810eb46d5a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056523013122337336, guid: 2dea7f46c86b58747901f7810eb46d5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dea7f46c86b58747901f7810eb46d5a, type: 3}
@@ -15907,6 +15915,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 616484559257108987, guid: 90faab14bf9163742aee2bd11b23ce93,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832618634208525712, guid: 90faab14bf9163742aee2bd11b23ce93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285374039719968495, guid: 90faab14bf9163742aee2bd11b23ce93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90faab14bf9163742aee2bd11b23ce93, type: 3}
 --- !u!1001 &1629756289606220588
@@ -15978,7 +16001,7 @@ PrefabInstance:
     - target: {fileID: 1629756288504253554, guid: e55499bc96fea34448c3b5bc51d68040,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55499bc96fea34448c3b5bc51d68040, type: 3}
@@ -16240,7 +16263,7 @@ PrefabInstance:
     - target: {fileID: 7762785046066697025, guid: 503af126016794246a78072000a0615c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.82
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7762785046066697025, guid: 503af126016794246a78072000a0615c,
         type: 3}
@@ -16303,17 +16326,17 @@ PrefabInstance:
     - target: {fileID: 7375690557708903079, guid: ced6f43cf9128a94981a5273f98c9fcd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.94
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: 7375690557708903079, guid: ced6f43cf9128a94981a5273f98c9fcd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7375690557708903079, guid: ced6f43cf9128a94981a5273f98c9fcd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7951612
+      value: -4.95
       objectReference: {fileID: 0}
     - target: {fileID: 7375690557708903079, guid: ced6f43cf9128a94981a5273f98c9fcd,
         type: 3}
@@ -16363,6 +16386,11 @@ PrefabInstance:
     - target: {fileID: 2235073885259362467, guid: ced6f43cf9128a94981a5273f98c9fcd,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964654771678072535, guid: ced6f43cf9128a94981a5273f98c9fcd,
+        type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
