@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!224 &7398046749681182417 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 8405179796579155588}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6697534151659312041 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 5691562567532170236}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &5250761298472182694 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 6543842101024832499}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &3896493402440407348 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
-    type: 3}
-  m_PrefabInstance: {fileID: 2602295767125459297}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7168505183656113
 GameObject:
   m_ObjectHideFlags: 0
@@ -6861,6 +6837,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
+--- !u!224 &3896493402440407348 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 2602295767125459297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3642733473085088913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,7 +7103,7 @@ RectTransform:
   m_GameObject: {fileID: 3925233084875016647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 9134222267327259007}
   m_RootOrder: 0
@@ -7152,7 +7134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9700117, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8076,6 +8058,12 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!224 &5250761298472182694 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 6543842101024832499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5939838634182770092
 GameObject:
   m_ObjectHideFlags: 0
@@ -8262,7 +8250,7 @@ RectTransform:
   m_GameObject: {fileID: 6318549863112062185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999968, y: 0.9999968, z: 0.9999968}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 9134222267327259007}
   m_RootOrder: 1
@@ -8293,7 +8281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9700117, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8308,6 +8296,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!224 &6697534151659312041 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 5691562567532170236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6568344300844308057
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,6 +8637,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!224 &7398046749681182417 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1301001723042142293, guid: fc5f8ac37ebd06a4387334414585f706,
+    type: 3}
+  m_PrefabInstance: {fileID: 8405179796579155588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6989133354876785287
 GameObject:
   m_ObjectHideFlags: 0

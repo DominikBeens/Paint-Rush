@@ -803,7 +803,7 @@ MonoBehaviour:
   - trigger: hitmark
     clip: {fileID: 8300000, guid: 2312e39ee2718794b8d1c0ac90be5aa9, type: 3}
     overrideVolume: 1
-    volume: 0.5
+    volume: 0.2
     useSecondarySource: 1
   - trigger: pickup_gained
     clip: {fileID: 8300000, guid: f17d8b670118ea046a49f709247c5877, type: 3}

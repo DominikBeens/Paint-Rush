@@ -411,7 +411,7 @@ public class UIManager : MonoBehaviour
             if (position.x < position.y)
             {
                 // LEFT.
-                position.x = 0.05f;
+                position.x = 0.15f;
                 position.y = 0.5f;
                 rotation = new Vector3(0, 0, -90);
             }
@@ -419,7 +419,7 @@ public class UIManager : MonoBehaviour
             {
                 // DOWN.
                 position.x = 0.5f;
-                position.y = 0.2f;
+                position.y = 0.3f;
                 rotation = new Vector3(0, 0, 0);
             }
         }
@@ -428,7 +428,7 @@ public class UIManager : MonoBehaviour
             if (position.x > position.y)
             {
                 // RIGHT.
-                position.x = 0.95f;
+                position.x = 0.85f;
                 position.y = 0.5f;
                 rotation = new Vector3(0, 0, -270);
             }
@@ -436,7 +436,7 @@ public class UIManager : MonoBehaviour
             {
                 // UP.
                 position.x = 0.5f;
-                position.y = 0.85f;
+                position.y = 0.7f;
                 rotation = new Vector3(0, 0, -180);
             }
         }
