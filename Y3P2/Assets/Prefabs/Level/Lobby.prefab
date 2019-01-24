@@ -6990,6 +6990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7777546901682242983}
   - component: {fileID: 6332132840536684642}
+  - component: {fileID: 2884974951975388625}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -7049,9 +7050,32 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &2884974951975388625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713774500030989856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53eafe4c753166444b804ff4fe2068ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToToggle:
+  - {fileID: 6332132840536684642}
+  settings:
+  - state: 0
+    toggle: 1
+  - state: 1
+    toggle: 0
+  - state: 2
+    toggle: 0
+  - state: 3
+    toggle: 0
 --- !u!1 &8160389124140821236
 GameObject:
   m_ObjectHideFlags: 0
@@ -7646,7 +7670,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9097873188682605536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460154371424255952}
@@ -7655,8 +7679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 49.981903, y: 50.097507}
-  m_SizeDelta: {x: 3.7231, y: 1.4907}
+  m_AnchoredPosition: {x: 49.996, y: 50.122}
+  m_SizeDelta: {x: 3.8071, y: 1.6348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &98385115847294166
 Canvas:
