@@ -47,6 +47,8 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         WeaponSlot.OnFireWeapon += WeaponSlot_OnFireWeapon;
         WeaponSlot.OnHitEntity += WeaponSlot_OnHitEntity;
         WeaponSlot.OnChangeAmmoType += WeaponSlot_OnChangeAmmoType;
+
+        PlayerManager.instance.playerController.OnJump += PlayerController_OnJump;
 	}
 
     public PlayableClip GetClip(string trigger)
@@ -94,6 +96,11 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         PlayClipOnce(GetClip("change_ammo"));
     }
 
+    private void PlayerController_OnJump()
+    {
+        PlayClipOnce(GetClip("jump"));
+    }
+
     public void SetWinMusic(AudioClip music, int index)
     {
         winMusic = music;
@@ -133,5 +140,7 @@ public class PlayerAudioManager : MonoBehaviourPunCallbacks
         WeaponSlot.OnFireWeapon -= WeaponSlot_OnFireWeapon;
         WeaponSlot.OnHitEntity -= WeaponSlot_OnHitEntity;
         WeaponSlot.OnChangeAmmoType -= WeaponSlot_OnChangeAmmoType;
+
+        PlayerManager.instance.playerController.OnJump -= PlayerController_OnJump;
     }
 }
