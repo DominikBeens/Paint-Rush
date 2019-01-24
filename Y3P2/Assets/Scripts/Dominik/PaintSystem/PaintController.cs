@@ -96,6 +96,7 @@ public class PaintController
         if (myEntity == PlayerManager.instance.entity && amount > 0)
         {
             UIManager.instance.ScreenHitEffect(GetPaintColor(color));
+            UIManager.instance.ScreenHitDirectionMarker(PhotonView.Find(attackerID).transform.position);
         }
 
         if (!myEntity.photonView.IsMine)

@@ -64,6 +64,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameTechStatsText;
     private FPSCounter fpsCounter = new FPSCounter();
 
+    [Header("Screen Hit Direction Canvas")]
+    [SerializeField] private Transform screenHitDirectionMarker;
+
     private void Awake()
     {
         if (!instance)
@@ -120,6 +123,8 @@ public class UIManager : MonoBehaviour
         hitPlayerPanel.SetActive(false);
 
         ToggleGameTechStatsCanvas(DB.MenuPack.Setting_GameStatsDisplay.settingValue);
+
+        screenHitDirectionMarker.gameObject.SetActive(false);
     }
 
     public IEnumerator ShowJumpCooldownIcon(float cooldown)
@@ -379,6 +384,78 @@ public class UIManager : MonoBehaviour
 
         screenHitImage.color = paintColor;
         screenHitAnim.SetTrigger("Hit");
+    }
+
+    public void ScreenHitDirectionMarker(Vector3 origin)
+    {
+        screenHitDirectionMarker.gameObject.SetActive(false);
+
+        origin.y += 0.5f;
+        Vector3 position = mainCam.WorldToViewportPoint(origin);
+        Vector3 rotation = Vector3.zero;
+
+        if (position.x > 0 && position.x < 1)
+        {
+            if (position.y > 0 && position.y < 1)
+            {
+                if (position.z > 0)
+                {
+                    // Origin is within view, don't show the marker.
+                    return;
+                }
+            }
+        }
+
+        if (position.x < 0.5)
+        {
+            if (position.x < position.y)
+            {
+                // LEFT.
+                position.x = 0.05f;
+                position.y = 0.5f;
+                rotation = new Vector3(0, 0, -90);
+            }
+            else
+            {
+                // DOWN.
+                position.x = 0.5f;
+                position.y = 0.2f;
+                rotation = new Vector3(0, 0, 0);
+            }
+        }
+        else
+        {
+            if (position.x > position.y)
+            {
+                // RIGHT.
+                position.x = 0.95f;
+                position.y = 0.5f;
+                rotation = new Vector3(0, 0, -270);
+            }
+            else
+            {
+                // UP.
+                position.x = 0.5f;
+                position.y = 0.85f;
+                rotation = new Vector3(0, 0, -180);
+            }
+        }
+
+        // Origin is behind the player, flip values.
+        if (position.z < 0)
+        {
+            position.x = Mathf.Abs(position.x - 1);
+            position.y = Mathf.Abs(position.y - 1);
+
+            rotation = new Vector3(0, 0, rotation.z - 180);
+        }
+
+        position.x *= Screen.width;
+        position.y *= Screen.height;
+
+        screenHitDirectionMarker.transform.position = position;
+        screenHitDirectionMarker.transform.localEulerAngles = rotation;
+        screenHitDirectionMarker.gameObject.SetActive(true);
     }
 
     private void SetupPaintValuesUI()
