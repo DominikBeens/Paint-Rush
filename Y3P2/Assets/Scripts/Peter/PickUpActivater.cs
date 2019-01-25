@@ -120,6 +120,8 @@ public class PickUpActivater : MonoBehaviourPunCallbacks{
         UIManager.instance.SetPickUpImage(null, true);
         UIManager.instance.PickUpImageParent.transform.gameObject.SetActive(false);
 
+        PlayerManager.instance.playerAudioManager.PlayClipOnce(PlayerManager.instance.playerAudioManager.GetClip("pickup_used"));
+
         pkm.ResetHasPickUp();
     }
 

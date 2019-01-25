@@ -813,7 +813,12 @@ MonoBehaviour:
   - trigger: jump
     clip: {fileID: 8300000, guid: c251495631625cd4abab9d5b751e404a, type: 3}
     overrideVolume: 1
-    volume: 0.15
+    volume: 0.5
+    useSecondarySource: 1
+  - trigger: pickup_used
+    clip: {fileID: 8300000, guid: fc8397d2842ac7a4892e2da9b8335f9b, type: 3}
+    overrideVolume: 1
+    volume: 0.25
     useSecondarySource: 1
 --- !u!82 &2862329405602310653
 AudioSource:
