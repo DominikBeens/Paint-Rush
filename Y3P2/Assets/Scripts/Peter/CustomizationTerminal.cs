@@ -39,6 +39,14 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
     public GameObject TerminalCamera { get { return terminalCamera; } }
 
     [SerializeField]
+    private GameObject emoteCamera;
+    public GameObject EmoteCamera { get { return emoteCamera; } }
+
+    [SerializeField]
+    private GameObject audioCamera;
+    public GameObject AudioCamera { get { return audioCamera; } }
+
+    [SerializeField]
     private GameObject audioVisualizer;
     public GameObject AudioVisualizer { get { return audioVisualizer; } }
 
@@ -125,6 +133,9 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
                 {
                     terminalAudioSource.Stop();
                 }
+
+                emoteCamera.SetActive(false);
+                audioCamera.SetActive(false);
             }
         }
     }
@@ -165,6 +176,9 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
         terminalCamera.SetActive(true);
         audioVisualizer.SetActive(true);
+
+        emoteCamera.SetActive(true);
+        audioCamera.SetActive(true);
 
         UIManager.instance.ToggleCrosshair(false);
         anim.SetBool("Customize", true);
@@ -320,6 +334,7 @@ public class CustomizationTerminal : MonoBehaviourPunCallbacks
 
     public void ToggleEmoteUI(bool toggle)
     {
+
         anim.SetBool("Emote", toggle);
         anim.SetBool("SubMenu", toggle);
     }

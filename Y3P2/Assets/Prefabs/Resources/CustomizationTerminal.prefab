@@ -500,7 +500,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_fontColorGradient:
@@ -803,7 +803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -51.28955, y: -49.484848}
+  m_AnchoredPosition: {x: -52.786552, y: -49.484848}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6208808262349441838
@@ -1566,6 +1566,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 51a8264f63645154d8b16db5a95c51b4, type: 2}
   terminalAudioSource: {fileID: 1708536252515490802}
   terminalCamera: {fileID: 453460712389910489}
+  emoteCamera: {fileID: 8022764058715553068}
+  audioCamera: {fileID: 3906846895011398378}
   audioVisualizer: {fileID: 2529735897286231939}
   previewCharRenderer: {fileID: 5282606161504766653}
   colorPicker: {fileID: 3898513161799700476}
@@ -3127,7 +3129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.273, y: 0.10700011}
+  m_AnchoredPosition: {x: -2.77, y: 0.10700011}
   m_SizeDelta: {x: 122.44, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6595630308538119190
@@ -4278,7 +4280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -49.98355, y: 49.65535}
+  m_AnchoredPosition: {x: -49.98355, y: 48.435352}
   m_SizeDelta: {x: 0.8867, y: 0.8867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4385523687861840933
