@@ -19,4 +19,4 @@ MonoBehaviour:
   spawnParticleOnImpact: 0
   spawnDecalOnImpact: 0
   projectilePoolName: Grenade
-  projectileSpeed: 50
+  projectileSpeed: 75
