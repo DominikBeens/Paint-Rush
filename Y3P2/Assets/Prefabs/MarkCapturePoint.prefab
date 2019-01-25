@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &6599897660164741633 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 964693502375038823, guid: 08ccc70d18eb20842987afb07bdcce33,
-    type: 3}
-  m_PrefabInstance: {fileID: 6265857648403158374}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1402658143109504728 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 964693502375038823, guid: 08ccc70d18eb20842987afb07bdcce33,
-    type: 3}
-  m_PrefabInstance: {fileID: 2167490943000302015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &929612629314785125
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +177,12 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!4 &1402658143109504728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 964693502375038823, guid: 08ccc70d18eb20842987afb07bdcce33,
+    type: 3}
+  m_PrefabInstance: {fileID: 2167490943000302015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1541238850381158780
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +593,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
+--- !u!4 &6599897660164741633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 964693502375038823, guid: 08ccc70d18eb20842987afb07bdcce33,
+    type: 3}
+  m_PrefabInstance: {fileID: 6265857648403158374}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6752653641357336700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2935524076597075233, guid: b88d0008a9bbf6a448e6a7473918b2e3,
@@ -1033,6 +1033,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 964693502373137799, guid: 08ccc70d18eb20842987afb07bdcce33,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72a0bb39cdbf78b489d0775754846f62, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08ccc70d18eb20842987afb07bdcce33, type: 3}
 --- !u!1001 &6265857648403158374
