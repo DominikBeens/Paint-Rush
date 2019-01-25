@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using TMPro;
 
 public class TutorialVideoSelect : MonoBehaviour {
 
@@ -9,8 +10,13 @@ public class TutorialVideoSelect : MonoBehaviour {
     private int selected;
 
     [SerializeField]
+    private TextMeshProUGUI textmesh;
+
+    [SerializeField]
     private List<VideoClip> videoClips = new List<VideoClip>();
 
+    [SerializeField]
+    private List<string> texts = new List<string>();
     [SerializeField]
     private VideoPlayer vidPlayer;
 	// Use this for initialization
@@ -35,6 +41,7 @@ public class TutorialVideoSelect : MonoBehaviour {
         }
 
         vidPlayer.clip = videoClips[selected];
+        textmesh.text = texts[selected];
     }
 
     public void ScrollL()
@@ -49,6 +56,7 @@ public class TutorialVideoSelect : MonoBehaviour {
         }
 
         vidPlayer.clip = videoClips[selected];
+        textmesh.text = texts[selected];
 
     }
 }
